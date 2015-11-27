@@ -2,6 +2,7 @@
 #define __WNIDOW_BUILDER_HPP__
 
 #include "Common.hpp"
+#include "WindowProcedureHandler.hpp"
 
 namespace WIN32LAYER {
 
@@ -27,7 +28,7 @@ namespace WIN32LAYER {
 		int width;
 		int height;
 		HWND parentHwnd;
-		LPVOID userData;
+		WindowProcedureHandler * procHandler;
 
 	public:
 		WindowBuilder(HINSTANCE hInstance);
@@ -40,6 +41,7 @@ namespace WIN32LAYER {
 		void setSize(int width, int height);
 		void setParent(HWND parent);
 		void setUserData(LPVOID userData);
+		void setProcecureHandler(WindowProcedureHandler * procHandler);
 
 		Window create();
 	};

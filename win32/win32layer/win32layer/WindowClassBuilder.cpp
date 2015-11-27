@@ -2,15 +2,17 @@
 
 namespace WIN32LAYER {
 
-	LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
-
 	WindowClassBuilder::WindowClassBuilder(HINSTANCE hInstance, TCHAR * className) {
 		memset(&wc, 0, sizeof(wc));
-		wc.lpfnWndProc = WndProc;
 		wc.hInstance = hInstance;
 		setClassName(className);
 	}
 	WindowClassBuilder::~WindowClassBuilder() {
+	}
+
+	WindowClassBuilder & WindowClassBuilder::setWndProc(WNDPROC wndProc) {
+		wc.lpfnWndProc = wndProc;
+		return *this;
 	}
 
 	WindowClassBuilder & WindowClassBuilder::setStyle(UINT style) {
@@ -34,12 +36,8 @@ namespace WIN32LAYER {
 		_tcscpy(this->className, className);
 		return *this;
 	}
+
 	void WindowClassBuilder::registerClass() {
 		RegisterClass(&wc);
 	}
-
-	LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-		return DefWindowProc(hWnd, uMsg, wParam, lParam);
-	}
-
 }

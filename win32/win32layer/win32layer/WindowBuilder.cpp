@@ -13,7 +13,7 @@ namespace WIN32LAYER {
 
 
 
-	WindowBuilder::WindowBuilder(HINSTANCE hInstance) : hInstance(hInstance), hwnd(NULL), style(0), x(0), y(0), width(0), height(0), parentHwnd(0), userData(NULL) {
+	WindowBuilder::WindowBuilder(HINSTANCE hInstance) : hInstance(hInstance), hwnd(NULL), style(0), x(0), y(0), width(0), height(0), parentHwnd(0), procHandler(NULL) {
 	}
 
 	WindowBuilder::~WindowBuilder() {
@@ -39,12 +39,13 @@ namespace WIN32LAYER {
 	void WindowBuilder::setParent(HWND parent) {
 		this->parentHwnd = parent;
 	}
-	void WindowBuilder::setUserData(LPVOID userData) {
-		this->userData = userData;
+
+	void WindowBuilder::setProcecureHandler(WindowProcedureHandler * procHandler) {
+		this->procHandler = procHandler;
 	}
 
 	Window WindowBuilder::create() {
-		hwnd = CreateWindow(className, windowName, style, x, y, width, height, parentHwnd, NULL, hInstance, userData);
+		hwnd = CreateWindow(className, windowName, style, x, y, width, height, parentHwnd, NULL, hInstance, procHandler);
 		return Window(hwnd);
 	}
 }

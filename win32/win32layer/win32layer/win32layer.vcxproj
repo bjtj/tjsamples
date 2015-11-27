@@ -78,12 +78,14 @@
     <ClCompile Include="MessageLoop.cpp" />
     <ClCompile Include="WindowBuilder.cpp" />
     <ClCompile Include="WindowClassBuilder.cpp" />
+    <ClCompile Include="WindowProcedureHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.hpp" />
     <ClInclude Include="MessageLoop.hpp" />
     <ClInclude Include="WindowBuilder.hpp" />
     <ClInclude Include="WindowClassBuilder.hpp" />
+    <ClInclude Include="WindowProcedureHandler.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
