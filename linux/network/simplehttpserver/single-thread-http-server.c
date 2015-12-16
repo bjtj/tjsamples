@@ -22,9 +22,6 @@ int main(int argc, char *args[]) {
 	socklen_t addr_len = sizeof(addr);
 	int bind_port = 8080;
 	int on = 1;
-	char buffer[1024] = {0,};
-	size_t read_len;
-	const char * response_packet = "HTTP/1.1 200 OK\r\nContent-Length: 5\r\nContent-Type: text/plain\r\n\r\nHello";
 
 	sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (sock < 0) {
@@ -74,6 +71,7 @@ static void s_handle_client(int client_sock, struct sockaddr_in * client_addr, s
 	http_header_fields_t fields = {0,};
 	char response_header[4096] = {0,};
 	char response_content[4096] = {0,};
+	char client_ip_address[128] = {0,};
 
 	while (p < sizeof(header_buffer) && (read_len = recv(client_sock, header_buffer + p, 1, 0)) > 0) {
 		if (p > 4 &&
@@ -89,15 +87,18 @@ static void s_handle_client(int client_sock, struct sockaddr_in * client_addr, s
 		printf("socket closed\n");
 		return;
 	}
+
+	inet_ntop(client_addr->sin_family, &client_addr->sin_addr, client_ip_address, sizeof(client_ip_address));
 	
 	parseHttpHeader(parseHttpRequestLine(header_buffer, &request), &fields);
 
 	snprintf(response_content, sizeof(response_content), "<h1>Your Request Information</h1>"
+			 "<p>You IP Address: %s:%d</p>"
 			 "<ul>"
 			 "<li>Method: %s</li>"
 			 "<li>Path: %s</li>"
 			 "<li>Protocol: %s</li>"
-			 "</ul>", request.method, request.uri, request.protocol);
+			 "</ul>", client_ip_address, ntohs(client_addr->sin_port), request.method, request.uri, request.protocol);
 
 	snprintf(response_header, sizeof(response_header), "HTTP/1.1 200 OK\r\n"
 			 "Content-Type: text/html\r\n"
