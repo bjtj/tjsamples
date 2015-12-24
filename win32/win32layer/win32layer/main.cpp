@@ -3,11 +3,13 @@
 #include "WindowBuilder.hpp"
 #include "WindowProcedureHandler.hpp"
 #include "MessageLoop.hpp"
+#include "WindowComponentBuilderFactory.hpp"
 
 using namespace WIN32LAYER;
 
 class MyProcHandler : public WindowProcedureHandler {
 private:
+	WindowComponentBuilderFactory factory;
 public:
 	MyProcHandler() {
 	}
@@ -18,7 +20,26 @@ public:
 
 		switch (uMsg) {
 		case WM_CREATE:
-
+			{
+				WindowComponentBuilder builder = factory.createButton((HINSTANCE)GetWindowLong(hWnd, GWL_HINSTANCE), TEXT("Keep screen on"));
+				builder.setParent(hWnd);
+				builder.setSize(200, 50);
+				builder.setCommandId(101);
+				builder.create();
+				return setResult(0);
+			}
+		case WM_COMMAND:
+			switch (getCommand(wParam)) {
+			case 101:
+				{
+					// http://stackoverflow.com/a/3665545/5676460
+					// https://msdn.microsoft.com/en-us/library/aa373208%28VS.85%29.aspx
+					SetThreadExecutionState(ES_DISPLAY_REQUIRED);
+				}
+				break;
+			}
+			return setResult(0);
+		case WM_TIMER:
 			return setResult(0);
 		case WM_CLOSE:
 			PostQuitMessage(0);

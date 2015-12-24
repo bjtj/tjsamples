@@ -30,6 +30,12 @@
     <ClCompile Include="WindowProcedureHandler.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="WindowComponentBuilder.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowComponentBuilderFactory.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.hpp">
@@ -45,6 +51,12 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="WindowProcedureHandler.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowComponentBuilder.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowComponentBuilderFactory.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -28,6 +28,7 @@ namespace WIN32LAYER {
 		int width;
 		int height;
 		HWND parentHwnd;
+		HMENU menu;
 		WindowProcedureHandler * procHandler;
 
 	public:
@@ -40,6 +41,7 @@ namespace WIN32LAYER {
 		void setPosition(int x, int y);
 		void setSize(int width, int height);
 		void setParent(HWND parent);
+		void setMenu(HMENU menu);
 		void setUserData(LPVOID userData);
 		void setProcecureHandler(WindowProcedureHandler * procHandler);
 

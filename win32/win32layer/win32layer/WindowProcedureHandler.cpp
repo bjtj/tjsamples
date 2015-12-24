@@ -48,6 +48,10 @@ namespace WIN32LAYER {
 		return ret;
 	}
 
+	WORD WindowProcedureHandler::getCommand(WPARAM wParam) {
+		return LOWORD(wParam);
+	}
+
 	/**
 	 * @brief WindowProcedureHandler
 	 */

@@ -34,6 +34,7 @@ namespace WIN32LAYER {
 		ProcResult setResult(int result);
 		ProcResult needDefaultProc();
 		ProcResult setResultAndNeedDefaultProc(int result);
+		WORD getCommand(WPARAM wParam);
 
 		virtual ProcResult onProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) = 0;
 
