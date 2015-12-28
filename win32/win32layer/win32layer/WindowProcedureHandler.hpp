@@ -3,6 +3,9 @@
 
 #include "Common.hpp"
 
+#include <vector>
+#include "Window.hpp"
+
 namespace WIN32LAYER {
 
 	/**
@@ -27,9 +30,12 @@ namespace WIN32LAYER {
 	 */
 	class WindowProcedureHandler {
 	private:
+		bool enableDoubleBuffering;
 	public:
-		WindowProcedureHandler() {}
-		virtual ~WindowProcedureHandler() {}
+		WindowProcedureHandler();
+		virtual ~WindowProcedureHandler();
+
+		bool isEnabledDoubleBuffering();
 
 		ProcResult setResult(int result);
 		ProcResult needDefaultProc();
@@ -37,6 +43,7 @@ namespace WIN32LAYER {
 		WORD getCommand(WPARAM wParam);
 
 		virtual ProcResult onProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) = 0;
+		virtual void onDraw(HWND hwnd, HDC hdc);
 
 		static LRESULT CALLBACK MainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 	};

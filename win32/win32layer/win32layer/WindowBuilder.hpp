@@ -6,22 +6,11 @@
 
 namespace WIN32LAYER {
 
-	class Window {
-	private:
-		HWND hwnd;
-	public:
-		Window(HWND hwnd);
-		virtual ~Window();
-
-		void show(int mode);
-	};
-
 	class WindowBuilder {
 	private:
 		HINSTANCE hInstance;
 		TCHAR className[1024];
 		TCHAR windowName[1024];
-		HWND hwnd;
 		DWORD style;
 		int x;
 		int y;

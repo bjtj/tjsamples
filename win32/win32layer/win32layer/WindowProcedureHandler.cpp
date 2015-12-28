@@ -1,10 +1,11 @@
 #include "WindowProcedureHandler.hpp"
 
 #include <map>
-
-using namespace std;
+#include <algorithm>
 
 namespace WIN32LAYER {
+
+	using namespace std;
 
 	static map<HWND, WindowProcedureHandler*> handlers;
 
@@ -30,6 +31,19 @@ namespace WIN32LAYER {
 		return _needDefaultProc;
 	}
 
+	/**
+	 * @brief WindowProcedureHandler
+	 */
+
+	WindowProcedureHandler::WindowProcedureHandler() : enableDoubleBuffering(false) {
+	}
+
+	WindowProcedureHandler::~WindowProcedureHandler() {
+	}
+
+	bool WindowProcedureHandler::isEnabledDoubleBuffering() {
+		return enableDoubleBuffering;
+	}
 
 	ProcResult WindowProcedureHandler::setResult(int result) {
 		ProcResult ret;
@@ -52,9 +66,9 @@ namespace WIN32LAYER {
 		return LOWORD(wParam);
 	}
 
-	/**
-	 * @brief WindowProcedureHandler
-	 */
+	void WindowProcedureHandler::onDraw(HWND hwnd, HDC hdc) {
+		
+	}
 
 	LRESULT CALLBACK WindowProcedureHandler::MainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 
@@ -90,6 +104,48 @@ namespace WIN32LAYER {
 			{
 				if (handlers.find(hWnd) != handlers.end()) {
 					WindowProcedureHandler * handler = handlers[hWnd];
+
+					switch (uMsg) {
+					case WM_PAINT:
+						if (handler->isEnabledDoubleBuffering()) {
+							HDC hdc;
+							PAINTSTRUCT ps;
+							RECT rect;
+							HDC hDCMem;
+							HBITMAP BitMem, OldBitMap;
+
+							hdc = BeginPaint(hWnd, &ps);
+
+							hDCMem = CreateCompatibleDC(hdc);
+							GetClientRect(hWnd, &rect);
+							BitMem = CreateCompatibleBitmap(hdc, rect.right-rect.left, rect.bottom - rect.top);
+							OldBitMap = (HBITMAP)SelectObject(hDCMem, BitMem);
+
+							handler->onDraw(hWnd, hDCMem);
+
+							BitBlt(hdc, rect.left,rect.top,rect.right - rect.left,rect.bottom - rect.top,hDCMem,0,0,SRCCOPY);
+							BitMem = (HBITMAP)SelectObject(hDCMem, OldBitMap);
+							DeleteDC(hDCMem);
+							ReleaseDC(hWnd, hdc);
+							DeleteObject(BitMem);
+
+							EndPaint(hWnd, &ps);
+						} else {
+							PAINTSTRUCT paint;
+							HDC hdc = BeginPaint(hWnd, &paint);
+							handler->onDraw(hWnd, hdc);
+							EndPaint(hWnd, &paint);
+						}
+						break;
+					case WM_ERASEBKGND:
+						if (handler->isEnabledDoubleBuffering()) {
+							return 0;
+						}
+						break;
+					default:
+						break;
+					}
+
 					ProcResult ret = handler->onProc(hWnd, uMsg, wParam, lParam);
 					if (!ret.needDefaultProc()) {
 						return ret.getResult();

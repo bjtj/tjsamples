@@ -36,6 +36,9 @@
     <ClCompile Include="WindowComponentBuilderFactory.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.hpp">
@@ -57,6 +60,9 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="WindowComponentBuilderFactory.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

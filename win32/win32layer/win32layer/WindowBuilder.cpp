@@ -2,18 +2,9 @@
 
 namespace WIN32LAYER {
 
-	Window::Window(HWND hwnd) : hwnd(hwnd) {
-	}
-	Window::~Window() {
-	}
+	
 
-	void Window::show(int mode) {
-		ShowWindow(hwnd, mode);
-	}
-
-
-
-	WindowBuilder::WindowBuilder(HINSTANCE hInstance) : hInstance(hInstance), hwnd(NULL), style(0), x(0), y(0), width(0), height(0), parentHwnd(0), menu(NULL), procHandler(NULL) {
+	WindowBuilder::WindowBuilder(HINSTANCE hInstance) : hInstance(hInstance), style(0), x(0), y(0), width(0), height(0), parentHwnd(0), menu(NULL), procHandler(NULL) {
 	}
 
 	WindowBuilder::~WindowBuilder() {
@@ -47,7 +38,6 @@ namespace WIN32LAYER {
 	}
 
 	Window WindowBuilder::create() {
-		hwnd = CreateWindow(className, windowName, style, x, y, width, height, parentHwnd, menu, hInstance, procHandler);
-		return Window(hwnd);
+		return Window(CreateWindow(className, windowName, style, x, y, width, height, parentHwnd, menu, hInstance, procHandler));
 	}
 }

@@ -76,6 +76,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MessageLoop.cpp" />
+    <ClCompile Include="Window.cpp" />
     <ClCompile Include="WindowBuilder.cpp" />
     <ClCompile Include="WindowClassBuilder.cpp" />
     <ClCompile Include="WindowComponentBuilder.cpp" />
@@ -85,6 +86,7 @@
   <ItemGroup>
     <ClInclude Include="Common.hpp" />
     <ClInclude Include="MessageLoop.hpp" />
+    <ClInclude Include="Window.hpp" />
     <ClInclude Include="WindowBuilder.hpp" />
     <ClInclude Include="WindowClassBuilder.hpp" />
     <ClInclude Include="WindowComponentBuilder.hpp" />
