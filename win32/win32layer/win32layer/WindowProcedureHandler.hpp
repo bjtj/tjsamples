@@ -35,6 +35,7 @@ namespace WIN32LAYER {
 		WindowProcedureHandler();
 		virtual ~WindowProcedureHandler();
 
+		void setEnableDoubleBuffering(bool enable);
 		bool isEnabledDoubleBuffering();
 
 		ProcResult setResult(int result);

@@ -5,6 +5,9 @@
 
 namespace WIN32LAYER {
 
+	/**
+	 *
+	 */
 	class MessageLoop {
 	private:
 	public:
@@ -14,12 +17,37 @@ namespace WIN32LAYER {
 		virtual int getResult() = 0;
 	};
 
+	class Looper {
+	private:
+	public:
+		Looper() {}
+		virtual ~Looper() {}
+		virtual void onLoop() = 0;
+	};
+
+	/**
+	 *
+	 */
 	class DedicatedMessageLoop : public MessageLoop {
 	private:
 		MSG msg;
 	public:
 		DedicatedMessageLoop();
 		virtual ~DedicatedMessageLoop();
+		virtual void loop();
+		virtual int getResult();
+	};
+
+	/**
+	 *
+	 */
+	class GameMessageLoop : public MessageLoop {
+	private:
+		MSG msg;
+		Looper *looper;
+	public:
+		GameMessageLoop(Looper * looper);
+		virtual ~GameMessageLoop();
 		virtual void loop();
 		virtual int getResult();
 	};

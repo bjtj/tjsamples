@@ -1,19 +1,42 @@
-#include "Common.hpp"
-#include "WindowClassBuilder.hpp"
-#include "WindowBuilder.hpp"
-#include "WindowProcedureHandler.hpp"
-#include "MessageLoop.hpp"
-#include "WindowComponentBuilderFactory.hpp"
+#include <Win32Layer.hpp>
 
 using namespace WIN32LAYER;
+
+class MoveGame {
+private:
+	int x;
+	int y;
+public:
+	MoveGame() : x(0), y(0) {}
+	virtual ~MoveGame() {}
+
+	void setX(int x) {
+		this->x = x;
+	}
+	void setY(int y) {
+		this->y = y;
+	}
+	void offsetX(int x) {
+		this->x += x;
+	}
+	void offsetY(int y) {
+		this->y += y;
+	}
+	int getX() {
+		return x;
+	}
+	int getY() {
+		return y;
+	}
+};
 
 class MyProcHandler : public WindowProcedureHandler {
 private:
 	WindowComponentBuilderFactory factory;
-	int x;
-	int y;
+	InputStates & keys;
+	MoveGame & move;
 public:
-	MyProcHandler() : x(30), y(50) {
+	MyProcHandler(InputStates & keys, MoveGame & move) : keys(keys), move(move) {
 	}
 	virtual ~MyProcHandler() {
 	}
@@ -24,7 +47,7 @@ public:
 		GetClientRect(hwnd, &rect);
 		HBRUSH brush = CreateSolidBrush(RGB(255, 255, 255));
 		FillRect(hdc, &rect, brush);
-		TextOut(hdc, x, y, TEXT("Hello"), 5);
+		TextOut(hdc, move.getX(), move.getY(), TEXT("Hello"), 5);
 		DeleteObject(brush);
 	}
 
@@ -32,45 +55,31 @@ public:
 
 		switch (uMsg) {
 		case WM_CREATE:
-			{
-				WindowComponentBuilder builder = factory.createButton((HINSTANCE)GetWindowLong(hWnd, GWL_HINSTANCE), TEXT("Press me"));
-				builder.setParent(hWnd);
-				builder.setSize(200, 50);
-				builder.setCommandId(101);
-				builder.create();
-				SetTimer(hWnd, 100, 16, NULL);
-				return setResult(0);
-			}
+		{
+			this->setEnableDoubleBuffering(true);
+			return setResult(0);
+		}
 		case WM_COMMAND:
 			switch (getCommand(wParam)) {
 			case 101:
-				{
-					// http://stackoverflow.com/a/3665545/5676460
-					// https://msdn.microsoft.com/en-us/library/aa373208%28VS.85%29.aspx
-					// SetThreadExecutionState(ES_DISPLAY_REQUIRED);
-				}
-				break;
+			{
+				// http://stackoverflow.com/a/3665545/5676460
+				// https://msdn.microsoft.com/en-us/library/aa373208%28VS.85%29.aspx
+				// SetThreadExecutionState(ES_DISPLAY_REQUIRED);
+			}
+			break;
 			}
 			return setResult(0);
 		case WM_TIMER:
-			InvalidateRect(hWnd, NULL, TRUE);
 			return setResult(0);
+		case WM_KEYUP:
+			keys.setKeyUp(wParam);
+			break;
 		case WM_KEYDOWN:
+			keys.setKeyDown(wParam);
 			switch (wParam) {
 			case VK_ESCAPE:
 				PostQuitMessage(0);
-				break;
-			case VK_LEFT:
-				x -= 5;
-				break;
-			case VK_RIGHT:
-				x += 5;
-				break;
-			case VK_DOWN:
-				y += 5;
-				break;
-			case VK_UP:
-				y -= 5;
 				break;
 			default:
 				break;
@@ -110,12 +119,43 @@ Window createSimpleWindow(HINSTANCE hInst, TCHAR * className, TCHAR * windowName
 
 COMMON_WINMAIN(hInstance, hPrevInstance, cmdParam, cmdShow) {
 
-	MyProcHandler procHandler;
-	
+	InputStates keys;
+	MoveGame move;
+	MyProcHandler procHandler(keys, move);
+
 	Window window = createSimpleWindow(hInstance, TEXT("my class"), TEXT("Simple Window"), &procHandler);
 	window.show(cmdShow);
 
-	DedicatedMessageLoop loop;
+	class GameLooper : public Looper {
+	private:
+		HWND hwnd;
+		InputStates & keys;
+		MoveGame & move;
+	public:
+		GameLooper(HWND hwnd, InputStates & keys, MoveGame & move) : hwnd(hwnd), keys(keys), move(move) {}
+		virtual ~GameLooper() {}
+		void handleInput() {
+			if (keys.isKeyPressed(VK_DOWN)) {
+				move.offsetY(1);
+			}
+			if (keys.isKeyPressed(VK_UP)) {
+				move.offsetY(-1);
+			}
+			if (keys.isKeyPressed(VK_LEFT)) {
+				move.offsetX(-1);
+			}
+			if (keys.isKeyPressed(VK_RIGHT)) {
+				move.offsetX(1);
+			}
+		}
+		virtual void onLoop() {
+			handleInput();
+			InvalidateRect(hwnd, NULL, FALSE);
+			keys.pop();
+		}
+	};
+	GameLooper looper(window.getHwnd(), keys, move);
+	GameMessageLoop loop(&looper);
 	loop.loop();
 
 	return loop.getResult();

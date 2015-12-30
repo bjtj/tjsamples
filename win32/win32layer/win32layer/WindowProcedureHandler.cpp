@@ -41,6 +41,10 @@ namespace WIN32LAYER {
 	WindowProcedureHandler::~WindowProcedureHandler() {
 	}
 
+	void WindowProcedureHandler::setEnableDoubleBuffering(bool enable) {
+		this->enableDoubleBuffering = enable;
+	}
+
 	bool WindowProcedureHandler::isEnabledDoubleBuffering() {
 		return enableDoubleBuffering;
 	}

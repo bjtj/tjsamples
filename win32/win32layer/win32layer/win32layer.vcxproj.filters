@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="MessageLoop.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
@@ -37,6 +34,9 @@
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputStates.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -63,6 +63,12 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="Window.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputStates.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32Layer.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>
