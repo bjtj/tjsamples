@@ -16,6 +16,8 @@ class Main {
 
 		new Inherit().run();
 
+		new AnnonymousClass().run();
+
 		new ErrorHandling().run();
 	}
 }
@@ -207,6 +209,38 @@ class Inherit {
 		System.out.println(user);
 		UserWrapper userWrapper = new UserWrapper("lee", 30, "short description");
 		System.out.println(userWrapper);
+	}
+}
+
+/**
+ * 
+ *
+ */
+class AnnonymousClass {
+
+	public static interface Greeting {
+		public void hello();
+	}
+	
+	public void run() {
+
+		Greeting en = new Greeting() {
+				public void hello() {
+					System.out.println("hello");
+				}
+			};
+		Greeting ko = new Greeting() {
+				public void hello() {
+					System.out.println("안녕하세요");
+				}
+			};
+
+		Greeting any = en;
+		System.out.print("say - ");
+		any.hello();
+		any = ko;
+		System.out.print("say - ");
+		any.hello();
 	}
 }
 
