@@ -1,0 +1,22 @@
+<%-- jsp comment --%>
+<!-- html comment -->
+<%@page contentType="text/html; charset=UTF-8" import="java.io.IOException,java.io.Writer" %>
+<%! public void hello(Writer writer) throws IOException { writer.write("hello"); } %>
+<% String msg = "hello"; %>
+<!DOCTYPE HTML>
+<html>
+  <head>
+	<title>hello</title>
+  </head>
+  <body>
+	<h1>Hello</h1>
+	<% out.write("hello"); %><br />
+	<% hello(out); %><br />
+	<%= msg %><br />
+	<ul>
+	<% for (int i = 0; i < 10; i++) { %>
+	<li><%=i%></li>
+	<% } %>
+	</ul>
+  </body>
+</html>

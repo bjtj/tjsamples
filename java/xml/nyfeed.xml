@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:nyt="http://www.nytimes.com/namespaces/rss/2.0" version="2.0">
+  <channel>
+    <title>NYT &gt; World</title>
+    <link>http://www.nytimes.com/pages/world/index.html?partner=rss&amp;emc=rss</link>
+    <atom:link rel="self" type="application/rss+xml" href="http://www.nytimes.com/services/xml/rss/nyt/World.xml"/>
+    <description/>
+    <language>en-us</language>
+    <copyright>Copyright 2016  The New York Times Company</copyright>
+    <lastBuildDate>Sun, 02 Oct 2016 10:02:34 GMT </lastBuildDate>
+    <image>
+      <title>NYT &gt; World</title>
+      <url>https://static01.nyt.com/images/misc/NYT_logo_rss_250x40.png</url>
+      <link>http://www.nytimes.com/pages/world/index.html?partner=rss&amp;emc=rss</link>
+    </image>
+    <item>
+      <title>Inside Venezuela&#x2019;s Crumbling Mental Hospitals</title>
+      <link>http://www.nytimes.com/2016/10/02/world/americas/inside-a-dysfunctional-psychiatric-hospital.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/02/world/americas/inside-a-dysfunctional-psychiatric-hospital.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/02/world/americas/inside-a-dysfunctional-psychiatric-hospital.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/10/02/world/americas/XXHOSPITAL-WEBDESIGN-slide-ZR25/XXHOSPITAL-WEBDESIGN-slide-ZR25-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description/>
+      <media:credit>Meridith Kohut for The New York Times</media:credit>
+      <description>The state-run El Pampero Hospital in Venezuela has almost no drugs left for its tormented patients, let alone food and clothing, amid the nation&#x2019;s economic crisis.</description>
+      <dc:creator>MERIDITH KOHUT and NICHOLAS CASEY</dc:creator>
+      <pubDate>Sat, 01 Oct 2016 15:18:06 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">vis-photo</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Mental Health and Disorders</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Hospitals</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Venezuela</category>
+    </item>
+    <item>
+      <title>The Interpreter: Why Some Wars (Like Syria&#x2019;s) Get More Attention Than Others (Like Yemen&#x2019;s)</title>
+      <link>http://www.nytimes.com/2016/10/02/world/why-some-wars-like-syrias-get-more-attention-than-others-like-yemens.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/02/world/why-some-wars-like-syrias-get-more-attention-than-others-like-yemens.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/02/world/why-some-wars-like-syrias-get-more-attention-than-others-like-yemens.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/10/02/world/INT-WAR1/INT-WAR1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Damage in a house after a Saudi-led airstrike last month in Yemen, whose war has not gotten much attention.</media:description>
+      <media:credit>Mohamed Al-Sayaghi/Reuters</media:credit>
+      <description>Some of the reasons are obvious; the scale of Syria&#x2019;s war is catastrophic and much worse than Yemen&#x2019;s. But attention is about more than numbers.</description>
+      <dc:creator>AMANDA TAUB</dc:creator>
+      <pubDate>Sat, 01 Oct 2016 21:46:02 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">War Crimes, Genocide and Crimes Against Humanity</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Syria</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Yemen</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Congo, Democratic Republic of (Congo-Kinshasa)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Darfur (Sudan)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Al Qaeda</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Houthis</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Central African Republic</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Middle East</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">South Sudan</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Sri Lanka</category>
+    </item>
+    <item>
+      <title>In Kashmir, Pakistan Questions India&#x2019;s &#x2018;Surgical Strikes&#x2019; on Militants</title>
+      <link>http://www.nytimes.com/2016/10/02/world/asia/kashmir-pakistan-india.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/02/world/asia/kashmir-pakistan-india.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/02/world/asia/kashmir-pakistan-india.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/10/02/world/02PAKISTAN1/02PAKISTAN1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Pakistani villagers on the roof of their house in the village of Baghsar, near the Line of Control that divides Kashmir between Pakistan and India.</media:description>
+      <media:credit>Anjum Naveed/Associated Press</media:credit>
+      <description>Villagers and military officials on the Pakistani side of the Line of Control rejected India&#x2019;s claims that it had destroyed militant bases in this disputed region.</description>
+      <dc:creator>SALMAN MASOOD</dc:creator>
+      <pubDate>Sun, 02 Oct 2016 01:02:58 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Kashmir and Jammu (India)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">India</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Pakistan</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Defense and Military Forces</category>
+    </item>
+    <item>
+      <title>Jamaica, Long Opposed to Marijuana, Now Wants to Cash In on It</title>
+      <link>http://www.nytimes.com/2016/10/02/world/americas/jamaica-marijuana.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/02/world/americas/jamaica-marijuana.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/02/world/americas/jamaica-marijuana.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/09/28/world/xxjamaica-web/xxjamaica-web-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>A marijuana farmer in central Jamaica in 2013. Jamaica has spent years prosecuting illegal marijuana growers, but as it moves to legalize parts of the industry, small farmers worry they will be left behind.</media:description>
+      <media:credit>David McFadden/Associated Press</media:credit>
+      <description>After easing laws against the drug last year, the government is looking to create a &#x201C;wellness tourism&#x201D; with legal marijuana businesses at its core.</description>
+      <dc:creator>AZAM AHMED</dc:creator>
+      <pubDate>Sat, 01 Oct 2016 19:46:40 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Jamaica (West Indies)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Marijuana</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Economic Conditions and Trends</category>
+    </item>
+    <item>
+      <title>At a Loss for Meds, Venezuela&#x2019;s Mentally Ill Spiral Downward</title>
+      <link>http://www.nytimes.com/2016/10/02/world/americas/venezuela-mental-health-medicine-shortages.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/02/world/americas/venezuela-mental-health-medicine-shortages.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/02/world/americas/venezuela-mental-health-medicine-shortages.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/09/30/world/VENEZ-WEB1/VENEZ-WEB1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Mario Simeone and his wife, Evelin, at home in Maracay with their sons, Accel and Gerardo, right, who both suffer from schizophrenia. Venezuela has run out of most psychiatric medicines, and the voices in Accel&#x2019;s head demanded that he kill his brother.</media:description>
+      <media:credit>Meridith Kohut for The New York Times</media:credit>
+      <description>Amid the nation&#x2019;s economic collapse, psychiatric hospitals are running out of medications, food and other supplies. Thousands of patients are drifting into despair and psychosis.</description>
+      <dc:creator>NICHOLAS CASEY</dc:creator>
+      <pubDate>Sat, 01 Oct 2016 16:34:07 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Mental Health and Disorders</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Venezuela</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Shortages</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Rationing and Allocation of Resources</category>
+    </item>
+    <item>
+      <title>Women&#x2019;s Emergence as Terrorists in France Points to Shift in ISIS Gender Roles</title>
+      <link>http://www.nytimes.com/2016/10/02/world/europe/womens-emergence-as-terrorists-in-france-points-to-shift-in-isis-gender-roles.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/02/world/europe/womens-emergence-as-terrorists-in-france-points-to-shift-in-isis-gender-roles.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/02/world/europe/womens-emergence-as-terrorists-in-france-points-to-shift-in-isis-gender-roles.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/10/02/world/FRANCE/FRANCE-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>A police raid of an apartment outside Paris, after a car packed with gas canisters was found.</media:description>
+      <media:credit>Christian Hartmann/Reuters</media:credit>
+      <description>In some recent cases, women have been at the heart of attack plots, highlighting a possible evolution in the dynamics of gender for some of the Islamic State&#x2019;s European recruits.</description>
+      <dc:creator>ALISSA J. RUBIN and AURELIEN BREEDEN</dc:creator>
+      <pubDate>Sat, 01 Oct 2016 22:46:14 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Women and Girls</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Terrorism</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Muslims and Islam</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">Paris Attacks (November 2015)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">Nice, France, Attack (July 2016)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Islamic State in Iraq and Syria (ISIS)</category>
+    </item>
+    <item>
+      <title>Can a Smile in a Passport Photo Help Lift France&#x2019;s Spirits?</title>
+      <link>http://www.nytimes.com/2016/10/02/world/europe/can-a-smile-in-a-passport-photo-help-lift-frances-spirits.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/02/world/europe/can-a-smile-in-a-passport-photo-help-lift-frances-spirits.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/02/world/europe/can-a-smile-in-a-passport-photo-help-lift-frances-spirits.html?partner=rss&amp;emc=rss"/>
+      <description>A civil servant unsuccessfully challenged a requirement banning smiling in passport photos. Many countries have such bans.</description>
+      <dc:creator>DAN BILEFSKY</dc:creator>
+      <pubDate>Sun, 02 Oct 2016 01:20:22 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Passports</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">France</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_keyword">Smiles</category>
+    </item>
+    <item>
+      <title>Spain&#x2019;s Socialists Oust Party Leader in Bid to End Deadlock</title>
+      <link>http://www.nytimes.com/2016/10/02/world/europe/spain-socialists-pedro-sanchez-resigns.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/02/world/europe/spain-socialists-pedro-sanchez-resigns.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/02/world/europe/spain-socialists-pedro-sanchez-resigns.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/10/03/world/03SPAIN-web1/03SPAIN-web1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Pedro S&#xE1;nchez announced his resignation as the leader of Spain&#x2019;s Socialist Party in Madrid on Saturday.</media:description>
+      <media:credit>Susana Vera/Reuters</media:credit>
+      <description>Senior party members forced Pedro S&#xE1;nchez to resign as they sought to end internal divisions and break the impasse that has left Spain without an elected government.</description>
+      <dc:creator>RAPHAEL MINDER</dc:creator>
+      <pubDate>Sun, 02 Oct 2016 00:59:38 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Spain</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Spanish Socialist Workers' Party</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Elections</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Sanchez Perez-Castejon, Pedro (1972- )</category>
+    </item>
+    <item>
+      <title>Colombians See Vote as a Means to Secure Peace, if Not Justice</title>
+      <link>http://www.nytimes.com/2016/10/02/world/americas/colombians-see-vote-as-a-means-to-secure-peace-if-not-justice.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/02/world/americas/colombians-see-vote-as-a-means-to-secure-peace-if-not-justice.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/02/world/americas/colombians-see-vote-as-a-means-to-secure-peace-if-not-justice.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/10/02/world/COLOMBIA1/COLOMBIA1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>A Colombian parade in support of a peace deal with FARC rebels, which requires approval in a referendum on Sunday.</media:description>
+      <media:credit>Federico Rios Escobar for The New York Times</media:credit>
+      <description>A referendum on Sunday on a peace deal with FARC rebels is viewed as either &#x201C;a blasphemy&#x201D; or a chance &#x201C;to put an end to so much violence.&#x201D;</description>
+      <dc:creator>PAULA DURAN</dc:creator>
+      <pubDate>Sat, 01 Oct 2016 19:22:06 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Revolutionary Armed Forces of Colombia</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Colombia</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Londono, Rodrigo</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Santos, Juan Manuel</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Uribe, Alvaro</category>
+    </item>
+    <item>
+      <title>Pope Francis Navigates Orthodox Georgia&#x2019;s Rocky Terrain</title>
+      <link>http://www.nytimes.com/2016/10/02/world/europe/pope-francis-georgia.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/02/world/europe/pope-francis-georgia.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/02/world/europe/pope-francis-georgia.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/10/02/world/POPE/POPE-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Pope Francis outside a church in Tbilisi, Georgia, on Friday. The visit is part of his outreach to the Christian Orthodox world.</media:description>
+      <media:credit>L&#x2019;Osservatore Romano, via Reuters</media:credit>
+      <description>The Georgian Orthodox Church was once hostile to the Vatican, and the former Soviet republic remains pulled between East and West.</description>
+      <dc:creator>ANDREW HIGGINS and JIM YARDLEY</dc:creator>
+      <pubDate>Sat, 01 Oct 2016 19:16:51 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Russian Orthodox Church</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">European Union</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Roman Catholic Church</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Francis</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Kvirikashvili, Giorgi (1967- )</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Putin, Vladimir V</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Georgia (Georgian Republic)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">John Paul II</category>
+    </item>
+    <item>
+      <title>Sinosphere: U.S. Lawmakers Urge Greater Scrutiny of Chinese Corporate Purchases</title>
+      <link>http://www.nytimes.com/2016/10/01/world/asia/china-us-foreign-acquisition-dalian-wanda.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/01/world/asia/china-us-foreign-acquisition-dalian-wanda.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/01/world/asia/china-us-foreign-acquisition-dalian-wanda.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/10/01/world/01chinacongress-web1/01chinacongress-web1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Wang Jianlin, chairman of the Wanda Group, hopes to buy at least a 50 percent stake in one of the &#x201C;Big Six&#x201D; Hollywood studios.</media:description>
+      <media:credit>Thomas Peter/Reuters</media:credit>
+      <description>Sixteen members of Congress are raising questions over the foreign acquisition of American movie theaters and studios.</description>
+      <dc:creator>EDWARD WONG</dc:creator>
+      <pubDate>Fri, 30 Sep 2016 07:44:03 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Foreign Investments</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">AMC Entertainment</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Communist Party of China</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Dalian Wanda Group</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Dalian Wanda Commercial Properties</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Government Accountability Office</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Committee on Foreign Investment in the United States (CFIUS)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Wang Jianlin</category>
+    </item>
+    <item>
+      <title>What in the World: Lousy Libidos: Why Do Pandas Have So Little Sex?</title>
+      <link>http://www.nytimes.com/2016/10/01/world/what-in-the-world/lousy-libidos-why-do-pandas-have-so-little-sex.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/01/world/what-in-the-world/lousy-libidos-why-do-pandas-have-so-little-sex.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/01/world/what-in-the-world/lousy-libidos-why-do-pandas-have-so-little-sex.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/09/13/world/what-in-the-world/00wit_china-panda-sex/00wit_china-panda-sex-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description/>
+      <media:credit>Illustration by Cari Vander Yacht; photo by Enmyo/Shutterstock</media:credit>
+      <description>Pandas have a slim window each year for mating, but even then, they often don&#x2019;t know what to do, so scientists have taken to offering them guidance.</description>
+      <dc:creator>EDWARD WONG</dc:creator>
+      <pubDate>Fri, 30 Sep 2016 09:00:22 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Pandas</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">China</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Breeding of Animals</category>
+    </item>
+    <item>
+      <title>What in the World: Medicinal Herb or Myth? Indian Official Proposes Hunt for Sanjivani of Lore</title>
+      <link>http://www.nytimes.com/2016/09/30/world/what-in-the-world/india-sanjivani-ramayana-uttarakhand.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/09/30/world/what-in-the-world/india-sanjivani-ramayana-uttarakhand.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/09/30/world/what-in-the-world/india-sanjivani-ramayana-uttarakhand.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/09/13/world/00wit_india-herb/00wit_india-herb-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description/>
+      <media:credit>Tamara Shopsin</media:credit>
+      <description>A state official wants to spend nearly $4 million in search of the plant, which is said to grow in the Himalayas and which a Hindu epic claims has the power to revive the dying.</description>
+      <dc:creator>AYESHA VENKATARAMAN</dc:creator>
+      <pubDate>Thu, 29 Sep 2016 09:00:02 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Alternative and Complementary Medicine</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Hinduism</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">India</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Herbs</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_keyword">Sanjivani</category>
+    </item>
+    <item>
+      <title>News Analysis: 15 Years in the Afghan Crucible</title>
+      <link>http://www.nytimes.com/2016/10/02/opinion/sunday/15-years-in-the-afghan-crucible.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/02/opinion/sunday/15-years-in-the-afghan-crucible.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/02/opinion/sunday/15-years-in-the-afghan-crucible.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/10/02/opinion/sunday/02gall1/02gall1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Residential apartments in a gated community in Kabul.</media:description>
+      <media:credit>Shah Marai/Agence France-Presse &#x2014; Getty Images</media:credit>
+      <description>After 15 years of American military involvement, there are glimmers of a better future despite the enduring threat of the Taliban.</description>
+      <dc:creator>CARLOTTA GALL</dc:creator>
+      <pubDate>Sat, 01 Oct 2016 19:41:31 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Afghanistan</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Afghanistan War (2001-14)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">United States Defense and Military Forces</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Pakistan</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Zawahri, Ayman Al-</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Taliban</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">Foreign Aid</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Al Qaeda</category>
+    </item>
+    <item>
+      <title>Opinion: Shimon Peres: Not Just a Man of Peace</title>
+      <link>http://www.nytimes.com/2016/10/02/opinion/was-shimon-peres-a-man-of-peace.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/02/opinion/was-shimon-peres-a-man-of-peace.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/02/opinion/was-shimon-peres-a-man-of-peace.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/10/02/sunday-review/02Segev-Web/02Segev-Web-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Shimon Peres 1998.</media:description>
+      <media:credit>Micheline Pelletier/Sygma, via Getty Images</media:credit>
+      <description>In Israel, the late president is best known for his contributions to the military, not for the Oslo agreement.</description>
+      <dc:creator>TOM SEGEV</dc:creator>
+      <pubDate>Fri, 30 Sep 2016 18:59:32 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_per">Peres, Shimon</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Israel</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Palestinians</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Defense and Military Forces</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">International Relations</category>
+    </item>
+    <item>
+      <title>Contributing Op-Ed Writer: Why Britain Fails in Class</title>
+      <link>http://www.nytimes.com/2016/10/01/opinion/why-britain-fails-in-class.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/10/01/opinion/why-britain-fails-in-class.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/10/01/opinion/why-britain-fails-in-class.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/10/01/opinion/01Malik-inyt/01Malik-inyt-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Heading to class at the Altrincham Grammar School for Boys last month in England.</media:description>
+      <media:credit>Christopher Furlong/Getty Images</media:credit>
+      <description>Both the left and the right in Britain have made a mess of education by using schools for misguided social engineering.</description>
+      <dc:creator>KENAN MALIK</dc:creator>
+      <pubDate>Fri, 30 Sep 2016 13:51:27 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Great Britain</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Social Conditions and Trends</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Education</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Labour Party (Great Britain)</category>
+    </item>
+    <item>
+      <title>Postcard From the Hajj: A Pilgrim&#x2019;s Progress: Checking Mecca Off My Bucket List</title>
+      <link>http://www.nytimes.com/2016/09/21/insider/a-pilgrims-progress-checking-mecca-off-my-bucket-list.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/09/21/insider/a-pilgrims-progress-checking-mecca-off-my-bucket-list.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/09/21/insider/a-pilgrims-progress-checking-mecca-off-my-bucket-list.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/09/21/insider/21-Insider-Hadid-Image1/21-Insider-Hadid-Image1-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>&#x201C;Pilgrims surprised me with their warmth.&#x201D;</media:description>
+      <media:credit>Diaa Hadid/The New York Times</media:credit>
+      <description>This reporter&#x2019;s long-dreamed-of journey to explore the heart of Islam revealed surprises, debunked stereotypes and produced one stunning bird video.</description>
+      <dc:creator>DIAA HADID</dc:creator>
+      <pubDate>Wed, 21 Sep 2016 19:32:12 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Mecca (Saudi Arabia)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_keyword">Hajj</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Pilgrimages</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Saudi Arabia</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">Muslims and Islam</category>
+    </item>
+    <item>
+      <title>Postscript: One Year Later, a Tip About a Border Crossing Pays Off</title>
+      <link>http://www.nytimes.com/2016/09/20/insider/one-year-later-a-tip-about-fertilizer-at-a-border-crossing-pays-off.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/09/20/insider/one-year-later-a-tip-about-fertilizer-at-a-border-crossing-pays-off.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/09/20/insider/one-year-later-a-tip-about-fertilizer-at-a-border-crossing-pays-off.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/09/07/insider/07insider-hubbard/07insider-hubbard-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>Laborers transported ammonium nitrate at the crossing from Akcakale, Turkey, into Syria in April 2015. The compound, a common fertilizer, has been used by terrorists to create explosives.</media:description>
+      <media:credit>Diego Ibarra Sanchez for The New York Times</media:credit>
+      <description>How New York Times reporting may have made the Middle East just a little bit safer.</description>
+      <dc:creator>BEN HUBBARD and KARAM SHOUMALI</dc:creator>
+      <pubDate>Tue, 20 Sep 2016 00:21:57 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Fertilizer</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Bombs and Explosives</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_org_all">Islamic State in Iraq and Syria (ISIS)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Turkey</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Syria</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_keyword">Border Crossing</category>
+    </item>
+    <item>
+      <title>Turkish Dam Project Threatens to Submerge Thousands of Years of History</title>
+      <link>http://www.nytimes.com/2016/09/02/world/europe/turkey-hasankeyf-ilisu-dam.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/09/02/world/europe/turkey-hasankeyf-ilisu-dam.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/09/02/world/europe/turkey-hasankeyf-ilisu-dam.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/09/06/world/europe/xxturkeydam-slide-RQ6M/xxturkeydam-slide-RQ6M-moth.jpg" medium="image" height="151" width="151"/>
+      <media:description>The Turkish town of Hasankeyf will be submerged under 200 feet of water after a hydroelectric dam now under construction is completed.</media:description>
+      <media:credit>Samuel Aranda for The New York Times</media:credit>
+      <description>A contentious dam project that dates to the 1950s is more than 80 percent complete, and the filling of a reservoir will swamp much of the town of Hasankeyf.</description>
+      <dc:creator>TIM ARANGO</dc:creator>
+      <pubDate>Thu, 01 Sep 2016 16:50:16 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Hasankeyf (Turkey)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Levees and Dams</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Tigris River</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Turkey</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/mdes">International Relations</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Historic Buildings and Sites</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_keyword">Ilisu Dam</category>
+    </item>
+    <item>
+      <title>Devanampattinam Journal: Mortal to Divine and Back: India&#x2019;s Transgender Goddesses</title>
+      <link>http://www.nytimes.com/2016/07/25/world/asia/india-transgender.html?partner=rss&amp;emc=rss</link>
+      <guid isPermaLink="true">http://www.nytimes.com/2016/07/25/world/asia/india-transgender.html</guid>
+      <atom:link rel="standout" href="http://www.nytimes.com/2016/07/25/world/asia/india-transgender.html?partner=rss&amp;emc=rss"/>
+      <media:content url="https://static01.nyt.com/images/2016/07/26/world/asia/xxkhoti-ss-slide-81HN/xxkhoti-ss-slide-81HN-moth-v2.jpg" medium="image" height="151" width="151"/>
+      <media:description/>
+      <media:credit>Candace Feit</media:credit>
+      <description>During the 10-day Hindu festival Mayana Kollai, the troubles of transgender women are distant as they transform into the deities they worship and are revered by villagers.</description>
+      <dc:creator>Photographs by CANDACE FEIT</dc:creator>
+      <pubDate>Sun, 24 Jul 2016 18:25:04 GMT</pubDate>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Transgender and Transsexuals</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Tamil Nadu (India)</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Hinduism</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">India</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/des">Festivals</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_keyword">Mayana Kollai festival</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_keyword">Kothis</category>
+      <category domain="http://www.nytimes.com/namespaces/keywords/nyt_geo">Devanampattinam (India)</category>
+    </item>
+  </channel>
+</rss>
