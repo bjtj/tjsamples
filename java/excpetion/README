@@ -1,0 +1,18 @@
+Errors
+ - Compile error
+ - Runtime error
+
+http://stackoverflow.com/a/912352/5676460
+http://www.tutorialspoint.com/java/java_exceptions.htm
+
+exception hierarchy
+
+             Throwable
+                 |
+  ---------------------------------
+  |                               |
+Errors                        Exceptions
+                                  |
+                     ----------------------------
+                     |                          |
+             Runtime Exceptions          Other Exceptions

@@ -1,6 +1,6 @@
 // import java.lang.*; // implicitly imported
 
-class Main {
+public class Main {
 	public static void main(String[] args) {
 		System.out.println("Run");
 
@@ -20,6 +20,14 @@ class Main {
 
 		new ErrorHandling().run();
 	}
+}
+
+class Basic {
+	public static String meta;
+	String current;
+	public String name;
+	private String secret;
+	protected String share;
 }
 
 /**
