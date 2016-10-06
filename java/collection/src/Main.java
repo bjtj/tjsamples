@@ -25,6 +25,7 @@ class Main {
 			Map<String, String> map = new HashMap<>();
 			map.put("name", "steve");
 			map.put("age", "28");
+			map.put("class", "A");
 			Iterator<String> keys = map.keySet().iterator();
 			while (keys.hasNext()) {
 				String key = keys.next();
@@ -37,6 +38,7 @@ class Main {
 			Map<String, String> map = new LinkedHashMap<>();
 			map.put("name", "steve");
 			map.put("age", "28");
+			map.put("class", "A");
 			Iterator<String> keys = map.keySet().iterator();
 			while (keys.hasNext()) {
 				String key = keys.next();
