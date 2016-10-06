@@ -11,6 +11,9 @@ class Env {
 		sys.print();
 		sys.environment();
 		sys.properties();
+
+		System.exit(0);
+		System.out.println("This message should not be read.");
 	}
 
 	public void print() {
