@@ -1,0 +1,22 @@
+<project name="hello_jsp" default="compile" basedir=".">
+  <property environment="env" />
+  <property name="src" location="java" />
+  <property name="build" location="classes" />
+  <path id="tomcat-classpath">
+	<fileset dir="${env.TOMCAT_HOME}/lib">
+	  <include name="servlet-api.jar" />
+	</fileset>
+  </path>
+  <target name="init">
+	<tstamp />
+	<mkdir dir="${build}" />
+  </target>
+  <target name="compile" depends="init">
+	<javac srcdir="${src}" destdir="${build}" includeantruntime="false" debug="on">
+	  <classpath refid="tomcat-classpath" />
+	</javac>
+  </target>
+  <target name="clean">
+	<delete dir="${build}" />
+  </target>
+</project>
