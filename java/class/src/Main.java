@@ -3,11 +3,6 @@
 public class Main {
 	public static void main(String[] args) {
 		System.out.println("Run");
-
-		new Constructor().run();
-		
-		// new Constructor.Base(); // error
-		new Constructor().new Base();
 		
 		System.out.println("Static message: " + StaticSample.Static.msg);
 		StaticSample.Static.hello_static();
@@ -30,48 +25,8 @@ class Basic {
 	protected String share;
 }
 
-/**
- * 
- *
- */
-class Constructor {
-
-	class Base {
-		// default constructor implicited
-		// public Base() {}
-	}
-
-	class Base2 {
-		String name;
-		// discarded default constructor
-		public Base2(String name) {
-			this.name = name;
-		}
-
-		public String getName() {
-			return name;
-		}
-		public void setName(String name) {
-			this.name = name;
-		}
-	}
-
-	class Base3 {
-		public Base3() {}
-		public Base3(String name) {}
-	}
-
-	public void run() {
-		Base base = new Base();
-		// Base2 base2 = new Base2(); // compile error
-		Base2 base2 = new Base2("hello");
-		Base3 base3_1 = new Base3();
-		Base3 base3_2 = new Base3("hello");
-	}
-}
 
 /**
- * 
  *
  */
 class StaticSample {
@@ -84,7 +39,6 @@ class StaticSample {
 }
 
 /**
- * 
  *
  */
 class OrderOfInstance {
