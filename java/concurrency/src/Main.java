@@ -7,6 +7,7 @@ class Main {
 			this.count = count;
 			this.message = message;
 		}
+		@Override
 		public void run() {
 			for (int i = 0; i < count; i++) {
 				System.out.println((i+1) + " " + message);

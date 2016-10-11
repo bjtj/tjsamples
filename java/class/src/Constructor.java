@@ -5,7 +5,7 @@ class Constructor {
 	 */
 	class DefaultConstructor {
 		// default constructor implicited
-		// public Base() {}
+		// public DefaultConstructor() {}
 	}
 
 	/**
