@@ -2,10 +2,16 @@ import java.util.*;
 
 class EnumSample {
 
+	/**
+	 * Simple enum type
+	 */
 	public enum Day {
 		SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
 	}
 
+	/**
+	 * Complex enum type
+	 */
 	public enum LongDay {
 		SUNDAY("Sun", "Sunday"),
 		MONDAY("Mon", "Monday"),
@@ -37,6 +43,9 @@ class EnumSample {
 		}
 	}
 
+	/**
+	 * enum type on switch
+	 */
 	public String convertDayToString(Day day) {
 		switch (day) {
 		case SUNDAY:
@@ -58,37 +67,52 @@ class EnumSample {
 		}
 		return null;
 	}
-	
-	public static void main(String args[]) {
-		
-		EnumSample e = new EnumSample();
-		System.out.println(e.convertDayToString(Day.SUNDAY));
-		System.out.println(e.convertDayToString(Day.MONDAY));
-		System.out.println(e.convertDayToString(Day.TUESDAY));
-		System.out.println(e.convertDayToString(Day.WEDNESDAY));
-		System.out.println(e.convertDayToString(Day.THURSDAY));
-		System.out.println(e.convertDayToString(Day.FRIDAY));
-		System.out.println(e.convertDayToString(Day.SATURDAY));
 
+	/**
+	 * psvm
+	 */
+	public static void main(String args[]) {
+
+		EnumSample e = new EnumSample();
+		// switch
+		System.out.printf("%s %s %s %s %s %s %s\n", e.convertDayToString(Day.SUNDAY)
+						  ,e.convertDayToString(Day.MONDAY)
+						  ,e.convertDayToString(Day.TUESDAY)
+						  ,e.convertDayToString(Day.WEDNESDAY)
+						  ,e.convertDayToString(Day.THURSDAY)
+						  ,e.convertDayToString(Day.FRIDAY)
+						  ,e.convertDayToString(Day.SATURDAY));
+
+		// Arrays.toString()
+		System.out.println(Arrays.toString(Day.values()));
+
+		// toString()
 		System.out.println("Day.MONDAY.toString(): " + Day.MONDAY.toString());
+
+		// valueOf()
 		System.out.println("Day.valueOf(\"MONDAY\"): " + Day.valueOf("MONDAY").toString());
-		
+
+		// Exception of valueOf()
 		try {
 			System.out.println("Day.valueOf(\"UNKNOWN\"): " + Day.valueOf("UNKNOWN").toString());
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		
+
+		// values()
 		Day[] values = Day.values();
 		for (int i = 0; i < values.length; i++) {
 			System.out.printf("[%d] %s\n", i, values[i].toString());
 		}
-		
+
+		// Arrays.asList() & indexOf()
 		System.out.println("Arrays.asList(Day.values()).indexOf(\"MONDAY\"): " +
 						   Arrays.asList(Day.values()).indexOf(Day.MONDAY));
 
+		// ordinal()
 		System.out.println("Day.TUESDAY.ordinal(): " + Day.TUESDAY.ordinal());
 
+		// complex enum type's toString()
 		System.out.println(LongDay.SUNDAY);
 		System.out.println(LongDay.MONDAY);
 		System.out.println(LongDay.TUESDAY);
