@@ -154,31 +154,34 @@ public class Client {
 
 				while (!Thread.interrupted() && !abortable.isDone() && !done) {
 
-					selector.select(3000);
+					if (selector.select(3000) > 0) {
 
-					Iterator<SelectionKey> iter = selector.selectedKeys().iterator();
-					while (!Thread.interrupted() && !abortable.isDone() && !done && iter.hasNext()) {
-						SelectionKey key = iter.next();
-						if (key.isReadable()) {
-							int len = client.read(buffer);
-							if (len < 0) {
-								System.out.println("Client :: server closed");
-								done = true;
-								break;
-							} else if (len == 0) {
-								continue;
+						Iterator<SelectionKey> iter = selector.selectedKeys().iterator();
+						while (!Thread.interrupted() && !abortable.isDone() && !done && iter.hasNext()) {
+							SelectionKey key = iter.next();
+							if (key.isReadable()) {
+								SocketChannel channel = (SocketChannel)key.channel();
+								int len = channel.read(buffer);
+								if (len < 0) {
+									System.out.println("Client :: server closed");
+									done = true;
+									break;
+								} else if (len == 0) {
+									continue;
+								}
+								buffer.flip();
+
+								CharBuffer cb = cs.decode(buffer);
+
+								System.out.printf("From Server : ");
+								while (cb.hasRemaining()) {
+									System.out.printf("%c", cb.get());
+								}
+								System.out.println();
+
+								buffer.compact();
 							}
-							buffer.flip();
-
-							CharBuffer cb = cs.decode(buffer);
-
-							System.out.printf("From Server : ");
-							while (cb.hasRemaining()) {
-								System.out.printf("%c", cb.get());
-							}
-							System.out.println();
-
-							buffer.compact();
+							iter.remove();
 						}
 					}
 				}

@@ -120,7 +120,8 @@ public class Server {
 						SelectionKey key = iter.next();
 						if (key.isAcceptable()) {
 
-							SocketChannel client = server.accept();
+							ServerSocketChannel channel = (ServerSocketChannel)key.channel();
+							SocketChannel client = channel.accept();
 
 							if (client != null) {
 								System.out.printf("Server :: accepted - client [%s]\n", client);
@@ -129,6 +130,7 @@ public class Server {
 								clientList.add(t);
 							}
 						}
+						iter.remove();
 					}
 				}
 
