@@ -229,6 +229,7 @@ public class Server {
 
 							buffer.compact();
 						}
+						iter.remove();
 					}
 				}
 
