@@ -26,7 +26,19 @@ class UseExecutor {
 					return "done!";
 				}
 			});
+		Future future2 = executorService.submit(new Callable() {
+				public Object call() {
+					try {
+						Thread.sleep(500);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					System.out.println("call! - cancel!");
+					return "done!";
+				}
+			});
 		System.out.println("future.get() = " + future.get());
+		future2.cancel(true);
 		System.out.println("shutdown");
 		executorService.shutdown();
 	}
