@@ -13,4 +13,4 @@ Port number setting
 
 src/main/resources/application.properties
 
-sever.port=<port>
+sever.port=[port]
