@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Cam</string>
+    <string name="request_permission">Camera permission required</string>
+    <string name="camera_error">camera error</string>
+</resources>
