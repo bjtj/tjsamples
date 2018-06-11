@@ -1,0 +1,6 @@
+http://wani.kr/posts/2015/02/16/how-to-use-cocoa-pods/
+
+Xcode project is required
+
+pod init
+pod install
