@@ -14,6 +14,10 @@ func test() throws {
     let dom = try XMLDocument(xmlString: xml)
     
     print(dom.rootElement()!)
+
+    print(dom.rootElement()!.elements(forName: "from"))
+
+    print(dom.rootElement()!.elements(forName: "body")[0])
 }
 
 func test2() throws {
