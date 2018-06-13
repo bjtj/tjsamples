@@ -7,3 +7,8 @@ Xcode project is required
 
 $ pod init
 $ pod install
+
+Remove cocoapod
+====
+
+https://stackoverflow.com/a/16427883
