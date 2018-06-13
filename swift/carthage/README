@@ -1,0 +1,16 @@
+https://github.com/Carthage/Carthage
+
+$ brew update
+$ brew install carthage
+
+
+https://www.raywenderlich.com/165660/carthage-tutorial-getting-started-2
+
+edit 'Cartfile'
+
+Run script
+====
+
+/usr/local/bin/carthage copy-frameworks
+
+add paths of frameworks to input
