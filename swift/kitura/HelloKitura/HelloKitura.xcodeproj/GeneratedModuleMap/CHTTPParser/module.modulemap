@@ -1,0 +1,4 @@
+module CHTTPParser {
+    umbrella header "/Users/tjjang/dev/git/tjsamples/swift/kitura/HelloKitura/.build/checkouts/Kitura-net.git--7410958935072501107/Sources/CHTTPParser/include/CHTTPParser.h"
+    export *
+}

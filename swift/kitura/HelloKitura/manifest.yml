@@ -1,0 +1,9 @@
+---
+applications:
+- instances: 1
+  timeout: 180
+  name: HelloKitura
+  buildpack: swift_buildpack
+  command: "'HelloKitura'"
+  memory: 128M
+  random-route: true
