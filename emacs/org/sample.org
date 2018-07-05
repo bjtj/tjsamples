@@ -1,0 +1,36 @@
+* `TODO` -- 'S-<left/right>'
+# https://orgmode.org/manual/TODO-basics.html#TODO-basics
+
+*** TODO Write letter to Sam Fortune
+
+
+* DATE TIME -- 'C-c .'
+# https://orgmode.org/manual/Creating-timestamps.html#Creating-timestamps
+
+*** TODO my todo
+    <2018-07-10 화>
+
+* CODE
+
+#+BEGIN_SRC emacs-lisp :results html
+(defun hello ()
+	(print "hello"))
+#+END_SRC
+
+#+BEGIN_SRC C :results html
+#include <stdio.h>
+int main() {
+	printf("Hello world\n");
+}
+#+END_SRC
+
+
+* TABLE -- 'C-c |'
+
+| item1 | item2 | item3 | item4 | item5 |
+|-------+-------+-------+-------+-------|
+| x     | y     | z     | 1     | 2     |
+| wow   | how   | yo    | man   | nue   |
+
+
+
