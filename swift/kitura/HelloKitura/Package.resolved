@@ -2,11 +2,56 @@
   "object": {
     "pins": [
       {
+        "package": "Cryptor",
+        "repositoryURL": "https://github.com/IBM-Swift/BlueCryptor.git",
+        "state": {
+          "branch": null,
+          "revision": "4503221a71d49c6075b5042f5ff2d858acbe74a8",
+          "version": "1.0.4"
+        }
+      },
+      {
+        "package": "Signals",
+        "repositoryURL": "https://github.com/IBM-Swift/BlueSignals.git",
+        "state": {
+          "branch": null,
+          "revision": "c5a3445f0be9a4fabd66765f54559f039a9f2cfb",
+          "version": "1.0.4"
+        }
+      },
+      {
+        "package": "Socket",
+        "repositoryURL": "https://github.com/IBM-Swift/BlueSocket.git",
+        "state": {
+          "branch": null,
+          "revision": "a4370251998438d60335151141968546e2330379",
+          "version": "1.0.8"
+        }
+      },
+      {
+        "package": "SSLService",
+        "repositoryURL": "https://github.com/IBM-Swift/BlueSSLService.git",
+        "state": {
+          "branch": null,
+          "revision": "6225376e53ca2cf59477bca9bb48f4f5acf7a1c1",
+          "version": "1.0.8"
+        }
+      },
+      {
         "package": "CCurl",
         "repositoryURL": "https://github.com/IBM-Swift/CCurl.git",
         "state": {
           "branch": null,
           "revision": "2a431e3a5fb8d004aa7d4d1bebb5d511f568c43e",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "CEpoll",
+        "repositoryURL": "https://github.com/IBM-Swift/CEpoll.git",
+        "state": {
+          "branch": null,
+          "revision": "4e56acbea4d452110236dcbfcee0045a697c0e9f",
           "version": "1.0.0"
         }
       },
@@ -29,39 +74,12 @@
         }
       },
       {
-        "package": "CloudFoundryEnv",
-        "repositoryURL": "https://github.com/IBM-Swift/Swift-cfenv.git",
-        "state": {
-          "branch": null,
-          "revision": "ec441a9af1b2995dcc697db75686ae76a034b33f",
-          "version": "6.0.2"
-        }
-      },
-      {
-        "package": "CommonCrypto",
-        "repositoryURL": "https://github.com/IBM-Swift/CommonCrypto.git",
-        "state": {
-          "branch": null,
-          "revision": "9156d238dbc4c15455b77b45e721b2bb0b995e31",
-          "version": "1.0.0"
-        }
-      },
-      {
         "package": "Configuration",
         "repositoryURL": "https://github.com/IBM-Swift/Configuration.git",
         "state": {
           "branch": null,
           "revision": "a5e3ce4619089069697bbef5abfe3687f6830b9d",
           "version": "3.0.1"
-        }
-      },
-      {
-        "package": "Cryptor",
-        "repositoryURL": "https://github.com/IBM-Swift/BlueCryptor.git",
-        "state": {
-          "branch": null,
-          "revision": "4503221a71d49c6075b5042f5ff2d858acbe74a8",
-          "version": "1.0.4"
         }
       },
       {
@@ -101,6 +119,15 @@
         }
       },
       {
+        "package": "Kitura-net",
+        "repositoryURL": "https://github.com/IBM-Swift/Kitura-net.git",
+        "state": {
+          "branch": null,
+          "revision": "755c39febb661d5da85e1ec9fcf98721c420af0a",
+          "version": "2.1.0"
+        }
+      },
+      {
         "package": "Kitura-TemplateEngine",
         "repositoryURL": "https://github.com/IBM-Swift/Kitura-TemplateEngine.git",
         "state": {
@@ -116,15 +143,6 @@
           "branch": null,
           "revision": "115278979b87dd466fa74d671521f4a9199686da",
           "version": "2.0.0"
-        }
-      },
-      {
-        "package": "Kitura-net",
-        "repositoryURL": "https://github.com/IBM-Swift/Kitura-net.git",
-        "state": {
-          "branch": null,
-          "revision": "755c39febb661d5da85e1ec9fcf98721c420af0a",
-          "version": "2.1.0"
         }
       },
       {
@@ -146,21 +164,30 @@
         }
       },
       {
-        "package": "SSLService",
-        "repositoryURL": "https://github.com/IBM-Swift/BlueSSLService.git",
+        "package": "omr-agentcore",
+        "repositoryURL": "https://github.com/RuntimeTools/omr-agentcore",
         "state": {
           "branch": null,
-          "revision": "6225376e53ca2cf59477bca9bb48f4f5acf7a1c1",
-          "version": "1.0.8"
+          "revision": "5a2361ba1f005596a2bfa28de76ed4acf1e71c33",
+          "version": "3.2.4-swift4"
         }
       },
       {
-        "package": "Socket",
-        "repositoryURL": "https://github.com/IBM-Swift/BlueSocket.git",
+        "package": "OpenSSL",
+        "repositoryURL": "https://github.com/IBM-Swift/OpenSSL.git",
         "state": {
           "branch": null,
-          "revision": "a4370251998438d60335151141968546e2330379",
-          "version": "1.0.8"
+          "revision": "95c405c18a071a1c13616e984ba1b3c6091ca6ca",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "CloudFoundryEnv",
+        "repositoryURL": "https://github.com/IBM-Swift/Swift-cfenv.git",
+        "state": {
+          "branch": null,
+          "revision": "ec441a9af1b2995dcc697db75686ae76a034b33f",
+          "version": "6.0.2"
         }
       },
       {
@@ -197,15 +224,6 @@
           "branch": null,
           "revision": "3a321fc0ccbd49a9e240b0c0df3b290f393960d2",
           "version": "1.0.0"
-        }
-      },
-      {
-        "package": "omr-agentcore",
-        "repositoryURL": "https://github.com/RuntimeTools/omr-agentcore",
-        "state": {
-          "branch": null,
-          "revision": "5a2361ba1f005596a2bfa28de76ed4acf1e71c33",
-          "version": "3.2.4-swift4"
         }
       }
     ]
