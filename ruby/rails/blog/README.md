@@ -1,5 +1,7 @@
 # README
 
+bin/rails server -b 0.0.0.0 -p 3000
+
 bin/rails generate controller Welcome index
 
 bin/rails routes
