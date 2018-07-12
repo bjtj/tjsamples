@@ -1,0 +1,2 @@
+def wow():
+    print('wow')
