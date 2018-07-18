@@ -15,6 +15,5 @@ polls:
 test:
 	python manage.py runserver &
 	sleep 1
-	curl -vL "localhost:8000"
-	curl -vL "localhost:8000/polls"
+	curl -fvL "localhost:8000/polls"
 
