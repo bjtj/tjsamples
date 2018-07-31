@@ -2,7 +2,7 @@
 all: greeter.js
 
 %.js: %.ts
-	tsc $<
+	tsc --removeComments $<
 
 clean:
 	rm *.js
