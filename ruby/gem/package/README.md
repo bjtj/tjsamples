@@ -6,18 +6,18 @@
 ## Build and install
 
 ```
-gem build hello.gemspec
-gem install ./hello-0.1.0.gem
+gem build hello-tj.gemspec
+gem install ./hello-tj-0.1.0.gem
 ```
 
 e.g.)
 
 ```
 $ irb
-irb(main):001:0> require 'hello'
+irb(main):001:0> require 'hello-tj'
 => true
-irb(main):002:0> Hello.hi
-Hi!
+irb(main):002:0> HelloTj.hi
+Hi! TJ
 => nil
 ```
 

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-gem install ./hello-0.1.0.gem
+gem install ./hello-tj-0.1.0.gem

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-gem build hello.gemspec
+gem build hello-tj.gemspec
