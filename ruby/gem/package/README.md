@@ -3,7 +3,7 @@
 * https://guides.rubygems.org/make-your-own-gem/
 
 
-## build and install
+## Build and install
 
 ```
 gem build hello.gemspec
@@ -21,7 +21,7 @@ Hi!
 => nil
 ```
 
-## push
+## Push
 
 ### Requirement
 
@@ -30,25 +30,25 @@ Hi!
 ### Get credential api key
 
 ```
-$ curl -u qrush https://rubygems.org/api/v1/api_key.yaml > ~/.gem/credentials
-chmod 0600 ~/.gem/credentials
+$ curl -u $USERNAME https://rubygems.org/api/v1/api_key.yaml > ~/.gem/credentials
+$ chmod 0600 ~/.gem/credentials
 ```
 
 ### Push
 
 ```
-gem push hello-0.1.0.gem
+gem push hello-tj-0.1.0.gem
 ```
 
 ### List
 
 ```
-gem list -r hello
+gem list -r hello-tj
 ```
 
 ### `You do not have permission to push to this gem.`
 
-* https://github.com/rubygems/rubygems/issues/574
+Check if already registered with the same name
 
 
 
