@@ -4,6 +4,13 @@
 
 Default port: 6379
 
+```
+$ curl -O http://download.redis.io/redis-stable.tar.gz
+$ tar xvf redis-stable.tar.gz
+$ cd redis-stable
+$ make
+```
+
 
 ## Redis python client
 
