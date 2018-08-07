@@ -1,0 +1,1 @@
+http://www.technical-recipes.com/2015/windows-programming-using-mingw/
