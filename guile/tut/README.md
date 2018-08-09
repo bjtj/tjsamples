@@ -6,6 +6,7 @@
 
 
 ```
+$ ./tortoise
 scheme@(guile-user)> (define (draw-polygon! circumference vertices)
 	(let ((side (/ circumference vertices))
 		(angle (/ 360 vertices)))
