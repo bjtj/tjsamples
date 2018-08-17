@@ -18,6 +18,22 @@ int main(int argc, char *argv[])
 		cout << "LINE: " << line << endl;
 	}
 	in.close();
+
+	{
+	    ifstream ix("none");
+	    cout << "is open? " << ix.is_open() << endl;
+	}
+	{
+	    ifstream ix;
+	    ix.exceptions(ifstream::failbit | ifstream::badbit);
+	    try {
+		ix.open("none");
+		cout << "not expect" << endl;
+	    } catch (const ifstream::failure & e) {
+		cerr << e.what() << endl;
+	    }
+	}
+	
 	
     return 0;
 }
