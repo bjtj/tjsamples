@@ -10,3 +10,7 @@ $ swift package init --type executable
 ```
 $ swift build
 ```
+
+## Swift Package Manager (package.swift)
+
+* https://swift.org/package-manager/
