@@ -1,28 +1,28 @@
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>index</title>
-	</head>
-	<body>
-		<form method="post" action="/post">
-			Add: <input type="text" name="text" value="{{text}}" />
-		</form>
+    <head>
+	<meta charset="utf-8" />
+	<title>index</title>
+    </head>
+    <body>
+	<form method="post" action="/post">
+	    Add: <input type="text" name="text" value="{{text}}" />
+	</form>
 
-		{% if lst %}
-		<h1>List</h1>
-		<ul>
-			{% for item in lst %}
-			<li>
-				<form method="post" action="/del">
-					{{item}}
-					<input type="hidden" name="idx" value="{{ loop.index }}" />
-					<input type="submit" name="" value="delete" />
-				</form>
-			</li>
-			{% endfor %}
-		</ul>
-		{% endif %}
-	</body>
+	{% if lst %}
+	<h1>List</h1>
+	<ul>
+	    {% for item in lst %}
+	    <li>
+		<form method="post" action="/del">
+		    {{item}}
+		    <input type="hidden" name="idx" value="{{ loop.index }}" />
+		    <input type="submit" name="" value="delete" />
+		</form>
+	    </li>
+	    {% endfor %}
+	</ul>
+	{% endif %}
+    </body>
 </html>
 
 

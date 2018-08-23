@@ -1,5 +1,7 @@
 import os
 from flask import Flask, render_template, request
+import argparse
+
 
 app = Flask(__name__)
 
@@ -29,8 +31,23 @@ def delete():
     return render_template('index.html', lst=lst)
 
 
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+@app.route('/obj')
+def obj():
+    return render_template('obj.html', obj=Person('steve', 30))
+
+
 def main():
-    app.run(host='0', port=8080)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--host', type=str, default='127.0.0.1', help='host name')
+    parser.add_argument('--port', type=int, default=8080, help='port number')
+    args = parser.parse_args()
+    app.run(host=args.host, port=args.port)
     
 
 if __name__ == '__main__':
