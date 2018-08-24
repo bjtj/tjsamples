@@ -1,9 +1,12 @@
 import os
 from flask import Flask, render_template, request
 import argparse
+from app.mypage import mypage
 
 
 app = Flask(__name__)
+app.register_blueprint(mypage, url_prefix='/pages')
+
 lst = ['item1', 'item2', 'item3']
 
 @app.route("/")
@@ -51,6 +54,12 @@ def main():
     parser.add_argument('--host', type=str, default='127.0.0.1', help='host name')
     parser.add_argument('--port', type=int, default=8080, help='port number')
     args = parser.parse_args()
+
+    # https://stackoverflow.com/a/13318415
+    print('== RULES ==')
+    for rule in app.url_map.iter_rules():
+        print(rule)
+    
     app.run(host=args.host, port=args.port)
     
 
