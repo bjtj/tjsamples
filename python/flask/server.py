@@ -2,10 +2,12 @@ import os
 from flask import Flask, render_template, request
 import argparse
 from app.mypage import mypage
+from app.file import file
 
 
 app = Flask(__name__)
 app.register_blueprint(mypage, url_prefix='/pages')
+app.register_blueprint(file)
 
 lst = ['item1', 'item2', 'item3']
 
