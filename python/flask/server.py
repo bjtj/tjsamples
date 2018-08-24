@@ -4,7 +4,6 @@ import argparse
 
 
 app = Flask(__name__)
-
 lst = ['item1', 'item2', 'item3']
 
 @app.route("/")
@@ -17,6 +16,7 @@ def post():
     text = request.form.get('text')
     lst.append(text)
     return render_template('index.html', var=text, lst=lst)
+
 
 @app.route('/list')
 def list():
@@ -36,10 +36,14 @@ class Person:
         self.name = name
         self.age = age
 
+    def hello(self):
+        return 'Hello, {}!'.format(self.name)
 
-@app.route('/obj')
-def obj():
-    return render_template('obj.html', obj=Person('steve', 30))
+
+@app.route('/person')
+def person():
+    return render_template('person.html',
+                           person = Person('Steve', 30))
 
 
 def main():
