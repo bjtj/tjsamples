@@ -1,5 +1,24 @@
 import os
 import json
+from json import JSONEncoder, JSONDecoder
+
+# JSON Serializable
+# ----
+# * https://stackoverflow.com/a/3768975
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __str__(self):
+        return 'Name: {}, Age: {}'.format(self.name, self.age)
+
+    def __repr__(self):
+        return 'Person("{}", {})'.format(self.name, self.age)
+
+class PersonEncoder(JSONEncoder):
+    def default(self, person):
+        return person.__dict__
 
 
 def main():
@@ -21,6 +40,27 @@ def main():
         json_obj = json.loads(f.read())
         print(json_obj)
         print(type(json_obj))
+
+    # ----
+
+    dump = json.dumps({'person' : Person('steve', 30).__dict__})
+    print(dump)
+
+    dump = json.dumps({'person' : Person('steve', 30)}, cls=PersonEncoder)
+    print(dump)
+
+    def from_json(json_object):
+        if 'name' in json_object and 'age' in json_object:
+            person = Person(json_object['name'], int(json_object['age']))
+            print('person: {}'.format(person))
+            return person
+        return json_object
+
+    json_obj = JSONDecoder(object_hook = from_json).decode(dump)
+    print(json_obj)
+
+    print('name: {}'.format(json_obj['person'].name))
+    print('age: {}'.format(json_obj['person'].age))
 
 if __name__ == '__main__':
     main()
