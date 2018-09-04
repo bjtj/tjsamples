@@ -37,8 +37,22 @@ def main():
 
     # https://stackoverflow.com/a/15357667
     document = ET.Element('outer')
-    node = ET.SubElement(document, 'inner')
+    node = ET.SubElement(document, 'inner')   
     et = ET.ElementTree(document)
+
+    f = BytesIO()
+    et.write(f, encoding='utf-8', xml_declaration=True) 
+    print(f.getvalue())
+
+
+    #
+    outer = ET.Element('outer')
+    inner = ET.SubElement(outer, 'inner')
+    x = ET.fromstring('<extern>hi!</extern>')
+    inner.append(x)
+    # ET.SubElement(inner, x)
+    # ET.SubElement(inner, '<extern>hi!</extern>')
+    et = ET.ElementTree(outer)
 
     f = BytesIO()
     et.write(f, encoding='utf-8', xml_declaration=True) 
