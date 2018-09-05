@@ -30,5 +30,24 @@ def post
   puts res.body
 end
 
+
+# https://github.com/ruby/ruby/blob/trunk/lib/net/http/requests.rb
+class MyRequest < Net::HTTPRequest
+  METHOD = 'PUNCH'
+  REQUEST_HAS_BODY = false
+  RESPONSE_HAS_BODY = false
+end
+
+def custom
+  uri = URI('http://localhost:5000')
+  Net::HTTP.start(uri.host, uri.port) do |http|
+    req = MyRequest.new uri
+    res = http.request req
+  end
+end
+
+
+# 
 get
 post
+custom
