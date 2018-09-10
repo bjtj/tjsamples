@@ -7,7 +7,7 @@
 
 void test_simple(void)
 {
-    map_t * map = map_new(NULL, NULL, NULL);
+    struct map_t * map = map_new(NULL, NULL, NULL);
     char str_key[10] = {0,};
 
     snprintf(str_key, sizeof(str_key), "k");
@@ -23,10 +23,10 @@ void test_simple(void)
     printf("k(char buffer[]) is? %s\n", (char*)map_get_value(map, str_key));
 
     {
-	int key = 1;
-	int value = 10;
-	map_set_value(map, &key, &value);
-	printf("%d\n", *(int*)map_get_value(map, &key));
+		int key = 1;
+		int value = 10;
+		map_set_value(map, &key, &value);
+		printf("%d\n", *(int*)map_get_value(map, &key));
     }
 
     map_free(map);
@@ -39,7 +39,7 @@ static int s_str_equals(void * a, void * b)
 
 void test_alloc(void)
 {
-    map_t * map = map_new(s_str_equals, free, free);
+    struct map_t * map = map_new(s_str_equals, free, free);
     map_set_value(map, strdup("a"), strdup("A"));
     printf("a(const char*) is? %s\n", (char*)map_get_value(map, "a"));
     map_free(map);
