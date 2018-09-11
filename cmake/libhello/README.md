@@ -22,3 +22,12 @@
 
 * https://cmake.org/cmake/help/v3.0/command/project.html
 
+
+## build
+
+```
+mkdir build
+cd build
+cmake ..
+make
+```
