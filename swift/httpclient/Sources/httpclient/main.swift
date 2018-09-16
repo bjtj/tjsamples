@@ -31,4 +31,14 @@ task.resume()
 
 sleep(1)
 
+print("----")
+
+
+// url
+// - http://www.codingexplorer.com/creating-and-modifying-nsurl-in-swift/
+let base = URL(string: "http://example.com/abc/", relativeTo: nil)
+print((URL(string: "/xyz", relativeTo: base)?.absoluteString)!)
+print((URL(string: "xyz", relativeTo: base)?.absoluteString)!)
+
+
 print("[done]")
