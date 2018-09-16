@@ -28,6 +28,12 @@ print("  trim  ".trimmingCharacters(in: .whitespacesAndNewlines))
 let arr = "hello world".components(separatedBy: " ")
 print(arr)
 
+print("location: http://example.com".split(separator: ":", maxSplits: 1))
+print("location: http://example.com".split(separator: ":", maxSplits: 1)
+        .map {$0.trimmingCharacters(in: .whitespacesAndNewlines)})
+
+print("   a b    c d ".split(separator: " ", maxSplits: 2))
+
 // split lines
 let lines = "line1\nline2\nline3\n"
 print(lines.components(separatedBy: "\n"))
