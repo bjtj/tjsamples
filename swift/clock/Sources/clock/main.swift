@@ -16,3 +16,10 @@ print("\(t)")
 sleep(1)
 
 print("\((DispatchTime.now().uptimeNanoseconds - t.uptimeNanoseconds) / 1_000_000)")
+
+//
+
+let formatter = DateFormatter()
+formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+
+print(formatter.string(from: Date()))
