@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "hello",
+        "repositoryURL": "/home/tj/dev/git/tjsamples/swift/library/hello",
+        "state": {
+          "branch": null,
+          "revision": "b4ef789c90d382535ac538dcb12b0461a9ae95f7",
+          "version": "1.0.7"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
