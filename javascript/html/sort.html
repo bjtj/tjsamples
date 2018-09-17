@@ -1,0 +1,41 @@
+<html>
+    <head>
+	<meta charset="utf-8" />
+    </head>
+    <body>
+
+	<p><a href="https://stackoverflow.com/a/282711">link (stackoverflow)</a></p>
+
+	<ul id="list"></ul>
+
+	<script>
+	 var lst = document.getElementById("list");
+
+	 for (var i = 0, il = 10; i < il; i++) {
+	     var elem = document.createElement("li");
+	     var num = Math.floor(Math.random() * 100 + 1);
+	     console.log(num);
+	     elem.innerHTML = num;
+	     lst.appendChild(elem);
+	 }
+	 
+	 var nodes = lst.childNodes;
+	 var arr = [];
+	 for (var i in nodes) {
+	     if (nodes[i].nodeType == 1) {
+		 arr.push(nodes[i]);
+	     }
+	 }
+	 
+	 arr.sort(function(a,b) {
+	     ai = parseInt(a.innerHTML);
+	     bi = parseInt(b.innerHTML);
+	     return ai - bi;
+	 });
+
+	 for (var i = 0; i < arr.length; i++) {
+	     lst.appendChild(arr[i]);
+	 }
+	</script>
+    </body>
+</html>
