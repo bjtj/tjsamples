@@ -1,5 +1,16 @@
 import Foundation
 
+// compare
+
+print("hello".compare("hello") == .orderedSame)
+print("hello".caseInsensitiveCompare("hello") == .orderedSame)
+print("hello".compare("HELLO") == ComparisonResult.orderedSame)
+print("hello".caseInsensitiveCompare("HELLO") == ComparisonResult.orderedSame)
+
+
+// start with
+print("hello world".hasPrefix("hello"))
+
 // contains
 var string = "hello swift"
 
@@ -43,6 +54,9 @@ print("   a b    c d ".split(separator: " ", maxSplits: 2))
 // split lines
 let lines = "line1\nline2\nline3\n"
 print(lines.components(separatedBy: "\n"))
+
+
+print("line1\nline2\nline3\n\n".components(separatedBy: "\n"))
 
 // is empty
 if "".isEmpty {
