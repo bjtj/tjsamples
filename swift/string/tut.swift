@@ -28,6 +28,12 @@ print("  trim  ".trimmingCharacters(in: .whitespacesAndNewlines))
 let arr = "hello world".components(separatedBy: " ")
 print(arr)
 
+print("location: http://example.com".components(separatedBy: ":"))
+// ["location", " http", "//example.com"]
+
+print("location: http://example.com".components(separatedBy: ": "))
+// ["location", "http://example.com"]
+
 print("location: http://example.com".split(separator: ":", maxSplits: 1))
 print("location: http://example.com".split(separator: ":", maxSplits: 1)
         .map {$0.trimmingCharacters(in: .whitespacesAndNewlines)})
