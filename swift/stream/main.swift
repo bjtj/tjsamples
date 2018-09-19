@@ -36,17 +36,38 @@ public class StringInputStream : InputStream {
 }
 
 
-let stream = StringInputStream(text: "hello world")
-// let stream = InputStream(data: "hello world".data(using: .utf8)!) -- not work
+func test() {
+    let stream = StringInputStream(text: "hello world")
 
-var data = Data()
-let bufferSize = 1
-let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufferSize)
-while stream.hasBytesAvailable {
-    let read = stream.read(buffer, maxLength: bufferSize)
-    data.append(buffer, count: read)
+    var data = Data()
+    let bufferSize = 1
+    let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufferSize)
+    while stream.hasBytesAvailable {
+        let read = stream.read(buffer, maxLength: bufferSize)
+        data.append(buffer, count: read)
+    }
+    buffer.deallocate()
+
+    print(data.map {"\($0)"})
 }
-buffer.deallocate()
 
-print(data.map {"\($0)"})
+test()
 
+
+func test2() {
+    let data = "Hello world".data(using: .utf8)
+    let stream = InputStream(data: data!)
+    let bufferSize = 1
+    let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufferSize)
+    stream.open()
+    print(stream.hasBytesAvailable)
+    while stream.hasBytesAvailable {
+        let read = stream.read(buffer, maxLength: bufferSize)
+        print(read)
+        print(buffer.pointee)
+    }
+    buffer.deallocate()
+    stream.close()
+}
+
+test2()
