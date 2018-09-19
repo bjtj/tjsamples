@@ -11,6 +11,12 @@ print("hello".caseInsensitiveCompare("HELLO") == ComparisonResult.orderedSame)
 // start with
 print("hello world".hasPrefix("hello"))
 
+
+// data to string
+var data = "hello world".data(using: .utf8)
+print(String(data: data!, encoding: .utf8)!)
+
+
 // contains
 var string = "hello swift"
 
