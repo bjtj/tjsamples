@@ -36,7 +36,8 @@ print("----")
 
 // url
 // - http://www.codingexplorer.com/creating-and-modifying-nsurl-in-swift/
-let base = URL(string: "http://example.com/abc/", relativeTo: nil)
+// let base = URL(string: "http://example.com/abc/", relativeTo: nil)
+let base = URL(string: "http://example.com/abc/")
 print((URL(string: "/xyz", relativeTo: base)?.absoluteString)!)
 print((URL(string: "xyz", relativeTo: base)?.absoluteString)!)
 
