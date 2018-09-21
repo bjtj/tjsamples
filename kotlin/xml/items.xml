@@ -1,0 +1,6 @@
+<ItemSet>
+  <Item type="T1" count="1">Value1</Item>
+  <Item type="T1" count="2">Value2</Item>
+  <Item type="T2" count="1">Value3</Item>
+  <Item type="T2" count="1">Value4</Item>
+</ItemSet>
