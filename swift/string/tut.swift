@@ -56,6 +56,7 @@ print("location: http://example.com".split(separator: ":", maxSplits: 1)
         .map {$0.trimmingCharacters(in: .whitespacesAndNewlines)})
 
 print("   a b    c d ".split(separator: " ", maxSplits: 2))
+print("   a b    c d ".split(separator: " "))
 
 // split lines
 let lines = "line1\nline2\nline3\n"
@@ -103,3 +104,11 @@ print("hello".count)
 let cast = ["Vivien", "Marlon", "Kim", "Karl"]
 let list = cast.joined(separator: ", ")
 print(list)
+
+
+// etc
+public func unwrap(text: String, prefix: String, suffix: String) -> String {
+    return String(text[text.index(text.startIndex, offsetBy: prefix.count)..<text.index(text.endIndex, offsetBy: -suffix.count)])
+}
+
+print(unwrap(text: "<hello world>", prefix: "<", suffix: ">"))
