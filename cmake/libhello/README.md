@@ -31,3 +31,13 @@ cd build
 cmake ..
 make
 ```
+
+## test
+
+### Cmake Test show printf output
+
+https://stackoverflow.com/q/51831170/5676460
+
+```
+ctest -V
+```
