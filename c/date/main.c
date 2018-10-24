@@ -18,6 +18,8 @@ int main(int argc, char *argv[])
     /* time() */
     ltime = time(NULL);
 
+	printf("Time: %lu\n", ltime);
+
     /*
      * ctime()
      * * https://www.ibm.com/support/knowledgecenter/ko/ssw_ibm_i_73/rtref/ctime.htm
