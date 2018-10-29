@@ -4,6 +4,7 @@
 #include <time.h>
 #include <locale.h>
 #include <string.h>
+#include <sys/time.h>
 
 int main(int argc, char *argv[])
 {
@@ -54,7 +55,18 @@ int main(int argc, char *argv[])
 
     setlocale(LC_ALL, saved_locale);
     free(saved_locale);
-    
+
+
+    {
+	char buffer[50] = {0,};
+	struct timeval tv;
+	time_t curtime;
+
+	gettimeofday(&tv, NULL);
+	curtime = tv.tv_sec;
+	strftime(buffer, sizeof(buffer), "%Y-%m-%d %T", localtime(&curtime));
+	printf("%s %ld\n", buffer, tv.tv_usec);
+    }
     
     return 0;
 }
