@@ -25,6 +25,7 @@ def main():
     time.sleep(5)
 
     thread.stop()
+    thread.join()
     pubsub.close()
     print('done.')
 
