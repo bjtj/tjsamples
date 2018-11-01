@@ -14,3 +14,10 @@ Run script
 /usr/local/bin/carthage copy-frameworks
 
 add paths of frameworks to input
+
+
+e.g.)
+$ brew install carthage
+$ cd project
+$ sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+$ carthage update --platform iOS
