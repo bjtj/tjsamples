@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.tjapp.email</groupId>
   <artifactId>mail</artifactId>
@@ -10,20 +10,20 @@
   <url>http://maven.apache.org</url>
   <dependencies>
 
-	<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
-	<dependency>
+    <!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+    <dependency>
       <groupId>javax.activation</groupId>
       <artifactId>activation</artifactId>
       <version>1.1.1</version>
-	</dependency>
+    </dependency>
 
-	
-	<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
-	<dependency>
+    
+    <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+    <dependency>
       <groupId>javax.mail</groupId>
       <artifactId>mail</artifactId>
       <version>1.4</version>
-	</dependency>
+    </dependency>
 
     <dependency>
       <groupId>junit</groupId>
@@ -34,20 +34,20 @@
   </dependencies>
 
   <build>
-	<plugins>
-	  <plugin>
-		<artifactId>maven-assembly-plugin</artifactId>
-		<configuration>
+    <plugins>
+      <plugin>
+	<artifactId>maven-assembly-plugin</artifactId>
+	<configuration>
           <archive>
-			<manifest>
+	    <manifest>
               <mainClass>fully.qualified.MainClass</mainClass>
-			</manifest>
+	    </manifest>
           </archive>
           <descriptorRefs>
-			<descriptorRef>jar-with-dependencies</descriptorRef>
+	    <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>
-		</configuration>
-	  </plugin>
-	</plugins>
+	</configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
