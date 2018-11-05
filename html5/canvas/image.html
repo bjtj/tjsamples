@@ -1,0 +1,20 @@
+<html>
+    <body>
+	<canvas id="canvas" width="320" height="240"></canvas>
+	<canvas id="canvas2" width="320" height="240"></canvas>
+	<script type="text/javascript">
+	 var canvas = document.getElementById("canvas");
+	 var context = canvas.getContext("2d");
+	 var canvas2 = document.getElementById("canvas2");
+	 var context2 = canvas2.getContext("2d");
+	 var img = new Image();
+	 img.onload = function() {
+	     canvas.width = img.width;
+	     canvas.height = img.height;
+	     context.drawImage(img, 0, 0);
+	     context2.drawImage(img, 0, 0, canvas2.width, canvas2.height);
+	 };
+	 img.src = "lena.jpg";
+	</script>
+    </body>
+</html>
