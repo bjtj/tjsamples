@@ -4,11 +4,11 @@ var ws = require("nodejs-websocket");
 var port = 1337;
 
 function handleConnection(conn) {
-	conn.on("text", function (s) {
-		var str = s.toUpperCase() + "!!!";
-		console.log("handleConnection: returning " + str);
-		conn.sendText(str);
-	});
+    conn.on("text", function (s) {
+	var str = s.toUpperCase() + "!!!";
+	console.log("handleConnection: returning " + str);
+	conn.sendText(str);
+    });
 }
 
 ws.createServer(handleConnection).listen(port);

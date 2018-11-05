@@ -1,67 +1,67 @@
 <html>
-	<head>
-		<title>WebSocket client example</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="http://fargo.io/code/jquery-1.9.1.min.js"></script>
-		<link href="http://fargo.io/code/ubuntuFont.css" rel="stylesheet" type="text/css">
-		<script>
-		 var urlMySocket = "ws://localhost:1337/";
-		 var ctSeconds = 0;
-		 
-		 function secondsSince (when) { 
-			 var now = new Date ();
-			 when = new Date (when);
-			 return ((now - when) / 1000);
-		 }
-		 function callSocket (s, callback) {
-			 var whenstart = new Date ();
-			 var mySocket = new WebSocket (urlMySocket); 
-			 mySocket.onopen = function (evt) {
-				 mySocket.send (s);
-			 };
-			 mySocket.onmessage = function (evt) {
-				 $("#idWebSocketTime").text ("The call to the server took " + secondsSince (whenstart) + " secs.");
-				 callback (evt.data);
-				 mySocket.close ();
-			 };
-		 }
-		 function everySecond () {
-			 callSocket ("WebSocket test #" + ctSeconds++, function (s) {
-				 $("#idWebSocketResult").text (s);
-			 });
-		 }
-		 function startup () {
-			 console.log ("startup");
-			 self.setInterval (everySecond, 1000); 
-		 }
-		</script>
-		<style>
-		 body {
-			 font-family: Ubuntu;
-			 font-size: 18px;
-			 background-color: whitesmoke;
-		 }
-		 .divPageBody {
-			 width: 60%;
-			 margin-top: 90px;
-			 margin-left: auto;
-			 margin-right: auto;
-		 }
-		</style>
-	</head>
-	<body>
-		<div class="divPageBody">
-			<h1>WebSocket client</h1>
-			<p>This app sends one message every second to a server, and displays the result below. The server uppercases the text and adds three exclams at the end.</p>
-			<p id="idWebSocketResult">
-			</p>
-			<p id="idWebSocketTime"></p>
-		</div>
-		<script>
-		 $(document).ready (function () {
-			 startup ();
-		 });
-		</script>
-	</body>
+    <head>
+	<title>WebSocket client example</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="http://fargo.io/code/jquery-1.9.1.min.js"></script>
+	<link href="http://fargo.io/code/ubuntuFont.css" rel="stylesheet" type="text/css">
+	<script>
+	 var urlMySocket = "ws://localhost:1337/";
+	 var ctSeconds = 0;
+	 
+	 function secondsSince (when) { 
+	     var now = new Date ();
+	     when = new Date (when);
+	     return ((now - when) / 1000);
+	 }
+	 function callSocket (s, callback) {
+	     var whenstart = new Date ();
+	     var mySocket = new WebSocket (urlMySocket); 
+	     mySocket.onopen = function (evt) {
+		 mySocket.send (s);
+	     };
+	     mySocket.onmessage = function (evt) {
+		 $("#idWebSocketTime").text ("The call to the server took " + secondsSince (whenstart) + " secs.");
+		 callback (evt.data);
+		 mySocket.close ();
+	     };
+	 }
+	 function everySecond () {
+	     callSocket ("WebSocket test #" + ctSeconds++, function (s) {
+		 $("#idWebSocketResult").text (s);
+	     });
+	 }
+	 function startup () {
+	     console.log ("startup");
+	     self.setInterval (everySecond, 1000); 
+	 }
+	</script>
+	<style>
+	 body {
+	     font-family: Ubuntu;
+	     font-size: 18px;
+	     background-color: whitesmoke;
+	 }
+	 .divPageBody {
+	     width: 60%;
+	     margin-top: 90px;
+	     margin-left: auto;
+	     margin-right: auto;
+	 }
+	</style>
+    </head>
+    <body>
+	<div class="divPageBody">
+	    <h1>WebSocket client</h1>
+	    <p>This app sends one message every second to a server, and displays the result below. The server uppercases the text and adds three exclams at the end.</p>
+	    <p id="idWebSocketResult">
+	    </p>
+	    <p id="idWebSocketTime"></p>
+	</div>
+	<script>
+	 $(document).ready (function () {
+	     startup ();
+	 });
+	</script>
+    </body>
 </html>
