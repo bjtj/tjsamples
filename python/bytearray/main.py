@@ -9,5 +9,13 @@ def main():
     print(struct.unpack('!I', struct.pack('!I', 10)))
 
 
+    a = b'123'
+    print(a)
+    b = b'456'
+    print(b)
+    print(a+b)
+
+    print(len(bytes(1)))
+
 if __name__ == '__main__':
     main()
