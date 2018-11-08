@@ -2,6 +2,8 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO, send, emit
 from threading import Event, Thread
 import time
+import json
+
 
 
 app = Flask(__name__)
@@ -44,10 +46,22 @@ def send_hello():
     print('[{}] send hello'.format(time.time()))
     socketio.emit('my response', 'hello')
 
+
+def send_json():
+    print('[{}] send hello'.format(time.time()))
+    obj = json.loads('{"data": "hello"}')
+    socketio.emit('my json', obj)
+
+
 def main():
     t = TimerThread(1, send_hello)
     t.daemon = True
     t.start()
+
+    t2 = TimerThread(1, send_json)
+    t2.daemon = True
+    t2.start()
+    
     socketio.run(app, port=50000)
 
 
