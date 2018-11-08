@@ -1,0 +1,28 @@
+<html>
+    <body>
+	<div id="msg"></div>
+
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	 var socket = io.connect('http://' + document.domain + ':' + location.port);
+	 socket.on('connect', function() {
+	     socket.emit('my event', {data: 'I\'m connected!'});
+	     socket.on('my response', function(msg) {
+		 var date = new Date();
+		 var text = "[" + date + "]" + msg;
+		 console.log(text);
+		 var elem = document.getElementById("msg");
+		 elem.innerHTML += (text + "<br />");
+	     });
+	     
+	     setInterval(function() {
+		 console.log("interval");
+		 var date = new Date();
+		 socket.emit('message', "[" + date + "] hello");
+	     }, 1000);
+	 });
+	</script>
+    </body>
+</html>
+
+
