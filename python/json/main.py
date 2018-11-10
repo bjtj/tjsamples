@@ -21,7 +21,17 @@ class PersonEncoder(JSONEncoder):
         return person.__dict__
 
 
+def basic():
+    obj = json.loads('{}')
+    obj['name'] = 'my name'
+    obj['msg'] = 'message'
+    print(str(obj))
+
+
 def main():
+
+    basic()
+    
     dump = json.dumps({})
     print(dump)
 
