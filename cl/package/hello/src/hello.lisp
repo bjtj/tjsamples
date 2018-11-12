@@ -1,6 +1,6 @@
 (defpackage hello
   (:use :cl)
-  (:export :helo))
+  (:export :hello))
 (in-package :hello)
 
 ;; blah blah blah.
