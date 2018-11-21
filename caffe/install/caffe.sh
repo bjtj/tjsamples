@@ -5,9 +5,23 @@
 set -e
 
 SKIP_EDIT=0
-if [ "$1" == "--skip-edit" ]; then
-    SKIP_EDIT=1
-fi
+SKIP_TEST=0
+
+while [ -n "$1" ]; do
+    case "$1" in
+	--skip-test)
+	    SKIP_TEST=1
+	    ;;
+	--skip-edit)
+	    SKIP_EDIT=1
+	    ;;
+	*)
+	    echo "Unknonw argument -- '$1'"
+	    ;;
+    esac
+    shift
+done
+
 
 if [ -z ${EDITOR+x} ]; then
     EDITOR=vim
@@ -62,5 +76,18 @@ fi
 
 # compilation
 make all
-make test
-make runtest
+
+if [ "$SKIP_TEST" == "0" ]; then
+    make test
+    make runtest
+fi
+
+# pycaffe
+sudo pip install -r python/requirements.txt
+make pycaffe
+
+echo "======================================================="
+echo " Add PYTHONPATH to .bashrc "
+echo "======================================================="
+echo "export CAFFE_ROOT=\"$(pwd)\"" >> "$HOME/.bashrc"
+echo "export PYTHONPATH=\"\$CAFFE_ROOT/python\":\$PYTHONPATH" >> "$HOME/.bashrc"
