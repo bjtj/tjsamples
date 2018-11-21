@@ -52,7 +52,7 @@ if [ ! -d "caffe-1.0" ]; then
 fi
 cd caffe-1.0
 
-if [ -! -f "Makefile.config" ]; then
+if [ ! -f "Makefile.config" ]; then
     cp Makefile.config.example Makefile.config
 fi
 
