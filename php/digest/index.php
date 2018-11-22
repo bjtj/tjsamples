@@ -3,20 +3,23 @@ $realm = 'Secure';
 
 $users = array('admin' => 'mypass', 'guest' => 'guest');
 
-if (empty($_SERVER['PHP_AUTH_DIGEST'])) {
+function ask_pass($msg)
+{
     header('HTTP/1.1 401 Unauthorized');
     header('WWW-Authenticate: Digest realm="'.$realm.'",qop="auth",nonce="'.uniqid().
-           '",opaque="'.md5($realm).'"');
+	   '",opaque="'.md5($realm).'"');
 
-    die('User canceled');
+    die($msg);
 }
 
-error_log('hello');
+if (empty($_SERVER['PHP_AUTH_DIGEST'])) {
+    ask_pass('User canceled');
+}
 
 $data = http_digest_parse($_SERVER['PHP_AUTH_DIGEST']);
 if (!$data || !isset($users[$data['username']]))
 {
-    die('Wrong Credentials!');
+    ask_pass('Wrong Credentials');
 }
 
 $username = $data['username'];
@@ -27,15 +30,13 @@ $response = md5($ha1 . ':' . $data['nonce'] . ':' . $data['nc'] . ':' .
 
 if ($data['response'] != $response)
 {
-    die('wrong password');
+    ask_pass('Wrong Password');
 }
 
 echo 'Hello, ' . $data['username'];
 
 function http_digest_parse($txt)
 {
-    error_log($txt);
-    
     $needed_parts = array('nonce' => 1, 'nc' => 1, 'cnonce' => 1, 'qop' => 1, 'username' => 1,
                           'uri' => 1, 'response' => 1);
     $data = array();
@@ -43,9 +44,7 @@ function http_digest_parse($txt)
     preg_match_all('@(\w+)=(?:([\'"])([^\2]+)]\2|([^\s,]+))@', $txt, $matches, PREG_SET_ORDER);
 
     foreach ($matches as $m) {
-        error_log($m[1]);
         $data[$m[1]] = str_replace('"', '', $m[3] ? $m[3] : $m[4]);
-        error_log($data[$m[1]]);
         unset($needed_parts[$m[1]]);
     }
 
