@@ -1,0 +1,9 @@
+autom4te.cache/
+autoscan.log
+config.*
+configure
+configure.ac
+install-sh
+Makefile
+*.o
+hello
