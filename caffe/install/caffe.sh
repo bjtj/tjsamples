@@ -41,7 +41,8 @@ fi
 sudo apt upgrade -y
 sudo apt install -y build-essential curl wget cmake pkg-config vim \
      libprotobuf-dev libleveldb-dev libsnappy-dev libhdf5-serial-dev protobuf-compiler \
-     libgflags-dev libgoogle-glog-dev liblmdb-dev
+     libgflags-dev libgoogle-glog-dev liblmdb-dev \
+     libatlas-base-dev
 
 sudo apt install -y --no-install-recommends libboost-all-dev
 
