@@ -4,6 +4,37 @@
 
 using namespace std;
 
+template<typename T>
+void print_vec(vector<T> vec) {
+    typename vector<T>::iterator iter;
+    iter = vec.begin();
+    for (; iter != vec.end(); iter++) {
+	cout << *iter << endl;
+    }
+}
+
+void test_copy() {
+    cout << " -- test_copy() --" << endl;
+    
+    vector<char> vec;
+    char arr[10] = {0,};
+
+    for (char i = 0; i < 10; ++i) {
+	vec.push_back(i);
+    }
+    copy(vec.begin(), vec.end(), arr);
+    for (int i = 0; i < sizeof(arr); ++i) {
+	cout << i << " - " << (int)arr[i] << endl;
+    }
+}
+
+void test_arr2vec() {
+    cout << " -- test_arr2vec() --" << endl;
+    float arr[] = {0.1, 0.3, 0.2};
+    vector<float> vec(arr, arr + 3);
+    print_vec(vec);
+}
+
 int main(int argc, char *argv[])
 {
     vector<string> vec;
@@ -35,6 +66,9 @@ int main(int argc, char *argv[])
     for (; iter != vec.end(); ++iter) {
 	cout << "item -- " << *iter << endl;
     }
+
+    test_copy();
+    test_arr2vec();
     
     return 0;
 }
