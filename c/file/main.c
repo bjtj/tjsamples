@@ -39,10 +39,25 @@ static void _read(void)
     fclose(fp);
 }
 
+static void _filesize(const char * path)
+{
+    int size;
+    FILE * fp = fopen(path, "rb");
+    fseek(fp, 0, SEEK_END);
+    size = ftell(fp);
+    /* fseek(fp, 0, SEEK_SET); -- set file pointer to start */
+    fclose(fp);
+
+    printf("file size of '%s' is %d\n", path, size);
+}
+
 int main(int argc, char *argv[])
 {
     _write();
     _read();
+    _filesize("out.txt");
+
+    remove("out.txt");
     
     return 0;
 }
