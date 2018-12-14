@@ -10,6 +10,7 @@ from cpython.string cimport PyString_AsString
 cdef extern from "infer.h":
     int init(int argc, char * argv[])
     int infer(unsigned char * img, int size, float * probs)
+    int inferf(float * mat, int size, float * probs)
     void nums(int * out, int size)
 
 
@@ -34,6 +35,12 @@ def cyinfer(ndarray[np.uint8_t, ndim=1] img not None, ndarray[np.float64_t, ndim
         probs[i] = cprobs[i]
     free(cprobs)
     return ret
+
+
+def cyinferf(ndarray[np.float32_t, ndim=1] mat not None):
+    cdef array.array probs = array.array('f', [0 for x in range(1)])
+    inferf(<float*>mat.data, mat.size, <float *>probs.data.as_voidptr)
+    return probs
     
 
 def cynums(ndarray[np.int_t, ndim=1] out not None):

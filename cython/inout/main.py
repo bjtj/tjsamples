@@ -20,13 +20,16 @@ def main():
     print(arr.tolist())
     print(np.array(arr))
 
-    print('== inout ==')
+    print('== cyinfer ==')
     img = np.ones(5, dtype=np.uint8)
     probs = np.zeros(7)
     ret = infer.cyinfer(img, probs)
     print(ret)
     print(probs)
 
+    print('== cyinferf ==')
+    mat = np.ones(5, dtype=np.float32)
+    print(infer.cyinferf(mat))
     
 
 if __name__ == '__main__':

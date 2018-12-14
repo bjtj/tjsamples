@@ -46,6 +46,16 @@ int infer(unsigned char * img, int size, float * probs)
     return 1;
 }
 
+int inferf(float * mat, int size, float * probs)
+{
+    int i;
+    float total = 0.f;
+    for (i = 0; i < size; ++i) {
+	total += mat[i];
+    }
+    probs[0] = total;
+    return 1;
+}
 
 void nums(int * outbuf, int size)
 {
