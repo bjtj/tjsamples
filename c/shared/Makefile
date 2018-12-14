@@ -1,8 +1,11 @@
 
-all: shared program
+all: program
 
-shared:
-	gcc -fpic -shared -o libhello.so hello.c
+libhello.so:
+	gcc -fPIC -shared -o $@ hello.c
 
-program:
-	gcc -o program main.c -lhello
+program: libhello.so
+	gcc -o $@ main.c -lhello
+
+clean:
+	rm -rf program libhello.so
