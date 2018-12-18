@@ -64,3 +64,14 @@ void nums(int * outbuf, int size)
 	outbuf[i] = (i + 1);
     }
 }
+
+int summat(int * mat, int size)
+{
+    int sum = 0;
+    int i;
+    for (i = 0; i < size; ++i) {
+	printf("%d. %d\n", i, mat[i]);
+	sum += mat[i];
+    }
+    return sum;
+}

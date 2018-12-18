@@ -12,6 +12,7 @@ cdef extern from "infer.h":
     int infer(unsigned char * img, int size, float * probs)
     int inferf(float * mat, int size, float * probs)
     void nums(int * out, int size)
+    int summat(int * mat, int size)
 
 
 # https://stackoverflow.com/a/17511714
@@ -54,3 +55,12 @@ def cynums2(int size):
     cdef array.array cout = array.array('i', [0 for x in range(size)])
     nums(<int*>cout.data.as_voidptr, size)
     return cout
+
+
+def cysummat(ndarray[np.int32_t, ndim=1] mat not None):
+    return summat(<int*>mat.data, mat.size)
+
+
+def cysummat2d(ndarray[np.int32_t, ndim=2] mat not None):
+    mat.ravel()
+    return summat(<int*>mat.data, mat.size)

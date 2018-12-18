@@ -30,6 +30,16 @@ def main():
     print('== cyinferf ==')
     mat = np.ones(5, dtype=np.float32)
     print(infer.cyinferf(mat))
+
+    print('== cysummat ==')
+    mat = np.array([[1,2,3],[4,5,6]], dtype=np.int32)
+    print(mat)
+    print(infer.cysummat(mat.flatten()))
+
+    print('== cysummat2d ==')
+    mat = np.array([[1,2,3],[4,5,6]], dtype=np.int32)
+    print(mat)
+    print(infer.cysummat2d(mat))
     
 
 if __name__ == '__main__':
