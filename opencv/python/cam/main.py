@@ -6,9 +6,11 @@ from datetime import datetime
 def main():
     save = False
     cap = cv2.VideoCapture(0)
+    flip = True
     while True:
         _, frame = cap.read()
-        frame = cv2.flip(frame, 1)
+        if flip:
+            frame = cv2.flip(frame, 1)
         cv2.imshow('preview', frame)
 
         if save:
@@ -17,10 +19,12 @@ def main():
             cv2.imwrite('preview/img-{}.jpg'.format(date), frame)
 
         key = cv2.waitKey(1)
-        if key == ord('q'):
+        if key == ord('f'):
+            flip = not flip
+        elif key == ord('q'):
             break
-        if key == ord('s'):
-            save = ~save
+        elif key == ord('s'):
+            save = not save
             if save:
                 print('START SAVE!')
             else:
