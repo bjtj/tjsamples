@@ -10,20 +10,30 @@
 
 * https://packaging.python.org/tutorials/packaging-projects/
 
-Prerequisite
+## Prerequisite
 
 * pypi account
-
 
 ```
 pip install -U setuptools wheel twine
 ```
 
+## Build
+
 ```
 python setup.py sdist bdist_wheel
 ```
 
+## Upload to pypi repository
+
+* Test server
+
 ```
 twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+```
+
+* Distribution server
+
+```
 twine upload dist/*
 ```
