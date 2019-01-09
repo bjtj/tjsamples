@@ -27,6 +27,10 @@ if [ -z ${EDITOR+x} ]; then
     EDITOR=vim
 fi
 
+if [ -z ${CMD_PIP+x} ]; then
+    CMD_PIP=pip
+fi
+
 cd $HOME
 mkdir -p caffe
 cd caffe
@@ -76,15 +80,15 @@ else
 fi
 
 # compilation
-make all
+make all -j
 
 if [ "$SKIP_TEST" == "0" ]; then
-    make test
+    make test -j
     make runtest
 fi
 
 # pycaffe
-sudo pip install -r python/requirements.txt
+sudo $CMD_PIP install -r python/requirements.txt
 make pycaffe
 
 echo "======================================================="
@@ -92,3 +96,6 @@ echo " Add PYTHONPATH to .bashrc "
 echo "======================================================="
 echo "export CAFFE_ROOT=\"$(pwd)\"" >> "$HOME/.bashrc"
 echo "export PYTHONPATH=\"\$CAFFE_ROOT/python\":\$PYTHONPATH" >> "$HOME/.bashrc"
+
+# https://github.com/dungba88/caffe-python3-install/issues/1
+$CMD_PIP install python-dateutil --upgrade 
