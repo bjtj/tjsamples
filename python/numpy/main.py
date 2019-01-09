@@ -8,7 +8,13 @@ def main():
     arr = np.array([1,2,3])
     print(arr)
 
+    arr = np.append(arr, -1)
+    print(arr)
+
     arr = np.append(arr, [4,5,6])
+    print(arr)
+
+    arr = np.append(arr, [1,2,3], axis=0)
     print(arr)
 
     bytes = arr.tobytes()
@@ -30,6 +36,10 @@ def main():
     print(type(arr))
     print(arr.shape)
     print(arr)
+
+    # zeros
+
+    print(np.zeros([3, 2, 1]))
 
 if __name__ == '__main__':
     main()
