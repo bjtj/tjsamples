@@ -20,6 +20,11 @@ def main():
     for root, dirs, files in os.walk('a'):
         print('{} -- dirs: {} {}, files: {} {}'.format(root, len(dirs), dirs, len(files), files))
 
+
+    assert(os.path.isdir('a/b') == True)
+    assert(os.path.isdir('a/hello.txt') == False)
+    assert(os.path.isfile('a/hello.txt') == True)
+
     shutil.rmtree('a')
 
 
