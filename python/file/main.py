@@ -25,6 +25,12 @@ def main():
     assert(os.path.isdir('a/hello.txt') == False)
     assert(os.path.isfile('a/hello.txt') == True)
 
+
+    assert(os.path.split('a/b/c')[0] == 'a/b')
+    assert(os.path.split('a/b/c')[1] == 'c')
+    assert(os.path.dirname('a/b/c') == 'a/b')
+    assert(os.path.split(os.path.dirname('a/b/c'))[1] == 'b')
+    
     shutil.rmtree('a')
 
 
