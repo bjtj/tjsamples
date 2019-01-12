@@ -37,18 +37,6 @@ int main(int argc, char *argv[])
 	fprintf(stderr, "SDL_CreateRenderer() failed\n");
 	exit(1);
     }
-
-    /* https://wiki.libsdl.org/SDL_RenderClear */
-    {
-	int r = 0;
-	int g = 0;
-	int b = 255;
-	if (SDL_SetRenderDrawColor(renderer, r, g, b, 255) != 0)
-	{
-	    fprintf(stderr, "SDL_SetRenderDrawColor() failed\n");
-	    exit(1);
-	}
-    }
     
     SDL_Event e;
     while (!done)
@@ -71,7 +59,14 @@ int main(int argc, char *argv[])
 		break;
 	    }
 	}
-	
+
+	/* https://wiki.libsdl.org/SDL_RenderClear */
+	{
+	    int r = 0;
+	    int g = 0;
+	    int b = 255;
+	    SDL_SetRenderDrawColor(renderer, r, g, b, 255);
+	}
 	SDL_RenderClear(renderer);
 	SDL_RenderPresent(renderer);
     }
