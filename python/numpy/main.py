@@ -1,4 +1,6 @@
 import numpy as np
+import json
+
 
 def arr():
     print('-- arr --')
@@ -104,6 +106,33 @@ def where():
     print(np.where(np.array([1, 3, 5]) % 2 == 0)[0].size)
 
 
+def auxiliary():
+    print(np.array([1,2,3]).sum())
+    arr = np.array([[[1,2], [3,4]],[[5,6], [7,8]]])
+    for i, item in enumerate(arr):
+        print('[{}]'.format(i+1))
+        print(item)
+
+def serialize():
+    try:
+        from StringIO import StringIO
+    except:
+        from io import StringIO
+
+    # serialize
+    f = StringIO()
+    arr = np.array([1,2,3])
+    np.save(f, arr)
+    f.seek(0)
+    serialized = json.dumps(f.read().decode('latin-1'))
+
+    # deserialize
+    f = StringIO()
+    f.write(json.loads(serialized).encode('latin-1'))
+    f.seek(0)
+    print('np.load(f): {}'.format(np.load(f)))
+
+
 def main():
     arr()
     shape()
@@ -113,6 +142,8 @@ def main():
     empty()
     dimension()
     where()
+    auxiliary()
+    serialize()
     
 
 if __name__ == '__main__':
