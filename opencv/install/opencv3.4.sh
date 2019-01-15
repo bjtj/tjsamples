@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 VERSION=3.4.1
 
 # update
