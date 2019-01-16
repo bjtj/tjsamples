@@ -133,6 +133,24 @@ def serialize():
     print('np.load(f): {}'.format(np.load(f)))
 
 
+def transpose():
+    
+    print('-- transpose --')
+    
+    arr = np.array([[[1,2,3],[4,5,6]],
+                    [[7,8,9],[10,11,12]]])
+
+    print(arr.shape)
+    assert(arr.shape == (2, 2, 3))
+    print(arr)
+
+
+    arr = arr.transpose((2, 0, 1))
+    print(arr.shape)
+    assert(arr.shape == (3, 2, 2))
+    print(arr)
+
+
 def main():
     arr()
     shape()
@@ -144,6 +162,7 @@ def main():
     where()
     auxiliary()
     serialize()
+    transpose()
     
 
 if __name__ == '__main__':
