@@ -27,5 +27,9 @@ def main():
     # unicode
     print(u'X')
 
+
+    assert('' is not 'hello')
+    assert('hello' is not '')
+
 if __name__ == '__main__':
     main()
