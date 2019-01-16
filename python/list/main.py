@@ -1,6 +1,13 @@
 from math import *
 import sys
 
+def list_clear_and_set(lst, target):
+    if sys.version_info[0] == 2:
+        del lst[:]
+    else:
+        lst.clear()
+    lst += target
+
 
 def main():
     lst = [1,2,3,4]
@@ -38,6 +45,11 @@ def main():
     print('a', a)
 
     lst += [4,5,6]
+    print('lst', lst)
+    print('a', a)
+
+
+    list_clear_and_set(lst, [7,8,9])
     print('lst', lst)
     print('a', a)
     
