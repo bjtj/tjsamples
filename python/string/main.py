@@ -30,6 +30,7 @@ def main():
 
     assert('' is not 'hello')
     assert('hello' is not '')
+    assert('' is '')
 
 if __name__ == '__main__':
     main()
