@@ -1,3 +1,4 @@
+import os
 import cv2
 import time
 from datetime import datetime
@@ -6,9 +7,16 @@ from datetime import datetime
 def main():
     save = False
     cap = cv2.VideoCapture(0)
+    print(cap.isOpened())
     flip = True
     while True:
-        _, frame = cap.read()
+        ret, frame = cap.read()
+
+        if not ret:
+            print('read() failed')
+            time.sleep(1)
+            continue
+        
         if flip:
             frame = cv2.flip(frame, 1)
         cv2.imshow('preview', frame)
@@ -21,14 +29,19 @@ def main():
         key = cv2.waitKey(1)
         if key == ord('f'):
             flip = not flip
+            print('flip: {}'.format(flip))
         elif key == ord('q'):
+            print('quit')
             break
         elif key == ord('s'):
             save = not save
             if save:
                 print('START SAVE!')
+                if not os.path.exists('preview'):
+                    os.makedirs('preview')
             else:
                 print('STOP SAVE!')
+
 
 if __name__ == '__main__':
     main()
