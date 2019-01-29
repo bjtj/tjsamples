@@ -1,4 +1,5 @@
 import numpy as np
+import os
 import json
 
 
@@ -107,30 +108,51 @@ def where():
 
 
 def auxiliary():
+    print('-- auxiliary --')
     print(np.array([1,2,3]).sum())
     arr = np.array([[[1,2], [3,4]],[[5,6], [7,8]]])
     for i, item in enumerate(arr):
         print('[{}]'.format(i+1))
         print(item)
 
+    print('sum...')
+    arr = np.array([[1,2], [3,4]])
+    print(arr.sum(axis=0))      # [4 6]
+    print(arr.sum(axis=1))      # [3 7]
+
 def serialize():
     try:
-        from StringIO import StringIO
+        from StringIO import StringIO as cio
     except:
-        from io import StringIO
+        from io import BytesIO as cio
 
     # serialize
-    f = StringIO()
+    f = cio()
     arr = np.array([1,2,3])
     np.save(f, arr)
     f.seek(0)
     serialized = json.dumps(f.read().decode('latin-1'))
 
     # deserialize
-    f = StringIO()
+    f = cio()
     f.write(json.loads(serialized).encode('latin-1'))
     f.seek(0)
     print('np.load(f): {}'.format(np.load(f)))
+
+
+def save():
+
+    print('-- save --')
+
+    if os.path.exists('out.npy'):
+        print(np.load('out.npy'))
+    
+    arr = np.array([1,2,3,4,5])
+    print(arr)
+    np.save('out.npy', arr)
+    print(np.load('out.npy'))
+
+    os.remove('out.npy')
 
 
 def transpose():
@@ -151,6 +173,52 @@ def transpose():
     print(arr)
 
 
+def slice():
+    print('-- slice --')
+    arr = np.array([1,2,3,4,5,6,7,8,9,10])
+    print(arr[2:-2])            # [3 4 5 6 7 8]
+    print(arr[0:-0])            # []
+
+
+def random():
+    print('-- random --')
+    arr = np.random.rand(10)
+    print(arr)
+
+
+def sort():
+    print('-- sort --')
+    arr = np.random.rand(10)
+    print('arr: {}'.format(arr))
+    x = arr
+    arr.sort()
+    print('arr: {}'.format(arr))
+    print('arr[::-1]: {}'.format(arr[::-1]))
+    print('x: {}'.format(x))
+
+
+def broadcast():
+    print('-- broadcast --')
+    arr = np.array([[1,2],[3,4]])
+    print(arr)
+
+
+def algebra():
+    print('-- algebra --')
+    arr1 = np.array([1,1])
+    arr2 = np.array([2,2])
+    print(np.linalg.norm(arr1 - arr2))
+
+    arr1 = np.array([1,1])
+    arr2 = np.array([1,2])
+    print(np.linalg.norm(arr1 - arr2))
+
+    arr1 = np.array([-1,-1])
+    arr2 = np.array([1,2])
+    print(np.linalg.norm(arr1 - arr2))
+
+    
+
 def main():
     arr()
     shape()
@@ -162,7 +230,12 @@ def main():
     where()
     auxiliary()
     serialize()
+    save()
     transpose()
+    slice()
+    random()
+    sort()
+    algebra()
     
 
 if __name__ == '__main__':
