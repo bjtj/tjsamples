@@ -33,6 +33,10 @@ def main():
     
     shutil.rmtree('a')
 
+    assert(os.path.splitext('a/b/c/d.txt')[0] == 'a/b/c/d')
+    assert(os.path.splitext('a/b/c/d.txt')[1] == '.txt')
+    
+
 
 if __name__ == '__main__':
     main()
