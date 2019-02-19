@@ -23,17 +23,18 @@ class HelloWorldExample:
 
 
 
+def prompt(msg):
+    try:
+        return raw_input(msg)
+    except:
+        return input(msg)
+
+
 def main():
-    try:
-        uri = raw_input('uri: ')
-    except:
-        uri = input('uri:' )
-    try:
-        user = raw_input('username: ')
-    except:
-        user = input('username: ')
+    url = prompt('url: ')
+    user = prompt('username: ')
     password = getpass.getpass('password: ')
-    ex = HelloWorldExample(uri, user, password)
+    ex = HelloWorldExample(url, user, password)
     ex.print_greeting('Hello World!')
     ex.close()
 
