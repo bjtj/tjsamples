@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>neo4j d3.js</title>
+	<!-- https://github.com/GraphAlchemist/Alchemy/issues/576 -->
+	<!-- https://cdnjs.com/libraries/alchemyjs -->
+	<link rel="stylesheet"
+	      href="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.css">
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/scripts/vendor.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.js"></script>
+    </head>
+    <body>
+	<div class="alchemy" id="alchemy"></div>
+	<!-- https://neo4j.com/developer/guide-data-visualization/ -->
+	<script type="text/javascript">
+	 var config = {
+	     dataSource: 'actors.json',
+	     cluster: true,
+	     clusterColours: ["#1B9E77","#D95F02","#7570B3","#E7298A","#66A61E","#E6AB02"],
+	     forceLocked: false,
+	     /* graphHeight: function () { return 400; },
+		graphWidth: function () { return 400; }, */
+	     linkDistance: function () { return 3; },
+	     directedEdges: true,
+	     nodeCaptionsOnByDefault: true,
+	     nodeTypes: { "type" : ["award", "movie"]},
+	     nodeCaption: function (n) {
+		 if (n.caption) {
+		     return n.caption;
+		 }
+		 return n.name
+	     },
+	     nodeStyle: {
+		 "movie": {
+		     "radius": 30
+		 },
+		 "award": {
+		     "radius": 10
+		 }
+	     },
+	     initialScale: 1,
+	     initialTranslate: [250, 150]
+	     /* nodeCaption: function (node) {
+		return node.caption + " " + node.fun_fact;
+		} */
+	 };
+
+	 var alchemy = new Alchemy(config);
+	</script>
+    </body>
+</html>
