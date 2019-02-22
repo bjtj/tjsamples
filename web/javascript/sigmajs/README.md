@@ -1,3 +1,0 @@
-# sigmajs
-
-* http://sigmajs.org/

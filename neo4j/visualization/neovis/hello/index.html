@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>neovis - hello</title>
+	<script src="https://cdn.neo4jlabs.com/neovis.js/v1.0.0/neovis.js"></script>
+	<script type="text/javascript" src="./config.js"></script>
+	<style type="text/css" media="screen">
+	 html, body {
+	     font: 16pt arial;
+	 }
+	 #viz {
+	     width: 900px;
+	     height: 700px;
+	     border: 1px solid lightgray;
+	     font: 22pt airal;
+	 }
+	</style>
+	<script type="text/javascript">
+	 var viz;
+	 function draw() {
+	     var config = {
+		 container_id: "viz",
+		 server_url: bolt_config.url,
+		 server_user: bolt_config.user,
+		 server_password: bolt_config.pass,
+		 labels: {
+		     "Movie": {
+			 "caption": "title",
+			 "size": 1
+		     },
+		     "Person": {
+			 "caption": "name",
+			 "size": 1
+		     }
+		 },
+		 relationships: {
+		     "DIRECTED": {
+			 "thickness": 0.2,
+			 "caption": true
+		     },
+		     "ACTED_IN": {
+			 "thickness": 0.1,
+			 "caption": true
+		     },
+		     "REVIEWED": {
+			 "thickness": 0.1,
+			 "caption": true
+		     },
+		     "WROTE": {
+			 "thickness": 0.1,
+			 "caption": true
+		     },
+		     "PRODUCED": {
+			 "thickness": 0.1,
+			 "caption": true
+		     }
+		 },
+		 initial_cypher: "MATCH x=(n)-[r]->(m) return *"
+	     };
+
+	     viz = new NeoVis.default(config);
+	     viz.render();
+	     viz.focus("");
+	 }
+	</script>
+    </head>
+    <body onload="draw()">
+	<div id="viz"  />
+    </body>
+</html>
