@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>05. Edge with arrows.</title>
+	<script type="text/javascript" src="../vivagraph.js"></script>
+	<script type="text/javascript">
+	 function main() {
+	     var g = Viva.Graph.graph();
+
+	     var graphics = Viva.Graph.View.svgGraphics(),
+		 nodeSize = 24;
+
+	     graphics.node(function(node) {
+		 var ui = Viva.Graph.svg('image')
+			      .attr('width', nodeSize)
+			      .attr('height', nodeSize)
+			      .link('https://secure.gravatar.com/avatar/' + node.data);
+		 return ui;
+	     }).placeNode(function(nodeUI, pos) {
+		 nodeUI.attr('x', pos.x - nodeSize / 2).attr('y', pos.y - nodeSize / 2);
+	     });
+
+	     var createMarker = function(id) {
+		 return Viva.Graph.svg('marker')
+			    .attr('id', id)
+			    .attr('viewBox', '0 0 10 10')
+			    .attr('refX', '10')
+			    .attr('refY', '5')
+			    .attr('markerUnits', 'strokeWidth')
+			    .attr('markerWidth', '10')
+			    .attr('markerHeight', '5')
+			    .attr('orient', 'auto');
+	     }, marker = createMarker('Triangle');
+	     marker.append('path').attr('d', 'M 0 0 L 10 5 L 0 10 z');
+
+	     var defs = graphics.getSvgRoot().append('defs');
+	     defs.append(marker);
+
+	     var geom = Viva.Graph.geom();
+
+	     graphics.link(function(link) {
+		 return Viva.Graph.svg('path')
+			    .attr('stroke', 'gray')
+			    .attr('marker-end', 'url(#Triangle)');
+	     }).placeLink(function(linkUI, fromPos, toPos) {
+		 var toNodeSize = nodeSize,
+		     fromNodeSize = nodeSize;
+
+		 var fr = geom.intersectRect(
+		     fromPos.x - fromNodeSize / 2,
+		     fromPos.y - fromNodeSize / 2,
+		     fromPos.x + fromNodeSize / 2,
+		     fromPos.y + fromNodeSize / 2,
+		     fromPos.x, fromPos.y, toPos.x, toPos.y)
+		       || fromPos;
+
+		 var to = geom.intersectRect(
+		     toPos.x - toNodeSize / 2,
+		     toPos.y - toNodeSize / 2,
+		     toPos.x + toNodeSize / 2,
+		     toPos.y + toNodeSize / 2,
+		     toPos.x, toPos.y, fromPos.x, fromPos.y)
+		       || toPos;
+
+		 var data = 'M' + fr.x + ',' + fr.y +
+			    'L' + to.x + ',' + to.y;
+
+		 linkUI.attr('d', data);
+	     });
+
+	     g.addNode('anvaka', '91bad8ceeec43ae303790f8fe238164b');
+             g.addNode('indexzero', 'd43e8ea63b61e7669ded5b9d3c2e980f');
+             g.addLink('anvaka', 'indexzero');
+
+	     var r = Viva.Graph.View.renderer(g, { graphics: graphics });
+	     r.run();
+	 }
+	</script>
+	<style type="text/css" media="screen">
+	 html, body, svg {width: 100%; height: 100%;}
+	</style>
+    </head>
+    <body onload='main()'>
+    </body>
+</html>

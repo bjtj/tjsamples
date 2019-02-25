@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>VivaGraphs test page</title>
+	<script type="text/javascript" src="../vivagraph.min.js"></script>
+	<script type="text/javascript">
+	 function onLoad() {
+	     var g = Viva.Graph.graph();
+
+	     var renderer = Viva.Graph.View.renderer(g);
+	     renderer.run();
+	     
+	     g.addNode('hello');
+	     g.addNode('world');
+	     g.addLink('space', 'bar');
+	     g.addLink('hello', 'world');
+	     g.addNode('world', 'custom data');
+	     /* g.addLink(1, 2, x); */
+	     g.forEachNode(function(node) {
+		 console.log(node.id, node.data);
+	     });
+	     g.forEachLink(function(link) {
+		 console.dir(link);
+	     });
+	     g.forEachLinkedNode('hello', function(linkedNode, link) {
+		 console.log("Connected node: ", linkedNode.id, linkedNode.data);
+		 console.dir(link);
+	     });
+	     var world = g.getNode('world');
+	     console.log(world.id, world.data);
+
+	     g.removeNode('space');
+	     g.forEachLinkedNode('hello', function(linkedNode, link) {
+		 g.removeLink(link);
+	     });
+	 }
+	</script>
+	<style type="text/css" media="screen">
+	 html, body, svg {width: 100%; height: 100%;}
+	</style>
+    </head>
+    <body onload="onLoad()">
+    </body>
+</html>

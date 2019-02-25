@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>03. Custom link appearance. Vivagraph SVG tutorial.</title>
+	<script type="text/javascript" src="../vivagraph.min.js"></script>
+	<script type="text/javascript">
+	 function main() {
+	     var g = Viva.Graph.graph();
+
+	     g.addNode('anvaka', '91bad8ceeec43ae303790f8fe238164b');
+	     g.addNode('indexzero', 'd43e8ea63b61e7669ded5b9d3c2e980f');
+	     g.addLink('anvaka', 'indexzero');
+
+	     var graphics = Viva.Graph.View.svgGraphics();
+	     graphics.node(function(node) {
+		 var url = 'https://secure.gravatar.com/avatar/' + node.data;
+		 return Viva.Graph.svg('image')
+			    .attr('width', 24).attr('height', 24).link(url);
+		 
+	     });
+	     graphics.placeNode(function(nodeUI, pos) {
+		 nodeUI.attr('x', pos.x - 12).attr('y', pos.y - 12);
+	     });
+
+	     graphics.link(function(link) {
+		 return Viva.Graph.svg('path')
+			    .attr('stroke', 'red')
+			    .attr('stroke-dasharray', '5,5');
+	     }).placeLink(function(linkUI, fromPos, toPos) {
+		 var data = 'M' + fromPos.x + ',' + fromPos.y +
+			    'L' + toPos.x + ',' + toPos.y;
+
+		 linkUI.attr('d', data);
+	     });
+
+	     var r = Viva.Graph.View.renderer(g, { graphics: graphics });
+	     r.run();
+	 }
+	</script>
+	<style type="text/css" media="screen">
+	 html, body, svg {width: 100%; height: 100%;}
+	</style>
+    </head>
+    <body onload='main()'>
+	
+    </body>
+</html>
