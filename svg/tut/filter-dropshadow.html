@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Tut 01</title>
+    </head>
+    <body>
+	<h1>Example 1</h1>
+	<svg width="120" height="120">
+	    <defs>
+		<filter id="f1" x="0" y="0" width="200%" height="200%">
+		    <feOffset result="offOut" in="SourceGraphic" dx="20" dy="20" />
+		    <feBlend in="SourceGraphic" in2="offOut" mode="normal" />
+		</filter>
+	    </defs>
+	    <rect width="90" height="90" stroke="green" stroke-width="3"
+		  fill="yellow" filter="url(#f1)" />
+	</svg>
+	<h1>Example 2</h1>
+	<svg width="140" height="140">
+	    <defs>
+		<filter id="f2" x="0" y="0">
+		    <feOffset result="offOut" in="SourceGraphic" dx="20" dy="20" />
+		    <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		    <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+		</filter>
+	    </defs>
+	    <rect width="90" height="90" stroke="green" stroke-width="3"
+		  fill="yellow" filter="url(#f2)" />
+	</svg>
+	<h1>Example 3</h1>
+	<svg width="140" height="140">
+	    <defs>
+		<filter id="f3" x="0" y="0" width="200%" height="200%">
+		    <feOffset result="offOut" in="SourceAlpha" dx="20" dy="20" />
+		    <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+		    <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+		</filter>
+	    </defs>
+	    <rect width="90" height="90" stroke="green" stroke-width="3"
+		  fill="yellow" filter="url(#f3)" />
+	</svg>
+	<h1>Example 4</h1>
+	<svg width="140" height="140">
+	    <defs>
+		<filter id="f4" x="0" y="0" width="200%" height="200%">
+		    <feOffset result="offOut" in="SourceGraphic" dx="20" dy="20" />
+		    <feColorMatrix result="matrixOut" in="offOut" type="matrix"
+				   values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0" />
+		    <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="10" />
+		    <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+		</filter>
+	    </defs>
+	    <rect width="90" height="90" stroke="green" stroke-width="3"
+		  fill="yellow" filter="url(#f4)" />
+	</svg>
+    </body>
+</html>

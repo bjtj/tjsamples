@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Tut 01</title>
+    </head>
+    <body>
+	<h1>Example 1</h1>
+	<svg width="400" height="110">
+	    <defs>
+		<filter id="f1" x="0" y="0">
+		    <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
+		</filter>
+	    </defs>
+	    <rect width="90" height="90" stroke="green" stroke-width="3"
+		  fill="yellow" filter="url(#f1)" />
+	</svg>
+    </body>
+</html>
