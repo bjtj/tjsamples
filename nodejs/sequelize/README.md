@@ -1,9 +1,19 @@
-http://docs.sequelizejs.com/
+# Sequelize
 
-Getting Started
-====
+* http://docs.sequelizejs.com/
 
-http://docs.sequelizejs.com/manual/installation/getting-started
+
+```
+npm init
+yarn add sequelize
+yarn add mysql2
+yarn add system-sleep
+```
+
+
+## Getting Started
+
+* http://docs.sequelizejs.com/manual/installation/getting-started
 
 ```
 // Using NPM

@@ -1,5 +1,8 @@
-const Sequelize = require('sequelize')
-const sequelize = new Sequelize('mysql://root:test123@localhost/mydb')
+// https://stackoverflow.com/a/22348862
+var options = require('./options');
+
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize(options.storageConfig.dburl);
 
 // https://www.npmjs.com/package/system-sleep
 var sleep = require('system-sleep')
