@@ -131,5 +131,17 @@ int main(int argc, char *argv[])
     // length
     cout << string("hello world").length() << endl;
 
+
+    // string stream
+
+    ostringstream oss;
+    oss << "[ostringstream] ";
+    oss << "hello";
+    oss << " ";
+    oss << "world";
+    oss << endl;
+    cout << oss.str();
+    cout << oss.str().c_str();
+
     return 0;
 }
