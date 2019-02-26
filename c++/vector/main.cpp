@@ -35,6 +35,22 @@ void test_arr2vec() {
     print_vec(vec);
 }
 
+void test_iterator() {
+    vector<int> vec;
+    vec.push_back(1);
+    vec.push_back(2);
+    vec.push_back(3);
+    vector<int>::iterator iter = vec.begin();
+    iter++;
+    *iter = 4;
+
+    iter = vec.begin();
+    for (; iter != vec.end(); ++iter) {
+	cout << *iter << endl;
+    }
+
+}
+
 int main(int argc, char *argv[])
 {
     vector<string> vec;
@@ -69,6 +85,8 @@ int main(int argc, char *argv[])
 
     test_copy();
     test_arr2vec();
+
+    test_iterator();
     
     return 0;
 }
