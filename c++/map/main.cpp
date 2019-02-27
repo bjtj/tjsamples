@@ -11,8 +11,10 @@ void print_map(map<string, string> & m) {
     }
 }
 
-int main(int argc, char *argv[])
+void test1()
 {
+    cout << "[test1]" << endl;
+    
     map<string, string> m;
 
     m["a"] = "A";
@@ -34,7 +36,31 @@ int main(int argc, char *argv[])
 
     cout << " == map ==" << endl;
     print_map(m);
+}
 
+void test2()
+{
+    cout << endl << "[test2]" << endl;
     
+    map<string, int> m;
+    m["a"] = 1;
+    m["b"] = 2;
+    m["c"] = 3;
+
+    int num = 8;
+    for (map<string, int>::iterator iter = m.begin(); iter != m.end(); ++iter) {
+	iter->second = num++;
+    }
+
+    for (map<string, int>::iterator iter = m.begin(); iter != m.end(); ++iter) {
+	cout << iter->first << " : " << iter->second << endl;
+    }
+}
+
+int main(int argc, char *argv[])
+{
+    test1();
+    test2();
+
     return 0;
 }
