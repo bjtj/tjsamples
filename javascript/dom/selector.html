@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <!-- https://developer.mozilla.org/ko/docs/Web/API/Document/querySelector -->
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title></title>
+    </head>
+    <body>
+	<div></div>
+	<div></div>
+	<div id="box1" class="box"></div>
+	<div class="box"></div>
+	<div id="box2"><span>1</span><span>2</span></div>
+	<div id="box3"><span>3</span><span>4</span></div>
+	<script type="text/javascript">
+	 console.log(document.querySelector("div"));
+	 console.log(document.querySelectorAll("div"));
+	 console.log(document.querySelector("#box1"));
+	 console.log(document.querySelector("#x"));
+	 console.log(document.querySelector(".box"));
+	 console.log(document.querySelectorAll(".box"));
+	 console.log(document.querySelector("#box2 span"));
+	 document.querySelector("#box2 span").innerHTML = "!";
+	 console.log(document.querySelector("div span"));
+	 console.log(document.querySelectorAll("div span"));
+	</script>
+    </body>
+</html>
