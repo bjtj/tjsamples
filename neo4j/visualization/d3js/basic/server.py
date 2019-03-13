@@ -47,10 +47,18 @@ def get_graph():
     results = db.run("MATCH (m:Movie)<-[:ACTED_IN]-(a:Person) "
              "RETURN m.title as movie, collect(a.name) as cast "
              "LIMIT {limit}", {"limit": request.args.get("limit", 100)})
+
+    # print('resutls type:', type(results))
+    # resutls type: <class 'neo4j.BoltStatementResult'>
+
     nodes = []
     rels = []
     i = 0
     for record in results:
+
+        # print('record type:', type(record))
+        # record type: <class 'neo4j.Record'>
+
         nodes.append({"title": record["movie"], "label": "movie"})
         target = i
         i += 1
@@ -72,7 +80,7 @@ def main():
     parser.add_argument('--host', type=str, default='0.0.0.0')
     parser.add_argument('--port', type=int, default=8080)
     args = parser.parse_args()
-    app.run(host=args.host, port=args.port)
+    app.run(host=args.host, port=args.port, debug=True)
 
 if __name__ == '__main__':
     main()
