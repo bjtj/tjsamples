@@ -8,7 +8,7 @@ def list_clear_and_set(lst, target):
         lst.clear()
     lst += target
 
-
+    
 def main():
     lst = [1,2,3,4]
 
@@ -52,6 +52,12 @@ def main():
     list_clear_and_set(lst, [7,8,9])
     print('lst', lst)
     print('a', a)
+
+    lst = [(1,2), (2,3), (3,4)]
+    print(lst.index((1,2)))
+
+    print([i for i,x in enumerate(lst) if x[0] == 2])
+    print([i for i,x in enumerate(lst) if x[0] == 4])
     
 
 if __name__ == '__main__':
