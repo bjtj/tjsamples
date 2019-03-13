@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Table</title>
+    </head>
+    <body>
+	<h1>Table</h1>
+	<ul>
+	{% for k, v in table.items() %}
+	<li>{{ k }}: {{ v }}</li>
+	{% endfor %}
+	</ul>
+    </body>
+</html>
