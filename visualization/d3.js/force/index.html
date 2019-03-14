@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Force</title>
+	<script type="text/javascript" src="http://d3js.org/d3.v5.min.js"></script>
+	<style type="text/css" media="screen">
+	 svg {
+	     border: solid 1px black;
+	 }
+	 .node circle {
+	     fill: silver;
+	     stroke: gray;
+	     stroke-width: 1px;
+	 }
+	 .node text {
+	     fill: black;
+	 }
+	 .link line {
+	     stroke: black;
+	 }
+	</style>
+    </head>
+    <body>
+	<script type="text/javascript">
+
+	 var width = 800;
+	 var height = 600;
+	 var r = 30;
+	 
+	 var entities = [{"name": "a"},
+		      {"name": "b"}];
+	 var rels = [{"source": 0, "target": 1, 'type': 'rel'}];
+
+	 var chargeForce = d3.forceManyBody().strength(-200);
+	 var centerForce = d3.forceManyBody().strength(-30);
+	 var force = d3.forceSimulation(entities)
+		       .force('charge_force', chargeForce)
+		       .force('center_force', centerForce)
+		       .force('link', d3.forceLink(rels).distance(r * 4));
+	 
+	 var svg = d3.select('body')
+		     .append('svg')
+		     .attr('width', width)
+		     .attr('height', height)
+		     .attr('pointer-events', 'all')
+		     .attr('shape-rendering', 'geometricPrecision');
+
+	 var g = svg.append('g')
+		    .attr('class', 'everything');
+
+	 var nodes = g.selectAll('.node')
+		      .data(entities)
+		      .enter()
+		      .append('g')
+		      .attr('class', 'node')
+		      .call(d3.drag()
+                              .on("start", function (d) {
+                                  if (!d3.event.active) {
+                                      force.alphaTarget(0.3).restart();
+                                  }
+                                  d.fx = d.x;
+                                  d.fy = d.y;
+                              })
+			      .on("drag", function (d) {
+				  d.fx = d3.event.x;
+				  d.fy = d3.event.y;
+			      })
+			      .on("end", function (d) {
+				  if (!d3.event.active) {
+				      force.alphaTarget(0);
+				  }
+				  d.fx = null;                                         
+				  d.fy = null;
+			      }));
+	 
+	 nodes.append('circle')
+	      .attr('r', r);
+
+	 nodes.append('text')
+	      .text(d => d.name)
+	      .attr('y', '.5em')
+	      .attr('text-anchor', 'middle');
+
+	 var links = g.selectAll('.link')
+		      .data(rels)
+		      .enter()
+		      .append('g')
+		      .attr('class', 'link')
+		      .on('click', function (d) {
+			  console.log(d.type + ' clicked');
+		      });
+
+	 var lines = links.append('line');
+
+	 g.attr('transform', 'translate(' + (width / 2) + ', ' + (height / 2) + ')');
+
+	 force.on('tick', function() {
+	     nodes.attr('transform', d => 'translate(' + d.x + ', ' + d.y + ')');
+	     lines.attr('x1', function (d) {
+		 return d.source.x;
+	     });
+	     lines.attr('y1', function (d) {
+		 return d.source.y;
+	     });
+	     lines.attr('x2', function (d) {
+		 return d.target.x;
+	     });
+	     lines.attr('y2', function (d) {
+		 return d.target.y;
+	     });
+	 });
+	 
+	</script>
+    </body>
+</html>
