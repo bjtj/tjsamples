@@ -1,29 +1,12 @@
-<html>
-    <head>
-	<meta charset="utf-8" />
-	<title>index</title>
-    </head>
-    <body>
-	<form method="post" action="/post">
-	    Add: <input type="text" name="text" value="{{text}}" />
-	</form>
-
-	{% if lst %}
-	<h1>List</h1>
-	<ul>
-	    {% for item in lst %}
-	    <li>
-		<form method="post" action="/del">
-		    {{item}}
-		    <input type="hidden" name="idx" value="{{ loop.index }}" />
-		    <input type="submit" name="" value="delete" />
-		</form>
-	    </li>
-	    {% endfor %}
-	</ul>
-	{% endif %}
-    </body>
-</html>
-
-
-
+{% extends 'template.html' %}
+{% block title %}Welcome{% endblock %}
+{% block contents %}
+<h1>List</h1>
+<ul>
+    <li><a href="list">list</a></li>
+    <li><a href="person">person</a></li>
+    <li><a href="person?format=json">person (json)</a></li>
+    <li><a href="table">table</a></li>
+    <li><a href="redirection">redirection</a></li>
+</ul>
+{% endblock %}

@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, Response, redirect
 import argparse
 from app.mypage import mypage
 from app.file import file
@@ -22,12 +22,12 @@ def index():
 def post():
     text = request.form.get('text')
     lst.append(text)
-    return render_template('index.html', var=text, lst=lst)
+    return render_template('list.html', var=text, lst=lst)
 
 
 @app.route('/list')
 def list():
-    return render_template('index.html', lst=lst)
+    return render_template('list.html', lst=lst)
 
 
 @app.route('/del', methods=['post'])
@@ -35,7 +35,7 @@ def delete():
     idx = int(request.form.get('idx')) - 1
     print(idx)
     del lst[idx]
-    return render_template('index.html', lst=lst)
+    return render_template('list.html', lst=lst)
 
 
 class Person:
@@ -62,6 +62,16 @@ def person():
 def table():
     table = {'a': 'A', 'b': 'B'}
     return render_template('table.html', table = table)
+
+
+@app.route('/target')
+def target():
+    return render_template('target.html')
+
+
+@app.route('/redirection')
+def redirection():
+    return redirect('target')
 
 
 def main():

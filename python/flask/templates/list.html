@@ -1,0 +1,28 @@
+{% extends 'template.html' %}
+{% block title %}List{% endblock %}
+{% block contents %}
+<h1>Add Item</h1>
+<form method="post" action="/post">
+    <input type="text" name="text" value="{{text}}" />
+    <input type="submit" name="" value="Add" />
+</form>
+
+<h1>List</h1>
+{% if lst %}
+<ul>
+    {% for item in lst %}
+    <li>
+	<form method="post" action="/del">
+	    {{item}}
+	    <input type="hidden" name="idx" value="{{ loop.index }}" />
+	    <input type="submit" name="" value="delete" />
+	</form>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>none</p>
+{% endif %}
+{% endblock %}
+
+

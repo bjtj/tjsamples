@@ -1,7 +1,7 @@
-<html>
-    <body>
-	<h1>Person</h1>
-	<p>Name: {{ person.name }}, Age: {{ person.age }}</p>
-	<pre>{{ person.hello() }}</pre>
-    </body>
-</html>
+{% extends 'template.html' %}
+{% block title %}Person{% endblock %}
+{% block contents %}
+<h1>Person</h1>
+<p>Name: {{ person.name }}, Age: {{ person.age }}</p>
+<pre>{{ person.hello() }}</pre>
+{% endblock %}

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>{% block title %}Welcome{% endblock %}</title>
+    </head>
+    <body>
+	{% if request.path != '/'%}
+	<p><a href="/">Home</a></p>
+	{% endif %}
+	{% block contents %}{% endblock %}
+    </body>
+</html>
