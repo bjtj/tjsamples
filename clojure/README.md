@@ -40,5 +40,5 @@ Lein 2
 Lein 1.x
 
 ```
-$ lein plugin nistall lein-exec "0.1"
+$ lein plugin install lein-exec "0.1"
 ```
