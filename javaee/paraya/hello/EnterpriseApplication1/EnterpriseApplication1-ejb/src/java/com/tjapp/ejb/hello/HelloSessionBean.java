@@ -9,7 +9,7 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author tjjang
+ * @author tj
  */
 @Stateless
 public class HelloSessionBean implements HelloSessionBeanRemote {

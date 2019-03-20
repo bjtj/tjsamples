@@ -9,7 +9,7 @@ import javax.ejb.Remote;
 
 /**
  *
- * @author tjjang
+ * @author tj
  */
 @Remote
 public interface HelloSessionBeanRemote {
