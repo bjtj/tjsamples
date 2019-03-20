@@ -8,3 +8,8 @@ echo %~f0
 echo %~dp0
 echo %~d0
 echo %~p0
+
+echo %~n0
+echo %~x0
+
+echo %~n0.txt
