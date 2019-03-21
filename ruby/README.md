@@ -1,5 +1,9 @@
-## Setup
+# ruby-install #
 
-* https://www.ruby-lang.org/ko/documentation/installation/
+* https://github.com/postmodern/ruby-install
 
-apt install ruby-full
+e.g.)
+
+```
+$ sudo ruby-install --system ruby 2.5.1
+```
