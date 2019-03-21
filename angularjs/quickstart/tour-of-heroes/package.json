@@ -22,12 +22,12 @@
 						"@angular/router": "^6.1.10",
 						"@angular/upgrade": "^6.1.10",
 						"angular-in-memory-web-api": "^0.6.1",
-						"core-js": "^2.6.4",
+						"core-js": "^2.6.5",
 						"rxjs": "^6.4.0",
 						"zone.js": "^0.8.29"
 			},
 			"devDependencies": {
-						"@angular-devkit/build-angular": "^0.13.1",
+						"@angular-devkit/build-angular": "^0.13.6",
 						"@angular/cli": "~6.0.5",
 						"@angular/compiler-cli": "^7.2.10",
 						"@angular/language-service": "^6.1.10",
