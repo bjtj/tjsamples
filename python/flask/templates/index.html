@@ -3,10 +3,17 @@
 {% block contents %}
 <h1>List</h1>
 <ul>
-    <li><a href="list">list</a></li>
-    <li><a href="person">person</a></li>
-    <li><a href="person?format=json">person (json)</a></li>
-    <li><a href="table">table</a></li>
-    <li><a href="redirection">redirection</a></li>
+    <li><a href="/list">list</a></li>
+    <li><a href="/person">person</a></li>
+    <li><a href="/person?format=json">person (json)</a></li>
+    <li><a href="/table">table</a></li>
+    <li><a href="/redirection">redirection</a></li>
+    <li><a href="/exception">exception</a> - no error</li>
+    <li><a href="/exception?raise=yes">exception</a> - error</li>
+</ul>
+<h1>Blueprint</h1>
+<ul>
+    <li><a href="/pages">pages</a></li>
+    <li><a href="/file">file</a></li>
 </ul>
 {% endblock %}

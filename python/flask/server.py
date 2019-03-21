@@ -73,6 +73,16 @@ def target():
 def redirection():
     return redirect('target')
 
+@app.route('/exception')
+def handle_exception():
+    try:
+        if request.args.get('raise') == 'yes':
+            raise ValueError('my error')
+    except Exception as e:
+        return render_template('err.html', msg='{}'.format(e))
+    
+    return render_template('err.html', msg='no error')
+
 
 def main():
     parser = argparse.ArgumentParser()
