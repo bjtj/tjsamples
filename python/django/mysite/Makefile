@@ -4,6 +4,10 @@ PORT=8000
 all: polls run
 
 
+migrate:
+	python manage.py migrate
+
+
 run:
 	python manage.py runserver
 
