@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, Response, redirect
+from flask import Flask, render_template, request, Response, redirect, make_response
 import argparse
 from app.mypage import mypage
 from app.file import file
@@ -82,6 +82,19 @@ def handle_exception():
         return render_template('err.html', msg='{}'.format(e))
     
     return render_template('err.html', msg='no error')
+
+
+@app.route('/cookies')
+def cookies():
+    res = make_response(render_template('cookies.html'))
+    if 'my-count' not in request.cookies:
+        res.set_cookie('my-count', '1')
+    else:
+        cnt = int(request.cookies['my-count'])
+        cnt += 1
+        res.set_cookie('my-count', '{}'.format(cnt))
+    return res
+
 
 
 def main():

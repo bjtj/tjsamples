@@ -1,0 +1,12 @@
+{% extends 'template.html' %}
+{% block title %}Cookies{% endblock %}
+{% block contents %}
+<h1>Cookies</h1>
+<ul>
+{% for k,v in request.cookies.items() %}
+<li><code>{{ k }}</code>: <code>{{ v }}</code></li>
+{% endfor %}
+</ul>
+{% endblock %}
+
+
