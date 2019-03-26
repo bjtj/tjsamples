@@ -3,6 +3,17 @@ try:
 except Exception:
     import configparser
 
+import os
+
+
+def set_config(filename):
+    parser = configparser.ConfigParser()
+    parser['myconfig'] = {'name1': 'value1',
+                          'name2': 'value2',}
+    with open(filename, 'w') as fout:
+        parser.write(fout)
+
+
 def main():
     parser = configparser.ConfigParser()
     print(parser.read('conf.ini'))
@@ -19,8 +30,11 @@ def main():
         print(parser.get('default', 'msg', 1))
     except Exception as e:
         print('error: {}'.format(e))
-    
-    
+
+    print('-- set config --')
+    set_config('temp.ini')
+    print(open('temp.ini', 'r').read())
+    os.remove('temp.ini')
 
 if __name__ == '__main__':
     main()
