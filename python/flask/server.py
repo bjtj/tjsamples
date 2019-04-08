@@ -1,10 +1,9 @@
 import os
-from flask import Flask, render_template, request, Response, redirect, make_response
+from flask import Flask, render_template, request, Response, redirect, make_response, g
 import argparse
 from app.mypage import mypage
 from app.file import file
 import json
-
 
 
 app = Flask(__name__)
@@ -12,6 +11,23 @@ app.register_blueprint(mypage, url_prefix='/pages')
 app.register_blueprint(file)
 
 lst = ['item1', 'item2', 'item3']
+
+# g.msg = 'Message!'
+
+@app.before_first_request
+def before_first_request():
+    print('before_first_request')
+
+
+idx = 0
+    
+@app.before_request
+def before_request():
+    global idx
+    print('before_request')
+    idx += 1
+    g.greeting = 'Hello World!!! {}'.format(idx)
+
 
 @app.route("/")
 def index():
@@ -94,6 +110,11 @@ def cookies():
         cnt += 1
         res.set_cookie('my-count', '{}'.format(cnt))
     return res
+
+
+@app.route('/g')
+def glob():
+    return render_template('g.html', greeting=g.greeting)
 
 
 
