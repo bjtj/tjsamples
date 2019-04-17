@@ -1,0 +1,8 @@
+{
+  "name": "hello",
+  "version": "1.0.0",
+  "description": "hello project",
+  "main": "index.js",
+  "author": "tj",
+  "license": "MIT"
+}
