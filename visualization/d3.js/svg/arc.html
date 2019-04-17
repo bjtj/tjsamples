@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>d3.js svg arc</title>
+	<script type="text/javascript" src="http://d3js.org/d3.v5.min.js"></script>
+	<style type="text/css" media="screen">
+	 svg { border: solid 1px black;}
+	</style>
+    </head>
+    <body>
+	<script type="text/javascript">
+	 var vis = d3.select("body").append("svg");
+	 var arc1 = d3.arc()
+		      .innerRadius(50)
+		      .outerRadius(70)
+		      .startAngle(0)
+		      .endAngle(45 * (Math.PI / 180));
+	 var arc2 = d3.arc()
+		      .innerRadius(50)
+		      .outerRadius(70)
+		      .startAngle(45 * (Math.PI / 180))
+		      .endAngle(3);
+	 vis.attr('width', 400)
+	    .attr('height', 400);
+	 vis.append('path')
+	    .attr('d', arc1)
+	    .attr('fill', 'red')
+	    .attr('transform', 'translate(200, 200)');
+	 vis.append('path')
+	    .attr('d', arc2)
+	    .attr('fill', 'green')
+	    .attr('transform', 'translate(200, 200)');
+
+
+	 var line = d3.line()
+		      .data([10,20,30])
+		      .x(function (d) { return d; })
+		      .y(function (d) { return d; })
+		      .curve(d3.curveCatmullRom.alpha(0.5));
+	 
+	</script>
+    </body>
+</html>
