@@ -3,9 +3,8 @@
 * https://reactjs.org/docs/add-react-to-a-new-app.html
 
 ```
-$ sudo npm install -g create-react-app
+$ npm install -g create-react-app
 $ create-react-app my-app
-
 $ cd my-app
 $ npm start
 ```
