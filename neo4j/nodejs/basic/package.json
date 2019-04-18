@@ -1,0 +1,9 @@
+{
+  "name": "basic",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "neo4j-driver": "^1.7.3"
+  }
+}
