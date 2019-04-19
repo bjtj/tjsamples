@@ -1,0 +1,16 @@
+{% extends 'template.html' %}
+{% block title %}board{% endblock %}
+{% block contents %}
+<h1>Login</h1>
+<form method="POST" action="login">
+    <ul>
+	<li>Username: <input type="text" name="user" value="" /></li>
+	<li>Password: <input type="text" name="passwd" value="" /></li>
+    </ul>
+    <input type="submit" name="" value="Login" />
+</form>
+<p>Auth: {{ session['auth'] }}</p>
+<a href="logout">logout</a>
+{% endblock %}
+
+

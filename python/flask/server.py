@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, Response, redirect, make_response, g
+from flask import Flask, render_template, request, Response, redirect, make_response, g, session
 import argparse
 from app.mypage import mypage
 from app.file import file
@@ -9,6 +9,8 @@ import json
 app = Flask(__name__)
 app.register_blueprint(mypage, url_prefix='/pages')
 app.register_blueprint(file)
+
+app.secret_key = "your secret"
 
 lst = ['item1', 'item2', 'item3']
 
@@ -116,6 +118,31 @@ def cookies():
 def glob():
     return render_template('g.html', greeting=g.greeting)
 
+
+@app.route('/user')
+def user():
+    print(session.get('auth'))
+    return render_template('user.html')
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    user = request.form.get('user')
+    passwd = request.form.get('passwd')
+    print('username: {} / password: {}'.format(user, passwd))
+    if user == 'user' and passwd == 'secret':
+        print('authenticated')
+        session['auth'] = 'user'
+    else:
+        print('not authenticated')
+        session.pop('auth', None)
+    return render_template('user.html')
+
+
+@app.route('/logout')
+def logout():
+    session.pop('auth', None)
+    return render_template('user.html')
 
 
 def main():
