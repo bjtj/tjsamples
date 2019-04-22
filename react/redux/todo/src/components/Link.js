@@ -6,7 +6,7 @@ const Link = ({ active, children, onClick }) => (
     onClick={onClick}
     disabled={active}
     style={{
-	margineLeft: '4px'
+	marginLeft: '4px'
     }}
 	>
 	{children}
