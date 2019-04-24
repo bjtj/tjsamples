@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>classname</title>
+	<style type="text/css" media="screen">
+	 body {
+	     margin: 2em;
+	 }
+	 .box {
+	     border: solid 1px black;
+	     padding: 1em;
+	 }
+	 .right {
+	     text-align: right;
+	 }
+	 .center {
+	     text-align: center;
+	 }
+	 .red {
+	     background-color: red;
+	 }
+	 .green {
+	     background-color: green;
+	 }
+	</style>
+    </head>
+    <body>
+	<h3>Reference</h3>
+	<ul>
+	    <li>Element​.class​List: <a href="https://developer.mozilla.org/ko/docs/Web/API/Element/classList">link</a></li>
+	</ul>
+	<h3>Example</h3>
+	<div class="box">Box</div>
+	<script type="text/javascript">
+	 var box = document.querySelector('.box');
+	 setTimeout(function(){box.classList.add('red');}, 1000);
+	 setTimeout(function(){box.classList.add('right');}, 2000);
+	 setTimeout(function(){box.classList.remove('green');}, 3000);
+	 setTimeout(function(){box.classList.replace('red', 'green');}, 4000);
+	 setTimeout(function(){box.className = 'box';}, 5000);
+	</script>
+    </body>
+</html>
