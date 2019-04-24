@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Drag'n Drop</title>
+	<style type="text/css" media="screen">
+	 body {
+	     margin: 2em;
+	 }
+	 #div1 {
+	     width: 350px;
+	     height: 70px;
+	     padding: 10px;
+	     border: 1px solid #aaaaaa;
+	 }
+	</style>
+	<script type="text/javascript">
+	 function allowDrop(e) {
+	     e.preventDefault();
+	 }
+	 function drag(e) {
+	     e.dataTransfer.setData("text", e.target.id);
+	 }
+	 function drop(e) {
+	     e.preventDefault();
+	     var data = e.dataTransfer.getData("text");
+	     e.target.appendChild(document.getElementById(data));
+	 }
+	</script>
+    </head>
+    <body>
+	<h2>Reference</h2>
+	<ul>
+	    <li>HTML5 Drag and Drop: <a href="https://www.w3schools.com/htmL/html5_draganddrop.asp">link</a></li>
+	    <li>DataTransfer: <a href="https://developer.mozilla.org/ko/docs/Web/API/DataTransfer">link</a></li>
+	</ul>
+	<h2>Example</h2>
+	<div>
+	    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	    <img id="drag1" src="https://www.w3schools.com/htmL/img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69" />
+	</div>
+    </body>
+</html>
