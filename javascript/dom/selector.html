@@ -12,6 +12,9 @@
 	<div class="box"></div>
 	<div id="box2"><span>1</span><span>2</span></div>
 	<div id="box3"><span>3</span><span>4</span></div>
+	<form method="POST" action="">
+	    <input type="text" name="" value="" />
+	</form>
 	<script type="text/javascript">
 	 console.log(document.querySelector("div"));
 	 console.log(document.querySelectorAll("div"));
@@ -23,6 +26,8 @@
 	 document.querySelector("#box2 span").innerHTML = "!";
 	 console.log(document.querySelector("div span"));
 	 console.log(document.querySelectorAll("div span"));
+	 document.querySelector("form input").value = "hello~";
+	 console.log(document.querySelector("form input").value);
 	</script>
     </body>
 </html>

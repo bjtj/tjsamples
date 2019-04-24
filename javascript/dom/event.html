@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Event</title>
+    </head>
+    <body>
+	<div>
+	    <button id="button1">Button 1</button>
+	</div>
+	<script type="text/javascript">
+	 var button1 = document.querySelector("#button1");
+	 button1.addEventListener("click", function(e) {
+	     console.log(e);
+	     alert("Button1 click");
+	 });
+	</script>
+    </body>
+</html>

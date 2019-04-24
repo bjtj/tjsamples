@@ -1,0 +1,34 @@
+{
+  "name": "calc",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "big.js": "^5.2.2",
+    "chai": "^4.2.0",
+    "gh-pages": "^2.0.1",
+    "github-fork-ribbon-css": "^0.2.1",
+    "prettier": "^1.17.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "2.1.8"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+      "eject": "react-scripts eject",
+      "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+    "prettier": {
+	"traillingComma": "all"
+    }
+}

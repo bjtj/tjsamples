@@ -1,0 +1,9 @@
+{
+  "name": "quickstart",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^6.2.1"
+  }
+}
