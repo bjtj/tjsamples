@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+    </head>
+    <body>
+	<script type="text/javascript">
+	 console.log('top');
+	 var promise1 = new Promise(function(resolve, reject) {
+	     console.log('new Promise');
+	     setTimeout(function() {
+		 console.log('resolve(foo)');
+		 resolve('foo');
+	     }, 300);
+	 });
+
+	 console.log('promise1.then()');
+	 promise1.then(function(value) {
+	     console.log('IN promise1.then()')
+	     console.log(value);
+	 });
+
+	 console.log('log(promise1)');
+	 console.log(promise1);
+	 console.log('bottom');
+	</script>
+    </body>
+</html>
