@@ -2,7 +2,7 @@
 
 ```
 npm install -g create-react-native-app
-create-react-app first-project
+create-react-native-app first-project
 cd first-project
 npm start
 ```
