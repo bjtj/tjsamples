@@ -4,34 +4,34 @@
 #include <string.h>
  
 int main(void) {
-    Display *d;
-    Window w;
-    XEvent e;
+    Display *display;
+    Window window;
+    XEvent evt;
     const char *msg = "Hello, World!";
-    int s;
+    int screen;
  
-    d = XOpenDisplay(NULL);
-    if (d == NULL) {
+    display = XOpenDisplay(NULL);
+    if (display == NULL) {
 	fprintf(stderr, "Cannot open display\n");
 	exit(1);
     }
  
-    s = DefaultScreen(d);
-    w = XCreateSimpleWindow(d, RootWindow(d, s), 10, 10, 100, 100, 1,
-			    BlackPixel(d, s), WhitePixel(d, s));
-    XSelectInput(d, w, ExposureMask | KeyPressMask);
-    XMapWindow(d, w);
+    screen = DefaultScreen(display);
+    window = XCreateSimpleWindow(display, RootWindow(display, screen), 10, 10, 100, 100, 1,
+				 BlackPixel(display, screen), WhitePixel(display, screen));
+    XSelectInput(display, window, ExposureMask | KeyPressMask);
+    XMapWindow(display, window);
  
     while (1) {
-	XNextEvent(d, &e);
-	if (e.type == Expose) {
-	    XFillRectangle(d, w, DefaultGC(d, s), 20, 20, 10, 10);
-	    XDrawString(d, w, DefaultGC(d, s), 10, 50, msg, strlen(msg));
+	XNextEvent(display, &evt);
+	if (evt.type == Expose) {
+	    XFillRectangle(display, window, DefaultGC(display, screen), 20, 20, 10, 10);
+	    XDrawString(display, window, DefaultGC(display, screen), 10, 50, msg, strlen(msg));
 	}
-	if (e.type == KeyPress)
+	if (evt.type == KeyPress)
 	    break;
     }
  
-    XCloseDisplay(d);
+    XCloseDisplay(display);
     return 0;
 }
