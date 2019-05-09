@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>REST</title>
+    </head>
+    <body>
+	<div>
+	    <ul id="list">
+		
+	    </ul>
+	</div>
+	<script type="text/javascript">
+	 /* fetch('https://jsonplaceholder.typicode.com/todos/1')
+	    .then(response => response.json())
+	    .then(json => console.log(json)) */
+
+
+	 function gen_detail(id) {
+	     return function (evt) {
+		 evt.preventDefault();
+		 fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
+		     .then(response => response.json())
+		     .then(json => {
+			 console.log(json);
+			 alert(json);
+		     });
+	     };
+	 }
+
+	 function update_list(arr) {
+	     arr.forEach(item => {
+		 var lst = document.getElementById("list");
+		 var elem = document.createElement("li");
+		 elem.innerHTML = `Title: ${item.title} - `;
+		 var anchor = document.createElement("a");
+		 anchor.href = "#";
+		 anchor.innerHTML = 'Detail';
+		 anchor.addEventListener("click", gen_detail(item.id));
+		 elem.appendChild(anchor);
+		 lst.appendChild(elem);
+	     });
+	 }
+
+	 function reload() {
+	     fetch('https://jsonplaceholder.typicode.com/todos')
+		 .then(response => response.json())
+		 .then(json => {
+		     console.log(json);
+		     update_list(json);
+		 });
+	 }
+
+	 reload();
+	</script>
+    </body>
+</html>
