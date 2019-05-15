@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Layout based on screen size</title>
+	<style type="text/css" media="screen">
+	 /* https://stackoverflow.com/a/42170562; */
+	 .container {
+	     width: inherit;
+	     border: solid 5px black;
+	     padding: 1em;
+	 }
+	 @media screen and (max-width: 1200px) {
+	     .container {
+		 width: 300px;
+		 background: silver;
+	     }
+	 }
+
+	 @media screen and (min-width: 1200px) {
+	     .container {
+		 width: 600px;
+		 background: yellow;
+	     }
+	 }
+	</style>
+    </head>
+    <body>
+	<div class="container">
+	    hello
+	</div>
+    </body>
+</html>
+
