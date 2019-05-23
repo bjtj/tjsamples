@@ -59,6 +59,9 @@ def main():
     dump = json.dumps({'person' : Person('steve', 30)}, cls=PersonEncoder)
     print(dump)
 
+    dump = json.dumps({'person' : Person('steve', 30)}, cls=PersonEncoder, indent=4)
+    print(dump)
+
     def from_json(json_object):
         if 'name' in json_object and 'age' in json_object:
             person = Person(json_object['name'], int(json_object['age']))
@@ -71,6 +74,10 @@ def main():
 
     print('name: {}'.format(json_obj['person'].name))
     print('age: {}'.format(json_obj['person'].age))
+
+    print('{}'.format(json.dumps(['a', 'b'])))
+    print('{}'.format(json.dumps('hello')))
+
 
 if __name__ == '__main__':
     main()
