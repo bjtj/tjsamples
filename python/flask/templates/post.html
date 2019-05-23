@@ -1,0 +1,70 @@
+{% extends 'template.html' %}
+{% block title %}Post{% endblock %}
+{% block contents %}
+<h1>{{ self.title() }}</h1>
+
+<p>
+    Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype</a>
+</p>
+
+<h2>Form - <code style="text-decoration: line-through;">application/x-www-form-urlencoded</code></h2>
+<form method="POST" action="mirror" enctype="application/x-www-form-urlencoded">
+    <ul>
+	<li>Name: <input type="text" name="name" value="" /></li>
+	<li>Age: <input type="text" name="age" value="" /></li>
+    </ul>
+    <input type="submit" name="" value="Post" />
+</form>
+
+
+<h2>Form - <code>text/plain</code>(html5)</h2>
+<form method="POST" action="mirror" enctype="text/plain">
+    <ul>
+	<li>Name: <input type="text" name="name" value="" /></li>
+	<li>Age: <input type="text" name="age" value="" /></li>
+    </ul>
+    <input type="submit" name="" value="Post" />
+</form>
+
+
+<h2>Form - file</h2>
+<form method="POST" action="mirror" enctype="multipart/form-data">
+    <ul>
+	<li>File: <input type="file" name="file1" value="" /></li>
+    </ul>
+    <input type="submit" name="" value="Post" />
+</form>
+
+<h2>Parameter</h2>
+
+<ul>
+    <li><a href="mirror?a=A&b=B">mirror</a></li>
+</ul>
+
+<h2>From - json</h2>
+<button onclick="send_json();">Send json</button>
+
+<pre id="json-result">
+</pre>
+
+<script type="text/javascript">
+ function send_json() {
+     document.querySelector("#json-result").innerHTML = '';
+     var xhr = new XMLHttpRequest();
+     xhr.open("POST", "mirror", true);
+     xhr.setRequestHeader("Content-Type", "application/json");
+     xhr.onreadystatechange = function() {
+	 if (xhr.readyState == 4 && xhr.status === 200) {
+	     var txt = xhr.responseText;
+	     console.log(txt);
+	     document.querySelector("#json-result").innerHTML = txt;
+	 }
+     };
+     var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
+     xhr.send(data);
+ }
+</script>
+
+{% endblock %}
+
+

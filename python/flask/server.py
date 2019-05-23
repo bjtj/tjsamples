@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, Response, redirect, make_response, g, session
+from flask import Flask, render_template, request, Response, redirect, make_response, g, session, jsonify
 import argparse
 from app.mypage import mypage
 from app.file import file
@@ -143,6 +143,37 @@ def login():
 def logout():
     session.pop('auth', None)
     return render_template('user.html')
+
+
+@app.route('/var')
+def var():
+    x = request.args.get('x')
+    return render_template('var.html', x=x)
+
+
+@app.route('/post')
+def _post():
+    return render_template('post.html')
+
+
+@app.route('/mirror', methods=['post', 'get'])
+def mirror():
+    print('request.data: {}'.format(request.data))
+    print('request.get_json(): {}'.format(request.get_json()))
+    print('request.form: {}'.format(request.form))
+    print('request.args: {}'.format(request.args))
+    print('request.files: {}'.format(request.files))
+
+    ret = {'request.data': '{}'.format(request.data),
+           'request.get_json()': '{}'.format(request.get_json()),
+           'request.form': '{}'.format(request.form),
+           'request.args': '{}'.format(request.args),
+           'request.files': '{}'.format(request.files)
+    }
+
+    js = json.dumps(ret, indent=4)
+    return Response(js,mimetype='application/json')
+    # return jsonify(ret)
 
 
 def main():

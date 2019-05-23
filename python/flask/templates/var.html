@@ -1,0 +1,8 @@
+{% extends 'template.html' %}
+{% block title %}Var{% endblock %}
+{% block contents %}
+<h1>Var</h1>
+<ul>
+    <li>Default: {{ x if x else 'default' }}</li>
+</ul>
+{% endblock %}
