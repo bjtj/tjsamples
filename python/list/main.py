@@ -58,6 +58,20 @@ def main():
 
     print([i for i,x in enumerate(lst) if x[0] == 2])
     print([i for i,x in enumerate(lst) if x[0] == 4])
+
+
+    lst = [1,2,3,4,5,6,7,8]
+    lst.remove(2)
+    print(lst)
+
+    lst = [1,2,1,2,1,2,1,2,1,2]
+    lst.remove(2)
+    print(lst)
+
+    lst = [1,2,1,2,1,2,1,2,1,2]
+    lst = filter(lambda item: item != 2, lst)
+    print(lst)
+    
     
 
 if __name__ == '__main__':
