@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+	<!-- Simple Fetch -->
+	<h2>Simple fetch</h2>
+	<button id="simple-fetch">Fetch</button>
+
+	<!-- Use Form -->
+	<h2>Use form</h2>
+	<form method="POST" action="handlefile.php" enctype="multipart/form-data">
+	    <input type="file" name="file" value="" />
+	    <input type="submit" name="" value="Send" />
+	</form>
+
+	<!-- Use Fetch -->
+	<h2>Use fetch</h2>
+	<form name="fetch-form" method="" action="">
+	    <input type="file" name="file" value="" />
+	    <button>Send</button>
+	</form>
+
+	<!-- Result -->
+	<h2>Result</h2>
+	<p id='result'></p>
+	
+	<script type="text/javascript">
+	 /* https://stackoverflow.com/a/36082038/5676460 */
+	 /* https://stackoverflow.com/a/46642899/5676460 */
+	 /* https://jsfiddle.net/seamusleahy/rxeuaatw/ */
+	 window.addEventListener('load', function(e) {
+
+	     document.querySelector('#simple-fetch').addEventListener('click', function(e) {
+		 fetch('hello.php')
+		     .then(resp => resp.text())
+		     .then(txt => document.querySelector('#result').innerHTML = txt)
+		     .catch(err => console.error(err));
+	     });
+
+	     document.querySelector('form[name=fetch-form] button').addEventListener('click', function(e) {
+		 e.preventDefault();
+		 var form = document.querySelector('form[name=fetch-form]');
+		 const data = new FormData(form);
+		 var input = form.querySelector('input[type=file]');
+		 data.append(input.name, input.value);
+		 console.log(data);
+		 fetch('handlefile.php', {
+		     method: 'post',
+		     body: data
+		 }).then(function(res) {
+		     console.log(res);
+		     return res.text();
+		 }).then(function(txt) {
+		     document.querySelector('#result').innerHTML = txt;
+		 }).catch(function(err) {
+		     console.error(err);
+		 });
+	     });
+	 });
+	</script>
+    </body>
+</html>
