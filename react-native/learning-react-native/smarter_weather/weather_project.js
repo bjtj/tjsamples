@@ -4,9 +4,10 @@ import {
   Text,
   View,
   TextInput,
-  AsyncStorage,
   Image
 } from "react-native";
+
+import AsyncStorage from '@react-native-community/async-storage';
 
 import Forecast from "./Forecast";
 import LocationButton from "./LocationButton";
