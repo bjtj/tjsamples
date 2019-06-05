@@ -1,0 +1,3 @@
+rootProject.name = 'rncreate'
+
+include ':app'
