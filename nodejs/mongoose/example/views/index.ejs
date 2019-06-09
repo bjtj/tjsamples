@@ -1,0 +1,25 @@
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>todos</title>
+	<style type="text/css" media="screen">
+	 body {
+	     font-size: 12pt;
+	     margin: 2em;
+	 };
+	</style>
+    </head>
+    <body>
+      <h2>Result</h2>
+      <pre id="result"></pre>
+      <script type="text/javascript">
+	window.addEventListener('load', function () {
+	    var url = '/todos';
+            fetch(url)
+		.then(resp => resp.text())
+		.then(txt => document.querySelector('#result').innerHTML = txt)
+		.catch(err => console.error(err));
+	});
+      </script>
+    </body>
+</html>
