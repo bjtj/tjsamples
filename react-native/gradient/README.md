@@ -1,7 +1,7 @@
 * https://github.com/react-native-community/react-native-linear-gradient
 
 ```
-yarn add react-native-community/react-native-linear-gradient
+yarn add react-native-linear-gradient
 react-native link react-native-linear-gradient
 ```
 
