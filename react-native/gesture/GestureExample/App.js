@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button} from 'react-native';
-
 import {
     LongPressGestureHandler,
     ScrollView,
     State,
     TapGestureHandler,
 } from 'react-native-gesture-handler';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
+import PinchableBox from './PinchableBox';
 
 const styles = StyleSheet.create({
     scrollView: {
@@ -110,15 +111,44 @@ export class PressBox extends Component {
     }
 }
 
-export default class App extends Component {
-    render() {
-	return (
-	    <ScrollView style={styles.scrollView}>
+class MainScreen extends Component {
+	static navigationOptions = {
+		title: 'Main',
+	};
+	render() {
+		return (
+			<ScrollView style={styles.scrollView}>
+			  <Button title='Image View' onPress={() => this.props.navigation.navigate('ImageView')}></Button>
               <LoremIpsum words={40} />
               <PressBox />
               <LoremIpsum />
-	    </ScrollView>
-	);
-    }
+			</ScrollView>
+		);
+	}
 }
 
+class ImageViewScreen extends Component {
+	static navigationOptions = {
+		title: 'Image View'
+	};
+	render() {
+		return (
+			<View style={{flex: 1}}>
+			  <PinchableBox
+				onPress={() => alert('tap!')}/>
+			</View>
+		);
+	}
+}
+
+const Navigator = createStackNavigator(
+  {
+      Main: { screen: MainScreen },
+      ImageView: { screen: ImageViewScreen },
+  },
+  {
+    initialRouteName: 'Main',
+  }
+);
+
+export default createAppContainer(Navigator);

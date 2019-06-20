@@ -42,3 +42,14 @@ public class MainActivity extends ReactActivity {
 ## iOS ##
 
 no additional configuration required
+
+
+
+
+# Other dependencies #
+
+## react-navigation ##
+
+```
+yarn add react-navigation
+```
