@@ -8,7 +8,7 @@ export default class App extends Component<Props> {
     render() {
 	return (
 	    <MaskedView
-              style={{flex: 1, flexDirection: 'row', height: '100%'}}
+              style={{flex: 1, flexDirection: 'row', height: '100%', transform: [{rotate: '1rad'}]}}
               maskElement={
 		      <View
 			    style={{
