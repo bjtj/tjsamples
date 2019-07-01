@@ -23,3 +23,9 @@ edit `AppDelegate.m`
 +  [GMSServices provideAPIKey:@"_YOUR_API_KEY_"]; // add this line using the api key obtained from Google Console
 ...
 ```
+
+# Tip -- ignore api-key.xml changed #
+
+```
+$ git update-index --assume-unchanged api-key.xml
+```
