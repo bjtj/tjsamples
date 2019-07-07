@@ -31,9 +31,9 @@ export default class App extends Component<Props> {
 		onPress={() => this._toggleModal()}>
 	      </Button>
 	      <Modal isVisible={this.state.isModalVisible}>
-		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', borderRadius: 10, }}>
 		  <Text
-		    style={{ color: 'white', fontSize: 24, margin: 10 }}>
+		    style={{ color: 'black', fontSize: 24, margin: 10 }}>
 		    Hello!
 		  </Text>
 		  <Button
