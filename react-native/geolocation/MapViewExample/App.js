@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, SafeAreaView} from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 
 
 type Props = {};
@@ -14,6 +14,7 @@ export default class App extends Component<Props> {
 			  <View style={styles.container}>
 				<Text style={styles.welcome}>Welcome to React Native!</Text>
 				<MapView
+				  provider={PROVIDER_GOOGLE}
 				  style={{
 					  flex: 1,
 					  width: '100%',

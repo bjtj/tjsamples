@@ -1,0 +1,77 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'MapViewExample' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  # use_frameworks!
+
+  rn_path = '../node_modules/react-native'
+  rn_maps_path = '../node_modules/react-native-maps'
+  # 
+  pod 'yoga', path: "#{rn_path}/ReactCommon/yoga/yoga.podspec"
+  pod 'React', path: rn_path, subspecs: [
+        'Core',
+        'CxxBridge',
+        'DevSupport',
+        'RCTActionSheet',
+        'RCTAnimation',
+        'RCTGeolocation',
+        'RCTImage',
+        'RCTLinkingIOS',
+        'RCTNetwork',
+        'RCTSettings',
+        'RCTText',
+        'RCTVibration',
+        'RCTWebSocket',
+      ]
+  pod 'DoubleConversion', :podspec => "#{rn_path}/third-party-podspecs/DoubleConversion.podspec"
+  pod 'glog', :podspec => "#{rn_path}/third-party-podspecs/glog.podspec"
+  pod 'Folly', :podspec => "#{rn_path}/third-party-podspecs/Folly.podspec"
+  # 
+  pod 'react-native-maps', path: rn_maps_path
+  #
+  pod 'react-native-google-maps', path: rn_maps_path
+  pod 'GoogleMaps'
+  # pod 'GooglePlaces'
+  pod 'Google-Maps-iOS-Utils'
+
+  # Pods for MapViewExample
+
+  target 'MapViewExample-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'MapViewExampleTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'MapViewExample-tvOS' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for MapViewExample-tvOS
+
+  # target 'MapViewExample-tvOSTests' do
+  #   inherit! :search_paths
+  #   # Pods for testing
+  # end
+
+end
+
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if target.name == 'react-native-google-maps'
+      target.build_configurations.each do |config|
+        config.build_settings['CLANG_ENABLE_MODULES'] = 'No'
+      end
+    end
+    if target.name == "React"
+      target.remove_from_project
+    end
+  end
+end
