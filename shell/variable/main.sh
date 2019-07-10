@@ -2,6 +2,8 @@
 
 # set -e # stop on fail
 
+echo "\$(dirname \$0): '"$(dirname $0)"'"
+
 check_if_set()
 {
     # check if set
