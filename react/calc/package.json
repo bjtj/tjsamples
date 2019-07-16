@@ -7,6 +7,8 @@
     "chai": "^4.2.0",
     "gh-pages": "^2.0.1",
     "github-fork-ribbon-css": "^0.2.1",
+    "lodash": "^4.17.13",
+    "lodash.template": "^4.5.0",
     "prettier": "^1.17.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -16,8 +18,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-      "eject": "react-scripts eject",
-      "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -28,7 +30,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-    "prettier": {
-	"traillingComma": "all"
-    }
+  "prettier": {
+    "traillingComma": "all"
+  }
 }
