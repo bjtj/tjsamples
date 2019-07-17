@@ -19,10 +19,10 @@ cd my-new-project
 expo start
 ```
 
+
 ## expo client ##
 
 * https://itunes.apple.com/app/apple-store/id982107779
-
 
 
 # Traditional #
@@ -57,4 +57,28 @@ e.g.)
 ```
 react-native run-ios --simulator "iPhone 6s"
 ```
+
+
+# Android release #
+
+```
+$ cd android
+$ ./gradlew assembleRelease # check .apk file -- android/app/build/outputs/apk/release
+$ ./gradlew bundleRelease # check .aab file -- android/app/build/outputs/bundle/release
+```
+
+# AndroidX - resolving dependecy issue #
+
+android/gradle.properties
+
+```
+android.useAndroidX=true
+android.enableJetifier=true
+```
+
+jetifier
+
+1. `npm install --save-dev jetifier`
+1. `npx jetify`
+1. `npx react-native run-android`
 
