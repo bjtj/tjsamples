@@ -1,4 +1,10 @@
 
+function hi() {
+    console.log('hi');
+}
+
+hi.call();
+hi.apply();
 
 function hello() {
     console.log(this.msg);
