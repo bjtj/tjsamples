@@ -18,3 +18,8 @@ Dog.prototype.toString = function() {
 }
 
 console.log(theDog.toString());
+
+class Person { constructor(name) { this.name = name; } }
+
+const person = new Person('Steve');
+console.log(person.name);
