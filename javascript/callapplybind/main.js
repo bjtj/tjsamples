@@ -51,3 +51,16 @@ var b = new B();
 console.log('-*- foo4() -*-');
 var foo4 = a.foo2.bind(b);
 foo4();
+
+
+// 
+function Person(name) { this.msg = `Hello ${name}`; }
+hello.call(new Person('TJ'));
+
+function hi(name) {
+    console.log(`Hi, ${name}`);
+}
+
+hi.call(null, 'TJ');				// Hi, TJ
+hi.apply(null, ['TJ']);				// Hi, TJ
+hi.bind(new Person('TJ'))('Steve'); // Hi, Steve
