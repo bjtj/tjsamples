@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "handlebars": "^4.0.14",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.11",
     "lodash.template": "^4.5.0",
     "mem": "^4.0.0",
     "react": "^16.4.0",
