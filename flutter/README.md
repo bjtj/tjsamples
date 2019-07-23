@@ -1,5 +1,10 @@
 # Installation #
 
+* https://flutter.dev/docs/get-started/install
+
+
+# MacOS install #
+
 * https://flutter.dev/docs/get-started/install/macos
 
 
@@ -63,4 +68,26 @@ $ flutter run -d <deviceId>
 $ flutter create myapp
 $ flutter devices
 $ flutter run
+```
+
+
+# Linux install #
+
+* https://flutter.dev/docs/get-started/install/linux
+
+```
+$ cd ~/development
+$ tar xf ~/Downloads/flutter_linux_v1.5.4-hotfix.2-stable.tar.xz
+```
+
+```
+export PATH="$PATH:`pwd`/flutter/bin"
+```
+
+```
+$ flutter precache
+```
+
+```
+$ flutter doctor
 ```
