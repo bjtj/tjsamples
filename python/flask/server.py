@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, Response, redirect, make_response, g, session, jsonify
+from flask import Flask, render_template, request, Response, redirect, make_response, g, session, jsonify, send_from_directory
 import argparse
 from app.mypage import mypage
 from app.file import file
@@ -175,6 +175,12 @@ def mirror():
     return Response(js,mimetype='application/json')
     # return jsonify(ret)
 
+
+# https://stackoverflow.com/a/9519004/5676460
+@app.route('/custom/<path:filename>')
+def custom_static(filename):
+    # return send_from_directory(app.config['CUSTOM_STATIC_PATH'], filename)
+    return send_from_directory('custom', filename)
 
 def main():
     parser = argparse.ArgumentParser()
