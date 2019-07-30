@@ -1,4 +1,4 @@
-import '@bable/polyfill';
+import '@babel/polyfill';
 
 const name = 'World';
 

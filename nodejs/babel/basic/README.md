@@ -7,3 +7,7 @@
 npx babel --presets @babel/env index.js
 ```
 
+
+```
+yarn list --pattern @babel/plugin --depth 1
+```
