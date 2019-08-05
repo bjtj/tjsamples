@@ -1,0 +1,12 @@
+# https://stackoverflow.com/a/14230346/5676460
+
+all: program
+
+libhello.dylib:
+	gcc -dynamiclib -o $@ hello.c
+
+program: libhello.dylib
+	gcc -o $@ main.c -lhello
+
+clean:
+	rm -rf program *.dylib

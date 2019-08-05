@@ -8,4 +8,4 @@ program: libhello.so
 	gcc -o $@ main.c -lhello
 
 clean:
-	rm -rf program libhello.so
+	rm -rf program *.so
