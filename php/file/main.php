@@ -46,4 +46,10 @@ echo dump("out.txt");
 file_put_contents("out.txt", "end.");
 echo file_get_contents("out.txt") . "\n";
 
+/* FILE MODIFIATION TIME */
+
+echo filemtime("out.txt") . "\n";
+/* https://www.php.net/manual/en/function.date.php */
+echo date("Y-m-d H:i:s", filemtime("out.txt")) . "\n";
+
 ?>
