@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Fitting Text Into a Box</title>
+    </head>
+    <body>
+	<svg style="width: 300px; height: 300px;">
+	    <text y="20" textLength="6em">Small text length</text>
+	    <text y="40" textLength="120%">Big text length</text>
+	    <text id="hello" y="60" textLength="6em">Hello</text>
+	    <text id="hello2" y="60">Hello</text>
+	</svg>
+	<script type="text/javascript">
+	 function printBox(elem) {
+	     var bbox = elem.getBBox();
+	     console.log(bbox);
+	     console.log(bbox.width);
+	     console.log(bbox.height);
+	 }
+	 printBox(document.querySelector('#hello'));
+	 printBox(document.querySelector('#hello2'));
+	</script>
+    </body>
+</html>
