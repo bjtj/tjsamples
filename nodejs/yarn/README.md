@@ -58,3 +58,35 @@ info No lockfile found.
 success Saved lockfile.
 Done in 0.04s.
 ```
+
+
+# package.json #
+
+* https://yarnpkg.com/lang/en/docs/package-json/
+
+
+# The package.json File #
+
+* http://npm.github.io/using-pkgs-docs/package-json/the-package-json-file.html
+
+
+# A guide to creating a NodeJS command-line package #
+
+* https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e
+
+
+```
+#!/usr/bin/env node
+```
+
+```
+$ chmod +x cli.js
+```
+
+```
+$ npm link
+```
+
+```
+$ npm unlink
+```
