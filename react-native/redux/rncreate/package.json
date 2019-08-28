@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "eslint-utils": "^1.4.1",
     "react": "16.8.3",
     "react-native": "0.59.8",
     "react-redux": "^7.0.3",

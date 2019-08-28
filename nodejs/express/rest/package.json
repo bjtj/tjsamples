@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "eslint-utils": "^1.4.1",
     "express": "^4.16.4",
     "mysql": "^2.17.1",
     "pug": "^2.0.3"

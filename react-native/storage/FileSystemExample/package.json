@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@react-native-community/cameraroll": "^1.1.1",
+    "eslint-utils": "^1.4.1",
     "react": "16.8.6",
     "react-native": "0.60.4",
     "react-native-fs": "^2.13.3",

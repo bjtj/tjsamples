@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "eslint-utils": "^1.4.1",
     "handlebars": "^4.0.14",
     "lodash": "^4.17.11",
     "lodash.template": "^4.5.0",

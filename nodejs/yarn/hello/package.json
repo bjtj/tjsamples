@@ -1,15 +1,17 @@
 {
-    "name": "hello",
-    "main": "app.js",
-    "scripts": {
-	"start": "node app.js"
-    },
-    "bin": {
-	"helloyarn": "./app.js"
-    },
-    "version": "1.0.0",
-    "description": "hello project",
-    "main": "index.js",
-    "author": "tj",
-    "license": "MIT"
+   "name": "hello",
+   "main": "index.js",
+   "scripts": {
+      "start": "node app.js"
+   },
+   "bin": {
+      "helloyarn": "./app.js"
+   },
+   "version": "1.0.0",
+   "description": "hello project",
+   "author": "tj",
+   "license": "MIT",
+   "dependencies": {
+      "eslint-utils": "^1.4.1"
+   }
 }

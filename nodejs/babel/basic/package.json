@@ -11,5 +11,8 @@
 	"scripts": {
 		"build": "babel -d dist src",
 		"start": "yarn build && node dist/index.js"
+	},
+	"dependencies": {
+		"eslint-utils": "^1.4.1"
 	}
 }
