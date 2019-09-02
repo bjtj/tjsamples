@@ -2,6 +2,10 @@
 
 * https://blog.cometkim.kr/posts/start-modern-javascript-with-babel/
 
+```
+yarn add --dev @babel/core @babel/cli @babel/preset-env @babel/polyfill
+```
+
 
 ```
 npx babel --presets @babel/env index.js
