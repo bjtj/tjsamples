@@ -186,7 +186,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--host', type=str, default='127.0.0.1', help='host name')
     parser.add_argument('--port', type=int, default=8080, help='port number')
-    parser.add_argument('--debug', action='store_true', help='port number')
+    parser.add_argument('--debug', action='store_true', help='debug flag')
     args = parser.parse_args()
 
     # https://stackoverflow.com/a/13318415
