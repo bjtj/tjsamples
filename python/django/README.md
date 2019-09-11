@@ -22,3 +22,13 @@ python manage.py runserver 0:8080
 ```
 python manage.py startapp polls
 ```
+
+
+# Creating an admin user #
+
+https://docs.djangoproject.com/en/2.2/intro/tutorial02/#creating-an-admin-user
+
+```
+python manage.py createsuperuser
+```
+
