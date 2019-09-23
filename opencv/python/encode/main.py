@@ -15,6 +15,10 @@ def main():
             if ret:
                 with open('lenna.jpg', 'wb') as f:
                     jpg.tofile(f)
+
+    print('raw data size: {}'.format(img.size))
+    print('compressed data size: {}'.format(jpg.size))
+    print('compression: {:.0f} %'.format(float(jpg.size) / img.size * 100))
                 
 
 if __name__ == '__main__':
