@@ -4,7 +4,7 @@ import argparse
 
 
 def my_handler(msg):
-    print('[my handler] msg: {}'.format(msg))
+    print('[my handler] RECV msg: {}'.format(msg))
     # e.g.
     # [my handler] msg: {'pattern': None, 'type': 'message', 'channel': 'my-channel', 'data': 'hello'}
 
