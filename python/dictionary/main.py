@@ -15,6 +15,10 @@ def main():
     print(len(table))
     print(table)
 
+    assert('a' in table)
+    del table['a']
+    assert('a' not in table)
+
     ordered_table = OrderedDict()
 
     ordered_table.update(table)
