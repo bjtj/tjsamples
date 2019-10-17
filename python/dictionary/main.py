@@ -16,8 +16,11 @@ def main():
     print(table)
 
     assert('a' in table)
-    del table['a']
+    if 'a' in table:
+        del table['a']
     assert('a' not in table)
+    if 'a' in table:
+        del table['a']
 
     ordered_table = OrderedDict()
 
