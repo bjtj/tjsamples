@@ -1,0 +1,34 @@
+// we need to tell the compiler which version we're using
+syntax = "proto3";
+
+package registry;
+// here we define the service and methods we're going to use later on
+// to do the registration process
+service Registry {
+  rpc Register (Registration) returns (RegisterResponse);
+  rpc Unregister (Registration) returns (RegisterResponse);
+
+  rpc fetchServiceLocation (RegistrationFetchRequest) returns (RegistrationList);
+}
+// we define what a registration needs to have
+// all optional and self explanatory
+message Registration {
+  optional string name = 1;
+  optional string ipv4 = 2;
+  optional string port = 3;
+  optional string domain = 4;
+}
+// a list/array of registrations
+message RegistrationList {
+  repeated Registration registrations = 1;
+}
+// w/ this message we define what the server needs
+// to know what you want to have
+message RegistrationFetchRequest {
+  repeated Registration registrations = 1;
+  optional bool fetchAll = 2;
+}
+// simple response when you sign up
+message RegisterResponse {
+  required string message = 1;
+}
