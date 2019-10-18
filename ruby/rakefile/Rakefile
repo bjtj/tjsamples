@@ -1,0 +1,62 @@
+# coding: utf-8
+desc "Print reminder about eating more fruit."
+
+task :apple do
+  puts "Eat more apples!"
+end
+
+
+task :clean_cache do
+  # Careful with rm_r (remove with recursion) as it will delete files without confirmation
+  rm_r FileList["tmp/cache/*"]
+end
+
+
+task :import do
+  puts "Importing data..."
+  Dir.chdir(Rails.root.join("data")) { ruby "load-data.rb" }
+end
+
+
+# e.g.) $ rake backup:create
+namespace :backup do
+  task :create do
+    puts "Create backup"
+  end
+  task :list do
+    puts "List backup"
+  end
+  task :restore do
+    puts "Restore backup"
+  end
+end
+
+
+task :load_database do
+  puts "Load database"
+end
+
+
+task create_examples: "load_database" do
+  puts "Create examples"
+end
+
+
+task :coverage do
+  ENV['COVERAGE'] = 'true'
+  Rake::Task["test"].execute
+end
+
+
+# How to Use Rake Rules
+# ----
+
+task compress: FileList["/tmp/*.txt"].ext(".txt.gz")
+
+rule '.txt.gz' => '.txt' do |t|
+  sh "gzip", "-k", "-f", t.source
+end
+
+# The benefit of using rules is that once a file has been compressed,
+# it won’t be compressed again until the source file changes.
+
