@@ -1,2 +1,5 @@
 all:
-	nvcc -o test main.c -lcudnn
+	nvcc -g -o prog main.c -lcudnn
+
+clean:
+	rm -rf prog
