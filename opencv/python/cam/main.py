@@ -42,6 +42,9 @@ def main():
             else:
                 print('STOP SAVE!')
 
+    cap.release()
+    cv2.destroyAllWindows()
+
 
 if __name__ == '__main__':
     main()
