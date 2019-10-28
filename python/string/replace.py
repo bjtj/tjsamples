@@ -34,6 +34,10 @@ def main():
     print(pattern.sub('123', 'abc ABC Abc', 1))
     print(pattern.sub('123', 'ABC'))
     print(pattern.sub('123', 'Abc'))
+    print('========================')
+    pattern = re.compile('([a-z])([A-Z])')
+    print(pattern.sub('\\1 \\2', 'AbcDefGhi'))
+
 
 if __name__ == '__main__':
     main()
