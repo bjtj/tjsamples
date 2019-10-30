@@ -9,12 +9,18 @@
 
 e.g.)
 
+```shell
+$ yarn init
+$ yarn add $package
+$ yarn upgrade $package
+$ yarn remove $package
+$ yarn install
 ```
-yarn init
-yarn add $package
-yarn upgrade $package
-yarn remove $package
-yarn install
+
+e.g.)
+
+```shell
+$ yarn upgrade sequelize@^4.44.3
 ```
 
 
