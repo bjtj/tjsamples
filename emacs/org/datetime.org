@@ -1,0 +1,26 @@
+#+STARTUP: showeverything
+
+# C-c . - Prompt for a date and insert a corresponding timestamp
+
+<2019-10-30 수>
+
+# C-c ! - Like C-c ., but insert an inactive timestamp that does not cause an agenda entry
+
+[2019-10-30 수]
+
+# S-left/right - Change date at point by one day
+
+<2019-11-02 토> 이사
+
+# C-c C-d    DAEDLINE
+
+*** TODO write article about the Earth for the Guide
+    DEADLINE: <2019-11-03 일>
+    The editor in charge is [[bbdb:Ford Prefect]]
+
+# C-c C-s    SCHEDULED
+
+*** TODO Call Trillian for a date on New Years Eve.
+    SCHEDULED: <2019-11-02 토>
+
+

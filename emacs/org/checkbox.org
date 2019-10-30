@@ -1,0 +1,14 @@
+#+STARTUP: showeverything
+
+# M-S-RET  insert new item with a checkbox
+# C-c C-c  check or uncheck
+
+* TODO Organize party [1/4]
+  - [-] call people [1/3]
+    - [X] Peter
+    - [ ] Sarah
+    - [ ] Sam
+  - [X] order food
+  - [ ] think about what music to play
+  - [ ] talk to the neighbors
+

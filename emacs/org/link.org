@@ -1,0 +1,7 @@
+# C-c C-l
+# Toggle show link
+#  - Org -> Hyperlinks -> Literal links
+#  - M-x org-toggle-link-display
+* Link
+** go to [[http://www.google.com][google]] by C-c C-o
+

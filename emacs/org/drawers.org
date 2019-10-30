@@ -1,0 +1,10 @@
+#+STARTUP: showall
+
+# M-x org-insert-drawer
+
+** This is a headline
+Still outside the drawer
+:DRAWERNAME:
+This is inside the drawer.
+:END:
+After the drawer.

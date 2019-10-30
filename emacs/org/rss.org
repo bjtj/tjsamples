@@ -1,0 +1,11 @@
+#+STARTUP: showall
+
+# (setq org-feed-alist
+#       '(("Slashdot"
+# 	 "http://rss.slashdot.org/Slashdot/slashdot"
+# 	 "~/txt/org/feeds.org" "Slashdot Entries")))
+
+# C-c C-x g    Collect items from the feeds configured in org-feed-alist and act upon them.
+# C-c C-x G    Prompt for a feed name and go to the inbox configured for this feed.
+
+

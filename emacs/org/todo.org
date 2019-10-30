@@ -1,0 +1,31 @@
+# Initial visibility
+# ==================
+# #+STARTUP: overview
+# #+STARTUP: content
+# #+STARTUP: showall
+# #+STARTUP: showeverything
+
+#+STARTUP: showeverything
+
+# Key bindings
+# ============
+# M-RET          new item
+# M-j            newline with indentation remained
+# M-left/right   change level
+# S-left/right   change states [TODO | DONE]
+
+* 세부 일정 짜기
+  # unorderd list
+** 업무 나누기
+** 일정 정하기
+   - subtree
+     + subsubtree
+
+* 퇴근하기
+  # ordered list
+1. 정리정돈
+2. 컴퓨터 끄기
+3. 가방 챙기기
+4. 휴대폰 챙기기
+5. 나오기
+6. 집에 가는 버스타기

@@ -1,0 +1,9 @@
+# C-c | : create table
+# TAB / S-TAB : Moving around cells
+# C-c SPC : black the field at point
+
+| Name | Phone | Age |   |   |
+|------+-------+-----+---+---|
+|    1 |       |     |   |   |
+|    2 |       |     |   |   |
+|      |       |     |   |   |
