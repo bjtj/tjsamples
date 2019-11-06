@@ -6,3 +6,8 @@
 ```
 echo $0
 ```
+
+
+# check current shell #
+
+https://stackoverflow.com/a/3327022/5676460
