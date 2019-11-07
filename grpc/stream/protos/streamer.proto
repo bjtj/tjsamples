@@ -1,0 +1,32 @@
+syntax="proto3";
+
+service Streamer {
+    rpc Send (stream SendRequest) returns (Reply) {}
+    rpc Receive (ReceiveRequest) returns (stream ReceiveResponse) {}
+    rpc Communicate (stream CommunicateRequest) returns (stream CommunicateResponse) {}
+}
+
+message SendRequest {
+    string text = 1;
+}
+
+message Reply {
+    int32 ret = 1;
+}
+
+message ReceiveRequest {
+    string text = 1;
+}
+
+message ReceiveResponse {
+    int32 ret = 1;
+}
+
+message CommunicateRequest {
+    string text = 1;
+}
+
+message CommunicateResponse {
+    string text = 1;
+}
+
