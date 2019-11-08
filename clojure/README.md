@@ -9,8 +9,20 @@ lein new hello-world
 cd hello-world
 ```
 
-* write `(defn -main [& args] ...`
-* edit `project.clj` & `src/hello-world/core.clj`
+* add `main` function `src/hello_world/core.clj`
+
+```
+(defn -main [& args]
+  (println "Hello, World!"))
+```
+
+* edit `project.clj`
+
+```
+:main hello-world.core
+```
+
+Run
 
 ```
 lein run
