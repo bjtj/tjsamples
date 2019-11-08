@@ -1,0 +1,1 @@
+{:main "clock.core", :output-to "resources/public/js/main.js", :output-dir "resources/public/js/development", :asset-path "js/development", :optimizations :none, :source-map-timestamp true, :preloads [figwheel.connect], :external-config #:figwheel{:config {:build-id "development", :websocket-url "ws://localhost:3449/figwheel-ws"}}}
