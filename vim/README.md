@@ -89,3 +89,4 @@ http://vimdoc.sourceforge.net/htmldoc/usr_04.html#04.4
 * `V` select lines
 * `d` delete
 * `p` paste
+* `CTRL-v` vertical
