@@ -10,4 +10,4 @@ function say_hello() {
     echo "Hello!"
 }
 
-command say_hello
+# command say_hello
