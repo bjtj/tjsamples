@@ -33,13 +33,23 @@ def before_request():
 
 @app.errorhandler(404)
 def handler_notfound(err):
-    print(err)
     return render_template('404.html', message='Cannot access -- "{}"'.format(request.path)), 404
+
+@app.errorhandler(500)
+def handler_server_error(err):
+    # https://stackoverflow.com/a/21301229/5676460
+    return render_template('500.html', message=err.description)
 
 
 @app.route("/")
 def index():
     return render_template('index.html')
+
+
+@app.route('/error')
+def err():
+    abort(500, 'Intended server error message')
+
 
 
 @app.route("/post", methods=['post'])

@@ -1,0 +1,10 @@
+{% extends 'template.html' %}
+
+{% block title %}500 Internal Server Error{% endblock %}
+
+{% block contents %}
+<h1>500 Internal Server Error</h1>
+<h2>Message:</h2>
+<p>{{ message if message else 'Internal Server Error' }}</p>
+
+{% endblock %}
