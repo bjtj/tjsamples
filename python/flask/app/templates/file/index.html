@@ -1,3 +1,7 @@
+{% extends "file/base.html" %}
+
+{% block content %}
+
 <form method="POST" action="upload" enctype="multipart/form-data">
     <p>
 	<input type="file" name="file1" />
@@ -5,3 +9,8 @@
     </p>
     <label><input type="checkbox" name="save" value="save" /> save</label>
 </form>
+
+<p><a href="list">File List</a></p>
+
+
+{% endblock %}
