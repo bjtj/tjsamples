@@ -1,0 +1,10 @@
+{% extends 'template.html' %}
+
+{% block title %}404 Not Found{% endblock %}
+
+{% block contents %}
+<h1>404 Not Found</h1>
+<h2>Message:</h2>
+<p>{{ message if message else 'Cannot access' }}</p>
+
+{% endblock %}

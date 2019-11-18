@@ -1,10 +1,10 @@
 import os
-from flask import Flask, render_template, request, Response, redirect, make_response, g, session, jsonify, send_from_directory
+from flask import Flask, render_template, request, Response, redirect, make_response, g, session, jsonify, send_from_directory, abort
 import argparse
 from app.mypage import mypage
 from app.file import file
 import json
-
+from werkzeug.exceptions import NotFound
 
 app = Flask(__name__)
 app.register_blueprint(mypage, url_prefix='/pages')
@@ -29,6 +29,12 @@ def before_request():
     print('before_request')
     idx += 1
     g.greeting = 'Hello World!!! {}'.format(idx)
+
+
+@app.errorhandler(404)
+def handler_notfound(err):
+    print(err)
+    return render_template('404.html', message='Cannot access -- "{}"'.format(request.path)), 404
 
 
 @app.route("/")

@@ -11,10 +11,11 @@ def index():
 def upload():
     save = request.form.get('save')
     for k, v in request.files.items():
-        print('name: {}'.format(v.name))
-        print('content type: {}'.format(v.headers['Content-Type']))
+        print('Name: {}'.format(v.name))
+        print('Content type: {}'.format(v.headers['Content-Type']))
+        print('Content type: {}'.format(v.content_type))
         if save:
-            print('write to file')
+            print('== Write to file ==')
             open(v.name, 'wb').write(v.read())
     return Response('\n'.join(request.files.keys()),
                     mimetype='text/plain')
