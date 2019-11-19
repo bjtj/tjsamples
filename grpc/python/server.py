@@ -15,7 +15,11 @@ class Greeter(helloworld_pb2_grpc.GreeterServicer):
 def main():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     helloworld_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)
-    server.add_insecure_port('[::]:50051')
+    if True:
+        port = server.add_insecure_port('[::]:50051')
+    else:
+        port = server.add_insecure_port('[::]:0')
+    print('Listening port: {}'.format(port))
     server.start()
     server.wait_for_termination()
 
