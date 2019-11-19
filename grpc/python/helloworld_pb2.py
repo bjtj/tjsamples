@@ -13,15 +13,17 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='helloworld.proto',
   package='',
-  syntax='proto2',
+  syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x10helloworld.proto\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x02(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x02(\t2b\n\x07Greeter\x12(\n\x08SayHello\x12\r.HelloRequest\x1a\x0b.HelloReply\"\x00\x12-\n\rSayHelloAgain\x12\r.HelloRequest\x1a\x0b.HelloReply\"\x00')
-)
+  serialized_pb=_b('\n\x10helloworld.proto\x1a\x1bgoogle/protobuf/empty.proto\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x18\n\tPongReply\x12\x0b\n\x03ret\x18\x01 \x01(\t2\x90\x01\n\x07Greeter\x12(\n\x08SayHello\x12\r.HelloRequest\x1a\x0b.HelloReply\"\x00\x12-\n\rSayHelloAgain\x12\r.HelloRequest\x1a\x0b.HelloReply\"\x00\x12,\n\x04Ping\x12\x16.google.protobuf.Empty\x1a\n.PongReply\"\x00\x62\x06proto3')
+  ,
+  dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
 
 
@@ -35,7 +37,7 @@ _HELLOREQUEST = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='name', full_name='HelloRequest.name', index=0,
-      number=1, type=9, cpp_type=9, label=2,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -48,12 +50,12 @@ _HELLOREQUEST = _descriptor.Descriptor(
   ],
   serialized_options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20,
-  serialized_end=48,
+  serialized_start=49,
+  serialized_end=77,
 )
 
 
@@ -66,7 +68,7 @@ _HELLOREPLY = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='message', full_name='HelloReply.message', index=0,
-      number=1, type=9, cpp_type=9, label=2,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -79,16 +81,48 @@ _HELLOREPLY = _descriptor.Descriptor(
   ],
   serialized_options=None,
   is_extendable=False,
-  syntax='proto2',
+  syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=50,
-  serialized_end=79,
+  serialized_start=79,
+  serialized_end=108,
+)
+
+
+_PONGREPLY = _descriptor.Descriptor(
+  name='PongReply',
+  full_name='PongReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ret', full_name='PongReply.ret', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=110,
+  serialized_end=134,
 )
 
 DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
 DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
+DESCRIPTOR.message_types_by_name['PongReply'] = _PONGREPLY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), {
@@ -105,6 +139,13 @@ HelloReply = _reflection.GeneratedProtocolMessageType('HelloReply', (_message.Me
   })
 _sym_db.RegisterMessage(HelloReply)
 
+PongReply = _reflection.GeneratedProtocolMessageType('PongReply', (_message.Message,), {
+  'DESCRIPTOR' : _PONGREPLY,
+  '__module__' : 'helloworld_pb2'
+  # @@protoc_insertion_point(class_scope:PongReply)
+  })
+_sym_db.RegisterMessage(PongReply)
+
 
 
 _GREETER = _descriptor.ServiceDescriptor(
@@ -113,8 +154,8 @@ _GREETER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=81,
-  serialized_end=179,
+  serialized_start=137,
+  serialized_end=281,
   methods=[
   _descriptor.MethodDescriptor(
     name='SayHello',
@@ -132,6 +173,15 @@ _GREETER = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_HELLOREQUEST,
     output_type=_HELLOREPLY,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Ping',
+    full_name='Greeter.Ping',
+    index=2,
+    containing_service=None,
+    input_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
+    output_type=_PONGREPLY,
     serialized_options=None,
   ),
 ])
