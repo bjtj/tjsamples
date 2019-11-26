@@ -17,9 +17,16 @@
     <li><a href="/post">post</a></li>
     <li><a href="/error">500 error</a></li>
 </ul>
-<h1>Blueprint</h1>
+<h1>Blueprints</h1>
 <ul>
     <li><a href="/pages">pages</a></li>
     <li><a href="/file">file</a></li>
+</ul>
+<h1>Blueprints</h1>
+<p>NOTE: mypage's url_prefix is None</p>
+<ul>
+    {% for name, bp in bps.items() %}
+    <li><a href="{{ bp.url_prefix }}">{{ bp.name }}</a></li>
+    {% endfor %}
 </ul>
 {% endblock %}

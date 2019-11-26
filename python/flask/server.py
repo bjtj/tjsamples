@@ -43,7 +43,7 @@ def handler_server_error(err):
 
 @app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template('index.html', bps = app.blueprints)
 
 
 @app.route('/error')
