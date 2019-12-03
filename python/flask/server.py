@@ -43,7 +43,11 @@ def handler_server_error(err):
 
 @app.route("/")
 def index():
-    return render_template('index.html', bps = app.blueprints)
+    remote_addr = request.remote_addr
+    remote_user = request.remote_user
+    return render_template('index.html', bps = app.blueprints,
+                           remote_addr = remote_addr,
+                           remote_user = remote_user)
 
 
 @app.route('/error')

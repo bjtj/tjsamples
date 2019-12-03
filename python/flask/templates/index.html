@@ -1,6 +1,13 @@
 {% extends 'template.html' %}
 {% block title %}Welcome{% endblock %}
 {% block contents %}
+
+<h1>Remote Information</h1>
+<ul>
+    <li>Address: {{ remote_addr }}</li>
+    <li>User: {{ remote_user }}</li>
+</ul>
+
 <h1>List</h1>
 <ul>
     <li><a href="/list">list</a></li>
