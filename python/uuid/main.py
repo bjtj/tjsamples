@@ -13,6 +13,10 @@ def main():
     print(val.hex)
     print(val.urn)
     print(uuid.UUID(bytes=val.bytes))
+
+    # MAC Address
+    # https://stackoverflow.com/a/159195/5676460
+    print('Node: {:012x}'.format(uuid.getnode()))
     
 
 if __name__ == '__main__':
