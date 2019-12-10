@@ -14,7 +14,8 @@
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.8.6",
+    "serialize-javascript": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
