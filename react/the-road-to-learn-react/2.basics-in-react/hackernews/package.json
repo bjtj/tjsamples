@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "eslint-utils": "^1.4.1",
+    "handlebars": "^4.3.0",
     "lodash": "^4.17.13",
     "lodash.template": "^4.5.0",
     "react": "^16.8.6",

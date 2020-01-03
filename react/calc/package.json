@@ -8,6 +8,7 @@
     "eslint-utils": "^1.4.1",
     "gh-pages": "^2.0.1",
     "github-fork-ribbon-css": "^0.2.1",
+    "handlebars": "^4.3.0",
     "lodash": "^4.17.13",
     "lodash.template": "^4.5.0",
     "prettier": "^1.17.0",
