@@ -17,3 +17,25 @@ https://askubuntu.com/a/1092849
 sudo apt install nodejs-dev node-gyp libssl1.0-dev
 sudo apt install npm
 ```
+
+
+# getter for a property #
+
+https://stackoverflow.com/a/31999286/5676460
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get
+
+```
+get area() {
+    return this.calcArea()
+}
+```
+
+
+# How can I get console.log to output the getter result instead of the string “[Getter/Setter]”? #
+
+https://stackoverflow.com/a/58633124/5676460
+
+```
+util.inspect(obj, { getters: true });
+```
+
