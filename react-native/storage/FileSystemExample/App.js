@@ -74,16 +74,24 @@ export class App extends Component {
     }
 
     _basic() {
+	console.log('basic()');
+	
 	// require the module
 	var RNFS = require('react-native-fs');
 	// get a list of files and directories in the main bundle
 	RNFS.readDir(Platform.OS === 'ios' ? RNFS.MainBundlePath : RNFS.DocumentDirectoryPath) // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
 	    .then((result) => {
+		console.log('result.length: ', result.length);
 		console.log('GOT RESULT', result);
 		// stat the first file
 		return Promise.all([RNFS.stat(result[0].path), result[0].path]);
 	    })
 	    .then((statResult) => {
+		console.log('Stat result length: ', statResult.length); // 2 because parameters of Promise.all are 2
+		console.log('Stat result: ', statResult);
+		statResult.forEach(item => {
+		    console.log('item: ', item);
+		})
 		if (statResult[0].isFile()) {
 		    // if we have a file, read it
 		    return RNFS.readFile(statResult[1], 'utf8');
@@ -92,11 +100,19 @@ export class App extends Component {
 	    })
 	    .then((contents) => {
 		// log the file contents
-		console.log(contents);
+		console.log('Content: ', contents);
 	    })
 	    .catch((err) => {
 		console.log(err.message, err.code);
 	    });
+
+
+	var path = (Platform.OS === 'ios' ? RNFS.MainBundlePath : RNFS.DocumentDirectoryPath) + '/test.txt';
+	console.log('path:', path);
+	RNFS.readFile(path, 'utf8').then((content) => {
+	    console.log('content', content);
+	});
+	
     }
 
     _share = () => {

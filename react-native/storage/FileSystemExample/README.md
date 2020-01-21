@@ -16,3 +16,9 @@ yarn add react-native-fetch-blob
 ```
 		
 * https://gist.github.com/dabit3/dbce30e19ab594b57d18f2a12580f7d5
+
+
+# react-native-fs #
+
+https://www.npmjs.com/package/react-native-fs
+
