@@ -31,8 +31,8 @@ import memoize from "lodash.memoize";
 
 const translationGetters = {
     // lazy requires (metro bundler does not support symlinks)
-    en: () => require("./android/app/src/main/assets/translations/en.json"),
-    ko: () => require("./android/app/src/main/assets/translations/ko.json"),
+    en: () => require("./translations/en.json"),
+    ko: () => require("./translations/ko.json"),
 };
 
 const translate = memoize(
@@ -41,6 +41,9 @@ const translate = memoize(
 );
 
 const setI18nConfig = () => {
+
+    console.log('setI18nConfig');
+    
     const fallback = { languageTag: "en", isRTL: false };
 
     const { languageTag, isRTL } = RNLocalize.findBestAvailableLanguage(Object.keys(translationGetters)) ||
@@ -66,6 +69,7 @@ export default class App extends Component {
     }
 
     handleLocalizationChange = () => {
+	console.log('handleLocalizationChange');
 	setI18nConfig();
 	this.forceUpdate();
     }
