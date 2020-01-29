@@ -52,3 +52,13 @@ https://github.com/oblador/react-native-animatable
 ```
 $ npm install react-native-animatable --save
 ```
+
+
+# Pie animation in React Native using SVG #
+
+https://medium.com/@oriharel/pie-animation-in-react-native-using-svg-55d7d3f90156
+
+
+```
+yarn add react-native-svg d3-shape
+```
