@@ -15,12 +15,29 @@ npm install react-navigation
 npm run postinstall
 ```
 
+5.x
+
+```
+npm install @react-navigation/native
+```
+
+```
+npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+```
+
 # Tab navigation #
 
 https://reactnavigation.org/docs/en/tab-based-navigation.html
 
 ```
 yarn add react-navigation-tabs react-native-screens react-native-reanimated react-native-gesture-handler 
+```
+
+5.x
+
+```
+npm install @react-navigation/bottom-tabs
+yarn add @react-navigation/bottom-tabs
 ```
 
 **react-native-screens**
@@ -37,7 +54,14 @@ https://github.com/software-mansion/react-native-reanimated
 https://github.com/react-navigation/stack
 
 ```
+yarn add react-navigation
 yarn add react-navigation-stack @react-native-community/masked-view react-native-safe-area-context
+```
+
+5.x
+
+```
+npm install @react-navigation/stack
 ```
 
 # App containers #
@@ -81,3 +105,34 @@ export default AppContainer;
 > callFunctionReturnFlushedQueue
 >     [native code]:0
 
+
+
+# Route prop reference #
+
+https://reactnavigation.org/docs/en/route-prop.html
+
+route
+* key
+* name
+* params
+
+
+```
+function ProfileScreen({ navigation: { route } }) {
+  return (
+    <View>
+      <Text>This is the profile screen of the app</Text>
+      <Text>{route.params.name}</Text>
+    </View>
+  );
+}
+```
+
+
+# Drawer #
+
+https://reactnavigation.org/docs/en/drawer-based-navigation.html
+
+```
+npm install @react-navigation/drawer
+```
