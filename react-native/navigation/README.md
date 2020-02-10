@@ -136,3 +136,47 @@ https://reactnavigation.org/docs/en/drawer-based-navigation.html
 ```
 npm install @react-navigation/drawer
 ```
+
+# createMaterialTopTabNavigator #
+
+https://reactnavigation.org/docs/en/material-top-tab-navigator.html
+
+```
+npm install @react-navigation/material-top-tabs react-native-tab-view
+npm install react-native-reanimated react-native-gesture-handler
+```
+
+
+## swipeEnabled property not working in materialTopNavigator #167 ##
+
+https://github.com/react-navigation/tabs/issues/167#issuecomment-535357500
+
+> To everyone having this issue please note that you even though you're on ReactNative 0.60+ you will still have to do the part staying "To finalize installation of react-native-gesture-handler" of the getting started guide
+
+
+```
+package com.reactnavigation.example;
+
+import com.facebook.react.ReactActivity;
++ import com.facebook.react.ReactActivityDelegate;
++ import com.facebook.react.ReactRootView;
++ import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
+
+public class MainActivity extends ReactActivity {
+
+  @Override
+  protected String getMainComponentName() {
+    return "Example";
+  }
+
++  @Override
++  protected ReactActivityDelegate createReactActivityDelegate() {
++    return new ReactActivityDelegate(this, getMainComponentName()) {
++      @Override
++      protected ReactRootView createRootView() {
++        return new RNGestureHandlerEnabledRootView(MainActivity.this);
++      }
++    };
++  }
+}
+```
