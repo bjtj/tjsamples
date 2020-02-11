@@ -14,30 +14,34 @@ import TabSample from './TabSample';
 import CustomTabSample from './CustomTabSample';
 import DrawerSample from './DrawerSample';
 import SafeAreaSample from './SafeAreaSample';
+import TopBarSample from './TopBarSample';
+import CustomTopBarSample from './CustomTopBarSample';
 
 const App: () => React$Node = () => {
 
   const [pick, setPick] = useState(0);
 
   const views = [
-    <StackSample />,
-    <TabSample />,
-    <CustomTabSample />,
-    <DrawerSample />,
-    <SafeAreaSample />,
+    {name: 'Stack', screen: (<StackSample />)},
+    {name: 'Tab', screen: (<TabSample />)},
+    {name: 'Custom Tab', screen: (<CustomTabSample />)},
+    {name: 'Drawer', screen: (<DrawerSample />)},
+    {name: 'Safe Area', screen: (<SafeAreaSample />)},
+    {name: 'Top Bar', screen: (<TopBarSample />)},
+    {name: 'Custom Top Bar', screen: (<CustomTopBarSample />)},
   ];
   
   return (
     <>
       {
-        views[pick]
+        views[pick].screen
       }
       <View style={styles.float}>
-        <Button title='Stack' onPress={() => {setPick(0)}}/>
-        <Button title='Tab' onPress={() => {setPick(1)}}/>
-        <Button title='Custom Tab' onPress={() => {setPick(2)}}/>
-        <Button title='Drawer' onPress={() => {setPick(3)}}/>
-        <Button title='Safe Area' onPress={() => {setPick(4)}}/>
+	{
+	  views.map((item, index) => (
+	    <Button key={index} title={item.name} onPress={() => {setPick(index)}}></Button>
+	  ))
+	}
       </View>
     </>
   );
@@ -48,8 +52,9 @@ const styles = StyleSheet.create({
     ...StyleSheet.fillAbsoluteObject,
   },
   float: {
+    backgroundColor: '#fff',
     position: 'absolute',
-    top: 50,
+    top: 80,
     right: 30,
     borderColor: 'black',
     borderWidth: 1,
