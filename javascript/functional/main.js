@@ -28,6 +28,9 @@ var ret = materials.forEach(function (e) {
 console.log(ret);		// undefined
 
 
+[1,2,3].forEach((item, index) => console.log('item:', item, ', index:', index));
+
+
 // ------
 // filter
 // ------
