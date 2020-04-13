@@ -33,3 +33,23 @@ var a1x = a1;
 
 console.log(a1 == a1x)		// true
 console.log(a1 === a1x)		// true
+
+
+const test = (item) => {
+  console.log(item ? 'yes' : 'no');
+}
+
+test('');			// no
+test('str');			// yes
+test([]);			// yes
+test([1,]);			// yes
+test(0);			// no
+test(1);			// yes
+test(11);			// yes
+test(true);			// yes
+test(false);			// no
+test(undefined);		// no
+test(null);			// no
+test({});			// yes
+test({a: 'a'});			// yes
+
