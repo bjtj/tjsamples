@@ -28,6 +28,9 @@ var ret = materials.forEach(function (e) {
 console.log(ret);		// undefined
 
 
+[1,2,3].forEach((item, index) => console.log('item:', item, ', index:', index));
+
+
 // ------
 // filter
 // ------
@@ -61,3 +64,16 @@ var closure = makeClosure(0);
 closure();
 closure();
 closure();
+
+
+// -------
+// reduce
+// -------
+
+// https://www.w3schools.com/jsref/jsref_reduce.asp
+
+console.log('max:', [1, 2, 3, 2, 1].reduce((total, num) => total < num ? num : total));
+console.log('max:', [1, 2, 3, 2, 1].reduce((total, num) => total < num ? num : total, 0));
+console.log('max:', Math.max(1,2,3,2,1));
+console.log('max:', Math.max.apply(Math, [1,2,3,2,1]));
+console.log('max:', Math.max.apply(null, [1,2,3,2,1]));
