@@ -5,6 +5,9 @@ from datetime import datetime
 
 
 def main():
+
+    seq = 0
+    
     save = False
     cap = cv2.VideoCapture(0)
     print(cap.isOpened())
@@ -19,6 +22,9 @@ def main():
         
         if flip:
             frame = cv2.flip(frame, 1)
+        seq += 1
+        cv2.putText(frame, 'Seq: {}'.format(seq), (50, 50),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 128, 0), 3, cv2.LINE_AA)
         cv2.imshow('preview', frame)
 
         if save:
