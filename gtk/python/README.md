@@ -50,3 +50,18 @@ label.set_state_flags(Gtk.StateFlags.INSENSITIVE, True)
 # 18. Popovers #
 
 <https://python-gtk-3-tutorial.readthedocs.io/en/latest/popover.html>
+
+
+# 21. Glade and Gtk.Builder #
+
+<https://python-gtk-3-tutorial.readthedocs.io/en/latest/builder.html>
+
+
+# 22. Objects #
+
+<https://python-gtk-3-tutorial.readthedocs.io/en/latest/objects.html>
+
+
+# 23. Application #
+
+<https://python-gtk-3-tutorial.readthedocs.io/en/latest/application.html>
