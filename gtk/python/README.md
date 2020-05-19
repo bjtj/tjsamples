@@ -45,3 +45,8 @@ label.set_state_flags(Gtk.StateFlags.INSENSITIVE, True)
 # 17. Dialogs #
 
 <https://python-gtk-3-tutorial.readthedocs.io/en/latest/dialogs.html>
+
+
+# 18. Popovers #
+
+<https://python-gtk-3-tutorial.readthedocs.io/en/latest/popover.html>
