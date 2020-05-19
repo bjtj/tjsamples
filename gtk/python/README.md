@@ -40,3 +40,8 @@ label.set_state_flags(Gtk.StateFlags.INSENSITIVE, True)
 * headerBar
 * FlowBox
 * Notebook
+
+
+# 17. Dialogs #
+
+<https://python-gtk-3-tutorial.readthedocs.io/en/latest/dialogs.html>
