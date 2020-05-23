@@ -1,2 +1,2 @@
 all:
-	gcc -o hello main.c `pkg-config --cflags --libs gtk+-2.0`
+	gcc -Wall -o hello main.c `pkg-config --cflags --libs gtk+-3.0`
