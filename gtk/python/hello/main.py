@@ -1,3 +1,6 @@
+import os
+os.environ['GTK_DEBUG'] = 'interactive'
+
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
