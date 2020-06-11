@@ -14,11 +14,29 @@ class Obj:
     @staticmethod
     def countup():
         Obj.count += 1
+        # print(count) -- NameError: global name 'count' is not defined
+
+    @classmethod
+    def test_cm(cls):
+        print(cls.count)
+        print(Obj.count)
+        # print(count) -- NameError: global name 'count' is not defined
+
+
+    def test(self):
+        # print(count) -- NameError: global name 'count' is not defined
+        print(Obj.count)
 
 
 def main():
     Obj()
     Obj()
+    Obj.test_cm()
+    
+    obj = Obj()
+    obj.test()
+    obj.test_cm()               # valid
+    obj.countup()               # valid
 
 
 if __name__ == '__main__':
