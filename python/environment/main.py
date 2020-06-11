@@ -1,3 +1,4 @@
+import os
 import sys
 
 
@@ -13,6 +14,9 @@ def main():
     
     for k, v in globals().items():
         print('{}: {}'.format(k, v))
+
+    print(os.environ)
+    print('PATH:', os.environ.get('PATH', ''))
 
 if __name__ == '__main__':
     main()
