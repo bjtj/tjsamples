@@ -13,7 +13,8 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-scripts": "^2.1.8",
-    "set-value": "^2.0.1"
+    "set-value": "^2.0.1",
+    "websocket-extensions": "^0.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
