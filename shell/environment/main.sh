@@ -1,5 +1,11 @@
 #!/bin/bash
 
+BASEDIR=$(dirname "$0")
+echo "BASEDIR: $BASEDIR"
+
+ABSBASEDIR=$(readlink -f "$BASEDIR")
+echo "ABSBASEDIR: $ABSBASEDIR"
+
 PROGRAM=`basename $0`
 
 if [ $PROGRAM == "test" ]
