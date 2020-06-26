@@ -81,7 +81,8 @@ export class Worker {
         const finalMessages: IMessage[] = [];
         messages.forEach((inValue: any) => {
             finalMessages.push({
-                id: inValue.id, date: inValue.envelope.date,
+                id: inValue.uid,
+		date: inValue.envelope.date,
                 from: inValue.envelope.from[0].address,
                 subject: inValue.envelope.subject
             });
