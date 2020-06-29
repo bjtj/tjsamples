@@ -1,7 +1,12 @@
 
-https://kr.vuejs.org/v2/guide/installation.html
 
+## 설치방법 ##
+
+<https://kr.vuejs.org/v2/guide/installation.html>
+
+```
 $ npm install vue
+```
 
-* https://kr.vuejs.org/v2/guide/index.html
+<https://kr.vuejs.org/v2/guide/index.html>
 
