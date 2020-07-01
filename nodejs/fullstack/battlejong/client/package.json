@@ -1,0 +1,30 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^16.9.41",
+    "@types/react-dom": "^16.9.8",
+    "awesome-typescript-loader": "^5.2.1",
+    "css-loader": "^3.6.0",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "style-loader": "^1.2.1",
+    "typescript": "^3.9.5",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
