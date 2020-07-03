@@ -31,7 +31,7 @@ module.exports = {
   ],
 
   performance : { hints : false },
-  watch : true,
+  watch : false,
   devtool : "source-map"
 
 };
