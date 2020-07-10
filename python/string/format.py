@@ -6,6 +6,7 @@ def main():
     print('item1: {}, \
 item2: {}, \
 item3: {}'.format(1,2,3))
+    print('{:,}'.format(1234567))
 
 if __name__ == '__main__':
     main()
