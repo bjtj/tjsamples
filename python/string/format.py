@@ -7,6 +7,7 @@ def main():
 item2: {}, \
 item3: {}'.format(1,2,3))
     print('{:,}'.format(1234567))
+    print('{:>12,}'.format(1234567))
 
 if __name__ == '__main__':
     main()
