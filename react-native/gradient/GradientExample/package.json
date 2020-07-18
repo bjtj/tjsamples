@@ -9,7 +9,7 @@
   "dependencies": {
     "eslint-utils": "^1.4.1",
     "handlebars": "^4.3.0",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.19",
     "react": "16.8.3",
     "react-native": "0.59.9",
     "react-native-linear-gradient": "^2.5.4"
