@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handling</title>
+    <style>
+      body {
+        background: #dddddd;
+      }
+      #canvas {
+        position: absolute;
+        left: 0px;
+        top: 20px;
+        margin: 20px;
+        background: #ffffff;
+        border: thin inset rgba(100, 150, 230, 0.5);
+        cursor: pointer;
+      }
+
+      #readout {
+        margin-top: 10px;
+        margin-left: 15px;
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="readout"></div>
+    <canvas id="canvas" width="500" height="250">
+      Canvas not supported
+    </canvas>
+
+    <a href="https://www.informit.com/articles/article.aspx?p=1903884&seqNum=6"
+      >reference</a>
+
+    <script>
+      var canvas = document.getElementById("canvas");
+      var readout = document.getElementById("readout");
+      var context = canvas.getContext("2d");
+      var spritesheet = new Image();
+
+      function windowToCanvas(canvas, x, y) {
+        var bbox = canvas.getBoundingClientRect();
+        return {
+          x: x - bbox.left * (canvas.width / bbox.width),
+          y: y - bbox.top * (canvas.height / bbox.height),
+        };
+      }
+
+      function drawBackground() {
+        var VERTICAL_LINE_SPACING = 12,
+          i = context.canvas.height;
+
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.strokeStyle = "lightgray";
+        context.lineWidth = 0.5;
+
+        while (i > VERTICAL_LINE_SPACING * 4) {
+          context.beginPath();
+          context.moveTo(0, i);
+          context.lineTo(context.canvas.width, i);
+          context.stroke();
+          i -= VERTICAL_LINE_SPACING;
+        }
+      }
+
+      function drawSpritesheet() {
+        context.drawImage(spritesheet, 0, 0);
+      }
+
+      function drawGuidelines(x, y) {
+        context.strokeStyle = "rgba(0,0,230,0.8)";
+        context.lineWidth = 0.5;
+        drawVerticalLine(x);
+        drawHorizontalLine(y);
+      }
+
+      function updateReadout(x, y) {
+        readout.innerText = "(" + x.toFixed(0) + ", " + y.toFixed(0) + ")";
+      }
+
+      function drawHorizontalLine(y) {
+        context.beginPath();
+        context.moveTo(0, y + 0.5);
+        context.lineTo(context.canvas.width, y + 0.5);
+        context.stroke();
+      }
+
+      function drawVerticalLine(x) {
+        context.beginPath();
+        context.moveTo(x + 0.5, 0);
+        context.lineTo(x + 0.5, context.canvas.height);
+        context.stroke();
+      }
+
+      canvas.onmousemove = function (e) {
+        var loc = windowToCanvas(canvas, e.clientX, e.clientY);
+
+        drawBackground();
+        drawSpritesheet();
+        drawGuidelines(loc.x, loc.y);
+        updateReadout(loc.x, loc.y);
+      };
+
+      spritesheet.src = "running-sprite-sheet.png";
+      spritesheet.onload = function (e) {
+        drawSpritesheet();
+      };
+
+      drawBackground();
+    </script>
+  </body>
+</html>
