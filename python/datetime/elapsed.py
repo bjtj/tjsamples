@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import time
 
 def check_elapsed(foo):

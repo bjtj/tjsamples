@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 
 def main():
     # contains
@@ -31,6 +31,13 @@ def main():
     assert('' is not 'hello')
     assert('hello' is not '')
     assert('' is '')
+
+
+    print('hello'
+          ' world')
+
+    print(f'1 + 1 = {1 + 1}, '
+          f'2 + 2 = {2 + 2}')
 
 if __name__ == '__main__':
     main()
