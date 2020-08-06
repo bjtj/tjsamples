@@ -1,4 +1,5 @@
 import os
+from functools import reduce
 
 def main():
     items = [1,2,3,4,5]

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from math import *
 import sys
 
@@ -71,7 +73,6 @@ def main():
     lst = [1,2,1,2,1,2,1,2,1,2]
     lst = filter(lambda item: item != 2, lst)
     print(lst)
-    
     
 
 if __name__ == '__main__':

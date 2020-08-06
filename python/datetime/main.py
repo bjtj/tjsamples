@@ -1,6 +1,9 @@
+#!/usr/bin/env python
+
 from datetime import datetime
 import time
 from dateutil.parser import parse
+import pytz
 
 print('== strftime ==')
 t = datetime.now()
@@ -30,5 +33,10 @@ try:
     print(parse('text'))
 except Exception as e:
     print('expected: {}'.format(e))
+
+
+print('== UTC ==')
+print(datetime.now(pytz.utc))
+print(parse(f'{datetime.now(pytz.utc)}'))
 
 print('Done.')
