@@ -5,6 +5,7 @@
   "dependencies": {
     "big.js": "^5.2.2",
     "chai": "^4.2.0",
+    "dot-prop": "^4.2.1",
     "eslint-utils": "^1.4.1",
     "gh-pages": "^2.0.1",
     "github-fork-ribbon-css": "^0.2.1",
