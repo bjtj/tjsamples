@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.3",
+    "dot-prop": "^4.2.1",
     "eslint-utils": "^1.4.1",
     "handlebars": "^4.3.0",
     "lodash": "^4.17.19",

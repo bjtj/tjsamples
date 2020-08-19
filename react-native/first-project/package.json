@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dot-prop": "^4.2.1",
     "eslint-utils": "^1.4.1",
     "handlebars": "^4.3.0",
     "react": "^16.8.6",
