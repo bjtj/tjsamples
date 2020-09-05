@@ -39,4 +39,11 @@ print('== UTC ==')
 print(datetime.now(pytz.utc))
 print(parse(f'{datetime.now(pytz.utc)}'))
 
+
+d1 = datetime.now()
+time.sleep(1.3)
+d2 = datetime.now()
+print('duration:', (d2 - d1).total_seconds())
+
+
 print('Done.')
