@@ -29,9 +29,22 @@ def example2():
     print(cur.fetchone()[0])
 
 
+def example3():
+    def adapt_datetime(ts):
+        return time.mktime(ts.timetuple())
+    sqlite3.register_adapter(datetime.datetime, adapt_datetime)
+    con = sqlite3.connect(":memory:")
+    cur = con.cursor()
+    cur.execute('CREATE TABLE tab1 (str text)')
+    cur.execute('SELECT * FROM tab1')
+    print(cur.fetchone())
+
+
+
 def main():
     example1()
     example2()
+    example3()
 
 if __name__ == '__main__':
     main()
