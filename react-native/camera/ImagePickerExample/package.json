@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "eslint-utils": "^1.4.1",
-    "handlebars": "^4.4.5",
+    "handlebars": "^4.5.3",
     "react": "16.8.3",
     "react-native": "0.59.9",
     "react-native-image-picker": "^0.28.1"
