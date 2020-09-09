@@ -60,7 +60,7 @@ DIRS=(
     "react-native/ToDoList/" 
 )
 
-CMD="yarn upgrade handlebars@^4.4.5"
+CMD="yarn upgrade handlebars@^4.5.3"
 
 
 for i in ${DIRS[@]}; do
