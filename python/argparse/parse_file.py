@@ -15,21 +15,24 @@ class LoadFromFile(argparse.Action):
             parser.parse_args(tokens, namespace)
 
 
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--name', type=str, help='name')
     parser.add_argument('--message', type=str, help='message')
     parser.add_argument('--count', type=int, help='count')
     parser.add_argument('--file', type=open, action=LoadFromFile)
-    
+
     args = parser.parse_args(['--name', 'ABC'])
     print(args)
 
-    args = parser.parse_args(['--name', 'ABC', '--message', 'Hello World', '--count', '2'])
+    args = parser.parse_args(['--name', 'ABC', '--message', 'Hello World',
+                              '--count', '2'])
     print(args)
 
     args = parser.parse_args(['--file', './args'])
+    print(args)
+
+    args = parser.parse_args(['--file', './args', '--file', './args2'])
     print(args)
 
 
