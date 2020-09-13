@@ -33,5 +33,11 @@ def main():
     s2 = set([4,5,1])
     print(s.union(s2))
 
+    if set():
+        print('set()')
+    else:
+        print('set() else')
+
+
 if __name__ == '__main__':
     main()
