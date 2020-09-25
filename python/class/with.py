@@ -4,7 +4,7 @@ class DatabaseConnection(object):
 
     def num(self):
         return self._conn
-    
+
     def __enter__(self):
         self._conn = 1
         return self
@@ -18,6 +18,7 @@ def main():
         print(conn.num())
 
     print(conn.num())
+
 
 if __name__ == '__main__':
     main()
