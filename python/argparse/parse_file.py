@@ -4,7 +4,6 @@ import argparse
 import shlex
 
 
-
 class LoadFromFile(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         with values as f:
