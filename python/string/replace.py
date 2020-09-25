@@ -1,8 +1,11 @@
+#!/usr/bin/env python
+
 import re
 
 
 def main():
     print('a b c'.replace(' ', ' x', 1))
+    print('a b c'.replace(' ', '_'))
     print('========================')
     pattern = re.compile(re.escape('xyz'), re.IGNORECASE)
     print(pattern.sub('123', 'xyz---xyz'))
