@@ -1,4 +1,4 @@
-# python3
+#!/usr/bin/env python
 #  -- https://docs.python.org/3.5/library/io.html?highlight=stringio
 
 import io
@@ -16,6 +16,12 @@ def main():
     view = b.getbuffer()
     view[2:4] = b'56'
     print(b.getvalue())
+
+    with io.StringIO() as out:
+        out.write('hello\n')
+        out.write('hello world')
+        print(out.getvalue())
+
 
 if __name__ == '__main__':
     main()
