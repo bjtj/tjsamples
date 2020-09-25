@@ -21,7 +21,6 @@ class B(A):
         print('Hello from B')
 
 
-
 def main():
     print(' == A() == ')
     a = A()
@@ -29,6 +28,7 @@ def main():
     print(' == B() == ')
     b = B()
     b.hello()
+
 
 if __name__ == '__main__':
     main()
