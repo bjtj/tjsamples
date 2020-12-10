@@ -22,3 +22,7 @@ while IFS= read -r var
 do
   echo "$var"
 done < "$input"
+
+
+# https://unix.stackexchange.com/a/293941
+read -n 1 -s -r -p "Press any key to continue"
