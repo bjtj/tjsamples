@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # https://docs.python.org/2/library/uuid.html
 
 import uuid
