@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 import cv2
 import time
@@ -5,13 +6,11 @@ from datetime import datetime
 
 
 def main():
-
     seq = 0
-    
     save = False
     cap = cv2.VideoCapture(0)
     print(cap.isOpened())
-    flip = True
+    flip = False
     while True:
         ret, frame = cap.read()
 
@@ -19,7 +18,7 @@ def main():
             print('read() failed')
             time.sleep(1)
             continue
-        
+
         if flip:
             frame = cv2.flip(frame, 1)
         seq += 1
