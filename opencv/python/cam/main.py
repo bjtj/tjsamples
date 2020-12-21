@@ -27,9 +27,7 @@ def main():
         cv2.imshow('preview', frame)
 
         if save:
-            t = datetime.now()
-            date = t.strftime("%Y%m%d_%H%M%S.%f")[:-3]
-            cv2.imwrite('preview/img-{}.jpg'.format(date), frame)
+            write_image('preview', frame)
 
         key = cv2.waitKey(1)
         if key == ord('f'):
@@ -38,17 +36,27 @@ def main():
         elif key == ord('q'):
             print('quit')
             break
-        elif key == ord('s'):
+        elif key == ord('r'):
             save = not save
             if save:
-                print('START SAVE!')
-                if not os.path.exists('preview'):
-                    os.makedirs('preview')
+                print('START RECORDING')
             else:
-                print('STOP SAVE!')
+                print('STOP RECORDING')
+        elif key == ord('s'):
+            print('SNAPSHOT')
+            write_image('snapshot', frame)
 
     cap.release()
     cv2.destroyAllWindows()
+
+
+def write_image(dirpath, frame):
+    if not os.path.exists(dirpath):
+        os.makedirs(dirpath)
+    t = datetime.now()
+    date = t.strftime("%Y%m%d_%H%M%S.%f")[:-3]
+    writepath = os.path.join(dirpath, 'img-{}.jpg'.format(date))
+    cv2.imwrite(writepath, frame)
 
 
 if __name__ == '__main__':
