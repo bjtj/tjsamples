@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StackLayoutTutorial.MainPage">
+    <StackLayout Margin="20,35,20,25">
+        <Label Text="Start"
+           HorizontalOptions="Start"
+           BackgroundColor="Gray" />
+        <Label Text="Center"
+           HorizontalOptions="Center"
+           BackgroundColor="Gray" />
+        <Label Text="End"
+           HorizontalOptions="End"
+           BackgroundColor="Gray" />
+        <Label Text="Fill"
+           HorizontalOptions="Fill"
+           BackgroundColor="Gray" />
+        <Label Text="StartAndExpand"
+           VerticalOptions="StartAndExpand"
+           BackgroundColor="Gray" />
+        <Label Text="CenterAndExpand"
+           VerticalOptions="CenterAndExpand"
+           BackgroundColor="Gray" />
+        <Label Text="EndAndExpand"
+           VerticalOptions="EndAndExpand"
+           BackgroundColor="Gray" />
+        <Label Text="FillAndExpand"
+           VerticalOptions="FillAndExpand"
+           BackgroundColor="Gray" />
+    </StackLayout>
+</ContentPage>
