@@ -1,0 +1,11 @@
+project (hello)
+
+include_directories(${PROJECT_SOURCE_DIR}/../src)
+
+pkg_check_modules(CPPUTEST REQUIRED IMPORTED_TARGET cpputest)
+include_directories(${CPPUTEST_INCLUDE_DIRS})
+
+add_library(HelloTest ./hello/HelloTest.cpp)
+
+add_executable(RunAllTests RunAllTests.cpp)
+target_link_libraries(RunAllTests HelloTest hello PkgConfig::CPPUTEST)

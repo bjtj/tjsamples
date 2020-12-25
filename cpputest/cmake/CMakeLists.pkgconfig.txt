@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.5)
+project(hello)
+
+enable_language(C)
+enable_language(CXX)
+
+find_package(PkgConfig REQUIRED)
+
+add_library(hello src/hello.c)
+
+add_subdirectory(tests)
