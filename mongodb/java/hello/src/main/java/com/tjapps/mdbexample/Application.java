@@ -11,6 +11,7 @@ import com.mongodb.client.MongoCursor;
 import org.bson.Document;
 
 import java.util.Arrays;
+import java.util.Date;
 
 
 class Application {
@@ -30,13 +31,28 @@ class Application {
 	    .append("info", new Document("x", 203).append("y", 102));
 	collection.insertOne(doc);
 
+	Document doc2 = new Document("name", "tester1")
+	    .append("registerDate", new Date());
+	collection.insertOne(doc2);
+
+
+	Document embedded = new Document("name", "namex")
+	    .append("registerDate", new Date());
+	Document doc3 = new Document("name", "tester2")
+	    .append("embed", embedded)
+	    .append("registerDate", new Date());
+	collection.insertOne(doc3);
+
 	Document myDoc = collection.find().first();
 	System.out.println(myDoc.toJson());
 
 	MongoCursor<Document> cursor = collection.find().iterator();
 	try {
 	    while (cursor.hasNext()) {
-		System.out.println(cursor.next().toJson());
+		Document item = cursor.next();
+		System.out.println(item.toJson());
+		System.out.println(item.get("registerDate"));
+		System.out.println(item.get("embed"));
 	    }
 	} finally {
 	    cursor.close();
