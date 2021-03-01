@@ -7,6 +7,11 @@
   <artifactId>annotationprocessing</artifactId>
   <packaging>pom</packaging>
 
+  <properties>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+  </properties>
+
   <modules>
     <module>annotation_processor</module>
     <module>annotation_user</module>
