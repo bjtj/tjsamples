@@ -4,11 +4,11 @@ import AddTodo from '../containers/AddTodo'
 import VisibleTodoList from '../containers/VisibleTodoList'
 
 const App = () => (
-	<div>
+    <div>
 	<AddTodo />
 	<VisibleTodoList />
 	<Footer />
-	</div>
+    </div>
 )
 
 export default App
