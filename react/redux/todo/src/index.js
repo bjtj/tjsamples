@@ -8,8 +8,8 @@ import App from './components/App';
 const store = createStore(rootReducer);
 
 render(
-	<Provider store={store}>
+    <Provider store={store}>
 	<App />
-	</Provider>,
+    </Provider>,
     document.getElementById('root')
 )
