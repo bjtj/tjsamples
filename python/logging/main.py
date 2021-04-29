@@ -3,7 +3,18 @@
 import logging
 
 
-def main():
+def simple_file_handler():
+    logger = logging.getLogger('SIMPLE FILE HANDLER')
+    logger.setLevel(logging.DEBUG)
+    handler = logging.FileHandler('.simple.log')
+    handler.setLevel(logging.DEBUG)
+    handler.setFormatter(logging.Formatter('%(asctime)s %(name)s --- %(levelname)s : %(message)s'))
+    logger.addHandler(handler)
+    logger.debug('Hello')
+                      
+
+
+def test():
     logger = logging.getLogger('logging-test')
     logger.setLevel(logging.DEBUG)
 
@@ -22,6 +33,11 @@ def main():
 
     logger.debug('hello')
     logger.error('bye')
+
+
+def main():
+    test()
+    simple_file_handler()
 
 
 if __name__ == '__main__':
