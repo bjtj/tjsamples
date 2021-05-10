@@ -8,7 +8,7 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
     "eslint-utils": "^1.4.1",
-    "handlebars": "^4.5.3",
+    "handlebars": "^4.7.7",
     "lodash": "^4.17.21",
     "lodash.template": "^4.5.0",
     "prop-types": "^15.7.2",
