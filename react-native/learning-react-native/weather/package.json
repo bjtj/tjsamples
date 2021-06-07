@@ -10,7 +10,8 @@
     "eslint-utils": "^1.4.1",
     "handlebars": "^4.7.7",
     "react": "16.8.3",
-    "react-native": "0.59.5"
+    "react-native": "0.59.5",
+    "ws": "^6.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
