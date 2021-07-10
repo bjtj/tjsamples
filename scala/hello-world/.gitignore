@@ -1,0 +1,15 @@
+# Simple Build Tool
+# http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control
+
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.history
+.cache
+.lib/
+
+# https://github.com/github/gitignore/pull/3585/commits/fa080d048fd7f395a05880d9a4736bfa6aaa1872
+.bsp/
