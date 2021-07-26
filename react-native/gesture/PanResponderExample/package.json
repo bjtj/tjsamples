@@ -10,7 +10,7 @@
     "eslint-utils": "^1.4.1",
     "handlebars": "^4.7.7",
     "react": "16.8.3",
-    "react-native": "0.59.9",
+    "react-native": "0.62.3",
     "ws": "^6.2.2"
   },
   "devDependencies": {
