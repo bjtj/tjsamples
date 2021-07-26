@@ -16,7 +16,7 @@
     "react-scripts": "^2.1.8",
     "set-value": "^2.0.1",
     "sockjs": "^0.3.20",
-    "urijs": "^1.19.6",
+    "urijs": "^1.19.7",
     "websocket-extensions": "^0.1.4"
   },
   "scripts": {
