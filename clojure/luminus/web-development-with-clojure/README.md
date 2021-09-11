@@ -120,7 +120,7 @@ $ lein test-refresh
 
 Testing guestbook.db.core-test
 2021-09-11 23:31:40,118 [main] INFO  migratus.core - Starting migrations 
-2021-09-11 23:31:40,158 [main] DEBUG migratus.migrations - Looking for migrations in #object[java.io.File 0x261a8248 C:\dev\git\tjsamples\clojure\luminus\web-development-with-clojure\guestbook\resources\migrations] 
+2021-09-11 23:31:40,158 [main] DEBUG migratus.migrations - Looking for migrations in #object[java.io.File 0x261a8248 ...\tjsamples\clojure\luminus\web-development-with-clojure\guestbook\resources\migrations] 
 2021-09-11 23:31:40,164 [main] INFO  migratus.core - Ending migrations 
 
 Testing guestbook.handler-test
@@ -138,3 +138,18 @@ Finished at 23:31:40.719 (run time: 1.811s)
 <https://bulma.io/>
 
 Bulma: the modern CSS framework that just works. 
+
+
+# struct - validation library for Clojure(Script) #
+
+<http://funcool.github.io/struct/latest/>
+
+A structural validation library for Clojure and ClojureScript.
+
+Highlights:
+
+* No macros: validators are defined using plain data.
+* Dependent validators: the ability to access to already validated data.
+* Coercion: the ability to coerce incoming values to other types.
+* No exceptions: no exceptions used in the validation process.
+
