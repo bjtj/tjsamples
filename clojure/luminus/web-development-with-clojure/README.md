@@ -153,3 +153,38 @@ Highlights:
 * Coercion: the ability to coerce incoming values to other types.
 * No exceptions: no exceptions used in the validation process.
 
+
+```
+$ lein uberjar
+$ export DATABASE_URL="jdbc:h2:./guestbook_dev.db"
+$ java -jar target/uberjar/guestbook.jar
+```
+
+```shell
+$ lein uberjar
+Compiling guestbook.config
+Compiling guestbook.core
+Compiling guestbook.db.core
+Compiling guestbook.env
+Compiling guestbook.handler
+Compiling guestbook.layout
+Compiling guestbook.middleware
+Compiling guestbook.middleware.formats
+Compiling guestbook.nrepl
+Compiling guestbook.routes.home
+Created ...\tjsamples\clojure\luminus\web-development-with-clojure\guestbook\target\uberjar\guestbook-0.1.0-SNAPSHOT.jar
+Created ...\tjsamples\clojure\luminus\web-development-with-clojure\guestbook\target\uberjar\guestbook.jar
+```
+
+```shell
+$ export DATABASE_URL="jdbc:h2:./guestbook_dev.db"
+$ java -jar target/uberjar/guestbook.jar
+1922  INFO  guestbook.env - 
+-=[guestbook started successfully]=-
+2309  INFO  luminus.http-server - starting HTTP server on port 3000
+2359  INFO  guestbook.core - #'guestbook.db.core/*db* started
+2359  INFO  guestbook.core - #'guestbook.handler/init-app started
+2360  INFO  guestbook.core - #'guestbook.handler/app-routes started
+2360  INFO  guestbook.core - #'guestbook.core/http-server started
+2360  INFO  guestbook.core - #'guestbook.core/repl-server started
+```
