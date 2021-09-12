@@ -1,5 +1,6 @@
 (ns ring-app.core
   (:require
+   [reitit.ring :as reitit]
    [muuntaja.middleware :as muuntaja]
    [ring.adapter.jetty :as jetty]
    [ring.util.http-response :as response]
@@ -35,13 +36,38 @@
   (-> handler
       (muuntaja/wrap-format)))
 
+;; (def routes
+;;   [["/" {:get html-handler
+;;          :post html-handler}]])
+
+;; (def routes
+;;   [["/"  html-handler]])
+
+(def routes
+  [["/" html-handler]
+   ["/echo/:id"
+    {:get
+     (fn [{{:keys [id]} :path-params}]
+       (response/ok (str "<p>the value is: " id "</p>")))}]
+   ["/api" {:middleware [wrap-formats]}
+    ["/multiply"
+     {:post
+      (fn [{{:keys [a b]} :body-params}]
+        (response/ok {:result (* a b)}))}]]])
+
+;; $ curl -H "Content-Type: application/json" -X POST -d '{"a": 3, "b": 2}' localhost:3000/api/multiply
+;; {"result":6}
+
+(def handler
+  (reitit/ring-handler
+   (reitit/router routes)))
+
 (defn -main
   ""
   []
   (jetty/run-jetty
    (-> #'handler
        wrap-nocache
-       wrap-formats
        wrap-reload)
    {:port 3000
     :join? false}))
