@@ -14,7 +14,7 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-scripts": "^2.1.8",
-    "set-value": "^2.0.1",
+    "set-value": "^4.0.1",
     "sockjs": "^0.3.20",
     "urijs": "^1.19.7",
     "websocket-extensions": "^0.1.4"
