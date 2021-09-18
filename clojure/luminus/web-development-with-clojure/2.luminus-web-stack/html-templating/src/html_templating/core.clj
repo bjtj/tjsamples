@@ -1,5 +1,26 @@
 (ns html-templating.core
-  (:require [selmer.parser :as selmer]))
+  (:require [selmer.parser :as selmer]
+            [selmer.filters :as filters]))
+
+;; -------------
+;; Using Filters
+;; -------------
+
+(filters/add-filter! :empty? empty?)
+
+(selmer/render "{% if filtes|empty? %}no files{% else %}files{% endif %}"
+               {:files []})
+
+(filters/add-filter! :foo
+                     (fn [x]
+                       [:safe (.toUpperCase x)]))
+
+(selmer/render "{{ x|foo }}" {:x "<div>I'm safe</div>"})
+
+
+;; ------------------
+;; Creating Templates
+;; ------------------
 
 (selmer/render "Hello, {{name}}" {:name "World"})
 
