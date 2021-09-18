@@ -1,14 +1,10 @@
-<html>
-    <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<title>My First Template</title>
-    </head>
-    <body>
-	<h2>Hello {{ name }}</h2>
-	<ul>
-	    {% for item in items %}
-	    <li>{{ item }}</li>
-	    {% endfor %}
-	</ul>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+{{ block.super }}
+<h2>Hello {{ name }}</h2>
+<ul>
+    {% for item in items %}
+    <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
