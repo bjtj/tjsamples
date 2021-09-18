@@ -1,6 +1,7 @@
 (ns html-templating.core
   (:require [selmer.parser :as selmer]
-            [selmer.filters :as filters]))
+            [selmer.filters :as filters]
+            [selmer.middleware :refer [wrap-error-page]]))
 
 ;; -------------
 ;; Using Filters
@@ -56,6 +57,21 @@
 ;; (selmer.parser/cache-on!)
 ;; (selmer.parser/cache-off!)
 
+;; --------------
+;; Error Handling
+;; --------------
+
+;; (selmer/render "{{content|safea}}" {})
+
+(defn renderer
+  ""
+  []
+  (wrap-error-page
+   (fn [template]
+     {:status 200
+      :body (selmer/render-file template {})})))
+
+((renderer) "hello.html")
 
 (defn foo
   "I don't do a whole lot."
