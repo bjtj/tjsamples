@@ -17,6 +17,24 @@
 
 (selmer/render "{{ x|foo }}" {:x "<div>I'm safe</div>"})
 
+;; --------------------
+;; Defining Custom Tags
+;; --------------------
+
+(selmer/add-tag!
+ :image
+ (fn [args context-map]
+   (str "<img src=" (first args) "/>")))
+(selmer/render "{% image \"http://foo.com/logo.jpg\" %}" {})
+
+(selmer/add-tag!
+ :uppercase
+ (fn [args context-map block]
+   (.toUpperCase (get-in block [:uppercase :content])))
+ :enduppercase)
+(selmer/render
+ "{% uppercase %}foo {{ bar }} baz{% enduppercase %}"
+ {:bar "injected"})
 
 ;; ------------------
 ;; Creating Templates
@@ -33,6 +51,10 @@
 
 (selmer/render "<p>Hello {{user.first}} {{user.last}}</p>"
                {:user {:first "John" :last "Doe"}})
+
+
+;; (selmer.parser/cache-on!)
+;; (selmer.parser/cache-off!)
 
 
 (defn foo
