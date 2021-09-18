@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-{{ block.super }}
+{% include "register.html" %}
 <h2>Hello {{ name }}</h2>
 <ul>
     {% for item in items %}
