@@ -12,4 +12,4 @@ lein new quil-cljs clock
 lein figwheel
 ```
 
-open http://localhost:3449
+open <http://localhost:3449>
