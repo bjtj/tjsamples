@@ -10,3 +10,6 @@ lein cljsbuild once
 lein run
 ```
 
+```
+lein cljsbuild auto
+```
