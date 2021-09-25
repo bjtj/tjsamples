@@ -10,6 +10,11 @@ lein cljsbuild once
 lein run
 ```
 
+```shell
+lein cljsbuild auto
 ```
+
+```shell
+lein clean
 lein cljsbuild auto
 ```

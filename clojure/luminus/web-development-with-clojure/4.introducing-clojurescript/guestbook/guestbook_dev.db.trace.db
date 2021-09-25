@@ -79,3 +79,30 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/dev/git/t
 	at org.h2.mvstore.FileStore.open(FileStore.java:172)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
 	... 64 more
+2021-09-25 22:55:36 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SCHEMA_MIGRATIONS" not found; SQL statement:
+SELECT 1 FROM schema_migrations [42102-200]
+2021-09-25 23:05:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GUESTBOOK" not found; SQL statement:
+SELECT * FROM guestbook [42102-200]
+2021-09-25 23:06:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GUESTBOOK" not found; SQL statement:
+SELECT * FROM guestbook [42102-200]
+2021-09-25 23:06:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GUESTBOOK" not found; SQL statement:
+SELECT * FROM guestbook [42102-200]
+2021-09-25 23:07:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GUESTBOOK" not found; SQL statement:
+SELECT * FROM guestbook [42102-200]
+2021-09-25 23:07:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GUESTBOOK" not found; SQL statement:
+SELECT * FROM guestbook [42102-200]
+2021-09-25 23:08:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GUESTBOOK" not found; SQL statement:
+SELECT * FROM guestbook [42102-200]
+2021-09-25 23:09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GUESTBOOK" not found; SQL statement:
+SELECT * FROM guestbook [42102-200]
+2021-09-25 23:11:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GUESTBOOK" not found; SQL statement:
+SELECT * FROM guestbook [42102-200]

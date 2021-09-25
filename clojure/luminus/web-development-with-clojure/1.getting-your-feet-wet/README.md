@@ -46,6 +46,23 @@ nil
 ```
 
 
+`2021**********-guestbook.up.sql`
+
+```sql
+CREATE TABLE guestbook
+(id INTEGER PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(30),
+message VARCHAR(200),
+timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+```
+
+`2021**********-guestbook.down.sql`
+
+```sql
+DROP TABLE guestbook;
+```
+
+
 ```clojure
 user=> (migrate)
 2021-09-11 23:00:24,487 [nREPL-session-1b260956-9a69-411f-974c-8c029fe7e489] INFO  migratus.core - Starting migrations 
@@ -74,7 +91,6 @@ user=> (restart)
 ```clojure
 user=> (in-ns 'guestbook.db.core)
 #object[clojure.lang.Namespace 0x3b8dea88 "guestbook.db.core"]
-guestbook.db.core=> 
 ```
 
 ```clojure
