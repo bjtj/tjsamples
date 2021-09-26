@@ -2,7 +2,8 @@
   (:require [reagent.core :as r]
             [reagent.dom :as dom]
             [ajax.core :refer [GET POST]]
-            [clojure.string :as string]))
+            [clojure.string :as string]
+            [guestbook.validation :refer [validate-message]]))
 
 (dom/render
  [:h1 "Hello, Reagent"]
@@ -17,20 +18,22 @@
  (.getElementById js/document "content"))
 
 (defn send-message!
-  ""
+  "Send Message!"
   [fields errors]
-  (POST "/message"
-        {:format :json
-         :headers
-         {"Accept" "application/transit+json"
-          "x-csrf-token" (.-value (.getElementById js/document "token"))}
-         :params @fields
-         :handler (fn [r]
-                    (.log js/console (str "response:" r))
-                    (reset! errors nil))
-         :error-handler (fn [e]
-                          (.log js/console (str e))
-                          (reset! errors (-> e :response :errors)))}))
+  (if-let [validation-errors (validate-message @fields)]
+    (reset! errors validation-errors)
+    (POST "/message"
+          {:format :json
+           :headers
+           {"Accept" "application/transit+json"
+            "x-csrf-token" (.-value (.getElementById js/document "token"))}
+           :params @fields
+           :handler (fn [r]
+                      (.log js/console (str "response:" r))
+                      (reset! errors nil))
+           :error-handler (fn [e]
+                            (.log js/console (str e))
+                            (reset! errors (-> e :response :errors)))})))
 
 (defn errors-component
   ""
