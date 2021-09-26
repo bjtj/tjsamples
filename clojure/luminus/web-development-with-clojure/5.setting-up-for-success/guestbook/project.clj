@@ -38,7 +38,7 @@
 
   :min-lein-version "2.0.0"
   
-  :source-paths ["src/clj" "src/cljc"]
+  :source-paths ["src/clj", "src/cljc"]
   :test-paths ["test/clj"]
   :resource-paths ["resources" "target/cljsbuild"]
   :target-path "target/%s/"
