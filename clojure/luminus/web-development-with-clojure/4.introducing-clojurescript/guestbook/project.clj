@@ -34,7 +34,8 @@
                  [org.clojure/clojurescript "1.10.764" :scope "provided"]
                  [cljs-ajax "0.8.1"]
                  [org.clojure/clojurescript "1.10.764" :scope "provided"]
-                 [reagent "1.0.0"]]
+                 [reagent "1.0.0"]
+                 [re-frame "1.1.2"]]
 
   :min-lein-version "2.0.0"
   
