@@ -3,6 +3,7 @@
     [guestbook.middleware :as middleware]
     [guestbook.layout :refer [error-page]]
     [guestbook.routes.home :refer [home-routes]]
+    [guestbook.routes.services :refer [service-routes]]
     [reitit.ring :as ring]
     [ring.middleware.content-type :refer [wrap-content-type]]
     [ring.middleware.webjars :refer [wrap-webjars]]
@@ -17,7 +18,8 @@
   :start
   (ring/ring-handler
     (ring/router
-      [(home-routes)])
+     [(home-routes)
+      (service-routes)])
     (ring/routes
       (ring/create-resource-handler
         {:path "/"})
