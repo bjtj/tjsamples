@@ -1,0 +1,5 @@
+pandas
+matplotlib
+tables
+openpyxl
+xlrd
