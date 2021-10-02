@@ -30,6 +30,8 @@
 
 (.start (Thread. do-something-in-a-thread))
 
+;; ... and great responsibility
+;; ============================
 
 (def fav-book "Jaws")
 (defn make-emma-favorite
@@ -48,7 +50,8 @@
 (.start (Thread. make-emma-favorite))
 (.start (Thread. make-2001-favorite))
 
-
+;; Good Fences Make Happy Threads
+;; ==============================
 
 (def ^:dynamic *favorite-book* "Oliver Twist")
 
@@ -68,26 +71,77 @@
 (.start thread-2)
 
 
-;; (def revenue-future
-;;   (future (apply + (map :revenue inventory))))
+;; Promise Me a Result
+;; ===================
 
-;; (println "The total revenue is " #revenue-future))
+(.start (Thread. #(.delete (java.io.File. "temp-titles.txt"))))
+
+(def del-thread (Thread. #(.delete (java.io.File. "temp-titles.txt"))))
+
+(.start del-thread)
+
+(.join del-thread)
+
+(def the-result (promise))
+
+(deliver the-result "Emma")
+
+(println "The value in my promise is" (deref the-result))
+
+(println "The value in my promise is" @the-result)
+
+
+(def inventory [{:title "Emma" :sold 51 :revenue 255}
+                {:title "2001" :sold 17 :revenue 170}
+                ])
+
+(defn sum-copies-sold
+  ""
+  [inv]
+  (apply + (map :sold inv)))
+
+(defn sum-revenue
+  ""
+  [inv]
+  (apply + (map :revenue inv)))
+
+(let [copies-promise (promise)
+      revenue-promise (promise)]
+  (.start (Thread. #(deliver copies-promise (sum-copies-sold inventory))))
+  (.start (Thread. #(deliver revenue-promise (sum-revenue inventory))))
+  ;; Do some other stuff in this thread
+  (println "The total number of books sold is" @copies-promise)
+  (println "The total revenue is " @revenue-promise)
+  )
+
+;; A Value with a Future
+;; =====================
+
+(def revenue-future
+  (future (apply + (map :revenue inventory))))
+
+(println "The total revenue is " @revenue-future)
+
+;; Staying Out of Trouble
+;; ======================
 
 (import java.util.concurrent.Executors)
+
+;; Create a pool of at most three threads.
 
 (def fixed-pool (Executors/newFixedThreadPool 3)))
 
 (defn a-lot-of-work
-""
-[]
-(println "Simulating function that takes a long time.")
-(Thread/sleep 1000))
+  ""
+  []
+  (println "Simulating function that takes a long time.")
+  (Thread/sleep 1000))
 
 (defn even-more-work
-""
-[]
-(println "Simulating function that takes a long time.")
-(Thread/sleep 1000))
+  ""
+  []
+  (println "Simulating function that takes a long time.")
+  (Thread/sleep 1000))
 
 (.execute fixed-pool a-lot-of-work)
 (.execute fixed-pool even-more-work)
@@ -102,7 +156,6 @@
 (.execute fixed-pool even-more-work)
 
 ;; ... and it will get it all done as quickly as it can.
-
 
 ;; (deref revenue-promise)
 ;; @revenue-promise
