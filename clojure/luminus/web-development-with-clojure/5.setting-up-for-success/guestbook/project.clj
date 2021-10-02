@@ -35,11 +35,14 @@
                  [org.clojure/clojurescript "1.10.764" :scope "provided"]
                  [reagent "1.0.0"]
                  [re-frame "1.1.2"]
-                 [metosin/ring-swagger-ui "2.2.10"]]
+                 [metosin/ring-swagger-ui "2.2.10"]
+                 [com.google.javascript/closure-compiler-unshaded "v20200830" :scope "provided"]
+                 [org.clojure/google-closure-library "0.0-20191016-6ae1f72f" :scope "provided"]
+                 [thheller/shadow-cljs "2.11.14" :scope "provided"]]
 
   :min-lein-version "2.0.0"
   
-  :source-paths ["src/clj", "src/cljc"]
+  :source-paths ["src/clj", "src/cljs", "src/cljc"]
   :test-paths ["test/clj"]
   :resource-paths ["resources" "target/cljsbuild"]
   :target-path "target/%s/"
@@ -76,11 +79,12 @@
                   :dependencies [[pjstadig/humane-test-output "0.10.0"]
                                  [prone "2020-01-17"]
                                  [ring/ring-devel "1.8.2"]
-                                 [ring/ring-mock "0.4.0"]]
+                                 [ring/ring-mock "0.4.0"]
+                                 [binaryage/devtools "1.0.2"]]
                   :plugins      [[com.jakemccrary/lein-test-refresh "0.24.1"]
                                  [jonase/eastwood "0.3.5"]] 
                   
-                  :source-paths ["env/dev/clj" ]
+                  :source-paths ["env/dev/clj" "env/dev/cljc" "env/dev/cljs"]
                   :resource-paths ["env/dev/resources"]
                   :repl-options {:init-ns user
                                  :timeout 120000}
