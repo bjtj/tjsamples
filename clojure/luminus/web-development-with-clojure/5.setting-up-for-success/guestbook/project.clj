@@ -83,6 +83,7 @@
                                  [ring/ring-devel "1.8.2"]
                                  [ring/ring-mock "0.4.0"]
                                  [binaryage/devtools "1.0.2"]
+                                 [day8.re-frame/tracing "0.6.2"]
                                  [day8.re-frame/re-frame-10x "1.1.10"]]
                   :plugins      [[com.jakemccrary/lein-test-refresh "0.24.1"]
                                  [jonase/eastwood "0.3.5"]] 
