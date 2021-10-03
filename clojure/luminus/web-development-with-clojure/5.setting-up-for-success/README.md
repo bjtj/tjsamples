@@ -45,3 +45,18 @@ lein clean
 lein uberjar
 java -jar -Dconf=dev-config.edn target/uberjar/guestbook.jar
 ```
+
+## re-frame-10x ##
+
+<https://github.com/day8/re-frame-10x>
+
+### Event Handler Tracing ###
+
+<https://github.com/day8/re-frame-10x/blob/master/docs/HyperlinkedInformation/EventCodeTracing.md>
+
+```clojure
+(reg-event-db 
+   :some-id
+   (fn-traced [db event]   ;; <-- notice the use of `fn-traced` instead of `fn`
+      ... code in here))
+```
