@@ -5,6 +5,7 @@
             [ajax.core :refer [GET POST]]
             [clojure.string :as string]
             [guestbook.validation :refer [validate-message]]
+            [guestbook.websockets :as ws]
             [day8.re-frame.tracing :refer-macros [fn-traced]]))
 
 (rf/reg-event-fx
@@ -104,28 +105,25 @@
 
 (rf/reg-event-fx
  :message/send!
- (fn-traced [{:keys [db]} [_ fields]]
-   (POST "/api/message"
-         {:format :json
-          :headers
-          {"Accept" "application/transit+json"
-           "x-csrf-token" (.-value (.getElementById js/document "token"))}
-          :params fields
-          :handler #(rf/dispatch
-                     [:message/add
-                      (-> fields
-                          (assoc :timestamp (js/Date.)))])
-          :error-handler #(rf/dispatch
-                           [:form/set-server-errors
-                            (get-in % [:response :errors])])})
+ (fn [{:keys [db]} [_ fields]]
+   (ws/send-message! fields)
    {:db (dissoc db :form/server-errors)}))
+
+(defn handle-response!
+  ""
+  [response]
+  (if-let [errors (:errors response)]
+    (rf/dispatch [:form/set-server-errors errors])
+    (do
+      (rf/dispatch [:message/add response])
+      (rf/dispatch [:form/clear-fields response]))))
 
 (defn reload-messages-button
   ""
   []
   (let [loading? (rf/subscribe [:messages/loading?])]
     [:button.button.is-info.is-fullwidth
-     {:on-click #(rf/dispatch [:message/load])
+     {:on-click #(rf/dispatch [:messages/load])
       :disabled @loading?}
      (if @loading?
        "Loading Messages"
@@ -239,8 +237,8 @@
   ""
   []
   (.log js/console "Initializing App...")
-  (rf/dispatch [:app/initialize])
-  (get-messages)
+  (ws/connect! (str "ws://" (.-host js/location) "/ws")
+               handle-response!)
   (mount-components))
 
 (.log js/console "guestbook.core evaluated!")
