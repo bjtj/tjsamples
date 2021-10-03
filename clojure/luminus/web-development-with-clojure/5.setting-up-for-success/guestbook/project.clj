@@ -38,7 +38,8 @@
                  [metosin/ring-swagger-ui "2.2.10"]
                  [com.google.javascript/closure-compiler-unshaded "v20200830" :scope "provided"]
                  [org.clojure/google-closure-library "0.0-20191016-6ae1f72f" :scope "provided"]
-                 [thheller/shadow-cljs "2.11.14" :scope "provided"]]
+                 [thheller/shadow-cljs "2.11.14" :scope "provided"]
+                 [com.taoensso/sente "1.16.0"]]
 
   :min-lein-version "2.0.0"
   
