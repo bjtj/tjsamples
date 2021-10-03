@@ -3,7 +3,9 @@
                 :output-dir "target/cljsbuild/public/js"
                 :asset-path "/js"
                 :modules {:app {:entries [guestbook.app]}}
-                :devtools {:watch-dir "resources/public"}}
+                :dev {:closure-defineds {"re_frame.trace.trace_enabled_QMARK_" true}}
+                :devtools {:preloads [day8.re-frame-10x.preload]
+                           :watch-dir "resources/public"}}
           :test {:target :node-test, :output-to "target/test/test.js"
                  :autorun true}}
  :lein true}
