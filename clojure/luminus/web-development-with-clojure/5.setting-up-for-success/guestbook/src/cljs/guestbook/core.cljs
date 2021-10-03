@@ -6,7 +6,8 @@
             [clojure.string :as string]
             [guestbook.validation :refer [validate-message]]
             [guestbook.websockets :as ws]
-            [day8.re-frame.tracing :refer-macros [fn-traced]]))
+            [day8.re-frame.tracing :refer-macros [fn-traced]]
+            [mount.core :as mount]))
 
 (rf/reg-event-fx
  :app/initialize
@@ -103,10 +104,23 @@
  (fn [errors [_ id]]
    (get errors id)))
 
+;; (rf/reg-event-fx
+;;  :message/send!
+;;  (fn [{:keys [db]} [_ fields]]
+;;    (ws/send! [:message/create! fields])
+;;    {:db (dissoc db :form/server-errors)}))
+
 (rf/reg-event-fx
  :message/send!
  (fn [{:keys [db]} [_ fields]]
-   (ws/send-message! fields)
+   (ws/send!
+    [:message/create! fields]
+    10000
+    (fn [{:keys [success errors] :as response}]
+      (.log js/console "Called Back: " (pr-str response))
+      (if success
+        (rf/dispatch [:form/clear-fields])
+        (rf/dispatch [:form/set-server-errors errors]))))
    {:db (dissoc db :form/server-errors)}))
 
 (defn handle-response!
@@ -237,8 +251,8 @@
   ""
   []
   (.log js/console "Initializing App...")
-  (ws/connect! (str "ws://" (.-host js/location) "/ws")
-               handle-response!)
+  (mount/start)
+  (rf/dispatch [:app/initialize])
   (mount-components))
 
 (.log js/console "guestbook.core evaluated!")
