@@ -3,11 +3,14 @@
     [guestbook.middleware :as middleware]
     [guestbook.layout :refer [error-page]]
     [guestbook.routes.home :refer [home-routes]]
+    [guestbook.routes.services :refer [service-routes]]
+    [guestbook.routes.websockets :refer [websocket-routes]]
     [reitit.ring :as ring]
     [ring.middleware.content-type :refer [wrap-content-type]]
     [ring.middleware.webjars :refer [wrap-webjars]]
     [guestbook.env :refer [defaults]]
-    [mount.core :as mount]))
+    [mount.core :as mount]
+    [reitit.ring.middleware.dev :as dev]))
 
 (mount/defstate init-app
   :start ((or (:init defaults) (fn [])))
@@ -17,7 +20,10 @@
   :start
   (ring/ring-handler
     (ring/router
-      [(home-routes)])
+     [(home-routes)
+      (service-routes)
+      (websocket-routes)])
+    ;; {:reitit.middleware/transform dev/print-request-diffs}
     (ring/routes
       (ring/create-resource-handler
         {:path "/"})
