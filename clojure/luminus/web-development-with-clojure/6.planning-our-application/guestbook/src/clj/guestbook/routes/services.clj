@@ -12,7 +12,8 @@
    [guestbook.middleware :as middleware]
    [guestbook.auth :as auth]
    [ring.util.http-response :as response]
-   [guestbook.middleware.formats :as formats]))
+   [guestbook.middleware.formats :as formats]
+   [spec-tools.data-spec :as ds]))
 
 (defn service-routes
   ""
@@ -35,6 +36,22 @@
     ["/swagger-ui*"
      {:get (swagger-ui/create-swagger-ui-handler
             {:url "/api/swagger.json"})}]]
+   ["/session"
+    {:get
+     {:responses
+      {200
+       {:body
+        {:session
+         {:identity
+          (ds/maybe
+           {:login string?
+            :created_at inst?})}}}}
+      :handler
+      (fn [{{:keys [identity]} :session}]
+        (response/ok {:session
+                      {:identity
+                       (not-empty
+                        (select-keys identity [:login :created_at]))}}))}}]
    ["/login"
     {:post {:parameters
             {:body
