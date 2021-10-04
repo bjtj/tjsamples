@@ -11,14 +11,6 @@
           {:type :auto
            :wrap-recv-evs? false}))
 
-;; (defn send!
-;;   ""
-;;   [message]
-;;   (if-let [send-fn (:send-fn @socket)]
-;;     (send-fn message)
-;;     (throw (ex-info "Couldn't send message, channel isn't open!"
-;;                     {:message message}))))
-
 (defn send!
   ""
   [& args]
@@ -26,6 +18,14 @@
     (apply send-fn args)
     (throw (ex-info "Couldn't send message, channel isn't open!"
                     {:message (first args)}))))
+
+(rf/reg-fx
+ :ws/send!
+ (fn [{:keys [message timeout callback-event]
+       :or {timeout 30000}}]
+      (if callback-event
+        (send! message timeout #(rf/dispatch (conj callback-event %)))
+        (send! message))))
 
 (defmulti handle-message
   (fn [{:keys [id]} _]
@@ -50,7 +50,7 @@
   (.log js/console "State Changed: " (pr-str event)))
 (defmethod handle-message :default
   [{:keys [event]} _]
-  (.wan js/console "Unknown websocket message: " (pr-str event)))
+  (.warn js/console "Unknown websocket message: " (pr-str event)))
 
 ;; ------------------------
 ;; Router
