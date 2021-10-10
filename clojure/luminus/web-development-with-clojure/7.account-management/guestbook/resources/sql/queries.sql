@@ -1,7 +1,9 @@
--- :name save-message! :! :n
+-- :name save-message! :<! :n
 -- :doc creates a new message using the name and message keys
-INSERT INTO posts(name, message)
-VALUES (:name, :message)
+INSERT INTO posts(author, name, message)
+VALUES (:author, :name, :message)
+RETURNING *;
+
 -- :name get-messages :? :*
 -- :doc select all available messages
 SELECT * from posts
