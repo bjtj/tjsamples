@@ -8,8 +8,10 @@
     [muuntaja.middleware :refer [wrap-format wrap-params]]
     [guestbook.config :refer [env]]
     [ring-ttl-session.core :refer [ttl-memory-store]]
-    [ring.middleware.defaults :refer [site-defaults wrap-defaults]])
+    [ring.middleware.defaults :refer [site-defaults wrap-defaults]]
+    [guestbook.session :as session])
   )
+
 
 (defn wrap-internal-error [handler]
   (fn [req]
@@ -20,6 +22,7 @@
         (error-page {:status 500
                      :title "Something very bad has happened!"
                      :message "We've dispatched a team of highly trained gnomes to take care of the problem."})))))
+
 
 (defn wrap-csrf [handler]
   (wrap-anti-forgery
@@ -37,10 +40,13 @@
       ;; since they're not compatible with this middleware
       ((if (:websocket? request) handler wrapped) request))))
 
-(defn wrap-base [handler]
+
+(defn wrap-base
+  ""
+  [handler]
   (-> ((:middleware defaults) handler)
       (wrap-defaults
-        (-> site-defaults
-            (assoc-in [:security :anti-forgery] false)
-            (assoc-in  [:session :store] (ttl-memory-store (* 60 30)))))
+       (-> site-defaults
+           (assoc-in [:security :anti-forgery] false)
+           (assoc-in [:session :store] session/store)))
       wrap-internal-error))

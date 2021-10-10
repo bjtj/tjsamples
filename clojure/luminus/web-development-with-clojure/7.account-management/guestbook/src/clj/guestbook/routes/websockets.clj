@@ -2,6 +2,7 @@
   (:require [clojure.tools.logging :as log]
             [guestbook.messages :as msg]
             [guestbook.middleware :as middleware]
+            [guestbook.session :as session]
             [mount.core :refer [defstate]]
             [taoensso.sente :as sente]
             [taoensso.sente.server-adapters.http-kit :refer [get-sch-adapter]]))
@@ -29,9 +30,9 @@
    :id id})
 
 (defmethod handle-message :message/create!
-  [{:keys [?data uid] :as message}]
+  [{:keys [?data uid session] :as message}]
   (let [response (try
-                   (msg/save-message! ?data)
+                   (msg/save-message! (:identity session) ?data)
                    (assoc ?data :timestamp (java.util.Date.))
                    (catch Exception e
                      (let [{id :guestbook/error-id
@@ -53,10 +54,14 @@
 
 (defn receive-message!
   ""
-  [{:keys [id ?reply-fn] :as message}]
+  [{:keys [id ?reply-fn ring-req] :as message}]
   (log/debug "Got mesage with id: " id)
-  (let [reply-fn (or ?reply-fn (fn [_]))]
-    (when-some [response (handle-message message)]
+  (let [reply-fn (or ?reply-fn (fn [_]))
+        session (session/read-session ring-req)
+        response (-> message
+                     (assoc :session session)
+                     handle-message)]
+    (when response
       (reply-fn response))))
 
 (defstate channel-router
