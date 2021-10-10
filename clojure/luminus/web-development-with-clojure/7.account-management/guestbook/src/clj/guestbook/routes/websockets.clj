@@ -3,6 +3,8 @@
             [guestbook.messages :as msg]
             [guestbook.middleware :as middleware]
             [guestbook.session :as session]
+            [guestbook.auth :as auth]
+            [guestbook.auth.ws :refer [authorized?]]
             [mount.core :refer [defstate]]
             [taoensso.sente :as sente]
             [taoensso.sente.server-adapters.http-kit :refer [get-sch-adapter]]))
@@ -55,14 +57,25 @@
 (defn receive-message!
   ""
   [{:keys [id ?reply-fn ring-req] :as message}]
-  (log/debug "Got mesage with id: " id)
+  (case id
+    :chsk/bad-package (log/debug "Bad Package:\n" message)
+    :chsk/bad-event (log/debug "Bad Event: \n" message)
+    :chsk/uidport-open (log/trace (:event message))
+    :chsk/uidport-close (log/trace (:event message))
+    :chsk/ws-ping nil)
+  ;; ELSE
   (let [reply-fn (or ?reply-fn (fn [_]))
         session (session/read-session ring-req)
         response (-> message
-                     (assoc :session session)
-                     handle-message)]
-    (when response
-      (reply-fn response))))
+                     (assoc :session session))]
+    (log/debug "Got message with id: " id)
+    (if (authorized? auth/roles message)
+      (when-some [response (handle-message message)]
+        (reply-fn response))
+      (do
+        (log/info "Unauthorized message: " id)
+        (reply-fn {:message "You are not authorized to perform this action!"
+                   :errors {:unauthorized true}})))))
 
 (defstate channel-router
   :start (sente/start-chsk-router!

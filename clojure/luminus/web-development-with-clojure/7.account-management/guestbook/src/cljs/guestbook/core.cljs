@@ -397,9 +397,11 @@
 
 (defn errors-component
   ""
-  [id]
+  [id & [message]]
   (when-let [error @(rf/subscribe [:form/error id])]
-    [:div.notification.is-danger (string/join error)]))
+    [:div.notification.is-danger (if message
+                                   message
+                                   (string/join error))]))
 
 (defn text-input
   ""
@@ -441,6 +443,7 @@
   []
   [:div
    [errors-component :server-error]
+   [errors-component :unauthorized "Please log in before posting."]
    [:div.field
     [:label.label {:for :name} "Name"]
     [errors-component :name]
@@ -538,16 +541,26 @@
   (let [messages (rf/subscribe [:messages/list])]
     (fn []
       [:div.content>div.columns.is-centered>div.column.is-two-thirds
-       (if @(rf/subscribe [:messages/loading?])
-         [:h3 "Loading Messages..."]
-         [:div
-          [:div.columns>div.kcolumn
-           [:h3 "Messages"]
-           [message-list messages]]
-          [:div.columns>div.column
-           [reload-messages-button]]
-          [:div.columns>div.column
-           [message-form]]])])))
+       [:div.columns>div.column
+        [:h3 "Messages"]
+        [message-list messages]]
+       [:div.columns>div.column
+        [reload-messages-button]]
+       [:div.columns>div.column
+        (case @(rf/subscribe [:auth/user-state])
+          :loading
+          [:div {:style {:width "5em"}}
+           [:progress.progress.is-dark.is-small {:max 100} "30%"]]
+          
+          :authenticated
+          [message-form]
+
+          :anonymous
+          [:div.notification.is-clearfix
+           [:span "Log in or create an account to post a message!"]
+           [:div.buttons.is-pulled-right
+            [login-button]
+            [register-button]]])]])))
 
 (defn app
   ""
