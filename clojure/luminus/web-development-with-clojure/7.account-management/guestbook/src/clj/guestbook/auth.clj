@@ -3,6 +3,21 @@
             [next.jdbc :as jdbc]
             [guestbook.db.core :as db]))
 
+(defn identity->roles
+  ""
+  [identity]
+  (cond-> #{:any}
+    (some? identity) (conj :authenticated)))
+
+(def roles
+  {:message/create! #{:authenticated}
+   :auth/login #{:any}
+   :auth/logout #{:any}
+   :account/register #{:any}
+   :session/get #{:any}
+   :messages/list #{:any}
+   :swagger/swagger #{:any}})
+
 (defn create-user!
   ""
   [login password]
