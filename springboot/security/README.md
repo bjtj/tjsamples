@@ -21,3 +21,18 @@ git clone https://github.com/spring-guides/gs-securing-web.git
 ## Set up Spring Security ##
 
 user / password
+
+
+## Run the Application ##
+
+```shell
+./mvnw spring-boot:run
+```
+
+```shell
+./mvnw clean package
+```
+
+```shell
+java -jar target/securitydemo-0.0.1-SNAPSHOT.jar
+```
