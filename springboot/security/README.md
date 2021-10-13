@@ -16,3 +16,8 @@ git clone https://github.com/spring-guides/gs-securing-web.git
 
 * Spring Web
 * Thymeleaf
+
+
+## Set up Spring Security ##
+
+user / password
