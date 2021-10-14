@@ -36,7 +36,6 @@ apt install libsqlite3-dev
 
 <http://guides.rubyonrails.org/command_line.html>
 
-
 * rails new
 * rails server
 * rails generate
