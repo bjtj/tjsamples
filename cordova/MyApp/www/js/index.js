@@ -23,7 +23,26 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     // Cordova is now initialized. Have fun!
-
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
+
+    console.log(device.cordova);
+    
+    // alert('xsdfs')
+    function onSuccess(imageURI) {
+	console.log(`image uri: ${imageURI}`)
+	var image = document.getElementById('myImage');
+	image.src = imageURI;
+    }
+    function onFail(message) {
+	alert('Failed because: ' + message);
+    }
+    document.getElementById('button').addEventListener('click', function () {
+	console.log(`navigator.camera: ${navigator.camera}`)
+	navigator.camera.getPicture(onSuccess, onFail, {
+	    quality: 50, destinationType: Camera.DestinationType.FILE_URI });
+    });
+
+    console.log('hello')
 }
+
