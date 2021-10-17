@@ -12,6 +12,7 @@
    [guestbook.middleware :as middleware]
    [guestbook.auth :as auth]
    [guestbook.auth.ring :refer [wrap-authorized get-roles-from-match]]
+   [guestbook.author :as author]
    [clojure.tools.logging :as log]
    [ring.util.http-response :as response]
    [guestbook.middleware.formats :as formats]
@@ -201,4 +202,42 @@
               (response/bad-request {:errors errors})
               (response/internal-server-error
                {:errors
-                {:server-error ["Failed to save message!"]}}))))))}}]])
+                {:server-error ["Failed to save message!"]}}))))))}}]
+   ["/author/:login"
+    {::auth/roles (auth/roles :author/get)
+     :get {:parameters
+           {:path {:login string?}}
+           :responses
+           {200
+            {:body map?}
+            500
+            {:errors map?}}
+           :handler
+           (fn [{{{:keys [login]} :path} :parameters}]
+             (response/ok (author/get-author login)))}}]
+   ["/my-account"
+    ["/set-profile"
+     {::auth/roles (auth/roles :account/set-profile!)
+      :post {:parameters
+             {:body
+              {:profile map?}}
+             :responses
+             {200
+              {:body map?}
+              500
+              {:errors map?}}
+             :handler
+             (fn [{{{:keys [profile]} :body} :parameters
+                   {:keys [identity] :as session} :session}]
+               (try
+                 (let [identity
+                       (author/set-author-profile {:login identity} profile)]
+                   (update (response/ok {:success true})
+                           :session
+                           assoc :identity identity))
+                 (catch Exception e
+                   (log/error e)
+                   (response/internal-server-error
+                    {:errors {:server-error
+                              ["Failed to set profile!"]}}))))}}]]
+   ])
