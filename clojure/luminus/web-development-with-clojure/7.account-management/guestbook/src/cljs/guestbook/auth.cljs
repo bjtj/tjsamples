@@ -101,7 +101,7 @@
      [:button.button.is-primary.is-fullwidth
       {:on-click do-login
        :disabled (or (string/blank? (:login @fields))
-                     (string/blank? (:password fields)))}
+                     (string/blank? (:password @fields)))}
       "Log In"]]))
 
 (defn logout-button
