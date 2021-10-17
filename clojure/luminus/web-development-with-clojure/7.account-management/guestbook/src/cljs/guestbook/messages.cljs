@@ -27,6 +27,7 @@
  (fn-traced [{:keys [db]} _]
             {:db (assoc db
                         :messages/loading? true
+                        :messages/list nil
                         :messages/filter nil)
              :ajax/get {:url "/api/messages"
                         :success-path [:messages]
@@ -37,7 +38,8 @@
  (fn [{:keys [db]} [_ author]]
    {:db (assoc db
                :messages/loading? true
-               :messsages/filter {:author author})
+               :messsages/filter {:author author}
+               :messages/list nil)
     :ajax/get {:url (str "/api/messages/by/" author)
                :success-path [:messages]
                :success-event [:messages/set]}}))
@@ -240,4 +242,11 @@
                               @(rf/subscribe [:form/fields])])
      :value "comment"}]])
 
-
+(defn message-list-placeholder
+  ""
+  []
+  [:ul.messages
+   [:li
+    [:p "Loading Messages..."]
+    [:div {:style {:width "10em"}}
+     [:progress.progress.is-dark {:max 100} "30%"]]]])

@@ -23,8 +23,10 @@
     (merge
      {:name ::home}
      #?(:cljs
-        {:view #'home/home}))]
+        {:controllers home/home-controllers
+         :view #'home/home}))]
    ["/user/:user"
     (merge
      {:name ::author}
-     #?(:cljs {:view #'author/author}))]])
+     #?(:cljs {:controllers author/author-controllers
+               :view #'author/author}))]])
