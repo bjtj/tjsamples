@@ -231,7 +231,7 @@
                    {:keys [identity] :as session} :session}]
                (try
                  (let [identity
-                       (author/set-author-profile {:login identity} profile)]
+                       (author/set-author-profile (:login identity) profile)]
                    (update (response/ok {:success true})
                            :session
                            assoc :identity identity))
