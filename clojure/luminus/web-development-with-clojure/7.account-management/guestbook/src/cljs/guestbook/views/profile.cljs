@@ -21,7 +21,7 @@
  :<- [:profile/changes]
  :<- [:auth/user]
  (fn [[changes {:keys [profile]}] [_ k default]]
-   (or (get changtes k) (get profile k) default)))
+   (or (get changes k) (get profile k) default)))
 
 (rf/reg-sub
  :profile/profile
@@ -33,10 +33,10 @@
 (rf/reg-event-db
  :profile/save-change
  (fn [db [_ k v]]
-   (upate db :profile/changes
-          (if (nil? v)
-            #(dissoc % k)
-            #(dissoc % k v)))))
+   (update db :profile/changes
+           (if (nil? v)
+             #(dissoc % k)
+             #(dissoc % k v)))))
 
 (rf/reg-event-fx
  :profile/set-profile
@@ -53,8 +53,8 @@
        (dissoc :profile/chagnes))))
 
 (def profile-controllers
-  [{:start (fn [_] (println "Entering Profile Page"))}]
-  [{:stop (fn [_] (println "Leaving Profile Page"))}])
+  [{:start (fn [_] (println "Entering Profile Page"))
+    :stop (fn [_] (println "Leaving Profile Page"))}])
 
 (defn display-name
   ""
