@@ -264,11 +264,11 @@
                  (log/error "File " name
                             " exceeded max size of 5 MB. (size: " size ")")
                  (update acc :failed-uploads (fnil conj []) name))
-               (re-matches @"image/.*" content-type)
+               (re-matches #"image/.*" content-type)
                (-> acc
                    (update :files-uploaded conj name)
                    (assoc name
-                          (str "/api/media"
+                          (str "/api/media/"
                                (cond
                                  (= name :avatar)
                                  (media/insert-image-returning-name

@@ -32,3 +32,13 @@
            error-event (assoc :error-handler
                               #(rf/dispatch
                                 (conj error-event %)))))))
+
+(rf/reg-fx
+ :ajax/upload-media!
+ (fn [{:keys [url success-event files handler]}]
+   (let [form-data (js/FormData.)]
+     (doseq [[k v] files]
+       (when (some? v)
+         (.append form-data (name k) v)))
+     (POST url {:body form-data
+                :handler handler}))))
