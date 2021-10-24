@@ -27,8 +27,8 @@
                                 #(rf/dispatch
                                   (conj success-event
                                         (if success-path
-                                            (get-in % success-path)
-                                            %))))
-           error-handler (assoc :error-handler
-                                #(rf/dispatch
-                                  (conj error-event %)))))))
+                                          (get-in % success-path)
+                                          %))))
+           error-event (assoc :error-handler
+                              #(rf/dispatch
+                                (conj error-event %)))))))

@@ -30,3 +30,8 @@ guestbook.db.core=> (get-user* {:login "testuser"})
 guestbook.db.core=> (set-profile-for-user* {:login "testuser" :profile {:bio "A test user"}})
 {:login "testuser", :password "bcrypt+sha512$02751c8a962679e03d2aea2c2e9e5e4c$12$0156ff0c4e59235f1bc69d46e171d8267cf0a3896a222701", :created_at #inst "2021-10-04T06:44:40.642-00:00", :profile {:bio "A test user"}}
 ```
+
+
+## Account Customization - Managing Media ##
+
+<http://localhost:3000/api/media/test.png>
