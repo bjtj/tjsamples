@@ -165,7 +165,7 @@
         [:input.input
          {:type "password"
           :value (:password @fields)
-          :on-change #(swap! fields assoc :psssword (.. % -target -value))}]]]
+          :on-change #(swap! fields assoc :password (.. % -target -value))}]]]
       [:div.field
        [:div.label "Confirm Password"]
        [:div.control
