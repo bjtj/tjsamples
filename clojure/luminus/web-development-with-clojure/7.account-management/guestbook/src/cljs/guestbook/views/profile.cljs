@@ -5,6 +5,8 @@
                                  image image-uploader]]
    [reagent.core :as r]
    [re-frame.core :as rf]
+   [reitit.frontend.easy :as rtfe]
+   [guestbook.modals :as m]
    ))
 
 (rf/reg-sub
@@ -264,12 +266,88 @@
               (change-password!))}
            "Change Password"]]]))))
 
+(defn delete-account
+  ""
+  [username]
+  (r/with-let [fields (r/atom {})
+               login (r/cursor fields [:login])
+               password (r/cursor fields [:password])
+               status (r/atom {})]
+    [:<>
+     [:h3 "Delete Account"]
+     [m/modal-button
+      ::delete-account
+      {:button {:class ["is-danger"]}}
+      "Delete Account"
+      ;; Modal Body
+      [:section
+       [:div.message.is-danger
+        [:div.message-header (str "Deleting Account " username)]
+        [:div.message-body "Are you sure you wish to delete your account?"]]
+       (when-let [message (:error @status)]
+         [:div.message.is-dander>div.message-body message])
+       [:div.field.is-horizontal
+        [:div.field-label.is-normal>label.label {:for :login} "Login"]
+        [:div.field-body>input.input
+         {:id :login
+          :autocomplete false
+          :value @login
+          :on-change #(reset! login (.. % -target -value))
+          :disabled (:loading @status)
+          :type :text}]]
+       [:div.field.is-horizontal
+        [:div.field-label.is-noraml>label.label {:for :password} "Password"]
+        [:div.field-body>input.input
+         {:id :password
+          :value @password
+          :disabled (:loading @status)
+          :on-change #(reset! password (.. % -target -value))
+          :type :password
+          :autocomplete false}]]]
+      ;; Modal Footer
+      [:div.field.is-grouped
+       [:p.control>button.button.is-light
+        {:disabled (:loading @status)
+         :on-click (fn [_]
+                     (reset! fields {})
+                     (reset! status {})
+                     (rf/dispatch [:app/hide-modal ::delete-account]))}
+        "Cancel"]
+       [:p.control>button.button.is-danger
+        {:disabled (or (:loading @status) (empty? @login) (empty? @password))
+         :on-click
+         (fn [_]
+           (if (not= @login username)
+             (reset! status
+                     {:error
+                      (str "Login must match current user: " username)})
+             (do
+               (reset! status {:loading true})
+               (ajax/POST "/api/my-account/delete-account"
+                          {:params @fields
+                           :handler
+                           (fn [_]
+                             (reset! status {})
+                             (reset! fields {})
+                             (rf/dispatch [:app/hide-modal ::delete-account])
+                             (rf/dispatch [:auth/handle-logout])
+                             (rtfe/push-state :guestbook.routes.app/home))
+                           :error-handler
+                           (fn [{r :response}]
+                             (if (= (:error r) :incorrect-password)
+                               (reset! status {:error
+                                               "Incorrect password, please try again."})
+                               (reset! status {:error
+                                               "Unknown Error Occured."})))}))))}
+        "Delete Account"]]]]))
+
 (defn account-settings
   ""
   []
   [:<>
    [:h2 "Account Settings"]
-   [change-password]])
+   [change-password]
+   [delete-account (:login @(rf/subscribe [:auth/user]))]])
 
 (defn profile
   ""
