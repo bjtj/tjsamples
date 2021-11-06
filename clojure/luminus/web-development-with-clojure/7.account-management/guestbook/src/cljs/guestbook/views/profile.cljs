@@ -1,5 +1,6 @@
 (ns guestbook.views.profile
   (:require
+   [ajax.core :as ajax]
    [guestbook.components :refer [text-input textarea-input
                                  image image-uploader]]
    [reagent.core :as r]
@@ -188,6 +189,88 @@
         :on-click #(rf/dispatch [:profile/save-media k nil])}
        "Reset Banner"]]]))
 
+(defn change-password
+  ""
+  []
+  (let [fields (r/atom {})
+        errors (r/atom {})
+        success (r/atom {})]
+    (letfn [(password-field [id label]
+              ;; helper component
+              (r/with-let [v (r/cursor fields [id])
+                           e (r/cursor errors [id])]
+                [:div.field
+                 [:label.label {:for id} label]
+                 [:input.input {:id id
+                                :type :password
+                                :value @v
+                                :onchange #(reset! v (.. % -target -value))}]
+                 (when-let [message @e]
+                   [:p.help.is-danger message])]))
+            (change-password! []
+              ;; helper component
+              (let [{:keys [new-password
+                            confirm-password]
+                     :as params} @fields]
+                (if (not= new-password confirm-password)
+                  (reset! errors
+                          {:new-password "New Password and Confirm must match!"
+                           :confirm-password "New Password and Confirm must match!"})
+                  (ajax/POST "/api/my-account/change-password"
+                             {:params params
+                              :handler
+                              (fn [_]
+                                ;; Display success message for 5 seconds
+                                (swap! success
+                                       (fn [{:keys [timeout]}]
+                                         (when timeout
+                                           (js/clearTimeout timeout))
+                                         {:message "Password change successful!"
+                                          :timeout (js/setTimeout
+                                                    (fn []
+                                                      (reset! success {}))
+                                                    5000)}))
+                                (reset! fields {})
+                                (reset! errors {}))
+                              :error-handler
+                              (fn [{r :response}]
+                                (println r)
+                                (reset!
+                                 errors
+                                 (case (:error r)
+                                   :incorrect-password
+                                   {:old-password (:message r)}
+                                   :mismatch
+                                   {:new-password (:message r)
+                                    :confirm-password (:message r)}
+                                   ;; else
+                                   {:server
+                                    "Unknown Server Error. Please try again!"})))})))
+              )]
+      (fn []
+        [:<>
+         [:h3 "Change Password"]
+         [password-field :old-password "Current Password"]
+         [password-field :new-password "New Password"]
+         [password-field :confirm-password "New Password (confirm)"]
+         [:div.field
+          (when-let [message (:server @errors)]
+            [:p.message.is-danger message])
+          (when-let [message (:message @success)]
+            [:p.message.is-success message])
+          [:button.button
+           {:on-click
+            (fn [_]
+              (change-password!))}
+           "Change Password"]]]))))
+
+(defn account-settings
+  ""
+  []
+  [:<>
+   [:h2 "Account Settings"]
+   [change-password]])
+
 (defn profile
   ""
   [_]
@@ -213,7 +296,8 @@
                         @(rf/subscribe [:profile/profile])
                         @(rf/subscribe [:profile/media])])
          :disabled disabled?}
-        "Update Profile"])]
+        "Update Profile"])
+     [account-settings]]
     [:div.content
      [:div {:style {:width "100%"}}
       [:progress.progress.is-dark {:max 100} "30%"]]]))
