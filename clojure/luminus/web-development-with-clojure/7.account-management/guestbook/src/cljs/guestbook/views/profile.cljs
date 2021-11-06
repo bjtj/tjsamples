@@ -204,7 +204,7 @@
                  [:input.input {:id id
                                 :type :password
                                 :value @v
-                                :onchange #(reset! v (.. % -target -value))}]
+                                :on-change #(reset! v (.. % -target -value))}]
                  (when-let [message @e]
                    [:p.help.is-danger message])]))
             (change-password! []

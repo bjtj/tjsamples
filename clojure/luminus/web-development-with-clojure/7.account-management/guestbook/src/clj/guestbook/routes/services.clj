@@ -248,6 +248,35 @@
                    (response/internal-server-error
                     {:errors {:server-error
                               ["Failed to set profile!"]}}))))}}]
+    ;; /api/my-account/change-password
+    ["/change-password"
+     {::auth/roles (auth/roles :account/set-profile!)
+      :post {:parameters
+             {:body
+              {:old-password string?
+               :new-password string?
+               :confirm-password string?}}
+             :handler
+             (fn [{{{:keys [old-password
+                            new-password
+                            confirm-password]} :body} :parameters
+                   {:keys [identity]} :session}]
+               (if (not= new-password confirm-password)
+                 (response/bad-request
+                  {:error :mismatch
+                   :message "Password and Confirm fields must match!"})
+                 (try
+                   (auth/change-password! (:login identity)
+                                          old-password
+                                          new-password)
+                   (response/ok {:success true})
+                   (catch clojure.lang.ExceptionInfo e
+                     (if (= (:guestbook/error-id (ex-data e))
+                            ::auth/authentication-failure)
+                       (response/unauthorized
+                        {:error :incorrect-password
+                         :message "Old Password is incorrect, please try again."})
+                       (throw e))))))}}]
     ["/media/upload"
      {::auth/roles (auth/roles :media/upload)
       :post
@@ -313,32 +342,4 @@
                             (response/ok)
                             (response/content-type type))
                         (response/not-found)))}}]
-   ["/change-password"
-    {::auth/roles (auth/roles :account/set-profile!)
-     :post {:parameters
-            {:body
-             {:old-password string?
-              :new-password string?
-              :confirm-password string?}}
-            :handler
-            (fn [{{{:keys [old-password
-                           new-password
-                           confirm-password]} :body} :parameters
-                  {:keys [identity]} :session}]
-              (if (not= new-password confirm-password)
-                (response/bad-request
-                 {:error :mismatch
-                  :message "Password and Confirm fields must match!"})
-                (try
-                  (auth/change-password! (:login identity)
-                                         old-password
-                                         new-password)
-                  (response/ok {:success true})
-                  (catch clojure.lang.ExceptionInfo e
-                    (if (= (:guestbook/error-id (ex-data e))
-                           ::auth/authentication-failure)
-                      (response/unauthorized
-                       {:error :incorrect-password
-                        :message "Old Password is incorrect, please try again."})
-                      (throw e))))))}}]
    ])

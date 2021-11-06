@@ -45,7 +45,7 @@
          {:login login
           :password (hashers/derive new-password)})
         (throw (ex-info "Old password must match!"
-                        {:guestbook/error-id ::authencation-failure
+                        {:guestbook/error-id ::authentication-failure
                          :error "Passwords do not match!"}))))))
 
 (defn authenticate-user
