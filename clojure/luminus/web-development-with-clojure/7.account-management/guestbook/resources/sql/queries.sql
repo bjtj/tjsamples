@@ -57,4 +57,5 @@ WHERE name = :name
 -- :name set-password-for-user!* :! :n
 UPDATE users
 SET password = :password
-WHERE login := login
+WHERE login = :login
+
