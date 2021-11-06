@@ -34,9 +34,24 @@
                         {:login login
                          :password (hashers/derive password)}))))
 
+(defn change-password!
+  ""
+  [login old-password new-password]
+  (jdbc/with-transaction [t-conn db/*db*]
+    (let [{hashed :password} (db/get-user-for-auth* t-conn {:login login})]
+      (if (hashers/check old-password hashed)
+        (db/set-password-for-user!*
+         t-conn
+         {:login login
+          :password (hashers/derive new-password)})
+        (throw (ex-info "Old password must match!"
+                        {:guestbook/error-id ::authencation-failure
+                         :error "Passwords do not match!"}))))))
+
 (defn authenticate-user
   ""
   [login password]
   (let [{hashed :password :as user} (db/get-user-for-auth* {:login login})]
     (when (hashers/check password hashed)
         (dissoc user :password))))
+
