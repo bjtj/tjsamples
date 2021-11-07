@@ -362,10 +362,11 @@
            {:file-uploaded []}
            mp)))}}]
     ]
+   ;; /api/media/{name}
    ["/media/:name"
     {::auth/roles (auth/roles :media/get)
      :get {:parameters
-           {:path {name string?}}
+           {:path {:name string?}}
            :handler (fn [{{{:keys [name]} :path} :parameters}]
                       (if-let [{:keys [data type]} (db/get-file {:name name})]
                         (-> (io/input-stream data)

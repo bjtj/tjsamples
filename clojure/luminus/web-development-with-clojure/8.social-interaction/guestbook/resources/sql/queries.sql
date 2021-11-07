@@ -6,13 +6,22 @@ RETURNING *;
 
 -- :name get-messages :? :*
 -- :doc select all available messages
-SELECT * from posts
+SELECT 
+p.id                 as id,
+p.timestamp          as timestamp,
+p.message            as message,
+p.name               as name,
+p.author             as author,
+a.profile->>'avatar' as avatar
+from posts as p join users as a
+on a.login = p.author
 
 -- :name create-user!* :! :n
 -- :doc creates a new user with the provided login and hashed password
 INSERT INTO users
 (login, password)
 VALUES (:login, :password)
+
 -- :name get-user-for-auth* :? :1
 -- :doc selects a user for authentication
 SELECT * FROM users
@@ -20,7 +29,15 @@ WHERE login = :login
 
 -- :name get-messages-by-author :? :*
 -- :doc selects all messages posted by a user
-SELECT * FROM posts
+SELECT 
+p.id                 as id,
+p.timestamp          as timestamp,
+p.message            as message,
+p.name               as name,
+p.author             as author,
+a.profile->>'avatar' as avatar
+from posts as p join users as a
+on a.login = p.author
 WHERE author = :author
 
 
@@ -63,3 +80,17 @@ WHERE login = :login
 -- :name delete-user!* :! :n
 DELETE FROM users
 WHERE login = :login
+
+
+-- :name get-message :? :1
+-- :doc selects a message
+SELECT
+p.id as id,
+p.timestamp as timestamp,
+p.message as message,
+p.name as name,
+p.author as author,
+a.profile->>'avatar' as avatar
+FROM posts AS p JOIN users AS a
+ON a.login = p.author
+WHERE p.id = :id

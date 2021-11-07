@@ -2,8 +2,10 @@
   (:require [clojure.string :as string]
             [reagent.core :as r]
             [re-frame.core :as rf]
+            [reagent.dom :as dom]
+            [reitit.frontend.easy :as rtfe]
             [guestbook.validation :refer [validate-message]]
-            [guestbook.components :refer [text-input textarea-input]]
+            [guestbook.components :refer [text-input textarea-input image]]
             [day8.re-frame.tracing :refer-macros [fn-traced]]))
 
 ;; All code is copied in from guestbook.core
@@ -155,23 +157,52 @@
        "Loading Messages"
        "Refresh Messages")]))
 
+(defn message
+  ""
+  [{:keys [id timestamp message name author avatar] :as m}]
+  [:article.media
+   [:figure.media-left
+    [image (or avatar "/img/avatar-default.png") 128 128]]
+   [:div.media-content>div.content
+    [:time (.toLocaleString timestamp)]
+    [:p message]
+    ;; require [reitit.frontend.easy :as rtfe]
+    [:p>a {:on-click (fn [_]
+                       (let [{{:keys [name]} :data
+                              {:keys [path query]} :parameters}
+                             @(rf/subscribe [:router/current-route])]
+                         (rtfe/replace-state name path (assoc query :post id)))
+                       (rtfe/push-state :guestbook.routes.app/post {:post id}))}
+     "View Post"]
+    [:p " - " name
+     " <"
+     (if author
+       [:a {:href (str "/user/" author)} (str "@" author)]
+       [:span.is-italic "account not found"])
+     ">"]]])
+
+(defn msg-li
+  ""
+  [m message-id]
+  (r/create-class
+   {:component-did-mount
+    (fn [this]
+      (when (= message-id (:id m))
+        (.scrollIntoView (dom/dom-node this))))
+    :reagent-render
+    (fn [_]
+      [:li
+       [message m]])}))
 
 (defn message-list
   ""
-  [messages]
-  [:ul.messages
-   (for [{:keys [timestamp message name author]} @messages]
-     ^{:key timestamp}
-     [:li
-      [:time (.toLocaleString timestamp)]
-      [:p message]
-      [:p " - " name
-       ;; Add the author (e.g. <@username>)
-       " <"
-       (if author
-         [:a {:href (str "/user/" author)} (str "@" author)]
-         [:span.is-italic "account not found"])
-       ">"]])])
+  ([messages]
+   [message-list messages nil])
+  ([messages message-id]
+   [:ul.messages
+    (for [m @messages]
+      ^{:key (:timestamp m)}
+      [msg-li m message-id])]))
 
 (defn errors-component
   ""
@@ -217,3 +248,6 @@
     [:p "Loading Messages..."]
     [:div {:style {:width "10em"}}
      [:progress.progress.is-dark {:max 100} "30%"]]]])
+
+
+
