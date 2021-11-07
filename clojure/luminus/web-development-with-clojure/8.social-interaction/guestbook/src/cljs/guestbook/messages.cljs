@@ -5,7 +5,7 @@
             [reagent.dom :as dom]
             [reitit.frontend.easy :as rtfe]
             [guestbook.validation :refer [validate-message]]
-            [guestbook.components :refer [text-input textarea-input image]]
+            [guestbook.components :refer [text-input textarea-input image md]]
             [day8.re-frame.tracing :refer-macros [fn-traced]]))
 
 ;; All code is copied in from guestbook.core
@@ -159,27 +159,31 @@
 
 (defn message
   ""
-  [{:keys [id timestamp message name author avatar] :as m}]
+  ([m] [message m {}])
+  ([{:keys [id timestamp message name author avatar] :as m}
+    {:keys [include-link?]
+     :or {include-link? true}}]
   [:article.media
    [:figure.media-left
     [image (or avatar "/img/avatar-default.png") 128 128]]
    [:div.media-content>div.content
     [:time (.toLocaleString timestamp)]
-    [:p message]
-    ;; require [reitit.frontend.easy :as rtfe]
+    [md message]
+    (when include-link?
+      ;; require [reitit.frontend.easy :as rtfe]
     [:p>a {:on-click (fn [_]
                        (let [{{:keys [name]} :data
                               {:keys [path query]} :parameters}
                              @(rf/subscribe [:router/current-route])]
                          (rtfe/replace-state name path (assoc query :post id)))
                        (rtfe/push-state :guestbook.routes.app/post {:post id}))}
-     "View Post"]
+     "View Post"])
     [:p " - " name
      " <"
      (if author
        [:a {:href (str "/user/" author)} (str "@" author)]
        [:span.is-italic "account not found"])
-     ">"]]])
+     ">"]]]))
 
 (defn msg-li
   ""
