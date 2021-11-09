@@ -3,7 +3,8 @@
    [reagent.core :as r]
    [markdown.core :refer [md->html]]
    [markdown.transformers :refer [transformer-vector]]
-   [clojure.string :as string]))
+   [clojure.string :as string]
+   [goog.functions :as gf]))
 
 (defn linkify-tags
   "Change tags into links"
@@ -91,9 +92,13 @@ target=\"_blank\">
   ""
   [{val :value
     attrs :attrs
+    ms :save-timeout
     :keys [on-save]}]
   (let [draft (r/atom nil)
-        value (r/track #(or @draft @val ""))]
+        value (r/track #(or @draft @val ""))
+        save-on-change (if ms
+                         (gf/debounce on-save ms)
+                         (fn [& _]))]
     (fn []
       [:textarea.textarea
        (merge attrs
@@ -101,7 +106,10 @@ target=\"_blank\">
                :on-blur (fn []
                           (on-save (or @draft ""))
                           (reset! draft nil))
-               :on-change #(reset! draft (.. % -target -value))
+               :on-change (fn [e]
+                            (let [v (.. e -target -value)]
+                              (reset! draft v)
+                              (save-on-change v)))
                :value @value})])))
 
 (defn image
