@@ -130,10 +130,15 @@ target=\"_blank\">
   [save-fn label-text]
   [:div.file>label.file-label
    [:input.file-input {:type :file
-                       :on-change #(save-fn
-                                    (-> %
+                       :on-change (fn [e]
+                                    (save-fn
+                                     (-> e
+                                         .-target
+                                         .-files
+                                         (aget 0)))
+                                    (-> e
                                         .-target
-                                        .-files
-                                        (aget 0)))}]
+                                        .-value
+                                        (set! "")))}]
    [:span.file-cta
     [:span.file-label label-text]]])
