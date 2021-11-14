@@ -54,6 +54,26 @@
           (send! uid [:message/add response]))
         {:success true}))))
 
+
+(defmethod handle-message :messsage/boost!
+  [{:keys [?data uid session] :as messsage}]
+  (let [response (try
+                   (msg/boost-message (:identity session)
+                                      (:id ?data)
+                                      (:poster ?data))
+                   (catch Exception e
+                     {:errors
+                      {:server-error ["Failed to boost message!"]}}))]
+    (if (:errors response)
+      (do
+        (log/debug "Failed to boost message: " ?data)
+        response)
+      (do
+        (doseq [uid (:any @(:connected-uids socket))]
+          (send! uid [:message/add response]))
+        {:success true}))))
+
+
 (defn receive-message!
   ""
   [{:keys [id ?reply-fn ring-req] :as message}]
