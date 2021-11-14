@@ -11,6 +11,7 @@
 
 (def roles
   {:message/create! #{:authenticated}
+   :message/boost! #{:authenticated}
    :message/get #{:any}
    :author/get #{:any}
    :account/set-profile! #{:authenticated}
