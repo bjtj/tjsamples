@@ -55,7 +55,7 @@
         {:success true}))))
 
 
-(defmethod handle-message :messsage/boost!
+(defmethod handle-message :message/boost!
   [{:keys [?data uid session] :as messsage}]
   (let [response (try
                    (msg/boost-message (:identity session)

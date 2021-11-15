@@ -203,6 +203,12 @@
        "Loading Messages"
        "Refresh Messages")]))
 
+(rf/reg-event-fx
+ :message/boost!
+ (fn [{:keys [db]} [_ message]]
+   {:ws/send!
+    {:message [:message/boost! (select-keys message [:id :poster])]}}))
+
 (defn message
   ""
   ([m] [message m {}])
@@ -235,7 +241,7 @@
             [image (or source_avatar "/img/avatar-default.png") 24 24]]
            [:div.column.pb-0 #_{:style {:text-align "left"}}
             [:div.column.is-narrow.pb-0
-             [:a {:href (str "/user" source "?post=" id)} source]]]])
+             [:a {:href (str "/user/" source "?post=" id)} source]]]])
         [:div.mb-4>time
          (.toLocaleString posted_at)]
         [md message]
@@ -262,7 +268,7 @@
                (rtfe/push-state :guestbook.routes.app/post {:post id}))}
             [:i.material-icons
              "open_in_new"]])
-         [:button.button.is-rounded.is-small.is-info.is-outlined.leve-item
+         [:button.button.is-rounded.is-small.is-info.is-outlined.level-item
           {:on-click
            #(rf/dispatch [:message/boost! m])
            :disabled (nil? @(rf/subscribe [:auth/user]))}
