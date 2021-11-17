@@ -1,7 +1,7 @@
--- :name save-message! :<! :n
+-- :name save-message! :<! :1
 -- :doc creates a new message using the name and message keys
-INSERT INTO posts(author, name, message)
-VALUES (:author, :name, :message)
+INSERT INTO posts(author, name, message, parent)
+VALUES (:author, :name, :message, :parent)
 RETURNING *;
 
 -- :name get-messages :? :*
@@ -140,3 +140,4 @@ and poster = :user
 and id = :post
 order by posted_at asc
 limit 1
+
