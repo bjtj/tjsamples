@@ -26,6 +26,8 @@
          (= matcher v))))
    filter-map))
 
+;; messages load
+
 (rf/reg-event-fx
  :messages/load
  (fn-traced [{:keys [db]} _]
@@ -52,6 +54,8 @@
  :messages/loading?
  (fn [db _]
    (:messages/loading? db)))
+
+;; messages
 
 (rf/reg-event-db
  :messages/set
@@ -80,6 +84,8 @@
    (if (add-message? (:messages/filter db) message)
      (update db :messsages/list conj message)
      db)))
+
+;; form
 
 (rf/reg-event-db
  :form/set-field
@@ -141,6 +147,8 @@
  (fn [errors [_ id]]
    (get errors id)))
 
+;; message send
+
 (rf/reg-event-fx
  :message/send!-called-back
  (fn [_ [_ {:keys [success errors]}]]
@@ -175,6 +183,8 @@
                  :timeout 10000
                  :callback-event [:message/send!-called-back]}})))
 
+;; message media
+
 (rf/reg-event-db
  :message/save-media
  (fn [db [_ img]]
@@ -195,6 +205,8 @@
  (fn [db [_]]
    (:message/media db)))
 
+;; modal
+
 (rf/reg-event-db
  :app/hide-reply-modals
  (fn [db _]
@@ -205,7 +217,7 @@
                                    %))))
 
 (defn reload-messages-button
-  ""
+  "Reload Messge Button"
   []
   (let [loading? (rf/subscribe [:messages/loading?])]
     [:button.button.is-info.is-fullwidth
@@ -215,6 +227,8 @@
        "Loading Messages"
        "Refresh Messages")]))
 
+;; boost
+
 (rf/reg-event-fx
  :message/boost!
  (fn [{:keys [db]} [_ message]]
@@ -222,7 +236,7 @@
     {:message [:message/boost! (select-keys message [:id :poster])]}}))
 
 (defn message-content
-  ""
+  "Message Content"
   [{:keys [messages name author]
     :as m}]
   [:<>
@@ -240,11 +254,9 @@
     ">"]])
 
 (defn post-meta
-  ""
+  "Post Meta"
   [{:keys [id is_boost timestamp posted_at poster poster_avatar source source_avatar] :as m}]
   (let [posted_at (or posted_at timestamp)]
-
-
     [:<> (when is_boost
           [:div.columns.is-vcentered.is-1.mb-0
            [:div.column.is-narrow.pb-0
@@ -263,21 +275,23 @@
         "NULL PSOTED_AT")]]))
 
 (defn expand-post-button
-  ""
+  "Expand Post Button"
   [{:keys [id root_id] :as m}]
-  [:button.button.is-rounded.is-small.is-info.is-outlined.level-item
+  [:button.button.is-rounded.is-small.is-secondary.is-outlined.level-item
    {:on-click
     (fn [_]
       (let [{{:keys [name]} :data
              {:keys [path query]} :parameters}
             @(rf/subscribe [:router/current-route])]
         (rtfe/replace-state name path (assoc query :post id)))
-      (rtfe/push-state :guestbook.routes.app/post {:post root_id}))}
+      (rtfe/push-state :guestbook.routes.app/post {:post root_id}
+                       (when (not= root_id id)
+                           {:reply id})))}
    [:i.material-icons
     "open_in_new"]])
 
 (defn boost-button
-  ""
+  "Boost Button"
   [{:keys [boosts] :as m}]
   [:button.button.is-rounded.is-small.is-info.is-outlined.level-item
    {:on-click
@@ -294,11 +308,11 @@
                  [:message/clear-media]]}))
 
 (defn reply-button
-  ""
+  "Reply Button"
   [{:keys [reply_count] :as m}]
   [:<>
    [reply-modal m]
-   [:button.button.is-rounded.is-small.is-info.is-outlined.level-item
+   [:button.button.is-rounded.is-small.is-outlined.level-item
     {:on-click (fn []
                  (rf/dispatch [:form/clear])
                  (rf/dispatch [:app/show-modal
@@ -406,7 +420,6 @@
   [modals/modal-card
    {:on-close #(rf/dispatch [:form/clear])
     :id [:reply-modal (:id parent)]}
-   [:reply-modal (:id parent)]
    (str "Reply to post by user: " (:author parent))
    [:<>
     [message-form-preview parent]

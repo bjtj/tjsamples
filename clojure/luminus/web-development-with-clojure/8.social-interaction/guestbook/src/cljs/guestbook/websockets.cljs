@@ -31,17 +31,31 @@
   (fn [{:keys [id]} _]
     id))
 
+;; ------------------------
+;; Default Handlers
+
+(rf/reg-event-db
+ :ws/set-message-add-handler
+ (fn [db [_ ev]]
+   (if ev
+     (assoc db :ws/message-add-handler ev)
+     (dissoc db :ws/message-add-handler))))
+
+(rf/reg-sub
+ :ws/message-add-handler
+ (fn [db _]
+   (:ws/message-add-handler db)))
+
 (defmethod handle-message :message/add
-  [_ msg-add-event]
-  (rf/dispatch msg-add-event))
+  [_ [_ msg :as msg-add-event]]
+  (if-some [ev @(rf/subscribe [:ws/message-add-handler])]
+    (rf/dispatch (conj ev msg))
+    (rf/dispatch msg-add-event)))
 
 (defmethod handle-message :message/creation-errors
   [_ [_ response]]
   (rf/dispatch
    [:form/set-server-errors (:errors response)]))
-
-;; ------------------------
-;; Default Handlers
 
 (defmethod handle-message :chsk/handshake
   [{:keys [event]} _]
