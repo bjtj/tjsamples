@@ -234,7 +234,23 @@
                     (response/bad-request
                      {:message
                       (str "Could not boost message: " post-id
-                           " as " (:login identity))}))))}}]]
+                           " as " (:login identity))}))))}}]
+     ["/replies"
+      {::auth/roles (auth/roles :message/get)
+       :get {
+       :handler (fn [{{{:keys [post-id]} :path} :parameters}]
+                  (let [replies (msg/get-replies post-id)]
+                    (response/ok
+                     {:replies
+                      replies})))}}]
+     ["/parents"
+      {::auth/roles (auth/roles :mesage/get)
+       :get {
+             :handler (fn [{{{:keys [post-id]} :path} :parameters}]
+                        (let [parents (msg/get-parents post-id)]
+                          (response/ok
+                           {:parents
+                            parents})))}}]]
     [""
      {::auth/roles (auth/roles :message/create!)
       :post

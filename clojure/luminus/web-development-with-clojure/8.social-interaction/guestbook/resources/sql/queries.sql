@@ -4,6 +4,19 @@ INSERT INTO posts(author, name, message, parent)
 VALUES (:author, :name, :message, :parent)
 RETURNING *;
 
+-- :name get-parents
+SELECT * from posts_with_meta
+inner join (select id, parent from posts) as p using (id)
+inner join reply_count using (id)
+where id in (with recursive parents as
+(select id, parent from posts
+where id = :id
+UNION
+select p.id, p.parent from posts p
+inner join parents pp
+on p.id = pp.parent)
+select id from parents)
+
 -- :name get-messages :? :*
 -- :doc select all available messages
 SELECT * from posts_with_meta
@@ -11,7 +24,16 @@ SELECT * from posts_with_meta
 -- :name get-message :? :1
 -- :doc selects a message
 SELECT * from posts_with_meta
+inner join (select id, parent from posts) as p using (id)
+inner join reply_count using (id)
 where id = :id
+
+-- :name get-replies :? :*
+select * from posts_with_meta
+inner join (select id, parent from posts) as p using (id)
+inner join reply_count using (id)
+where id IN (select id from posts
+where parent = :id)
 
 -- :name get-messages-by-author :? :*
 -- :doc selects all messages posted by a user

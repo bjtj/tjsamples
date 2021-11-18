@@ -41,6 +41,16 @@
   [post-id]
   (db/get-message {:id post-id}))
 
+(defn get-replies
+  ""
+  [id]
+  (db/get-replies {:id id}))
+
+(defn get-parents
+  ""
+  [id]
+  (db/get-parents {:id id}))
+
 (defn boost-message
   ""
   [{{:keys [display-name]} :profile
