@@ -22,7 +22,7 @@
  :app/initialize
  (fn-traced [_ _]
             {:db {:session/loading? true}
-             :dispatch-n [[:session/load] [:messages/load]]}))
+             :dispatch-n [[:session/load]]}))
 
 (def router
   (rtf/router

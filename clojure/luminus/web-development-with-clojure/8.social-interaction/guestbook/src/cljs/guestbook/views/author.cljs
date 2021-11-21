@@ -76,11 +76,11 @@
 
 (defn author
   ""
-  [{{{:keys [user]} :path
-     {:keys [post]} :query} :parameters}]
+  [_]
   (let [messages (rf/subscribe [:messages/list])
         author (rf/subscribe [::author])]
-    (fn [{{{:keys [user]} :path} :parameters}]
+    (fn [{{{:keys [user]} :path
+           {:keys [post]} :query} :parameters}]
       (if @(rf/subscribe [::loading?])
         [:div.content
          [:div {:style {:width "100%"}}

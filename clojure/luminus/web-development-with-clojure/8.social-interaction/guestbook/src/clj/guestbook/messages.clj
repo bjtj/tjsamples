@@ -72,3 +72,9 @@
   ""
   [poster]
   {:messages (vec (db/get-timeline-for-poster {:poster poster}))})
+
+(defn get-feed-for-tag
+  ""
+  [tag]
+  {:messages
+   (db/get-feed-for-tag {:tag tag})})

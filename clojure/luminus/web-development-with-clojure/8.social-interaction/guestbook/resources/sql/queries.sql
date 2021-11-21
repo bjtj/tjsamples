@@ -163,3 +163,17 @@ and id = :post
 order by posted_at asc
 limit 1
 
+-- :name get-feed-for-tag :? :*
+-- :require [guestbook.db.util :refer [tag-regex]]
+-- Given a tag, return its feed
+select * from
+(select distinct on (p.id) * from posts_and_boosts as p
+where
+/*~ (if (:tag params) */
+p.message ~*
+/*~*/
+false
+/*~ ) ~*/
+--~ (when (:tag params) (tag-regex (:tag params)))
+order by p.id, posted_at desc) as t
+order by t.posted_at asc

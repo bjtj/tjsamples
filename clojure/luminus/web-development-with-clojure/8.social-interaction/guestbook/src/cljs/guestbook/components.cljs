@@ -17,7 +17,7 @@
         #"(\s|^)#([-\w]+)(?=\s|$)"
         "$1<a href=\"/tag/$2\"
 title=\"View posts tagged #$2\"
-target=\"_blacnk\">
+target=\"_blank\">
 #$2
 </a>")
        state]))
