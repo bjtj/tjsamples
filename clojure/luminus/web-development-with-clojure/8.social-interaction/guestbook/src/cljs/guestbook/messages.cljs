@@ -40,6 +40,31 @@
                         :success-event [:messages/set]}}))
 
 (rf/reg-event-fx
+ :messages/load-feed
+ (fn [{:keys [db]} _]
+   (let [{:keys [follows tags]}
+         (get-in db [:auth/user :profile :subscriptions])]
+     {:db (assoc db
+                 :messages/loading? true
+                 :messages/list nil
+                 :messages/filter
+                 [{:message
+                   #(some
+                     (fn [tag]
+                       (re-find
+                        (re-pattern (str "(?<=\\s|^)#" tag "(?=\\s|$)"))
+                        %))
+                     tags)}
+                  {:poster
+                   #(some
+                     (partial = %)
+                     follows)}])
+      :ajax/get {:url "/api/messages/feed"
+                 :success-path [:messages]
+                 :success-event [:messages/set]}})))
+
+
+(rf/reg-event-fx
  :messages/load-by-author
  (fn [{:keys [db]} [_ author]]
    {:db (assoc db
@@ -92,12 +117,17 @@
       :ids #{}}
      (:messages/list db [])))))
 
+
 (rf/reg-event-db
  :message/add
  (fn [db [_ message]]
-   (if (add-message? (:messages/filter db) message)
-     (update db :messsages/list conj message)
-     db)))
+   (let [msg-filter (:messages/filter db)
+         filters (if (map? msg-filter)
+                   [msg-filter]
+                   msg-filter)]
+     (if (some #(add-message? % message) filters)
+       (update db :messages/list conj message)
+       db))))
 
 ;; form
 

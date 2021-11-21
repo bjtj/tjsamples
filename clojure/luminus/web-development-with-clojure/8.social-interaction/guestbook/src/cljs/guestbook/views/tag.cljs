@@ -1,6 +1,7 @@
 (ns guestbook.views.tag
   (:require [re-frame.core :as rf]
-            [guestbook.messages :as messages]))
+            [guestbook.messages :as messages]
+            [guestbook.subscriptions :as sub]))
 
 (def tag-controllers
   [{:parameters {:path [:tag]}
@@ -17,6 +18,7 @@
        [:div.columns.is-centered>div.column.is-two-thirds
         [:div.columns>div.column
          [:h3 (str "Posts tagged #" tag)]
+         [sub/subscribe-button :tags tag]
          (if @(rf/subscribe [:messages/loading?])
            [messages/message-list-placeholder]
            [messages/message-list messages post])]]])))
