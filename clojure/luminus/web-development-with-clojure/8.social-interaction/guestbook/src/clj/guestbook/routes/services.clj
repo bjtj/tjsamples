@@ -215,6 +215,27 @@
            (response/ok
             (msg/get-feed-for-tag tag))
            (response/not-implemented {:message "Tags only support boosts."})))}}]
+    ["/feed"
+     {::auth/roles (auth/roles :messages/feed)
+      :get
+      {:responses
+       {200
+        {:body                          ; Data Spec for response body
+         {:messages
+          [{:id pos-int?
+            :name string?
+            :message string?
+            :timestamp inst?
+            :author (ds/maybe string?)
+            :avatar (ds/maybe string?)}]}}}
+       :handler
+       (fn [{{{:keys [boosts]
+               :or {boosts true}} :query} :parameters
+             {{{:keys [subscriptions]} :profile} :identity} :session}]
+         (if boosts
+           (response/ok
+            (msg/get-feed subscriptions))
+           (response/not-implemented {:message "Feed only supports boosts."})))}}]
     ]                                   ; -- END of '/api/messages'
    ["/message"
     ["/:post-id"
@@ -300,6 +321,7 @@
                (case id
                  :validation
                  (response/bad-request {:errors errors})
+                 ;; else
                  (response/internal-server-error
                   {:errors
                    {:server-error ["Failed to save message!"]}}))))))}}]

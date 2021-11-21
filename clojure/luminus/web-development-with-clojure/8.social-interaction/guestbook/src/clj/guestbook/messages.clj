@@ -78,3 +78,16 @@
   [tag]
   {:messages
    (db/get-feed-for-tag {:tag tag})})
+
+(defn get-feed
+  ""
+  [feed-map]
+  (when-not (every? #(re-matches #"[-\w]+" %) (:tags feed-map))
+    (throw
+     (ex-info
+      "Tags must only contain alphanumeric characters, dashes, or underscores!"
+      feed-map)))
+  {:messages
+   (db/get-feed (merge {:follows []
+                        :tags []}
+                       feed-map))})

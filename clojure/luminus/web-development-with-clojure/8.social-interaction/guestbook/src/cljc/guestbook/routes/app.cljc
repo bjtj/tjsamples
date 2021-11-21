@@ -7,6 +7,7 @@
               [guestbook.views.profile :as profile]
               [guestbook.views.post :as post]
               [guestbook.views.tag :as tag]
+              [guestbook.views.feed :as feed]
               [spec-tools.data-spec :as ds]])))
 
 #?(:clj
@@ -56,4 +57,10 @@
                             :path {:tag string?}}
                :controllers tag/tag-controllers
                :view #'tag/tag}))]
+   ["/feed"
+    (merge
+     {:name ::feed}
+     #?(:cljs {:parameters {:query {(ds/opt :post) pos-int?}}
+               :controllers feed/feed-controllers
+               :view #'feed/feed}))]
    ])
