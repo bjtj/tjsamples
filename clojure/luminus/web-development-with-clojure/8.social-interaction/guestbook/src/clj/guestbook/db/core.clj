@@ -6,6 +6,7 @@
     [conman.core :as conman]
     [mount.core :refer [defstate]]
     [guestbook.config :refer [env]]
+    [guestbook.db.util]
     [next.jdbc.prepare]
     [jsonista.core :as json])
   (:import org.postgresql.util.PGobject
