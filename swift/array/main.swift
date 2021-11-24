@@ -61,6 +61,25 @@ func main() {
 
     print("sorted(by: comp_reverse)")
     print(arr.sorted(by: comp_reverse))
+
+    // remove by value
+
+    for (i, elem) in arr.enumerated() {
+        if elem == "hi" {
+            arr.remove(at: i)
+            break
+        }
+    }
+    print("remove by value")
+    print(arr)
+
+
+    // filter
+
+    print("filter")
+    print(arr.filter {
+              Int($0) == nil ? false : (Int($0)! % 2 == 0)
+          })
 }
 
 main()
