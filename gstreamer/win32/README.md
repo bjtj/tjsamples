@@ -19,8 +19,11 @@ Environment Variables > System variables > Variable :Path > Edit > New > Paste "
 <https://gstreamer.freedesktop.org/documentation/tutorials/basic/concepts.html?gi-language=c>
 
 
-
 # Basic tutorial 3: Dynamic pipelines #
 
 <https://gstreamer.freedesktop.org/documentation/tutorials/basic/dynamic-pipelines.html?gi-language=c>
 
+
+# Basic tutorial 4: Time management #
+
+<https://gstreamer.freedesktop.org/documentation/tutorials/basic/time-management.html?gi-language=c>
