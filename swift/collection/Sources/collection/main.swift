@@ -256,3 +256,6 @@ print(airportNames)
 
 print(airports.keys)
 print(airports.values)
+
+
+main()
