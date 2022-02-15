@@ -1,3 +1,7 @@
+# !!! REMOVED #
+
+Tired of managing audit fix...
+
 # Get Started with Windows #
 
 <https://microsoft.github.io/react-native-windows/docs/getting-started>
