@@ -4,7 +4,7 @@
 
 **Get Started Fast**
 
-```
+```shell
 npm install -g cordova
 cordova create MyApp
 cd MyApp cordova platform add browser
@@ -15,7 +15,7 @@ cordova run browser
 
 <https://cordova.apache.org/docs/en/10.x/reference/cordova-cli/index.html>
 
-```
+```shell
 # Create a cordova project
 cordova create myApp com.myCompany.myApp myApp
 cd myApp
