@@ -17,6 +17,12 @@ $ npm install
 $ npm run dev
 ```
 
+e.g.)
+
+```shell
+npm install -D tailwindcss postcss autoprefixer
+```
+
 # PostCSS 7 compatibility build #
 
 <https://tailwindcss.com/docs/installation#post-css-7-compatibility-build>
