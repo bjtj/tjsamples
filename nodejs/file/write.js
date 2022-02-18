@@ -19,9 +19,3 @@ fs.writeFile('out.txt', 'hello', function(err) {
 	});
     });
 });
-
-
-
-
-
-
