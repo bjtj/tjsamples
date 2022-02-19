@@ -1,24 +1,22 @@
-# Using template engines with Express
+# Using template engines with Express #
 
-* http://expressjs.com/en/guide/using-template-engines.html
+<http://expressjs.com/en/guide/using-template-engines.html>
 
 
-install
+## Install ##
 
-```
+```shell
 npm init
 npm install express --save
 npm install pug --save
 ```
 
-# pug getting started
+## Pug - Getting Started ##
 
-* https://pugjs.org/api/getting-started.html
+<https://pugjs.org/api/getting-started.html>
 
 app.js
 
-```
+```javascript
 app.set('view engine', 'pug');
 ```
-
-
