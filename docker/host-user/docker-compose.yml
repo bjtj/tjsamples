@@ -1,0 +1,15 @@
+# docker-compose.yml
+version: '3.2'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USER_ID: ${USER_ID:-0}
+        GROUP_ID: ${GROUP_ID:-0}
+    volumes:
+      - ${HOME}/.composer:/.composer
+      - ${PWD}:/var/www
+    ports:
+      - 9000:9000
