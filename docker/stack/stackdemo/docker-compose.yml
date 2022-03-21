@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  web:
+    image: bjtj/stackdemo:1
+    build: ./
+    ports:
+      - "8000:8000"
+  redis:
+    image: redis:alpine
