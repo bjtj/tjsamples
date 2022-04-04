@@ -5,6 +5,6 @@ services:
     image: bjtj/stackdemo:1
     build: ./
     ports:
-      - "8000:8000"
+      - "8081:8000"
   redis:
     image: redis:alpine
