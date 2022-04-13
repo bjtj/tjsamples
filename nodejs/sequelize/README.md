@@ -1,9 +1,9 @@
-# Sequelize
+# Sequelize #
 
-* http://docs.sequelizejs.com/
+<http://docs.sequelizejs.com/>
 
 
-```
+```shell
 npm init
 yarn add sequelize
 yarn add mysql2
@@ -11,11 +11,11 @@ yarn add system-sleep
 ```
 
 
-## Getting Started
+## Getting Started ##
 
-* http://docs.sequelizejs.com/manual/installation/getting-started
+<http://docs.sequelizejs.com/manual/installation/getting-started>
 
-```
+```shell
 // Using NPM
 $ npm install --save sequelize
 
