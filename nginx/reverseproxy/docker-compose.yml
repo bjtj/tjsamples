@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  reverseproxy:
+    build: .
+    image: bjtj/reverseproxy
+    ports:
+      - 8080:8080
+      - 8081:8081
+    restart: always
+ 
+  nginx:
+    depends_on:
+      - reverseproxy
+    image: nginx:alpine
+    restart: always
+ 
+  apache:
+    depends_on:
+      - reverseproxy
+    image: httpd:alpine
+    restart: always
