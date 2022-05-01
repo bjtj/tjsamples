@@ -1,0 +1,23 @@
+[[package]]
+name = "pika"
+version = "1.2.1"
+description = "Pika Python AMQP Client Library"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+gevent = ["gevent"]
+tornado = ["tornado"]
+twisted = ["twisted"]
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.10"
+content-hash = "80a2455262ff653ee02266447759ce9e3ae74b21cffa8f3a6d2f22067f38e1b2"
+
+[metadata.files]
+pika = [
+    {file = "pika-1.2.1-py2.py3-none-any.whl", hash = "sha256:fe89e95fb2d8d06fd713eeae2938299941e0ec329db37afca758f5f9458ce169"},
+    {file = "pika-1.2.1.tar.gz", hash = "sha256:e5fbf3a0a3599f4e114f6e4a7af096f9413a8f24f975c2657ba2fac3c931434f"},
+]
