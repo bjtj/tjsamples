@@ -1,3 +1,4 @@
+// https://stackoverflow.com/a/68281920/5676460
 Object.assign(global, { WebSocket: require('ws') });
 const StompJs = require('@stomp/stompjs');
 
