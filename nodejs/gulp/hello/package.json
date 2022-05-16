@@ -1,0 +1,22 @@
+
+{
+  "name": "hello",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp-pug": "^5.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "typescript": "^4.6.4"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "ts-node": "^10.7.0"
+  }
+}
