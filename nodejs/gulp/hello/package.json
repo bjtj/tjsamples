@@ -5,8 +5,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "resolutions": { "glob-parent": "^6.0.1" },
   "keywords": [],
   "author": "",
   "license": "ISC",
