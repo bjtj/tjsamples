@@ -1,11 +1,19 @@
-var Minio = require('minio')
+import { config } from 'dotenv';
+config();
+import { Client } from 'minio';
 
-var minioClient = new Minio.Client({
-    endPoint: 'localhost',
-    port: 9000,
-    useSSL: false,
-    accessKey: 'user',
-    secretKey: 'password'
+const endpoint = process.env.ENDPOINT || 'localhost';
+const port = parseInt(process.env.PORT || '9000');
+const usessl = process.env.USESSL == 'true';
+const accesskey = process.env.ACCESS_KEY || '';
+const secretkey = process.env.SECRET_KEY || '';
+
+var minioClient = new Client({
+    endPoint: endpoint,
+    port: port,
+    useSSL: usessl,
+    accessKey: accesskey,
+    secretKey: secretkey,
 });
 
 // File that needs to be uploaded.
