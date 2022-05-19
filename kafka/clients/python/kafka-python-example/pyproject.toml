@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "kafka-python-example"
+version = "0.1.0"
+description = ""
+authors = ["bjtj <bjtj10@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+kafka-python = "^2.0.2"
+python-dotenv = "^0.20.0"
+msgpack = "^1.0.3"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
