@@ -38,7 +38,6 @@ public class Main {
 
     printMsg(redisson);
 
-
     // pub/sub
     // ========
     // https://redisson.org/glossary/pubsub.html
