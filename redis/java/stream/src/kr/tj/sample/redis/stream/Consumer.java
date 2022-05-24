@@ -8,7 +8,6 @@ import org.redisson.api.StreamMessageId;
 import java.util.Iterator;
 import java.util.Map;
 import org.redisson.api.stream.StreamReadArgs;
-import org.redisson.api.stream.StreamReadGroupArgs;
 
 public class Consumer {
     public static void main(String[] args) {
