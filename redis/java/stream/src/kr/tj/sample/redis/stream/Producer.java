@@ -1,13 +1,10 @@
 package kr.tj.sample.redis.stream;
 
 import org.redisson.Redisson;
-import org.redisson.api.ObjectListener;
 import org.redisson.api.RStream;
 import org.redisson.api.RedissonClient;
 import org.redisson.api.StreamMessageId;
 import org.redisson.api.stream.StreamAddArgs;
-import org.redisson.api.stream.StreamReadArgs;
-import org.redisson.api.stream.StreamTrimArgs;
 
 public class Producer {
 
