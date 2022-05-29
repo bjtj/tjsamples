@@ -44,3 +44,14 @@ apt install libsqlite3-dev
 * rails runner
 * rails destroy
 
+## Using RIDK ##
+
+```cmd
+> \Ruby27-x64\bin\ridk.cmd exec rails server
+```
+
+## ridk ##
+
+<https://msp-greg.github.io/ri2/file.The-ridk-tool.html>
+
+`ridk` is a helper tool to manage the runtime environment of RubyInstaller-2.4 and up. It can be used in cmd and powershell.
