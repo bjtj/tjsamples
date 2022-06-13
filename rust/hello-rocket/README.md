@@ -1,29 +1,28 @@
-# rocket - hello world
+# Getting Started #
 
-* https://rocket.rs/guide/getting-started/#hello-world
+<https://rocket.rs/v0.5-rc/guide/getting-started/>
 
-
-```
-$ cargo run
-$ curl localhost:8000
+```shell
+rustup default stable
 ```
 
-
-## `error: ``std::sync::atomic::AtomicBool::new`` is not yet stable as a const fn`
-
-* https://github.com/SergioBenitez/Rocket/issues/437
-
-```
-$ rustup update
-$ cargo update
+```shell
+cargo new hello-rocket --bin
+cd hello-rocket
 ```
 
+Cargo.toml:
 
-## `Error: Pear requires a nightly or dev version of Rust.`
-
-* https://stackoverflow.com/a/47688270
-
-
+```toml
+[dependencies]
+rocket = "0.5.0-rc.2"
 ```
-$ rustup default nightly
+
+```shell
+cargo run
 ```
+
+# Configuration #
+
+<https://rocket.rs/v0.5-rc/guide/configuration/>
+
