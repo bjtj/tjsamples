@@ -1,11 +1,11 @@
-# Rust
+# Rust #
 
-* https://www.rust-lang.org/ko-KR/
+<https://www.rust-lang.org/>
 
-## Installation
+## Installation ##
 
-* https://doc.rust-lang.org/1.0.0/book/installing-rust.html
+<https://rustup.rs/>
 
-```
-$ curl -sf -L https://static.rust-lang.org/rustup.sh | sh
+```shell
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
