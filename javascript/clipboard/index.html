@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clipboard</title>
+  </head>
+  <body>
+
+    <h1>Clipboard</h1>
+    <div class="clipboard">
+      <h2>String Data</h2>
+      <pre class="text"></pre>
+      <h2>HTML Data</h2>
+      <pre class="html"></pre>
+    </div>
+
+    <h1>File</h1>
+    <div class="file">
+      <h2>String Data</h2>
+      <pre class="text">
+      </pre>
+      <h2>Image Data</h2>
+      <div>
+        <img class="image" src="" alt="" />
+      </div>
+      <h2>HTML Data</h2>
+      <div class="html">
+      </div>
+    </div>
+    
+    <script type="text/javascript">
+     let clip = navigator.clipboard;
+     
+     if (!clip) {
+       console.error('clipboard not supported');
+     }
+     
+     document.onpaste = function (event) {
+       var items = (event.clipboardData || event.originalEvent.clipboardData).items;
+       for (var index in items) {
+         let item = items[index];
+         
+         if (item.kind === 'file') {
+           console.log(`file ===> ${item.kind} & ${item.type}`);
+           var blob = item.getAsFile();
+           var reader = new FileReader();
+           reader.onload = function (event) {
+             console.log(`${item.type}`);
+             if (item.type.startsWith('image')) {
+               document.querySelector('.file .image').src = event.target.result;
+             } else if (item.type === 'text/html') {
+               document.querySelector('.file .html').innerText = event.target.result;
+             } else {
+               document.querySelector('.file .text').innerText = event.target.result;
+             }
+           }; 
+           reader.readAsDataURL(blob);
+         } else if (item.kind === 'string') {
+           if (item.type == 'text/plain') {
+             item.getAsString((data) => {
+               document.querySelector('.clipboard .text').innerText = data;
+             });
+           } else if (item.type == 'text/html') {
+             item.getAsString((data) => {
+               document.querySelector('.clipboard .html').innerText = data;
+             });
+           }
+         }
+       }
+     };
+    </script>
+  </body>
+</html>
