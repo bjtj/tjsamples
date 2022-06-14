@@ -1,7 +1,7 @@
 
 var PROTO_PATH = `${__dirname}/../protos/helloworld.proto`;
 
-var grpc = require('grpc');
+var grpc = require('@grpc/grpc-js');
 var protoLoader = require('@grpc/proto-loader');
 var packageDefinition = protoLoader.loadSync(PROTO_PATH);
 var hello_proto = grpc.loadPackageDefinition(packageDefinition);
@@ -17,6 +17,7 @@ function sayHello(call, callback) {
     server.addService(hello_proto.Greeter.service, {
 	sayHello: sayHello
     });
-    server.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
-    server.start();
+    server.bindAsync('0.0.0.0:50051', grpc.ServerCredentials.createInsecure(), () => {
+	server.start();
+    });
 })();
