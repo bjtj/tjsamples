@@ -24,3 +24,8 @@ or
 ```
 node client.js Name
 ```
+
+
+# Error: Not implemented. Use bindAsync() instead #2133 #
+
+<https://github.com/grpc/grpc-node/issues/2133>

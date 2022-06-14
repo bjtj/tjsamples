@@ -11,9 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@grpc/grpc-js": "^1.6.7",
     "@grpc/proto-loader": "^0.5.2",
     "axios": "^0.21.2",
-    "express": "^4.17.1",
-    "grpc": "^1.24.0"
+    "express": "^4.17.1"
   }
 }
