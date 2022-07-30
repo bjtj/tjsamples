@@ -1,0 +1,18 @@
+{
+  "name": "webpack-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "TJ <bjtj10@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.18.1",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack-dev-middleware": "^5.3.3"
+  }
+}
