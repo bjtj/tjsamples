@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
-export "$(grep -vE "^(#.*|\s*)$" .env)"
+source dotenv.sh
+
+readenv .env
+# export "$(grep -vE "^(#.*|\s*)$" .env)"
 
 printenv
