@@ -2,6 +2,7 @@
 
 source dotenv.sh
 
+readenv .x.env
 readenv .child.env
 readenv .parent.env
 
