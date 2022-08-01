@@ -2,6 +2,10 @@
 
 function readenv {
     FNAME=$1
+    if [ ! -f "$FNAME" ]
+    then return 0
+    fi
+
     while IFS= read -r line
     do
 	KEY=$(echo $line | sed "s/=.*//g");
