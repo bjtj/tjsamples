@@ -1,2 +1,3 @@
-require('dotenv').config()
-console.log(`MYVALUE: ${process.env.MYVALUE || 'my-default'}`)
+require('dotenv').config();
+const myvalue = process.env.MYVALUE || 'default-myvalue';
+console.log(`MYVALUE: ${myvalue}`);
