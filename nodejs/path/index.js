@@ -10,6 +10,7 @@ console.log(path.extname('/a/b/c.png'));    // `.png`
 
 // DIRNAME
 console.log(path.dirname('/a/b/c.png'));  // `/a/b`
+console.log(path.dirname('/a/b/c/'));  // `/a/b`
 
 // RESOLVE
 console.log(path.resolve('/a/b/c.png'));  // WINDOWS: `c:\a\b\c.png`
