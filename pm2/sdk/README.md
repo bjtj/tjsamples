@@ -5,12 +5,13 @@
 ## Preparation ##
 
 ```bash
+npm i
 pm2 start --name "myproc" app.js
 pm2 logs myproc
 ```
 
 
-## Run ##
+## Run (open another terminal) ##
 
 ```bash
 node index.js
@@ -18,4 +19,11 @@ node index.js
 
 ```bash
 node index.js my-message
+```
+
+
+## Clean up ##
+
+```bash
+pm2 delete myproc
 ```
