@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Observer</title>
+  </head>
+  <body>
+    <!--
+         # REFERENCE
+
+         - https://www.dofactory.com/javascript/design-patterns/observer
+    -->
+    <h1>Observer</h1>
+
+    <div id="box">
+    </div>
+    
+    <script type="module">
+
+     import { Observable, applyObservable } from './script.js';
+
+     window.onload = function() {
+       console.log('onload');
+
+       let value = new Observable();
+       let handler = (val) => {
+         console.log(`new value: ${val}`);
+       };
+       value.on('updated', handler);
+       value.set('hello');
+       value.removeListener('updated', handler);
+       value.set('world!');
+       value.on('updated', handler);
+       value.set('wow');
+       console.log(value.get())
+
+       applyObservable(document.querySelector('#box'), value);
+       
+       setTimeout(() => {
+         value.set('It is changed!');
+       }, 1000);
+     }
+    </script>
+    
+  </body>
+</html>
