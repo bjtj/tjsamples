@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "serve": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,7 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
+    "express": "^4.18.1",
     "lodash": "^4.17.21"
   }
 }
