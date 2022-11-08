@@ -30,3 +30,4 @@
 # OSX
 .DS_Store
 cordova/MyApp/package-lock.json
+/reactivex/rxjava/sample/target/

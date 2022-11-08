@@ -13,7 +13,7 @@ function component() {
 
     element.appendChild(myIcon);
 
-    cosole.log(Data);
+    console.log(Data);
 
     return element;
 }

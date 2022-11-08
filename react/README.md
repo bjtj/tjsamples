@@ -1,6 +1,6 @@
 # !!! REMOVED #
 
-Tired of managing audit fix...
+Tired of audit fix...
 
 
 # Add react to a new app #
