@@ -12,7 +12,7 @@ console.log('Hello'.toLowerCase());
 // capital
 // https://stackoverflow.com/a/3291856
 function capitalize(text) {
-    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+  return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 }
 console.log(capitalize('Hello wOrld'));
 
@@ -29,17 +29,17 @@ var text = "hello\nworld\n\nbye\n";
 var lines = text.match(/[^\r\n]+/g);
 console.log(lines.length);
 for (var i = 0; i < lines.length; i++) {
-    var line = lines[i];
-    console.log("[" + i + "] " + line);
+  var line = lines[i];
+  console.log("[" + i + "] " + line);
 }
 
 // is empty
 var str = "x";
-console.log("'" + str + "' is empty? " + (str === ""))
+console.log("'" + str + "' is empty? " + (str === ""));
 str = "";
-console.log("'" + str + "' is empty? " + (str === ""))
+console.log("'" + str + "' is empty? " + (str === ""));
 str = null;
-console.log("'" + str + "' is empty? " + (str === ""))
+console.log("'" + str + "' is empty? " + (str === ""));
 
 // substring
 console.log("hello world".substring(2, 5));
