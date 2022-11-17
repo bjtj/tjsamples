@@ -16,6 +16,6 @@ function format(fmt, ...args) {
 
 let a = format('${0} ${1} ${0}', 'a', 'b');
 console.log('a:', a);
-a = format('${0} ${1} ${0}', 'a')
+a = format('${0} ${1} ${0}', 'a');
 console.log('a:', a);
 
