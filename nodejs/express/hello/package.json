@@ -4,7 +4,7 @@
   "description": "* https://www.npmjs.com/package/express",
   "main": "app.js",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.17.3"
   },
   "devDependencies": {},
   "scripts": {
