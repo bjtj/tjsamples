@@ -38,3 +38,18 @@ npm run dev
 ```sh
 npm run build
 ```
+
+
+# How to change port number in vue-cli project #
+
+<https://stackoverflow.com/a/73045069/5676460>
+
+```json
+"serve": "vue-cli-service serve --port 8081",
+```
+
+e.g.)
+
+```json
+"dev": "vite --port 8081",
+```
