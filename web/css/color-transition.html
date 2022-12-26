@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Color Transition</title>
+    <link rel="stylesheet" href="./color-transition.css" type="text/css" media="screen" />
+  </head>
+  <body>
+
+    <button onclick="changecolor();">change</button>
+
+    <h2>Transition Color</h2>
+    <div class="box color">
+      TEXT
+    </div>
+    
+
+    <h2>Transition Background</h2>
+    <div class="box bg">
+      TEXT
+    </div>
+
+    <h2>Transition All</h2>
+    <div class="box all">
+      TEXT
+    </div>
+
+    <script type="text/javascript">
+     let color = '';
+     function changecolor() {
+       color = (color === 'red' ? 'blue' : 'red');
+       const boxes = document.querySelectorAll('.box');
+       boxes.forEach(box => {
+         box.classList.remove('red');
+         box.classList.remove('blue');
+         box.classList.add(color);
+       });
+     }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+body {
+    margin: 1rem;
+}
+
+
+.content {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+}
+
+.content.space-between {
+    justify-content: space-between;
+}
+
+.content.space-around {
+    justify-content: space-around;
+}
+
+.content div {
+    border: solid 1px black;
+    border-radius: .5rem;
+    padding: .5rem;
+}
