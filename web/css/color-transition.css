@@ -1,0 +1,31 @@
+body {
+    margin: 1rem;
+}
+
+.box {
+    border: solid 1px black;
+    border-radius: .5rem;
+    padding: .5rem;
+}
+
+.box.bg {
+    transition: background-color 2s ease;
+}
+
+.box.color {
+    transition: color 2s ease;
+}
+
+.box.all {
+    transition: all 2s ease;
+}
+
+.box.red {
+    background-color: red;
+    color: purple;
+}
+
+.box.blue {
+    background-color: blue;
+    color: white;
+}
