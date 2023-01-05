@@ -16,6 +16,12 @@ func main() -> Void {
 
     print(arr[max(0, arr.index(arr.endIndex, offsetBy: -10))...]) // [1, 2, 3, 4, 5, 6]
 
+    print(arr[1..<2])           // [2]
+    print(arr[1..<1])           // []
+    print(arr[2..<4])           // [3, 4]
+    // print(arr[4..<10])          // Swift/Array.swift:405: Fatal error: Array index is out of range
+    print(arr[2..<arr.count])   // [3, 4, 5, 6]
+
     print(arr.suffix(3))        // [4, 5, 6]
     print(arr.suffix(4))        // [3, 4, 5, 6]
     print(arr.suffix(10))       // [1, 2, 3, 4, 5, 6]
