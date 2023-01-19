@@ -13,7 +13,7 @@
   "description": "",
   "devDependencies": {
     "css-loader": "^6.6.0",
-    "csv-loader": "^3.0.2",
+    "csv-loader": "^3.0.5",
     "file-loader": "^5.0.2",
     "style-loader": "^1.1.2",
     "webpack": "^5.68.0",
