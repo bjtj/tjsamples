@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    title Chat Application Example by DEVAHOY
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')
+    link(rel='stylesheet', href='css/main.css')
+    script(src='socketio/socket.io.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+  body
+    #chat-app
+      #chat.has-text-centered
+        section.hero.is-success
+          .hero-body
+            .container
+              h1.title Chat
+              h2 Chat Application with Node.js + socket.io
+        section.section.chat-container
+          .container
+            .columns
+              .box.column.is-8.is-offset-2
+                h2.title Chatbox
+                .chat-messages.has-text-left
+                  ul#chat-messages
+                form
+                  .field.has-addons
+                    p.control
+                      input(type='text', class='input', value='Chuck Norris', id='name')
+                    p.control.is-expanded
+                      input(type='text', class='input', placeholder='Try to say something', id='message')
+                    p.control
+                      input(type='submit', class='button is-success', value='Post')
+        
+    script.
+        const socket = io();
+        socket.on('chatter', function(message) {
+            $('#chat-messages').append($('<li>').text(message));
+        });
+        $('form').submit(function() {
+            const name = $('#name').val();
+            const message = $('#message').val();  socket.emit('chatter', `${name} : ${message}`);
+            $('#message').val('');
+            return false;
+        });
