@@ -1,0 +1,17 @@
+{
+  "name": "reids-sockjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": [],
+  "author": "TJ <bjtj10@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "redis": "^4.6.5",
+    "sockjs": "^0.3.24"
+  }
+}
