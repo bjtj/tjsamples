@@ -1,0 +1,15 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:server": "node server.js"
+  },
+  "keywords": [],
+  "author": "TJ <bjtj10@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "sockjs": "^0.3.24"
+  }
+}
