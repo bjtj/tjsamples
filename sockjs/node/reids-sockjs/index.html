@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple chat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+  <body ng-app="chat">
+    <div class="container" ng-controller="chatCtrl as vm">
+      <br/>
+      <form ng-submit="vm.submit()">
+        <div class="col-sm-8"><input type="text" ng-model="vm.input" class="form-control"/></div>
+        <div class="col-sm-4">
+          <button type="submit" class="btn btn-success btn-block" ng-disabled="!vm.connected" ng-if="!vm.target">Send</button>
+          <button type="submit" class="btn btn-info btn-block" ng-disabled="!vm.connected" ng-if="!!vm.target">pm to {{vm.target.user}}</button>
+        </div>
+      </form>
+      <br/>
+      <div style="clear:both;"></div>
+      <br/>
+      <ul class="list-group">
+        <div class="list-group-item"
+             ng-repeat="m in vm.messages | reverse"
+             ng-switch="m.action">
+          <div ng-switch-when="user_info">
+            Welcome! {{m.name}}
+          </div>
+          <div ng-switch-when="user_join">
+            <a ng-click="vm.pm({id:m.id,user:m.name})">{{m.name}}</a> joined.
+          </div>
+          <div ng-switch-when="user_left">
+            {{m.name}} left.
+          </div>
+          <div ng-switch-when="message">
+            <span ng-if="m.id == vm.me.id">You</span>
+            <a ng-if="m.id != vm.me.id" ng-click="vm.pm({id:m.id,name:m.name})">{{m.name}}</a> : {{m.message}}
+          </div>
+          <div ng-switch-when="pm">
+            <a ng-click="vm.pm({id:m.id,user:m.name})">{{m.name}}</a> pm you : {{m.message}}
+          </div>
+          <div ng-switch-when="pm_sent">
+            You pm <a ng-click="vm.pm(m.target)">{{m.target.name}}</a> : {{m.message}}
+          </div>
+        </div>
+      </ul>
+    </div>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/sockjs/1.0.1/sockjs.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+    <script>
+      (function(){
+
+        chatCtrl.$inject = ['$timeout'];
+        function chatCtrl($timeout){
+          var vm = this;
+          vm.messages = [];
+          vm.input = "";
+          vm.target = null;
+          vm.connected = false;
+          vm.sock = new SockJS('/sock');
+          vm.me = {};
+
+          vm.sock.onopen = function(){
+            $timeout(function(){
+              vm.connected = true;
+            },0);
+          }
+
+          vm.sock.onclose = function(){
+            $timeout(function(){
+              vm.connected = false;
+            },0);
+          }
+
+          vm.sock.onmessage = function(e){
+            var msg = JSON.parse(e.data);
+            console.log(msg);
+            $timeout(function(){
+              if(msg.action == "user_info"){
+                vm.me = {
+                  id : msg.id,
+                  name: msg.name
+                }
+              }
+              vm.messages.push(msg);
+            },0);
+          }
+
+          vm.pm = function(t){
+            if(!!vm.target && vm.target.id == t.id){
+              vm.target = null;
+            }else{
+              vm.target = t;
+            }
+          }
+
+          vm.submit = function(){
+            if(!vm.input) return;
+
+            var msg;
+            if(!!vm.target){
+              msg = {
+                action : "pm",
+                target : vm.target,
+                message : vm.input
+              };
+            }else{
+              msg = {
+                action : "message",
+                message : vm.input
+              };
+            }
+
+            vm.sock.send(JSON.stringify(msg));
+            vm.input = "";
+            vm.target = "";
+          }
+        }
+
+        function reverse (){
+          return function(items) {
+            return items.slice().reverse();
+          };
+        }
+
+        angular
+          .module('chat',[])
+          .controller('chatCtrl', chatCtrl)
+          .filter('reverse', reverse);
+      })();
+    </script>
+  </body>
+</html>
