@@ -1,16 +1,30 @@
 const { createClient } = require('redis');
 
 (async () => {
-    const client = createClient();
+  const client = createClient();
+  const subscriber = client.duplicate();
 
-    client.on('error', (err) => console.log('Redis Client Error', err));
+  client.on('error', (err) => console.log('Redis Client Error', err));
 
-    await client.connect();
+  await client.connect();
+  await subscriber.connect();
 
-    await client.set('key', 'value');
-    const value = await client.get('key');
+  subscriber.subscribe('mytest', (msg) => {
+    console.log(`[SUB] message - ${msg}`);
+  });
 
-    console.log(`value of key: ${value}`);
+  await client.set('key', 'value');
+  const value = await client.get('key');
 
-    client.disconnect();
+  console.log(`value of key: ${value}`);
+
+  client.publish('mytest', 'hello');
+
+  await new Promise((res) => {
+    setTimeout(res, 1000);
+  });
+
+  client.disconnect();
+
+  console.log('DONE.');
 })();

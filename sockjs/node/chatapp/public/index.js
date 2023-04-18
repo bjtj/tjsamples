@@ -34,7 +34,7 @@ function sendMessage(){
       message: message,
       username: username
     };
-  
+
     // Send it now
     sock.send(JSON.stringify(send));
   }
