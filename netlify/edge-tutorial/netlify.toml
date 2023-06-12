@@ -1,0 +1,10 @@
+[build]
+publish="/public"
+
+[[edge_functions]]
+path="/hello"
+function = "hello"
+
+[[edge_functions]]
+path="/hello-template"
+function = "transform-hello-template"
