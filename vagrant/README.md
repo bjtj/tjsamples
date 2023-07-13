@@ -21,3 +21,12 @@ Vagrant provides a number of higher level features that Terraform doesn't. Synce
 The primary usage of Terraform is for managing remote resources in cloud providers such as AWS. Terraform is designed to be able to manage extremely large infrastructures that span multiple cloud providers. Vagrant is designed primarily for local development environments that use only a handful of virtual machines at most.
 
 Vagrant is for development environments. Terraform is for more general infrastructure management.
+
+
+# Vagrant Cloud #
+
+<https://app.vagrantup.com/>
+
+## hashicorp/bionic64 ##
+
+<https://app.vagrantup.com/hashicorp/boxes/bionic64>
