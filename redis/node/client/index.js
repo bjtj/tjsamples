@@ -27,4 +27,5 @@ const { createClient } = require('redis');
   client.disconnect();
 
   console.log('DONE.');
+  process.exit(0);
 })();
