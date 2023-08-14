@@ -54,13 +54,13 @@ def write_video_ffmpeg(
     stream.wait()
 
 
-def dummy_image_generator() -> Iterator[np.array]:
-    for _ in range(100):
+def dummy_image_generator(count=100) -> Iterator[np.array]:
+    for _ in range(count):
         yield np.random.rand(480, 640, 3)
 
 
 def main():
-    write_video_ffmpeg(dummy_image_generator(), "test.mp4")
+    write_video_ffmpeg(dummy_image_generator(226), "test.mp4", fps=226, out_fps=226)
 
 
 if __name__ == '__main__':
