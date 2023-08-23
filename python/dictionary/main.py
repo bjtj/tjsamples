@@ -33,6 +33,21 @@ def main():
         print(ordered_table.keys()[-1])
     elif python_ver == 3:
         print(list(ordered_table.keys())[-1])
+
+    # Merge dictionaries
+    # ------------------
+    # https://www.geeksforgeeks.org/python-merging-two-dictionaries/
+
+    dict1 = {'a':1, 'b':2}
+    dict2 = {'c':3, 'd':4}
+
+    print(dict1 | dict2)        # {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+
+    print({**dict1, **dict2})   # {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+    
+    dict1.update(dict2)
+    print(dict1)                # {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+    print(dict2)                # {'c': 3, 'd': 4}
         
 
 if __name__ == '__main__':
