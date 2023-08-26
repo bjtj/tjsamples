@@ -18,3 +18,8 @@ Cargo.lock
 *.pdb
 
 # End of https://www.toptal.com/developers/gitignore/api/rust
+
+SDL2.dll
+SDL2.lib
+SDL2main.lib
+SDL2test.lib
