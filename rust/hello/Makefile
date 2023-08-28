@@ -1,9 +1,12 @@
 RUSTC = rustc
 
-all: hello
+all: build
 
-hello:
+build:
 	$(RUSTC) hello.rs
+
+run: build
+	./hello
 
 clean:
 	rm -rf hello
