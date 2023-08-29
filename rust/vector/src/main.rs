@@ -26,6 +26,8 @@ fn main() {
     }
 
     print_vec(&v2);
+
+    test1();
     
 }
 
@@ -35,4 +37,30 @@ fn print_vec<T>(v: &Vec<T>) where T: std::fmt::Display {
     for i in v {
         println!("{}", i);
     }
+}
+
+
+fn test1() {
+    let mut v = Vec::<String>::new();
+
+    print_vec(&v);
+
+    v.push(String::from("hello"));
+
+    print_vec(&v);
+
+    v.remove(0);
+
+    print_vec(&v);
+
+    v.push(String::from("hi1"));
+    v.push(String::from("hi2"));
+    v.push(String::from("hi3"));
+    v.push(String::from("hi4"));
+
+    v.remove(2);
+
+    print_vec(&v);
+
+    println!("v[2]: {}", v[2]);
 }
