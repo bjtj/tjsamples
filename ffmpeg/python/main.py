@@ -21,6 +21,7 @@ def write_video_ffmpeg(
     vcodec: str = "libx264",
     input_fmt: str = "rgb24",
     output_fmt: str = "yuv420p",
+    quite=False
 ) -> None:
     """Function that writes an video from a stream of numpy arrays using FFMPEG.
 
@@ -39,6 +40,8 @@ def write_video_ffmpeg(
 
     stream = ffmpeg.input("pipe:", format="rawvideo", pix_fmt=input_fmt, s=f"{width}x{height}", r=fps)
     stream = ffmpeg.output(stream, str(out_file), pix_fmt=output_fmt, vcodec=vcodec, r=out_fps)
+    if quite:
+        stream = stream.global_args('-loglevel', 'quiet')
     stream = ffmpeg.overwrite_output(stream)
     stream = ffmpeg.run_async(stream, pipe_stdin=True)
 
@@ -52,6 +55,7 @@ def write_video_ffmpeg(
 
     stream.stdin.close()
     stream.wait()
+    print('Done.')
 
 
 def dummy_image_generator(count=100) -> Iterator[np.array]:
@@ -60,7 +64,7 @@ def dummy_image_generator(count=100) -> Iterator[np.array]:
 
 
 def main():
-    write_video_ffmpeg(dummy_image_generator(226), "test.mp4", fps=226, out_fps=226)
+    write_video_ffmpeg(dummy_image_generator(226), "test.mp4", fps=226, out_fps=226, quite=True)
 
 
 if __name__ == '__main__':
