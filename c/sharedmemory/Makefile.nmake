@@ -1,0 +1,17 @@
+PROG_WRITER=writer.exe
+PROG_READER=reader.exe
+OBJS=shm.obj
+
+all: $(PROG_WRITER) $(PROG_READER)
+
+$(PROG_WRITER): $(OBJS)
+	cl /Fe:$@ writer.c $**
+
+$(PROG_READER): $(OBJS)
+	cl /Fe:$@ reader.c $**
+
+%.obj: %.c
+	cl /Fo:$@ $**
+
+clean:
+	del $(PROG_WRITER) $(PROG_READER) *.obj
