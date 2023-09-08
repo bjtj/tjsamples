@@ -1,0 +1,7 @@
+all: prog.exe
+
+prog.exe: main.c
+	cl /Fe:$@ $**
+
+clean:
+	del prog.exe *.obj
