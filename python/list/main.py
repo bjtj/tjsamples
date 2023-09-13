@@ -73,6 +73,12 @@ def main():
     lst = [1,2,1,2,1,2,1,2,1,2]
     lst = filter(lambda item: item != 2, lst)
     print(lst)
+
+
+    lst = [1,2,3]
+    print(lst.pop())
+    print(lst.pop(0))
+    print(lst)
     
 
 if __name__ == '__main__':
