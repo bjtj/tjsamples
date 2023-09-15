@@ -36,3 +36,4 @@ TAGS
 MANIFEST
 
 .tox
+cyStdDev.c

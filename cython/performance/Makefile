@@ -1,12 +1,29 @@
-CFLAGS=-I/usr/include/python3.5 -I/usr/local/lib/python3.5/dist-packages/numpy/core/include/
+PYTHON=python3
+PIP=$(PYTHON) -m pip
+CYTHON=$(PYTHON) -m cython
+CC=gcc
+PYTHON_VERSION?=3.8
+CFLAGS  = -I/usr/include/python$(PYTHON_VERSION)
+CFLAGS += -I$(HOME)/.local/lib/python$(PYTHON_VERSION)/site-packages/numpy/core/include
+TARGET=cyStdDev.so
+CYTHON_TARGET=cyStdDev.c
 
-all: cyStdDev.so
+all: $(TARGET)
 
-cyStdDev.c:
-	cython cyStdDev.pyx
+ubuntu:
+	sudo apt install -y build-essential python3-dev
 
-cyStdDev.so: cyStdDev.c std_dev.c std_dev.h
-	gcc -shared -pthread -fPIC -fwrapv -Wall -fno-strict-aliasing $(CFLAGS) -o $@ cyStdDev.c std_dev.c std_dev.h
+init:
+	$(PIP) install -r requirements.txt
+
+%.c: %.pyx
+	$(CYTHON) $<
+
+$(TARGET): $(CYTHON_TARGET) std_dev.c std_dev.h
+	$(CC) -shared -pthread -fPIC -fwrapv -Wall -fno-strict-aliasing $(CFLAGS) -o $@ $<
 
 clean:
-	rm -rf *.so cyStdDev.c
+	rm -rf $(TARGET) $(CYTHON_TARGET)
+
+
+.PHONY: all ubuntu init clean
