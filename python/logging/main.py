@@ -11,7 +11,10 @@ def simple_file_handler():
     handler.setFormatter(logging.Formatter('%(asctime)s %(name)s --- %(levelname)s : %(message)s'))
     logger.addHandler(handler)
     logger.debug('Hello')
-                      
+
+    # OUTPUT: .simple.log
+    #
+    # 2023-09-21 10:38:46,686 SIMPLE FILE HANDLER --- DEBUG : Hello
 
 
 def test():
@@ -33,6 +36,15 @@ def test():
 
     logger.debug('hello')
     logger.error('bye')
+
+    # OUTPUT:
+    #
+    # 2023-09-21 10:38:46,685 - logging-test - ERROR - bye
+
+    # OUTPUT: out.log
+    # 
+    # 2023-09-21 10:38:46,685 - logging-test - DEBUG - hello
+    # 2023-09-21 10:38:46,685 - logging-test - ERROR - bye
 
 
 def main():
