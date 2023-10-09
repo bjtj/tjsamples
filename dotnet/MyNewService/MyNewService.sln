@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNewService", "MyNewService\MyNewService.csproj", "{EC2DD75B-159E-4D4C-8DCB-C89E5D8C96D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "솔루션 항목", "솔루션 항목", "{10328F66-6A01-4676-9CFC-4619E711CA24}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC2DD75B-159E-4D4C-8DCB-C89E5D8C96D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC2DD75B-159E-4D4C-8DCB-C89E5D8C96D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC2DD75B-159E-4D4C-8DCB-C89E5D8C96D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC2DD75B-159E-4D4C-8DCB-C89E5D8C96D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {061B3746-75AB-4F2C-A9AC-0BC92A9F9B40}
+	EndGlobalSection
+EndGlobal
