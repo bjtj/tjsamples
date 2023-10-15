@@ -18,8 +18,8 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/stretchr/testify v1.7.0 // indirect
-	golang.org/x/net v0.7.0 // indirect
-	golang.org/x/sys v0.5.0 // indirect
+	golang.org/x/net v0.17.0 // indirect
+	golang.org/x/sys v0.13.0 // indirect
 	golang.org/x/time v0.0.0-20220224211638-0e9765cccd65 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gotest.tools/v3 v3.1.0 // indirect
