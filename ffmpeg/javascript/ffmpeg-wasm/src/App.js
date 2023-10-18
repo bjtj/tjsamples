@@ -7,13 +7,81 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const ffmpegRef = useRef(new FFmpeg());
   const videoRef = useRef(null);
-  // const messageRef = useRef(null);
   const [logs, setLogs] = useState([]);
   const [file, setFile] = useState();
+  const [fetchWritten, setFetchWritten] = useState(false);
   const [videoData, setVideoData] = useState();
   const [imageData, setImageData] = useState();
   const [imageUrl, setImageUrl] = useState();
   const [imageFilenames, setImageFilenames] = useState([]);
+
+  const screenStyle = {
+    position: 'fixed',
+    inset: 0,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    width: '100vw',
+    height: '100vh',
+    overflow: 'hidden',
+  };
+
+  const leftAreaStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    flexGrow: 1,
+    height: '100%',
+    overflow: 'hidden',
+  };
+
+  const rightAreaStyle = {
+    flexShrink: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    height: '100%',
+    overflow: 'hidden',
+  };
+
+  const FileInputStyle = {
+    background: '#f0f0f0',
+    padding: '0.5em',
+  };
+
+  const fileListStyle = {
+    overflowY: 'auto',
+    flexGrow: 1,
+    listStyleType: 'none',
+    margin: 0,
+    padding: '0 1.2em 0 0',
+  };
+
+  const fileListItemStyle = {
+    whiteSpace: 'nowrap',
+  };
+
+  const logStyle = {
+    overflow: 'auto',
+    flexGrow: 1,
+    width: '100%',
+    height: '100%',
+    margin: 0,
+    padding: 0,
+    background: '#333333',
+    color: 'white',
+  };
+
+  const logListStyle = {
+    listStyleType: 'none',
+    margin: 0,
+    padding: '0.5em',
+    fontSize: '0.8em',
+  };
+
+  const logItemStyle = {
+    whiteSpace: 'nowrap',
+  };
 
   const load = async () => {
     const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.4/dist/umd';
@@ -31,16 +99,21 @@ function App() {
     setLoaded(true);
   };
 
+  const doFetchWriteFile = async () => {
+    if (!file) {
+      return;
+    }
+    const ffmpeg = ffmpegRef.current;
+    await ffmpeg.writeFile(file.name, await fetchFile(file));
+    setFetchWritten(true);
+  };
+
   const transcode = async (file) => {
     console.log(`transcode ${file.name}`);
     const ffmpeg = ffmpegRef.current;
-    await ffmpeg.writeFile(file.name, await fetchFile(file));
-    await ffmpeg.exec(['-i', file.name, 'frame-%03d.bmp']);
-    // const jpegdata = await ffmpeg.readFile('filename001.bmp');
-    // console.log(jpegdata);
-    // setImageData(jpegdata);
-
-    let imageFilenames = (await ffmpeg.listDir('/')).filter(info => info.isDir == false && info.name.endsWith('.bmp')).map(info => info.name);
+    await ffmpeg.exec(['-i', file.name, 'frame-%06d.bmp']);;
+    let files = await ffmpeg.listDir('/');
+    let imageFilenames = (files).filter(info => info.isDir == false && info.name.endsWith('.bmp')).map(info => info.name);
 
     setImageFilenames(imageFilenames);
   };
@@ -57,41 +130,62 @@ function App() {
   };
 
   useEffect(() => {
-
-  }, [videoData]);
+    if (file) {
+      setFetchWritten(false);
+    }
+  }, [file]);
 
   return (loaded
     ? (
       <>
-        <div>
-          <input
-            type="file"
-            onChange={e => e.target.files && setFile(e.target.files[0])}
-            accept="video/mp4,video/x-m4v,video/*" />
+        <div style={screenStyle}>
+
+          {/* LEFT */}
+          <div style={leftAreaStyle}>
+            <div>
+              <input
+                style={FileInputStyle}
+                type="file"
+                onChange={e => e.target.files && setFile(e.target.files[0])}
+                accept="video/mp4,video/x-m4v,video/*" />
+              <button onClick={doFetchWriteFile} disabled={!file || fetchWritten}>Write</button>
+            </div>
+            {videoData && (
+              <div><video ref={videoRef} controls src={videoData}></video></div>
+            )}
+            <div>
+              <button onClick={() => transcode(file)} disabled={!file || !fetchWritten}>Transcode</button>
+              <button onClick={() => listDir()}>List Files</button>
+            </div>
+            <div>
+              {imageUrl && (<img src={imageUrl} height={200} />)}
+            </div>
+            <div>Open Developer Tools (Ctrl+Shift+I) to View Logs</div>
+            <div style={logStyle}>
+              <ul style={logListStyle}>
+                {
+                  logs.map(log => (
+                    <li style={logItemStyle}>{log}</li>))
+                }
+              </ul>
+            </div>
+          </div>
+
+          {/* RIGHT */}
+          <div style={rightAreaStyle}>
+            <h2>File List</h2>
+            <ul style={fileListStyle}>
+              {
+                imageFilenames.map((name, i) => (
+                  <li key={`file-${i}`} style={fileListItemStyle}>
+                    <button onClick={() => read(name)}>{name}</button>
+                  </li>))
+              }
+            </ul>
+          </div>
         </div>
-        {videoData && (
-          <div><video ref={videoRef} controls src={videoData}></video></div>
-        )}
-        <button onClick={() => file && transcode(file)}>transcode</button>
-        <button onClick={() => read('frame-001.bmp')}>read</button>
-        <button onClick={() => listDir()}>list</button>
 
-        <div>
-          {imageUrl && (<img src={imageUrl} width={200} height={200} />)}
-        </div>
 
-        <ul>
-          {
-            imageFilenames.map((name, i) => (<li key={`file-${i}`}><button onClick={() => read(name)}>{name}</button></li>))
-          }
-        </ul>
-
-        <p>Open Developer Tools (Ctrl+Shift+I) to View Logs</p>
-        <ul>
-          {
-            logs.map(log => (<li><code>{log}</code></li>))
-          }
-        </ul>
       </>
     )
     : (
