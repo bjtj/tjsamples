@@ -2,6 +2,37 @@ import { useEffect, useState, useRef, } from 'react';
 import { FFmpeg, FileData } from '@ffmpeg/ffmpeg';
 import { fetchFile, toBlobURL } from '@ffmpeg/util';
 
+const mimetypes = {
+  "gif": "image/gif",
+  "jpeg": "image/jpeg",
+  "jpg": "image/jpeg",
+  "png": "image/png",
+  "tif": "image/tiff",
+  "tiff": "image/tiff",
+  "wbmp": "image/vnd.wap.wbmp",
+  "ico": "image/x-icon",
+  "jng": "image/x-jng",
+  "bmp": "image/x-ms-bmp",
+  "svg": "image/svg+xml",
+  "webp": "image/webp",
+  "3gpp": "video/3gpp",
+  "3gp": "video/3gpp",
+  "mpeg": "video/mpeg",
+  "mpg": "video/mpeg",
+  "mov": "video/quicktime",
+  "flv": "video/x-flv",
+  "mng": "video/x-mng",
+  "asx": "video/x-ms-asf",
+  "asf": "video/x-ms-asf",
+  "wmv": "video/x-ms-wmv",
+  "avi": "video/x-msvideo",
+  "m4v": "video/mp4",
+  "mp4": "video/mp4"
+};
+
+function ext2mimetype(ext) {
+  return mimetypes[ext];
+}
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -13,7 +44,11 @@ function App() {
   const [videoData, setVideoData] = useState();
   const [imageData, setImageData] = useState();
   const [imageUrl, setImageUrl] = useState();
+  const [videoUrl, setVideoUrl] = useState();
   const [imageFilenames, setImageFilenames] = useState([]);
+  const [command, setCommand] = useState();
+  const [fileList, setFileList] = useState();
+  const [result, setResult] = useState();
 
   const screenStyle = {
     position: 'fixed',
@@ -42,6 +77,8 @@ function App() {
     alignItems: 'flex-start',
     height: '100%',
     overflow: 'hidden',
+    padding: '0 1em',
+    border: 'solid 1px gray',
   };
 
   const FileInputStyle = {
@@ -118,15 +155,40 @@ function App() {
     setImageFilenames(imageFilenames);
   };
 
-  const listDir = async () => {
+  const execute = async () => {
+    let args = command.split(' ');
+    console.log(args);
     const ffmpeg = ffmpegRef.current;
-    console.log(await ffmpeg.listDir('/'));
+    let ret = await ffmpeg.exec(args);
+    setResult(ret);
   };
 
-  const read = async (name) => {
+  const listDir = async () => {
     const ffmpeg = ffmpegRef.current;
-    const data = await ffmpeg.readFile(name);
-    setImageUrl(URL.createObjectURL(new Blob([data], { type: 'image/bmp' })));
+    let lst = await ffmpeg.listDir('/');
+    setFileList(lst.filter(n => n.name !== '..' && n.name !== '.'));
+  };
+
+  const read = async (node) => {
+    const ffmpeg = ffmpegRef.current;
+    const data = await ffmpeg.readFile(node.name);
+
+    let ext = node.name.split('.').pop();
+    let mimetype = ext2mimetype(ext);
+
+    if (mimetype && mimetype.startsWith('image')) {
+      setImageUrl(URL.createObjectURL(new Blob([data], { type: mimetype })));
+    } else if (mimetype && mimetype.startsWith('video')) {
+      setVideoUrl(URL.createObjectURL(new Blob([data], { type: mimetype })));
+    } else {
+      let ext = node.name.split('.').pop();
+      let mimetype = 'application/octet-stream';
+      let url = URL.createObjectURL(new Blob([data], { type: mimetype }));
+      let link = document.createElement('a');
+      link.href = url;
+      link.download = node.name;
+      link.click();
+    }
   };
 
   useEffect(() => {
@@ -153,14 +215,22 @@ function App() {
             {videoData && (
               <div><video ref={videoRef} controls src={videoData}></video></div>
             )}
-            <div>
-              <button onClick={() => transcode(file)} disabled={!file || !fetchWritten}>Transcode</button>
-              <button onClick={() => listDir()}>List Files</button>
+            <div style={{ display: 'flex', gap: '.25em', width: '100%' }}>
+              <input
+                type="text"
+                value={command}
+                onChange={e => setCommand(e.target.value)}
+                placeholder="Command..."
+                style={{ flexGrow: '1' }}
+              />
+              <button onClick={execute}>Execute</button>
             </div>
-            <div>
+            <div style={{ position: 'fixed', right: 0, bottom: 0, width: '480px', maxWidth: '50%' }}>
               {imageUrl && (<img src={imageUrl} height={200} />)}
+              {videoUrl && (<video src={videoUrl} controls style={{ width: '100%' }} />)}
             </div>
-            <div>Open Developer Tools (Ctrl+Shift+I) to View Logs</div>
+            <div>Result: {result}</div>
+            <h3>Log</h3>
             <div style={logStyle}>
               <ul style={logListStyle}>
                 {
@@ -174,11 +244,20 @@ function App() {
           {/* RIGHT */}
           <div style={rightAreaStyle}>
             <h2>File List</h2>
+            <div style={{ margin: '0 0 .5em 0', border: 'solid 1px gray', width: '100%', padding: '.25em' }}>
+              <button onClick={listDir}>Refresh</button>
+            </div>
             <ul style={fileListStyle}>
               {
-                imageFilenames.map((name, i) => (
+                fileList && fileList.map((node, i) => (
                   <li key={`file-${i}`} style={fileListItemStyle}>
-                    <button onClick={() => read(name)}>{name}</button>
+                    {
+                      node.isDir ? (
+                        <div>{node.name}/</div>
+                      ) : (
+                        <button onClick={() => read(node)}>{node.name}</button>
+                      )
+                    }
                   </li>))
               }
             </ul>
