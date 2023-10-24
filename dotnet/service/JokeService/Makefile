@@ -9,8 +9,12 @@ run:
 	dotnet run
 
 
-create-service: build
-	sc.exe create ".NET Joke Service" binpath="${CURDIR}/bin/Debug/net7.0/win-x64/JokeService.exe"
+publish:
+	dotnet publish --output "publish"
+
+
+create-service: publish
+	sc.exe create ".NET Joke Service" binpath="${CURDIR}/publish/JokeService.exe"
 
 
 delete-service:
