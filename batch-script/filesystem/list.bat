@@ -20,3 +20,10 @@ for /f %%f in ('dir /b %cd%') do echo %%f
 echo [FILES -- fullpath]
 for /f %%f in ('dir /b %cd%') do echo %%~ff
 
+
+echo [DIRS]
+for /f %%f in ('dir /b /ad %cd%') do echo %%f
+
+echo [DIRS -- fullpath]
+for /f %%f in ('dir /b /ad %cd%') do echo %%~ff
+
