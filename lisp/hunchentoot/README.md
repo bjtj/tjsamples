@@ -25,6 +25,21 @@ e.g.)
 
 <https://github.com/openssl/openssl/blob/master/NOTES-WINDOWS.md>
 
+*Requirements*
+
+- Perl (with Win32.Console)
+- NASM
+- Visual Studio
+
+*Build*
+
+Open `x64 Native Tools Command Prompt for VS 2022` prompt
+
+```
+perl Configure
+nmake
+```
+
 Output files:
 
 - libcrypto-3-x64.dll
