@@ -6,3 +6,10 @@
 $ pip install redis
 ```
 
+
+
+## pubsub example ##
+
+``` shell
+python -u pubsub.py
+```
