@@ -5,11 +5,10 @@ import cv2
 
 
 def main():
-    cv2.namedWindow('image')
     while True:
-        image = np.random.randint(255, size=(30, 30, 3), dtype=np.uint8)
-        cv2.imshow('image', image)
-        key = cv2.waitKey(0)
+        image = np.random.randint(255, size=(500, 500, 3), dtype=np.uint8)
+        cv2.imshow('random rgb (`q` to quit)', image)
+        key = cv2.waitKey(1)
         if key == ord('q'):
             break
 
