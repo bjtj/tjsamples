@@ -1,3 +1,3 @@
-# Pytho ConfigParser
+# Python ConfigParser #
 
-* https://docs.python.org/2.7/library/configparser.html
+<https://docs.python.org/2.7/library/configparser.html>
