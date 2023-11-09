@@ -1,0 +1,15 @@
+CL=cl
+OBJS=sqlite3.obj
+CFLAGS=/I sqlite3
+
+
+all: main.exe
+
+main.exe: main.c $(OBJS)
+	$(CL) /Fe:$@ $** $(CFLAGS)
+
+sqlite3.obj: sqlite3/sqlite3.c
+	$(CL) /c $**
+
+clean:
+	del *.obj *.exe

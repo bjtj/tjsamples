@@ -1,0 +1,6 @@
+main
+*.o
+*.obj
+*.exe
+*.zip
+sqlite3/
