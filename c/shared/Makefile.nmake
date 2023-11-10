@@ -1,0 +1,22 @@
+all: program.exe
+
+.c.obj:
+	cl /c $*.c
+
+# hello.obj: hello.c
+# 	cl /c $**
+
+hello.lib: hello.obj
+	lib /Fe:$@ $**
+
+hello.dll: hello.c
+	cl /LD $**
+
+program.exe: main.c hello.lib
+	cl /Fe:$@ main.c /link hello.lib
+
+clean:
+	del program.exe *.dll *.obj *.lib
+
+
+.PHONY: all clean

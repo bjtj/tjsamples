@@ -6,7 +6,10 @@ libhello.dylib:
 	gcc -dynamiclib -o $@ hello.c
 
 program: libhello.dylib
-	gcc -o $@ main.c -lhello
+	gcc -o $@ main.c -L. -lhello
 
 clean:
 	rm -rf program *.dylib
+
+
+.PHONY: all clean
