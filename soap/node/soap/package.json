@@ -6,7 +6,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.17.3",
-    "soap": "^0.43.0"
+    "soap": "^0.45.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
