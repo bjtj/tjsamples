@@ -11,3 +11,5 @@ hello: hello.o
 
 clean:
 	rm -rf *.o *.s hello
+
+.PHONY: all clean
