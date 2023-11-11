@@ -1,14 +1,13 @@
-# SDL
+# SDL #
 
-## Ubuntu
+<https://www.libsdl.org/>
 
-```
+## Download ##
+
+<https://github.com/libsdl-org/SDL/releases/tag/release-2.28.5>
+
+## Ubuntu ##
+
+``` shell
 sudo apt install libsdl2-dev
 ```
-
-# Event Driven Programming
-
-* http://lazyfoo.net/tutorials/SDL/03_event_driven_programming/index.php
-
-
-
