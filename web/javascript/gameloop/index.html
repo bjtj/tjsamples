@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game Loop Example</title>
+    <script type="text/javascript" src="./script.js"></script>
+  </head>
+  <body style="background: gray;">
+    <canvas id="canvas1" width="500px" height="500px"></canvas>
+    <div style="background: white;">
+      <button id="force-up">+</button>
+      <button id="force-down">-</button>
+      <span id="force">1</span>
+    </div>
+    <div style="background: white;">
+      <input id="angle" type="range" min="0" max="360" value="45" />
+      <span id="angle-value"></span>
+    </div>
+    <script type="text/javascript">
+     function deg2rad(deg) {
+       return deg * (Math.PI / 180);
+     }
+     let width = 500;
+     let height = 500;
+     let idx = 0;
+     let colors = ['red', 'green', 'blue', 'purple'];
+     let pos = {x: 0, y: 0};
+     let size = 100;
+     let force = 1;
+     let angle = 45;
+     function draw() {
+       let ctx = document.querySelector('#canvas1').getContext('2d');
+       ctx.fillStyle = colors[++idx % colors.length];
+       if (pos.x + size >= width) {
+         pos.x = width - size;
+         angle = (540 - angle) % 360;
+       }
+       if (pos.y + size >= height) {
+         pos.y = height - size;
+         angle = (360 - angle);
+       }
+       if (pos.x < 0) {
+         pos.x = 0;
+         angle = (540 - angle) % 360;
+       }
+       if (pos.y < 0) {
+         pos.y = 0;
+         angle = (360 - angle);
+       }
+       document.querySelector('#angle').value = angle;
+       document.querySelector('#angle-value').innerHTML = angle.toString();
+       pos.x += (Math.cos(deg2rad(angle)) * force);
+       pos.y += (Math.sin(deg2rad(angle)) * force);
+       ctx.fillRect(pos.x, pos.y, size, size);
+     }
+     init(() => {
+       document.querySelector('#force-up').addEventListener('click', () => {
+         force = Math.min(10, force + 0.5);
+         document.querySelector('#force').innerHTML = force.toString();
+       });
+       document.querySelector('#force-down').addEventListener('click', () => {
+         force = Math.max(0.5, force - 0.5);
+         document.querySelector('#force').innerHTML = force.toString();
+       });
+
+       document.querySelector('#angle').addEventListener('change', (event) => {
+         angle = event.target.value;
+       });
+     });
+    </script>
+  </body>
+</html>
