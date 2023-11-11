@@ -15,7 +15,7 @@
 extern "C" {
 #endif
 
-  EXPORT void hello(void);
+  extern EXPORT void hello(void);
 
 #ifdef __cplusplus
 }

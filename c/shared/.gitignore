@@ -1,3 +1,9 @@
-libhello.so
-libhello.dylib
 program
+*.exe
+*.dll
+*.so
+*.dylib
+*.obj
+*.o
+*.lib
+*.exp
