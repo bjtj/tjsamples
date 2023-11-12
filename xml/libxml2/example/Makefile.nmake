@@ -1,0 +1,15 @@
+CL=cl
+PROGRAM=example.exe
+CFLAGS=/I libxml2-2.7.8.win32/include /I iconv/Release-win32/include
+LDFLAGS=/link /LIBPATH:libxml2-2.7.8.win32/lib /LIBPATH:iconv/Release-win32/lib libxml2.lib libiconv.lib
+
+all: $(PROGRAM)
+
+$(PROGRAM): main.c
+	$(CL) $(CFLAGS) /Fe:$@ $** $(LDFLAGS)
+
+clean:
+	del $(PROGRAM) *.o
+
+
+.PHONY: all clean
