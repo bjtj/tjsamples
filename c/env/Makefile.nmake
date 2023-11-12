@@ -1,0 +1,9 @@
+all: program.exe
+
+program.exe: main.c
+	 cl /Fe:$@ $**
+
+clean:
+	del program.exe
+
+.PHONY: all clean

@@ -5,27 +5,34 @@
 
 int main(int argc, char *argv[])
 {
-    LPTSTR lpszVariable;
-    LPTCH lpvEnv;
-    lpvEnv = GetEnvironmentStrings();
-    if (lpvEnv == NULL)
-    {
-	fprintf(stderr, "GetEnvironmentStrings() failed\n");
-	exit(1);
-    }
-    for (lpszVariable = (LPTSTR)lpvEnv; *lpszVariable; lpszVariable++)
-    {
-	while (*lpszVariable)
+  LPTSTR lpszVariable;
+  LPTCH lpvEnv;
+  lpvEnv = GetEnvironmentStrings();
+  if (lpvEnv == NULL)
+  {
+    fprintf(stderr, "GetEnvironmentStrings() failed\n");
+    exit(1);
+  }
+  for (lpszVariable = (LPTSTR)lpvEnv; *lpszVariable; lpszVariable++)
+  {
+    while (*lpszVariable)
 	    putchar(*lpszVariable++);
-	putchar('\n');
-    }
+    putchar('\n');
+  }
 
-    if(FreeEnvironmentStrings(lpvEnv) == 0)
-	printf("GetEnvironmentStrings() failed.\n");
-    else
-	printf("\nGetEnvironmentStrings() is OK.\n");
+  if(FreeEnvironmentStrings(lpvEnv) == 0)
+    printf("GetEnvironmentStrings() failed.\n");
+  else
+    printf("\nGetEnvironmentStrings() is OK.\n");
+
+
+  {
+    char buffer[32760] = {0,};
+    GetEnvironmentVariable("PATH", buffer, sizeof(buffer));
+    printf("PATH: %s\n", buffer);
+  }
     
-    return 0;
+  return 0;
 }
 
 
@@ -40,15 +47,15 @@ extern char ** environ;
 int main(int argc, char *argv[])
 {
 
-    char ** ptr = environ;
-    for (;*ptr; ptr++)
-    {
-	printf("-- %s\n", *ptr);
-    }
+  char ** ptr = environ;
+  for (;*ptr; ptr++)
+  {
+    printf("-- %s\n", *ptr);
+  }
 
-    printf("%s\n", getenv("USER"));
+  printf("%s\n", getenv("USER"));
     
-    return 0;
+  return 0;
 }
 
 #endif
