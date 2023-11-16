@@ -1,0 +1,7 @@
+hello
+*.exe
+*.obj
+*.o
+*.dll
+*.zip
+SDL2-2.28.5/
