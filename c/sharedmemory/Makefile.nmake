@@ -10,8 +10,10 @@ $(PROG_WRITER): $(OBJS)
 $(PROG_READER): $(OBJS)
 	cl /Fe:$@ reader.c $**
 
-%.obj: %.c
-	cl /Fo:$@ $**
+.c.obj:
+	cl /c $**
 
 clean:
 	del $(PROG_WRITER) $(PROG_READER) *.obj
+
+.PHONY: all clean
