@@ -10,6 +10,6 @@ program.exe: main.c
 	cl /Fe:$@ main.c
 
 clean:
-	del program.exe *.dll *.obj
+	del program.exe *.dll *.obj *.lib *.exp
 
 .PHONY: all clean
