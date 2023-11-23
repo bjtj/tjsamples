@@ -15,7 +15,21 @@ def main():
     print(parsed_toml['owner']['name'])
     with open('sample.out.toml', 'w') as f:
         toml.dump(parsed_toml, f)
-    
+
+    with open('sample.out.toml', 'r') as f:
+        out = toml.load(f)
+        assert(parsed_toml == out)
+
+    obj = {
+        'message': 'hello world',
+        'section': {
+            'key1': 'value1',
+            'key2': 'value2',
+            'list': [1,2,3],
+        }
+    }
+    with open('myobj.toml', 'w') as f:
+        toml.dump(obj, f)
 
 if __name__ == '__main__':
     main()
