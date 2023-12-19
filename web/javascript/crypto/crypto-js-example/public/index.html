@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Crypto JS Example</title>
+    <script
+      type="text/javascript"
+      src="./bower_components/crypto-js/crypto-js.js"
+    ></script>
+    <script type="text/javascript">
+      function dotest() {
+        fetch("/rfc1.txt", {
+            method: "GET",
+            cors: "no-cors",
+        })
+          .then((response) => {
+            return response.arrayBuffer();
+          })
+          .then((buffer) => {
+            let result = document.querySelector("#dotest-result");
+            let hash = CryptoJS.MD5(buffer);
+            result.innerHTML = `<p>MD5: <pre>${hash}</pre></p>`;
+            let base64 = CryptoJS.enc.Base64.stringify(hash);
+            result.innerHTML += `<p>Base64: <pre>${base64}</pre></p>`;
+            let decryptedBase64 = CryptoJS.enc.Base64.parse(base64);
+            result.innerHTML += `<p>Decrypted Base64: <pre>${decryptedBase64}</pre></p>`;
+          });
+      }
+
+      window.onload = function () {
+
+        document.getElementById("input-md5").addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById("encrypt-md5-button").click();
+            }
+        });
+
+        document.getElementById("encrypt-md5-button").onclick = function () {
+          var input = document.getElementById("input-md5").value;
+          var encrypted = CryptoJS.MD5(input);
+          document.getElementById("md5-result").innerHTML = encrypted;
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Crypto JS Example</h1>
+    <div>
+      <input type="text" id="input-md5" />
+      <button id="encrypt-md5-button">Get MD5</button>
+      <div>MD5 Result: <pre id="md5-result"></pre></div>
+    </div>
+    <div>
+      <h2>Do TEST</h2>
+      <button onclick="dotest()">Test</button>
+      <div id="dotest-result"></div>
+    </div>
+  </body>
+</html>
