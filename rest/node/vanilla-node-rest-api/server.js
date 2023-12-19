@@ -1,5 +1,8 @@
 const http = require('http');
 const { getProducts, getProduct, createProduct, updateProduct, deleteProduct } = require('./controllers/productController');
+const mime = require('mime-types');
+const fs = require('fs');
+const path = require('path');
 
 const opts = {
   'Access-Control-Allow-Origin': '*',
@@ -29,11 +32,24 @@ const server = http.createServer((req, res) => {
     const id = req.url.split('/')[3]; // e.g. /api/products/1
     deleteProduct(req, res, id, opts);
   } else {
-    res.writeHead(404, {
-      'Content-Type': 'application/json',
-      ...opts
+    let mimetype = mime.lookup(req.url);
+    mimetype = mimetype ? mimetype : 'application/octet-stream';
+    let filename = req.url === '/' ? 'public/index.html' : path.join('public', req.url);
+    fs.readFile(filename, (err, data) => {
+      if (err) {
+        res.writeHead(404, {
+          'Content-Type': 'application/json',
+          ...opts
+        });
+        res.end(JSON.stringify({ message: 'Route Not Found' }));
+      } else {
+        res.writeHead(200, {
+          'Content-Type': mimetype,
+          ...opts
+        });
+        res.end(data);
+      }
     });
-    res.end(JSON.stringify({ message: 'Route Not Found' }));
   }
 });
 
