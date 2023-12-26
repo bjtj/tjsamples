@@ -42,6 +42,9 @@ export default function UseContext() {
     )
 }
 
+//   -===========-
+//  List View
+// -===========-
 
 type ListViewProps = {
     onSelectItem: (book: Book) => void;
@@ -62,6 +65,10 @@ function Listview({ onSelectItem }: ListViewProps) {
         </div>
     )
 }
+
+//   -===========-
+//  Detail View
+// -===========-
 
 type DetailViewProps = {
     book?: Book;

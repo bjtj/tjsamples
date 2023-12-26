@@ -36,9 +36,10 @@ type Action = {
 function reducer(state: State, action: Action): State {
     switch (action.type) {
         case 'add':
-            let list = [...state.list, ++state.seed];
+            let genid = state.seed + 1;
+            let list = [...state.list, genid];
             let sum = list.reduce((a, b) => a + b, 0);
-            return { list, sum, seed: state.seed };
+            return { list, sum, seed: genid };
         case 'reset':
             return initialState;
         default:
