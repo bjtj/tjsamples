@@ -1,0 +1,35 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+}
+
+plugins {
+  id 'org.springframework.boot' version "2.7.5"
+  id 'io.spring.dependency-management' version '1.1.0'
+  id 'java'
+}
+
+repositories {
+  jcenter()
+
+  maven {
+    url 'https://packages.confluent.io/maven'
+  }
+}
+
+apply plugin: 'idea'
+
+group = 'examples'
+version = '0.0.1'
+sourceCompatibility = 11
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter-web:2.7.5'
+  implementation 'org.apache.kafka:kafka-clients'
+  implementation 'org.springframework.kafka:spring-kafka'
+}
