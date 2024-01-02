@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<script src="./download.js"></script>
+	</head>
     <body>
 
 	<!-- Simple Fetch -->
@@ -23,7 +26,15 @@
 	<!-- Result -->
 	<h2>Result</h2>
 	<p id='result'></p>
-	
+
+	<div>
+		<div style="width: 100%; max-width: 800px; display: flex; gap: .5rem;">
+			<input id="download-url" style="flex-grow: 1" type="text" value="https://webrtc.github.io/samples/src/video/chrome.mp4" placeholder="Download URL" />
+			<button id="download-button">Download</button>
+		</div>
+		<div id="download-progress"></div>
+	</div>
+
 	<script type="text/javascript">
 	 /* https://stackoverflow.com/a/36082038/5676460 */
 	 /* https://stackoverflow.com/a/46642899/5676460 */
@@ -56,6 +67,12 @@
 		     console.error(err);
 		 });
 	     });
+	 });
+
+	 document.querySelector('#download-button').addEventListener('click', function(e) {
+		let url = document.querySelector('#download-url').value;
+		var progress = document.querySelector('#download-progress');
+		downloadFile(url, (p, bytes) => progress.innerHTML = `${(p * 100).toFixed(2)}% (Size: ${bytes.toLocaleString()} bytes)`);
 	 });
 	</script>
     </body>
