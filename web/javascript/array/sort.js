@@ -26,7 +26,7 @@ console.log(numbers);
 let arr2 = [3,2,1,5];
 let arr2_sorted = arr2.slice().sort();
 
-console.log(arr2);              // [ 3, 2, 1, 5 ]
+console.log(arr2);                // [ 3, 2, 1, 5 ]
 console.log(arr2_sorted);         // [ 1, 2, 3, 5 ]
 
 let strarr = [...new Array(15)].map((n, i) => `str${i}`).sort();
