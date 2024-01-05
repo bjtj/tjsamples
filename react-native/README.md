@@ -1,8 +1,3 @@
-# !!! REMOVED #
-
-Tired of managing audit fix...
-
-
 # Create React Native App #
 
 ```shell
