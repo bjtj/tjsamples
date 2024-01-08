@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi", "TodoApi.csproj", "{67FF19BA-8464-47E6-BC31-9AE26889651E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "솔루션 항목", "솔루션 항목", "{A64C514E-1306-4E49-9746-F5E70CEB74F1}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67FF19BA-8464-47E6-BC31-9AE26889651E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67FF19BA-8464-47E6-BC31-9AE26889651E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67FF19BA-8464-47E6-BC31-9AE26889651E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67FF19BA-8464-47E6-BC31-9AE26889651E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB6936EC-6193-455E-ABFC-E57C4706BD65}
+	EndGlobalSection
+EndGlobal
