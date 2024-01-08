@@ -1,0 +1,87 @@
+.my-node-enter {
+    opacity: 0;
+}
+
+.my-node-enter-active {
+    opacity: 1;
+    transition: opacity 3000ms ease-in;
+}
+
+.my-node-exit {
+    opacity: 1;
+}
+
+.my-node-exit-active {
+    opacity: 0;
+    transition: opacity 3000ms ease-in;
+}
+
+
+.alert-enter>div {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.alert-enter-active>div {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.alert-exit>div {
+    opacity: 1;
+}
+
+.alert-exit-active>div {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+}
+
+
+
+.fade-enter .btn {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.fade-enter-active .btn {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.fade-exit .btn {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.fade-exit-active .btn {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.fade-enter-active .btn,
+.fade-exit-active .btn {
+    transition: opacity 500ms, transform 500ms;
+}
+
+.item-enter {
+    opacity: 0;
+    height: fit-content;
+}
+
+.item-enter-active {
+    opacity: 1;
+    transition: all 1000ms ease-in;
+}
+
+.item-exit {
+    opacity: 1;
+    height: 1.2rem;
+}
+
+.item-exit-active {
+    opacity: 0;
+    height: 0;
+    transition: all 1000ms ease-in;
+}
