@@ -15,7 +15,6 @@ class A:
 
 Vector = List[A]
 
-
 def test1(v: int) -> Vector:
     lst = []
     lst.append(A(v + 1))
@@ -55,26 +54,30 @@ def test8(param: Dict[int, str]) -> None:
 
 
 def main():
-    print(test1(1))
+    print(test1(1))                     # [A(2), A(3)]
     try:
         print(test1('1'))
     except Exception as e:
-        print(e)
+        print(e)                        # can only concatenate str (not "int") to str
     try:
         print(test1(None))
     except Exception as e:
-        print(e)
-    print(test2(2))
-    print(type(test3(1)))
-    print(type(test3('1')))
-    print(type(test4([[1]])))
-    print(type(test4([[A(1)]])))
-    print(type(test5(1)))
-    print(type(test6(1)))
-    print(test7(A(1)))
-    print(test7(None))
-    test8({1: 'hello'})
-    test8({'1': 'hello'})
+        print(e)                        # unsupported operand type(s) for +: 'NoneType' and 'int'
+    print(test2(2))                     # [3, 4]
+    print(type(test3(1)))               # <class 'int'>
+    print(type(test3('1')))             # <class 'str'>
+    print(type(test4([[1]])))           # <class 'list'>
+    print(type(test4([[A(1)]])))        # <class 'list'>
+    print(type(test5(1)))               # <class 'list'>
+    print(type(test6(1)))               # <class 'list'>
+    print(test7(A(1)))                  # A(1)
+    print(test7(None))                  # None
+    test8({1: 'hello'})                 # {1: 'hello'}
+    test8({'1': 'hello'})               # {'1': 'hello'}
+
+    d = {'a': 1, 'b': 2}
+    print(type(d))                      # <class 'dict'>
+    print(type(d) == dict)              # True
 
 
 if __name__ == '__main__':
