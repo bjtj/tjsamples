@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "tutorial": {
+      "commandName": "Project",
+      "commandLineArgs": "read --file sampleQuotes.txt --fgcolor red --light-mode"
+    }
+  }
+}
