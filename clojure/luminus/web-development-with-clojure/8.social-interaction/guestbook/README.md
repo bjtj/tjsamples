@@ -1,21 +1,39 @@
-# guestbook
+# Guestbook #
 
-generated using Luminus version "3.91"
+## How to start ##
 
-FIXME
+### PostgreSQL ###
 
-## Prerequisites
+Create user and database.
 
-You will need [Leiningen][1] 2.0 or above installed.
+e.g.)
 
-[1]: https://github.com/technomancy/leiningen
+``` sql
+CREATE USER guestbook WITH PASSWORD 'password';
+CREATE DATABASE guestbook WITH OWNER guestbook;
+```
 
-## Running
+### Migrate ###
 
-To start a web server for the application, run:
+``` shell
+lein run migrate
+```
 
-    lein run 
+### Shadow Cljs ###
 
-## License
+``` shell
+npm install
+npx shadow-cljs watch app
+```
 
-Copyright © 2021 FIXME
+### Start Server ###
+
+``` shell
+lein run
+```
+
+Open the browser.
+
+<http://localhost:3000/>
+
+<http://localhost:3000/api/swagger-ui/>

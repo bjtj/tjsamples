@@ -14,3 +14,6 @@ profiles.clj
 
 /node_modules
 /log
+
+**/.clj-kondo/.cache
+/.lsp/.cache

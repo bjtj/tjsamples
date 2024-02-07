@@ -16,3 +16,7 @@ profiles.clj
 /log
 
 .shadow-cljs
+
+
+**/.clj-kondo/.cache
+/.lsp/.cache
