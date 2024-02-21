@@ -1,0 +1,17 @@
+{
+  "name": "hello",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun ./index.ts",
+    "build": "bun ./build.ts",
+    "clean": "bunx rimraf node_modules"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "rimraf": "^5.0.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
