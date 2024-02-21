@@ -1,0 +1,20 @@
+{
+  "name": "example",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run index.ts",
+    "clean": "bunx rimraf node_modules"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/msgpack-lite": "^0.1.11",
+    "rimraf": "^5.0.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "msgpack-lite": "^0.1.26"
+  }
+}
