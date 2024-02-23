@@ -1,14 +1,16 @@
-# hello
+# Getting Started - hello
 
-A Clojure library designed to ... well, that part is up to you.
+<https://github.com/ring-clojure/ring/wiki/Getting-Started>
 
 ## Usage
 
-FIXME
+``` shell
+lein repl
+```
 
-## License
-
-Copyright © 2019 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+``` clojure
+=> (use 'ring.adapter.jetty)
+=> (use 'hello.core)
+=> (run-jetty handler {:port 3000
+                       :join? false})
+```
