@@ -15,10 +15,3 @@ item3: {}'.format(1,2,3))            # item1: 1, item2: 2, item3: 3
 
 if __name__ == '__main__':
     main()
-
-    
-
-
-
-
-
