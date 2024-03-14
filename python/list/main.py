@@ -74,12 +74,11 @@ def main():
     lst = filter(lambda item: item != 2, lst)
     print(lst)
 
-
     lst = [1,2,3]
-    print(lst.pop())
-    print(lst.pop(0))
-    print(lst)
-    
+    print(lst.pop())           # 3
+    print(lst.pop(0))          # 1
+    print(lst)                 # [2]
+
 
 if __name__ == '__main__':
     main()

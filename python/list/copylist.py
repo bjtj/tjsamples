@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 
-import sys
 import copy
-
 
 class Item:
     def __init__(self, value):
@@ -10,7 +8,6 @@ class Item:
 
     def __repr__(self):
         return f'Item({self.value!r})'
-
 
 
 def test1():
@@ -49,7 +46,6 @@ def test2():
 def main():
     test1()
     test2()
-
 
 if __name__ == '__main__':
     main()
