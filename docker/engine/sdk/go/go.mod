@@ -2,7 +2,7 @@ module app
 
 go 1.17
 
-require github.com/docker/docker v24.0.7+incompatible
+require github.com/docker/docker v24.0.9+incompatible
 
 require (
 	github.com/Microsoft/go-winio v0.5.2 // indirect
