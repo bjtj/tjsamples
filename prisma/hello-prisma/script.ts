@@ -4,8 +4,15 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
+async function _0_clear() {
+  // https://www.prisma.io/docs/orm/prisma-client/queries/crud#delete-all-records
+  await prisma.post.deleteMany({});
+  await prisma.user.deleteMany({});
+}
+
 async function main() {
   // ... you will write your Prisma Client queries here
+  await _0_clear();
   await _1_create_new_user_record();
   await _2_retreive_all_user_records();
   await _3_explorer_relation_queries_with_prisma();
