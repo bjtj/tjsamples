@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
-    "express": "^4.18.1",
+    "express": "^4.19.2",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.12.0",
     "ulid": "^2.3.0"
