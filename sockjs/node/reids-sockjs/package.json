@@ -10,7 +10,7 @@
   "author": "TJ <bjtj10@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
+    "express": "^4.19.2",
     "redis": "^4.6.5",
     "sockjs": "^0.3.24"
   }
