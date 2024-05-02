@@ -1,4 +1,47 @@
-# Installation
+# Kotlin #
+
+## CLI ##
+
+<https://kotlinlang.org/docs/command-line.html>
+
+### Manual install ###
+
+<https://github.com/JetBrains/kotlin/releases/tag/v1.9.23>
+
+!) For Windows users who want to use the command-line compiler, we recommend using the manual installation method.
+
+## Create and run an application﻿ ##
+
+Create a simple application in Kotlin that displays "Hello, World!". In your favorite editor, create a new file called hello.kt with the following lines:
+
+``` kotlin
+fun main() {
+    println("Hello, World!")
+}
+```
+
+Compile the application using the Kotlin compiler:
+
+``` shell
+kotlinc hello.kt -include-runtime -d hello.jar
+```
+
+The `-d` option indicates the output path for generated class files, which may be either a directory or a .jar file. The `-include-runtime` option makes the resulting .jar file self-contained and runnable by including the Kotlin runtime library in it.
+
+To see all available options, run
+
+``` shell
+kotlinc -help
+```
+
+Run the application.
+
+``` shell
+java -jar hello.jar
+```
+
+
+## Installation ##
 
 https://kotlinlang.org/docs/tutorials/command-line.html
 
@@ -32,4 +75,6 @@ java -jar $KOTLIN_HOME/lib/kotlin-compiler.jar -script hello.kts
 https://youtrack.jetbrains.com/issue/KT-33529?_ga=2.246442112.504837349.1570669058-686115611.1567647399
 
 > Fix confirmed in 1.3.60-dev-1757.
+
+
 
