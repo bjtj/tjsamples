@@ -1,3 +1,3 @@
-# Quickstart #
+# prisma #
 
-<https://www.prisma.io/docs/getting-started/quickstart>
+<https://www.prisma.io/>
