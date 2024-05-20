@@ -1,101 +1,81 @@
 package com.example.permissionsample
 
 import android.Manifest
-import android.content.Context
-import android.content.pm.PackageManager
+import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.permissionsample.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
-    // Activity Result Api
-    private val requestPermission =
-        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
-            permissions.forEach { actionMap ->
-                Log.d(TAG, "actionMap.key: ${actionMap.key}, actionMap.value: ${actionMap.value}")
-                when (actionMap.key) {
-                    Manifest.permission.CAMERA -> {
-                        if (actionMap.value) {
-                            Log.i("DEBUG", "Camera Permission Granted")
-                        } else {
-                            Log.i("DEBUG", "Camera Permission Denied")
-                        }
-                    }
-                }
-            }
-        }
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        checkPermissions()
+        handlePermissions()
     }
 
-    private fun checkPermissions() {
-        if (!hasPermissions(this)) {
-            Toast.makeText(this, "Permissions not granted", Toast.LENGTH_SHORT).show()
-            // 1. requestPermissions() --> onRequestPermissionsResult()
-//            requestPermissions(PERMISSIONS_REQUIRED, REQUEST_CODE)
-            // 2. requestPermission.launch() --> onRequestPermissionsResult()
-            requestPermission.launch(PERMISSIONS_REQUIRED)
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_CODE) {
-
-            Log.d(TAG, "PackageManager.PERMISSION_GRANTED: ${PackageManager.PERMISSION_GRANTED}") // 0
-            Log.d(TAG, "PackageManager.PERMISSION_DENIED: ${PackageManager.PERMISSION_DENIED}")   // -1
-
-            Log.d(TAG, "permissions.size: ${permissions.size}")
-            permissions.forEachIndexed { index, permission ->
-                Log.d(TAG, " - permissions[$index]: $permission")
+    @SuppressLint("SetTextI18n")
+    private fun handlePermissions() {
+        val checker = CheckPermission.Builder(this)
+            .required(PERMISSIONS_REQUIRED)
+            .granted { Log.d(TAG, "permissions granted: $it") }
+            .denied { Log.d(TAG, "permissions denied: $it") }
+            .shouldShowRequestPermissionRationale { checkPermission, rationaleResult ->
+                val builder = AlertDialog.Builder(this)
+                with(builder) {
+                    val showRationales = rationaleResult.filter { it.value }.map { it.key }
+                    setTitle("Permission required")
+                    setMessage("This app needs ${showRationales.joinToString()} permissions to work properly.")
+                    setPositiveButton("OK") { _, _ -> checkPermission.request(showRationales.toTypedArray()) }
+                    setNegativeButton("Cancel") { _, _ ->
+                        checkPermission.finish()
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Permission denied",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    builder.show()
+                }
             }
-
-            Log.d(TAG, "grantResults.size: ${grantResults.size}")
-            grantResults.forEachIndexed { index, grantResult ->
-                Log.d(TAG, " - grantResults[$index]: $grantResult")
+            .allGranted { Log.d(TAG, "all permissions are granted") }
+            .finished {
+                Snackbar.make(
+                    findViewById(R.id.main),
+                    "Permission result: $it",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+                binding.text.text = "Permission result: $it"
             }
+            .build()
 
-            if (grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
-                Toast.makeText(this, "Permissions granted", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Permissions not granted", Toast.LENGTH_SHORT).show()
-            }
-        }
+        checker.start()
     }
 
     companion object {
 
         // Checking Permissions
         private val TAG = MainActivity::class.java.simpleName
-        private const val REQUEST_CODE = 10
         private val PERMISSIONS_REQUIRED = arrayOf(
             Manifest.permission.CAMERA,
             Manifest.permission.RECORD_AUDIO
         )
-
-        fun hasPermissions(context: Context) = PERMISSIONS_REQUIRED.all {
-            ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
-        }
     }
 }
