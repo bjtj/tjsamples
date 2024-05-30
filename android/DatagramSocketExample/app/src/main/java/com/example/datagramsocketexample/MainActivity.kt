@@ -7,10 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.datagramsocketexample.databinding.ActivityMainBinding
-import kotlinx.coroutines.launch
+import com.google.android.material.snackbar.Snackbar
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.nio.ByteBuffer
@@ -18,6 +17,7 @@ import java.nio.channels.DatagramChannel
 import java.nio.channels.SelectionKey
 import java.nio.channels.Selector
 import java.util.Date
+import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
@@ -50,9 +50,13 @@ class MainActivity : AppCompatActivity() {
             }
 
         binding.sendMsearchButton.setOnClickListener {
-            Thread {
+
+            it.isEnabled = false
+
+//            lifecycleScope.launch(Dispatchers.IO) {
+            thread {
                 sendMSearch {
-                    lifecycleScope.launch {
+                    runOnUiThread {
                         list.add(it)
                         adapter.notifyDataSetChanged()
                         binding.recyclerView.layoutManager?.smoothScrollToPosition(
@@ -63,7 +67,16 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-            }.start()
+                runOnUiThread {
+                    it.isEnabled = true
+                    Snackbar.make(
+                        binding.root,
+                        "M-SEARCH finished",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
         }
 
         binding.recyclerView.adapter = adapter
@@ -71,7 +84,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun sendMSearch(onSSDPResponse: (response: SSDPResponse) -> Unit) {
-        val TIMEOUT = 3000
+        val timeout = 3000
         var channel: DatagramChannel? = null
         try {
             val packet = "M-SEARCH * HTTP/1.1\r\n" +
@@ -99,7 +112,7 @@ class MainActivity : AppCompatActivity() {
             val buffer = ByteBuffer.allocate(4096)
 
             while (!Thread.interrupted()) {
-                if (SystemClock.uptimeMillis() - tick >= TIMEOUT) {
+                if (SystemClock.uptimeMillis() - tick >= timeout) {
                     println("TIMEOUT")
                     break
                 }
