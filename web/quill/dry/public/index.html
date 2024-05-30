@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quill Editor</title>
+    <!-- Include stylesheet -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.5/dist/quill.snow.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Create the editor container -->
+    <div id="editor">
+      <p>Hello World!</p>
+      <p>Some initial <strong>bold</strong> text</p>
+      <p><br /></p>
+    </div>
+  </body>
+
+  <!-- Include the Quill library -->
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.5/dist/quill.js"></script>
+
+  <!-- Initialize Quill editor -->
+  <script>
+    const quill = new Quill("#editor", {
+      theme: "snow",
+    });
+  </script>
+</html>
