@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BottomTabNavigationWithCompose</string>
+    <string name="profile">Profile</string>
+    <string name="friends_list">Friends List</string>
+</resources>
