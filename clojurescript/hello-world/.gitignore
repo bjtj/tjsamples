@@ -1,2 +1,3 @@
 out/
 cljs.jar
+.cpcache/

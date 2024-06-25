@@ -4,6 +4,10 @@
 
 On Windows you will need Java 8 and the [standalone ClojureScript JAR](https://github.com/clojure/clojurescript/releases/download/r1.10.758/cljs.jar).
 
+> !) Alternative (scoop-clojure)
+>
+> <https://github.com/littleli/scoop-clojure>
+
 ```
 hello-world        # Our project folder
 ├─ src             # The CLJS source code for our project
