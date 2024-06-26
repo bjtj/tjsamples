@@ -15,6 +15,12 @@
       (is (= (:status response) 200))
       (is (= (:body response) (json/write-str {:message "This is JSON"})))))
 
+  (testing "POST /api/json route"
+    (let [response (app (-> (mock/request :post "/api/json")
+                            (mock/json-body {:foo "bar"})))]
+      (is (= (:status response) 200))
+      (is (= (:body response) (json/write-str {:foo "bar"})))))
+
   (testing "not-found route"
     (let [response (app (mock/request :get "/invalid"))]
       (is (= (:status response) 404)))))
