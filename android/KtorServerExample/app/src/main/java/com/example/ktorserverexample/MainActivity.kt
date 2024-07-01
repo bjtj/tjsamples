@@ -20,8 +20,6 @@ import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.server.response.respond
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var engine: NettyApplicationEngine
 
     @SuppressLint("SetTextI18n")
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -42,29 +39,27 @@ class MainActivity : AppCompatActivity() {
 
         val text = findViewById<TextView>(R.id.text)
 
-        GlobalScope.launch {
-            engine = embeddedServer(Netty, 0) {
-                install(ContentNegotiation) {
-                    gson {}
-                }
-                routing {
-                    get("/") {
-                        call.respond(mapOf("message" to "Hello world"))
-                    }
+        engine = embeddedServer(Netty, 0) {
+            install(ContentNegotiation) {
+                gson {}
+            }
+            routing {
+                get("/") {
+                    call.respond(mapOf("message" to "Hello world"))
                 }
             }
-
-            engine.environment.monitor.subscribe(ApplicationStarted) {
-                lifecycleScope.launch {
-                    text.text = "Server listening on\n"
-                    engine.resolvedConnectors().forEach {
-                        text.append(" - http://${it.host}:${it.port}\n")
-                        Log.d(TAG, "Server listening on http://${it.host}:${it.port}")
-                    }
-                }
-            }
-            engine.start(wait = true)
         }
+
+        engine.environment.monitor.subscribe(ApplicationStarted) {
+            lifecycleScope.launch {
+                text.text = "Server listening on\n"
+                engine.resolvedConnectors().forEach {
+                    text.append(" - http://${it.host}:${it.port}\n")
+                    Log.d(TAG, "Server listening on http://${it.host}:${it.port}")
+                }
+            }
+        }
+        engine.start()
     }
 
     override fun onDestroy() {
