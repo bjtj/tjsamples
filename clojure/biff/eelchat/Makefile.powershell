@@ -1,0 +1,8 @@
+CLJ = powershell clj
+
+all: dev
+
+dev:
+	$(CLJ) -M:dev dev
+
+.PHONY: all dev
