@@ -39,11 +39,6 @@
  (fn [db _]
    (::loading? db)))
 
-(rf/reg-sub
- ::loading?
- (fn [db _]
-   (::loading? db)))
-
 (def author-controllers
   [{:parameters {:path [:user]}
     :start (fn [{{:keys [user]} :path}]
@@ -57,7 +52,7 @@
 (defn banner-component
   ""
   [url]
-  [:figure.iamge {:style {:width "100%"
+  [:figure.image {:style {:width "100%"
                           :height "10vw"
                           :overflow "hidden"
                           :margin-left 0

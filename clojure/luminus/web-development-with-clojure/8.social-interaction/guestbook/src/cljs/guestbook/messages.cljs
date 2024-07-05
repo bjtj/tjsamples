@@ -331,7 +331,8 @@
       (rtfe/push-state :guestbook.routes.app/post {:post root_id}
                        (when (not= root_id id)
                            {:reply id})))}
-   [:i.material-icons
+   [:span.material-icons
+    {:style {:font-size "inherit"}}
     "open_in_new"]])
 
 (defn boost-button
@@ -341,7 +342,8 @@
    {:on-click
     #(rf/dispatch [:message/boost! m])
     :disabled (nil? @(rf/subscribe [:auth/user]))}
-   "♻" boosts])
+   "♻"
+   [:span.ml-1 boosts]])
 
 (declare reply-modal)
 

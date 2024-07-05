@@ -1,4 +1,7 @@
-all:
+all: repl
+
+repl:
+	lein repl
 
 run:
 	lein run
