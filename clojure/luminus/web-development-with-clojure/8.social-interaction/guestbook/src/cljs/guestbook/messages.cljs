@@ -456,7 +456,7 @@
        [errors-component :message]
        [textarea-input
         {:attrs {:name :message}
-         :save-timout 1000
+         :save-timeout 1000
          :value (rf/subscribe [:form/field :message])
          :on-save #(rf/dispatch [:form/set-field :message %])}]]]))
 

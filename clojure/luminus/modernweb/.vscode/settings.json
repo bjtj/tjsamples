@@ -1,0 +1,48 @@
+{
+        "calva.customREPLCommandSnippets": [
+        {
+            "name": "Start modernweb Server",
+            "ns": "user",
+            "repl": "clj",
+            "snippet": "(start)"
+        },
+        {
+            "name": "Stop modernweb Server",
+            "ns": "user",
+            "repl": "clj",
+            "snippet": "(stop)"
+        },
+        {
+            "name": "Restart modernweb Server",
+            "ns": "user",
+            "repl": "clj",
+            "snippet": "(restart)"
+        }
+    ],
+    "calva.replConnectSequences": [
+                {
+            "name": "modernweb Server",
+            "projectType": "Leiningen",
+            "afterCLJReplJackInCode": "(in-ns 'user) (start) (println \"Access the server at http://localhost:3000\")",
+            "cljsType": "none",
+            "menuSelections": {
+                "leinProfiles": [
+                    "dev"
+                ]
+            }
+        },
+        {
+            "name": "modernweb Server + Client",
+            "projectType": "shadow-cljs",
+            "afterCLJReplJackInCode": "(in-ns 'user) (start) (println \"Access the server at http://localhost:3000\")",
+            "cljsType": "shadow-cljs",
+            "menuSelections": {
+                "cljsLaunchBuilds": [
+                    "app",
+                    "test"
+                ],
+                "cljsDefaultBuild": "app"
+            }
+        }
+    ]
+}

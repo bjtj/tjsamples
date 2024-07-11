@@ -1,0 +1,1 @@
+web: java -Dclojure.main.report=stderr -cp target/uberjar/modernweb.jar clojure.main -m modernweb.core
