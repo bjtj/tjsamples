@@ -1,4 +1,7 @@
-all: repl
+all: run
+
+run:
+	lein run
 
 repl:
 	lein repl
@@ -21,5 +24,4 @@ cljs-watch:
 cljs-repl:
 	npx shadow-cljs cljs-repl app
 
-.PHONY:
-	all repl uberjar war uberwar
+.PHONY:	all run repl uberjar war uberwar
