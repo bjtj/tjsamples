@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <form action="/contacts" method="get" class="tool-bar">
+    <label for="search">Search Term</label>
+    <input id="search" name="q" type="search" value="{{ request.args.get('q') or '' }}"/>
+    <input type="submit" value="Search"/>
+  </form>
+
+  {% include 'contacts.html' %}
+
+  <p>
+    <a href="/contacts/new">Add Contact</a>
+  </p>
+{% endblock %}
