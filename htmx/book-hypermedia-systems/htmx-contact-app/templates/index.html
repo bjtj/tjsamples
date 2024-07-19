@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% include 'archive_ui.html' %}
+
+<form action="/contacts" method="get" class="tool-bar">
+  <label for="search">Search Term</label>
+  <input
+    id="search"
+    name="q"
+    type="search"
+    placeholder="Search Contacts"
+    _="on keydown[altKey and code is 'KeyS'] from window me.focus()"
+    value="{{ request.args.get('q') or '' }}"
+    hx-get="/contacts"
+    hx-trigger="change, keyup delay:200ms changed"
+    hx-target="tbody"
+    hx-push-url="true"
+    hx-indicator="#spinner"
+  />
+  <img
+    id="spinner"
+    class="htmx-indicator"
+    src="{{ url_for('static', filename='img/spinning-circles.svg') }}"
+    alt="Request In Flight..."
+  />
+  <input type="submit" value="Search" />
+</form>
+
+<p>
+  <a href="/contacts/new">Add Contact</a>
+  <span hx-get="/contacts/count" hx-trigger="revealed"
+    ><img
+      id="spinner"
+      class="htmx-indicator"
+      src="{{ url_for('static', filename='img/spinning-circles.svg') }}"
+  /></span>
+</p>
+
+{% include 'contacts.html' %}
+
+{% endblock %}

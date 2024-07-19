@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contacts.App</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+        <!-- <script src="https://unpkg.com/htmx.org@2.0.1" crossorigin="anonymous"></script> -->
+         <script src="{{ url_for('static', filename='js/htmx.min.js') }}"></script>
+         <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+         <script src="https://unpkg.com/alpinejs@3.14.1"></script>
+         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+         <link rel="stylesheet" href="https://unpkg.com/missing.css@1.1.2">
+    </head>
+    <body hx-boost="true">
+        <h1>Contacts.App</h1>
+        <h2>A Demo Contacts Application</h2>
+        <hr />
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
