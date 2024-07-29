@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Preact + Plain HTML</title>
+  </head>
+  <body>
+    <script type="module">
+     import { h, render, Component } from 'https://esm.sh/preact';
+     import htm from 'https://esm.sh/htm';
+
+     import { Clock } from './clock.js';
+
+     // Initialize htm with Preact
+     const html = htm.bind(h);
+
+     class App extends Component {
+
+       state = {name: 'World!'}
+       
+       constructor(props) {
+         super();
+         this.setState(props);
+       }
+
+       onInput = ev => {
+         this.setState({ value: ev.currentTarget.value });
+       }
+
+       onSubmit = ev => {
+         ev.preventDefault();
+         this.setState({ name: this.state.value });
+       }
+
+       render() {
+         return html`<div><h1>Hello, ${this.state.name}!</h1>
+           <form onSubmit=${this.onSubmit}>
+             <input type="text" value=${this.state.value} onInput=${this.onInput} />
+             <button type="submit">Update</button>
+           </form>
+           <${Clock} />
+         </div>`;
+       }
+     }
+
+     render(html`<${App} />`, document.body);
+    </script>
+  </body>
+</html>
