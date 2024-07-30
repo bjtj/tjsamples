@@ -1,0 +1,20 @@
+{:paths ["src" "resources"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        asset-minifier/asset-minifier {:mvn/version "0.2.7"}}
+ :aliases
+ {:run-m {:main-opts ["-m" "sample.core"]}
+  :run-x {:ns-default sample.core
+          :exec-fn greet
+          :exec-args {:name "Clojure"}}
+  :build {:deps {io.github.clojure/tools.build
+                 {:git/tag "v0.9.2" :git/sha "fe6b140"}}
+          :ns-default build}
+  :test {:extra-paths ["test"]
+         :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
+                      io.github.cognitect-labs/test-runner
+                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}}
+  :minify {:ns-default sample.core
+           :exec-fn do-minify
+           :exec-args {:src "resources/css/site.css"
+                       :dst "resources/css/site.min.css"}}
+  :neil {:project {:name sample/sample}}}}
