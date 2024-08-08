@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>dayjs examples</title>
+    <!-- CDN example (jsDelivr) -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script>console.log(dayjs().format())</script>
+    <!-- CDN example (jsDelivr) -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/zh-cn.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/ko.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/es.js"></script>
+    <script type="text/javascript">dayjs.locale('ko')</script>
+  </head>
+  <body>
+    <a href="https://day.js.org/">day.js.org</a>
+
+    <h2>Core</h2>
+    
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().month());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().day());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().hour());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().format());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(Object.keys(dayjs()));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().format('YYYY-MM-DD hh:mm:ss a (ddd)'));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs('2018-04-04T16:00:00.000Z'));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs('2018-04-13 19:18:17.040+02:00'));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs('2018-04-13 19:18'));</script>
+      </li>
+      <li>
+        <a href="https://cdn.jsdelivr.net/npm/dayjs@1/locale.json">locale.json</a>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().format('a'));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().locale('zh-cn').format('a'));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().locale('en').format('a'));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().locale('es').format('MMMM'));</script>
+      </li>
+    </ul>
+
+    <h2>Plugins</h2>
+
+    <h3>AdvancedFormat</h3>
+    <a href="https://day.js.org/docs/en/plugin/advanced-format">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/advancedFormat.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_advancedFormat);</script>
+    
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs().format("Q Do k kk X x"));</script>
+      </li>
+    </ul>
+
+    <h3>ArraySupport</h3>
+    <a href="https://day.js.org/docs/en/plugin/array-support">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/arraySupport.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_arraySupport);</script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_utc);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs([2010, 1, 14, 15, 25, 50, 125]));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs.utc([2010, 1, 14, 15, 25, 50, 125]));</script>
+      </li>
+    </ul>
+
+
+    <h3>BadMutable</h3>
+    <a href="https://day.js.org/docs/en/plugin/bad-mutable">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/badMutable.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_badMutable);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">
+         const today = dayjs();
+         today.add(1, "day");
+         document.write(today);
+        </script>
+      </li>
+    </ul>
+
+    <h3>BigIntSupport</h3>
+    <a href="https://day.js.org/docs/en/plugin/bigint-support">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/bigIntSupport.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_bigIntSupport);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs(BigInt(1666310421101)));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs.unix(BigInt(1666311003)));</script>
+      </li>
+    </ul>
+    
+
+    <h3>BuddhistEra</h3>
+    <a href="https://day.js.org/docs/en/plugin/buddhist-era">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/buddhistEra.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_buddhistEra);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs().format("BBBB BB"));</script>
+      </li>
+    </ul>
+
+    <h3>Calendar</h3>
+    <a href="">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/calendar.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_calendar);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs().calendar(dayjs("2008-01-01")));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().calendar(null, {
+           sameDay: "[Today at] h:mm A", // The same day ( Today at 2:30 AM )
+           nextDay: "[Tomorrow at] h:mm A", // The next day ( Tomorrow at 2:30 AM )
+           nextWeek: "dddd [at] h:mm A", // The next week ( Sunday at 2:30 AM )
+           lastDay: "[Yesterday at] h:mm A", // The day before ( Yesterday at 2:30 AM )
+           lastWeek: "[Last] dddd [at] h:mm A", // Last week ( Last Monday at 2:30 AM )
+           sameElse: "DD/MM/YYYY", // Everything else ( 17/10/2011 )
+         }));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().add(1, 'day').calendar(null, {
+           sameDay: "[Today at] h:mm A", // The same day ( Today at 2:30 AM )
+           nextDay: "[Tomorrow at] h:mm A", // The next day ( Tomorrow at 2:30 AM )
+           nextWeek: "dddd [at] h:mm A", // The next week ( Sunday at 2:30 AM )
+           lastDay: "[Yesterday at] h:mm A", // The day before ( Yesterday at 2:30 AM )
+           lastWeek: "[Last] dddd [at] h:mm A", // Last week ( Last Monday at 2:30 AM )
+           sameElse: "DD/MM/YYYY", // Everything else ( 17/10/2011 )
+         }));</script>
+      </li>
+    </ul>
+
+    <h3>CustomParseFormat</h3>
+    <a href="https://day.js.org/docs/en/plugin/custom-parse-format">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/customParseFormat.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_customParseFormat);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">
+         document.write(dayjs("05/02/69 1:02:03 PM -05:00", "MM/DD/YY H:mm:ss A Z"));
+        </script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs("2018 enero 15", "YYYY MMMM DD", "es"));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs("2018 Enero 15", "YYYY MMMM DD", "es"));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs("1970-00-00", "YYYY-MM-DD", true));</script>
+      </li>
+    </ul>
+
+    <h3>DayOfYear</h3>
+    <a href="https://day.js.org/docs/en/plugin/day-of-year">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/dayOfYear.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_dayOfYear);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs("2010-01-01").dayOfYear());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs("2010-01-01").dayOfYear(365));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs("2010-01-05").dayOfYear(365));</script>
+      </li>
+    </ul>
+
+    <h3>DevHelper</h3>
+    <a href="https://day.js.org/docs/en/plugin/dev-helper">link</a>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/devHelper.js"></script>
+         <script type="text/javascript">dayjs.extend(window.dayjs_plugin_devHelper);</script> -->
+    <div style="color: red;">node.js required</div>
+
+    <h3>Duration</h3>
+    <a href="https://day.js.org/docs/en/plugin/duration">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/duration.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_duration);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(JSON.stringify(dayjs.duration(100)));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs.duration(100).asMilliseconds());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs.duration(100).asSeconds());</script>
+      </li>
+    </ul>
+
+    <h3>IsBetween</h3>
+    <a href="https://day.js.org/docs/en/plugin/is-between">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isBetween.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_isBetween);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">
+         document.write(dayjs("2010-10-20").isBetween("2010-10-19", dayjs("2010-10-25"), "year"));
+        </script>
+      </li>
+      <li>
+        <script type="text/javascript">
+         document.write(dayjs("2016-10-30").isBetween("2016-01-01", "2016-10-30", "day", "[)"));
+        </script>
+      </li>
+      <li>
+        <script type="text/javascript">
+         document.write(dayjs("2016-10-29").isBetween("2016-01-01", "2016-10-30", "day", "[)"));
+        </script>
+      </li>
+    </ul>
+
+    <h3>IsLeapYear</h3>
+    <a href="https://day.js.org/docs/en/plugin/is-leap-year">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isLeapYear.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_isLeapYear);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs("2000-01-01").isLeapYear());</script>
+      </li>
+    </ul>
+
+    <h3>IsSameOrAfter</h3>
+    <a href="https://day.js.org/docs/en/plugin/is-same-or-after">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isSameOrAfter.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_isSameOrAfter);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">
+         document.write(dayjs("2010-10-20").isSameOrAfter("2010-10-19", "year"));
+        </script>
+      </li>
+    </ul>
+
+    <h3>IsSameOrBefore</h3>
+    <a href="https://day.js.org/docs/en/plugin/is-same-or-before">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isSameOrBefore.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_isSameOrBefore);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">
+         document.write(dayjs("2010-10-20").isSameOrBefore("2010-10-19", "year"));
+        </script>
+      </li>
+    </ul>
+
+    <h3>IsToday</h3>
+    <a href="https://day.js.org/docs/en/plugin/is-today">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isToday.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_isToday);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs().isToday());</script>
+      </li>
+    </ul>
+
+    <h3>IsTomorrow</h3>
+    <a href="https://day.js.org/docs/en/plugin/is-tomorrow">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isTomorrow.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_isTomorrow);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs().add(1, "day").isTomorrow());</script>
+      </li>
+    </ul>
+
+    <h3>IsYesterday</h3>
+    <a href="https://day.js.org/docs/en/plugin/is-yesterday">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isYesterday.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_isYesterday);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs().add(-1, "day").isYesterday());</script>
+      </li>
+    </ul>
+
+    <h3>IsoWeek</h3>
+    <a href="https://day.js.org/docs/en/plugin/iso-week">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isoWeek.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_isoWeek);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs().isoWeek());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().isoWeekday());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().isoWeekYear());</script>
+      </li>
+    </ul>
+
+    <h3>IsoWeeksInYear</h3>
+    <a href="https://day.js.org/docs/en/plugin/iso-weeks-in-year">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isoWeeksInYear.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_isoWeeksInYear);</script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isLeapYear.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_isLeapYear);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs("2004-01-01").isoWeeksInYear());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs("2005-01-01").isoWeeksInYear());</script>
+      </li>
+    </ul>
+
+    <h3>LocaleData</h3>
+    <a href="https://day.js.org/docs/en/plugin/locale-data">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/localeData.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_localeData);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(Object.keys(dayjs().localeData()));</script>
+      </li>
+
+
+      <li>
+        <script type="text/javascript">document.write(dayjs().localeData().months());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().localeData().monthsShort(dayjs()));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().localeData().firstDayOfWeek());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().localeData().weekdays(dayjs()));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().localeData().weekdaysMin(dayjs()));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().localeData().weekdaysShort(dayjs()));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().localeData().longDateFormat("L"));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().localeData().meridiem());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().localeData().ordinal());</script>
+      </li>
+    </ul>
+
+    <h3>LocalizedFormat</h3>
+    <a href="https://day.js.org/docs/en/plugin/localized-format">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/localizedFormat.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_localizedFormat);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs().format("L LT"));</script>
+      </li>
+    </ul>
+
+    <h3>MinMax</h3>
+    <a href="https://day.js.org/docs/en/plugin/min-max">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/minMax.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_minMax);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">
+         document.write(dayjs.max(dayjs(), dayjs("2018-01-01"), dayjs("2019-01-01")));
+        </script>
+      </li>
+      <li>
+        <script type="text/javascript">
+         document.write(dayjs.min([dayjs(), dayjs("2018-01-01"), dayjs("2019-01-01")]));
+        </script>
+      </li>
+    </ul>
+
+    <h3>ObjectSupport</h3>
+    <a href="https://day.js.org/docs/en/plugin/object-support">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/objectSupport.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_objectSupport);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs({
+           year: 2010,
+           month: 1,
+           day: 12,
+         }));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs.utc({
+           year: 2010,
+           month: 1,
+           day: 12,
+         }));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().set({ year: 2010, month: 1, day: 12 }));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().add({ M: 1 }));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().subtract({ month: 1 }));</script>
+      </li>
+    </ul>
+
+    <h3>PluralGetSet</h3>
+    <a href="https://day.js.org/docs/en/plugin/plural-get-set">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/pluralGetSet.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_pluralGetSet);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs().millisecond());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().milliseconds());</script>
+      </li>
+    </ul>
+
+    <h3>PreParsePostFormat</h3>
+    <a href="https://day.js.org/docs/en/plugin/preparse-postformat">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/preParsePostFormat.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_preParsePostFormat);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">
+         const months = 'يناير_فبراير_مارس_أبريل_مايو_يونيو_يوليو_أغسطس_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split('_');
+         const symbolMap = {
+           1: '١',
+           2: '٢',
+           3: '٣',
+           4: '٤',
+           5: '٥',
+           6: '٦',
+           7: '٧',
+           8: '٨',
+           9: '٩',
+           0: '٠'
+         };
+
+         const numberMap = {
+           '١': '1',
+           '٢': '2',
+           '٣': '3',
+           '٤': '4',
+           '٥': '5',
+           '٦': '6',
+           '٧': '7',
+           '٨': '8',
+           '٩': '9',
+           '٠': '0'
+         };
+
+         const locale = {
+           name: 'ar',
+           // ...
+           preparse(string) {
+             return string
+               .replace(
+                 /[١٢٣٤٥٦٧٨٩٠]/g,
+                 match => numberMap[match]
+               )
+               .replace(/،/g, ',')
+           },
+           postformat(string) {
+             return string
+               .replace(/\d/g, match => symbolMap[match])
+               .replace(/,/g, '،')
+           },
+           // ...
+         };
+
+         document.write(dayjs().locale(locale).format());
+
+        </script>
+      </li>
+    </ul>
+
+    <h3>QuarterOfYear</h3>
+    <a href="https://day.js.org/docs/en/plugin/quarter-of-year">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/quarterOfYear.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_quarterOfYear);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs("2010-04-01").quarter());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs("2010-04-01").quarter());</script>
+      </li>
+    </ul>
+
+    <h3>RelativeTime</h3>
+    <a href="https://day.js.org/docs/en/plugin/relative-time">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_relativeTime);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs().from(dayjs("1990-01-01")));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().from(dayjs("1990-01-01"), true));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().fromNow());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().to(dayjs("1990-01-01")));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().toNow());</script>
+      </li>
+    </ul>
+
+    <h3>Timezone</h3>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_utc);</script>
+    <a href="https://day.js.org/docs/en/plugin/timezone">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/timezone.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_timezone);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs.tz.guess());</script>
+      </li>
+    </ul>
+
+    <h3>ToArray</h3>
+    <a href="https://day.js.org/docs/en/plugin/to-array">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/toArray.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_toArray);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs("2019-01-25").toArray());</script>
+      </li>
+    </ul>
+
+    <h3>ToObject</h3>
+    <a href="https://day.js.org/docs/en/plugin/to-object">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/toObject.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_toObject);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">
+         document.write(JSON.stringify(dayjs("2019-01-25").toObject()));
+        </script>
+      </li>
+    </ul>
+
+    <!-- <h3>UpdateLocale</h3>
+         <a href="https://day.js.org/docs/en/plugin/update-locale">link</a>
+         <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/updateLocale.js"></script>
+         <script type="text/javascript">dayjs.extend(window.dayjs_plugin_updateLocale);</script>
+         <script type="text/javascript">
+         dayjs.updateLocale('en', {
+         months : String[]
+         });
+         </script> -->
+
+    <h3>UTC</h3>
+    <a href="https://day.js.org/docs/en/plugin/utc">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_utc);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs.utc().format());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().utc().format());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs.utc().isUTC());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs.utc().local().format());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs.utc("2018-01-01", "YYYY-MM-DD"));</script>
+      </li>
+    </ul>
+
+    <h3>weekOfYear</h3>
+    <a href="https://day.js.org/docs/en/plugin/week-of-year">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/weekOfYear.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_weekOfYear);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs("2018-06-27").week());</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs("2018-06-27").week(5));</script>
+      </li>
+    </ul>
+
+    <h3>WeekYear</h3>
+    <a href="https://day.js.org/docs/en/plugin/week-year">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/weekYear.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_weekYear);</script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/weekOfYear.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_weekOfYear);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs().weekYear());</script>
+      </li>
+    </ul>
+
+    <h3>Weekday</h3>
+    <a href="https://day.js.org/docs/en/plugin/weekday">link</a>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/weekday.js"></script>
+    <script type="text/javascript">dayjs.extend(window.dayjs_plugin_weekday);</script>
+
+    <ul>
+      <li>
+        <script type="text/javascript">document.write(dayjs().weekday(-7));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(dayjs().weekday(7));</script>
+      </li>
+    </ul>
+
+  </body>
+</html>
