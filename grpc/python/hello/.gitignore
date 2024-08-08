@@ -102,3 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+helloworld_pb2.py
+helloworld_pb2_grpc.py

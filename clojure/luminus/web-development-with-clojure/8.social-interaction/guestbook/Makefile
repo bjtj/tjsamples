@@ -24,4 +24,7 @@ cljs-watch:
 cljs-repl:
 	npx shadow-cljs cljs-repl app
 
-.PHONY:	all run repl uberjar war uberwar
+clean:
+	rm -rf node_modules target
+
+.PHONY:	all run repl uberjar war uberwar clean

@@ -9,4 +9,7 @@ migrate:
 start:
 	npx ts-node script.ts
 
-.PHONY: all init migrate start
+clean:
+	rm -rf node_modules
+
+.PHONY: all init migrate start clean

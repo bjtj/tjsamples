@@ -18,5 +18,7 @@ cljs-watch:
 cljs-repl:
 	npx shadow-cljs cljs-repl app
 
+clean:
+	rm -rf node_modules
 
-.PHONY: all repl uberjar war uberwar cljs-compile cljs-watch cljs-repl
+.PHONY: all repl uberjar war uberwar cljs-compile cljs-watch cljs-repl clean
