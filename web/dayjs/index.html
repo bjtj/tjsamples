@@ -2,9 +2,17 @@
 <html>
   <head>
     <title>dayjs examples</title>
+    <script type="text/javascript">
+     var browser_locale = navigator.language || navigator.userLanguage;
+     console.log(browser_locale);
+     var system_locale = Intl.DateTimeFormat().resolvedOptions().locale;
+     console.log(system_locale);
+    </script>
     <!-- CDN example (jsDelivr) -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script>console.log(dayjs().format())</script>
+    <script>console.log(dayjs().format('a'))</script>
+    <script>console.log(dayjs.locale())</script>
     <!-- CDN example (jsDelivr) -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/zh-cn.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/ko.js"></script>
@@ -61,6 +69,12 @@
       </li>
       <li>
         <script type="text/javascript">document.write(dayjs().locale('es').format('MMMM'));</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(`browser locale = ${browser_locale} / ${dayjs().locale(browser_locale).format('a')}`);</script>
+      </li>
+      <li>
+        <script type="text/javascript">document.write(`system locale = ${system_locale} / ${dayjs().locale(system_locale).format('a')}`);</script>
       </li>
     </ul>
 
