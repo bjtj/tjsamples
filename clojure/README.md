@@ -68,7 +68,30 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://down
 powershell -command clj 
 ```
 
-
 ```cmd
 powershell -command clj '-J"-Dfile.encoding=UTF-8"'
+```
+
+
+## Sample Makefile ##
+
+``` makefile
+CLJ ?= clj
+
+all: start
+
+start:
+	$(CLJ) -X:start
+
+run:
+	$(CLJ) -M:run-m
+
+test:
+	$(CLJ) -T:build test
+
+clean:
+	rm -rf target
+
+.PHONY: all start run test clean
+
 ```
