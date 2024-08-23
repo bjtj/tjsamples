@@ -1,0 +1,38 @@
+{:paths ["src" "resources"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        metosin/malli {:mvn/version "0.16.3"}
+        metosin/jsonista {:mvn/version "0.3.10"}}
+ :aliases
+ {:run-m {:main-opts ["-m" "quickstart.quickstart"]}
+  :quickstart {:ns-default quickstart.quickstart
+               :exec-fn quickstart}
+  :explain1 {:ns-default quickstart.explains
+             :exec-fn explain1}
+  :explain2 {:ns-default quickstart.explains
+             :exec-fn explain2}
+  :explain3 {:ns-default quickstart.explains
+             :exec-fn explain3}
+  :error1 {:ns-default quickstart.errors
+           :exec-fn error1}
+  :error2 {:ns-default quickstart.errors
+           :exec-fn error2}
+  :custom-error1 {:ns-default quickstart.errors
+                  :exec-fn custom-error1}
+  :custom-error2 {:ns-default quickstart.errors
+                  :exec-fn custom-error2}
+  :transform1 {:ns-default quickstart.transformation
+               :exec-fn transform1}
+  :coerce1 {:ns-default quickstart.transformation
+            :exec-fn coerce1}
+  :coerce2 {:ns-default quickstart.transformation
+            :exec-fn coerce2}
+  :json1 {:ns-default quickstart.json
+          :exec-fn json1}
+  :build {:deps {io.github.clojure/tools.build
+                 {:git/tag "v0.9.2" :git/sha "fe6b140"}}
+          :ns-default build}
+  :test {:extra-paths ["test"]
+         :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
+                      io.github.cognitect-labs/test-runner
+                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}}
+  :neil {:project {:name quickstart/quickstart}}}}
