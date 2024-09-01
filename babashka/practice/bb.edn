@@ -1,0 +1,122 @@
+{:paths ["bb"]
+ :deps {medley/medley {:mvn/version "1.3.0"}}
+ :min-bb-version "0.4.0" ;; Since version 0.3.6
+ :tasks
+ {
+  :init (do (defn print-args []
+              (prn (:name (current-task))
+                   *command-line-args*))
+            ;; ----
+            (def log (Object.))
+            ;; ----
+            (defn env [s] (System/getenv s)))
+
+  :enter (do (locking log
+               (println (str (:name (current-task))
+                             ":")
+                        (java.util.Date.)))
+             (println "Entering:" (:name (current-task))))
+
+  ;; ===========
+  ;; Task runner
+  ;; ===========
+  
+  ;; style 1:
+  ;; clean (shell "rm -rf target")
+
+  ;; style 2:
+  ;; :requires ([babashka.fs :as fs])
+  ;; clean (fs/delete-tree "target")
+
+  ;; style 3:
+  ;; :requires ([babashka.fs :as fs])
+  ;; clean (do (println "Removing target folder.")
+  ;;           (fs/delete-tree "target"))
+
+  ;; ==================
+  ;; Task-local options
+  ;; ==================
+  
+  ;; style 4:
+  clean {:doc "Removes target folder"
+         :requires ([babashka.fs :as fs])
+         :task (fs/delete-tree "target")}
+
+  ;; ======================
+  ;; Command line arguments
+  ;; ======================
+  
+  bar (print-args)
+  foo (do (print-args)
+          (binding [*command-line-args* (next *command-line-args*)]
+            (run 'bar)))
+  ;; $ bb foo 1 2 3
+  ;; => foo ("1" "2" "3")
+  ;; => bar ("2" "3")
+
+  ;; ===
+  ;; Run
+  ;; ===
+  
+  ;; :init (def log (Object.))
+  ;; :enter (locking log
+  ;;          (println (str (:name (current-task))
+  ;;                        ":")
+  ;;                   (java.util.Date.)))
+  a (Thread/sleep 5000)
+  b (Thread/sleep 5000)
+  c {:depends [a b]}
+  d {:task (time (run 'c))}
+  ;; $ bb run --parallel d
+  ;; d: #inst "2024-08-24T03:54:44.120-00:00"
+  ;; a: #inst "2024-08-24T03:54:44.130-00:00"
+  ;; b: #inst "2024-08-24T03:54:44.130-00:00"
+  ;; c: #inst "2024-08-24T03:54:49.139-00:00"
+  ;; "Elapsed time: 5012.3162 msecs"
+
+  sum (+ 1 2 3)
+  ;; bb run --prn sum
+  ;; => 6
+
+  ;; =============
+  ;; Hooks - :init
+  ;; =============
+
+  ;; :init (defn env [s] (System/getenv s))
+  print-env (println (env (first *command-line-args*)))
+  ;; $ FOO=1 bb print-env FOO
+  ;; => 1
+
+  ;; ======================
+  ;; Hooks - :enter, :leave
+  ;; ======================
+
+  ;; :enter (println "Entering:" (:name (current-task)))
+
+  ;; ==========================
+  ;; Dependencies between tasks
+  ;; ==========================
+
+  -target-dir "target"
+  -target {:depends [-target-dir]
+           :task (prn :target-dir -target-dir)}
+  deps-between-tasks {:depends [-target]
+                      :task (prn :deps-between-tasks)}
+
+  ;; $ bb deps-between-tasks
+  ;; -target-dir: #inst "2024-09-01T11:16:41.093-00:00"
+  ;; Entering: -target-dir
+  ;; -target: #inst "2024-09-01T11:16:41.097-00:00"
+  ;; Entering: -target
+  ;; :target-dir "target"
+  ;; deps-between-tasks: #inst "2024-09-01T11:16:41.097-00:00"
+  ;; Entering: deps-between-tasks
+  ;; :deps-between-tasks
+
+  ;; ========================
+  ;; Invoking a main function
+  ;; ========================
+
+  main my-project.main/-main
+
+  }}

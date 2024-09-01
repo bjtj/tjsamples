@@ -1,0 +1,51 @@
+{:paths ["."]
+ :tasks
+ {
+  ;; --- run ---
+  :requires ([babashka.fs :as fs]
+             [babashka.process :as p :refer [process]]
+             [babashka.tasks :as tasks])
+
+  clean (do
+          (println "Removing target folder.")
+          (fs/delete-tree "target"))
+  uber (do
+         (println "Making uberjar")
+         (clojure "-T:build ci"))
+  uber:clean (do (run 'clean)
+                 (run 'uber))
+
+
+  ;; --- shell ---
+  ls (shell "ls -asl")
+  ;; ls (shell "ls notexists")                  ; $? => 1
+  ;; ls (shell {:continue true} "ls notexists") ; $? => 0
+  sh-hello (shell {:out "file.txt"} "echo hello")
+  ls-src (shell {:dir "src"} "ls")
+  sh-env (shell {:extra-env {"FOO" "BAR"}} "printenv FOO")
+
+  subproject-install-v1 (tasks/shell {:dir "subproject"} "npm install")
+  subproject-install-v2 (-> (process {:dir "subproject", :inherit true} "npm install")
+                            (p/check))
+  subproject-install-v3 (apply shell {:dir "subproject"} "npm install" *command-line-args*)
+  subproject-clean (shell {:dir "subproject"} "rm -rf node_modules")
+
+
+  ;; --- clojure ---
+  eval (clojure "-M -e '(+ 1 2 3)'")
+  ;; eval (clojure {:dir "subproject"} "-M:clj-kondo")
+
+
+  ;; --- current-task ---
+  foo (prn :task-name (:name (current-task)))
+
+
+  ;; --- exec ---
+  doit {:task (let [x (exec 'tasks/my-function)]
+                (prn :x x))
+        :exec-args {:task-data 1234}}
+
+
+  ;; --- repl ---
+  repl (clojure.main/repl)
+  }}
