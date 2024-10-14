@@ -9,7 +9,7 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <jettyVersion>10.0.14</jettyVersion>
+    <jettyVersion>10.0.24</jettyVersion>
   </properties>
   
   <build>
