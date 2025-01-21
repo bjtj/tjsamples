@@ -1,0 +1,8 @@
+{:name :aero-example
+ :port #or [#env PORT 8080]
+ :database #envf ["protocol://%s:%s" DATABASE_HOST DATABASE_NAME]
+ :build #profile {:default "dev"
+                  :dev "dev"
+                  :stage "stage"
+                  :prod "prod"}
+ :debug #boolean #or [#env DEBUG "false"]}
