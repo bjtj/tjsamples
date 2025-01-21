@@ -4,7 +4,6 @@ hello.exe: hello.c
 	cl /Fe:$@ $**
 
 clean:
-	del main.exe *.obj
+	del hello.exe *.obj
 
 .PHONY: all clean
-
