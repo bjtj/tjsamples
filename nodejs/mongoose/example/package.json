@@ -9,7 +9,7 @@
     "ejs": "^3.1.10",
     "eslint-utils": "^1.4.1",
     "express": "^4.19.2",
-    "mongoose": "^5.13.20",
+    "mongoose": "^8.9.5",
     "node-rest-client": "^3.1.0"
   }
 }
