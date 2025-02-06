@@ -81,7 +81,7 @@
     "typescript": "^4.8.4",
     "vite": "^5.4.8",
     "vite-tsconfig-paths": "^3.5.2",
-    "vitest": "^2.1.1"
+    "vitest": "^2.1.9"
   },
   "engines": {
     "node": ">=14"
