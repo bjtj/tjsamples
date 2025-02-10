@@ -5,6 +5,8 @@
 
 (def db "foo.db")
 
+(sqlite/query db ["SELECT '안녕?'"])
+
 (sqlite/execute!
  db
  ["CREATE TABLE employee (id INTEGER PRIMARY KEY AUTOINCREMENT,
