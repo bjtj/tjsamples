@@ -24,19 +24,23 @@ class Main {
 	}
 
 	public void regex() {
-		String str = "<h2>title1</h2>body<h2>title2</h2>body2<h2>title3</h2>body3";
+		String str = "<h2>title1</h2>body1<h2>title2</h2>body2<h2>title3</h2>body3";
 		Pattern p = Pattern.compile("<h2>");
 		Matcher m = p.matcher(str);
 		StringBuffer sb = new StringBuffer();
 		int b = 0;
 		while (m.find()) {
 			System.out.printf("%d %d\n", m.start(), m.end());
-			if (b < m.start()+)) {
+			if (b < m.start()) {
 				sb.append(str.substring(b, m.start()));
 			}
-			sb.append("[DECO]");
+			sb.append(String.format(" %d ", m.start()));
 			sb.append(str.substring(m.start(), m.end()));
+			sb.append(String.format(" %d ", m.end()));
 			b = m.end();
+		}
+		if (b < str.length()) {
+			sb.append(str.substring(b));
 		}
 		System.out.println(sb.toString());
 	}
