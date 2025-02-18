@@ -5,4 +5,7 @@ all: package
 package:
 	$(MVN) -Pnative package -DskipTests
 
-.PHONY: all package
+clean:
+	$(MVN) clean
+
+.PHONY: all package clean

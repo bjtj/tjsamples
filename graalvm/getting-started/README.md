@@ -2,6 +2,19 @@
 
 <https://www.graalvm.org/latest/reference-manual/native-image/>
 
+## Prerequisites ##
+
+<https://www.graalvm.org/latest/reference-manual/native-image/#prerequisites>
+
+Check this.
+
+## Tested Environment ##
+
+``` shell
+java version "11.0.20" 2023-07-18 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.20+9-LTS-256)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.20+9-LTS-256, mixed mode)
+```
 
 ## `[ERROR] Test configuration file wasn't found. Make sure that test execution wasn't skipped.` ##
 
