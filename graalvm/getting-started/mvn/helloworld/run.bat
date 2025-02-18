@@ -1,7 +1,7 @@
 @echo off
 
 IF NOT EXIST target\helloworld.exe (
-  make
+  build.bat
 )
 
 target\helloworld.exe
