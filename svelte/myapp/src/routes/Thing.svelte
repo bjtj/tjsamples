@@ -1,5 +1,12 @@
-<script>
-	const emojis = {
+<script lang="ts">
+
+	interface Props {
+		name: string;
+	}
+
+	type EmojiTable = {[name: string]: string}
+
+	const emojis: EmojiTable = {
 		apple: '🍎',
 		banana: '🍌',
 		carrot: '🥕',
@@ -8,7 +15,7 @@
 	};
 
 	// `name` is updated whenever the prop value changes...
-	let { name } = $props();
+	let { name }: Props = $props();
 
 	// ...but `emoji` is fixed upon initialisation
 	const emoji = emojis[name];
