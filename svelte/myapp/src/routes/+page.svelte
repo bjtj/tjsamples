@@ -197,6 +197,135 @@
   let value2 = $state(
     `Some words are *italic*, some are **bold**\n\n- lists\n- are\n- cool`
   );
+
+  // 33. The class attribute
+  let flipped = $state(false);
+
+  // 34. The style directive
+  let flipped2 = $state(false);
+
+  // 35. Component styles
+	import Box from './Box.svelte';
+
+  // 36. The use directive
+  import Canvas from './Canvas.svelte';
+  import {trapFocus} from './actions.svelte.js';
+  const colors2 = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'white', 'black'];
+  let selected3 = $state(colors2[0]);
+  let size = $state(10);
+  let showMenu = $state(true);
+  let showTut36 = $state(false);
+  $effect(() => {
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.key === 'd') {
+        e.preventDefault();
+        showTut36 = !showTut36;
+      }
+    });
+  });
+
+  // 37. Adding parameters
+  import tippy from 'tippy.js';
+
+	let content = $state('Hello!');
+
+	function tooltip(node: HTMLElement, fn: Function) {
+		$effect(() => {
+			const tooltip = tippy(node, fn());
+			return tooltip.destroy;
+		});
+	}
+
+  // 38. The transition directive
+  import { fade } from 'svelte/transition';
+  let visible = $state(true);
+
+  // 39. Adding parameters
+  // import { fade } from 'svelte/transition';
+  import { fly } from 'svelte/transition';
+
+	let visible2 = $state(true);
+
+  // 40. In and out
+  // import { fly } from 'svelte/transition';
+
+  let visible3 = $state(true);
+
+  // 41. Custom CSS transitions
+  // import { fade } from 'svelte/transition';
+  import { elasticOut } from 'svelte/easing';
+
+	let visible4 = $state(true);
+
+	function spin(_node: HTMLElement, { duration }: { duration: number }) {
+		return {
+			duration,
+			css: (t: number, u: number) => {
+        const eased = elasticOut(t);
+        return `
+          transform: scale(${eased}) rotate(${eased * 1080}deg);
+          color: hsl(
+            ${Math.trunc(t * 360)},
+            ${Math.min(100, 1000 * u)}%,
+            ${Math.min(50, 500 * u)}%
+          );`;
+      }
+		};
+	}
+
+  // 42. Custom JS transitions
+  let visible5 = $state(false);
+
+  function typewriter(node: HTMLElement) {
+    const speed = 1;
+    const valid = node.childNodes.length === 1 && node.childNodes[0].nodeType === Node.TEXT_NODE;
+
+    if (!valid) {
+      throw new Error('This transition only works on elements with a single text node child');
+    }
+
+    const text = node.textContent ?? '';
+    const duration = text.length / (speed * 0.01);
+
+    return {
+      duration,
+      tick: (t: number) => {
+        const i = Math.trunc(text.length * t);
+        node.textContent = text.slice(0, i);
+      }
+    };
+  }
+
+  // 43. Transition events
+  // import { fly } from 'svelte/transition';
+
+  let visible6 = $state(true);
+  let status = $state('waiting...');
+
+  // 44. Global transitions
+  import { slide } from 'svelte/transition';
+  let items = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+
+  let showItems = $state(true);
+  let i = $state(5);
+
+  // 45. Key blocks
+  import { typewriter as typewriter2 } from './transition.js';
+  import { messages } from '../assets/loading-messages.js';
+
+  let i2 = $state(-1);
+
+  $effect(() => {
+    const interval = setInterval(() => {
+      i2 += 1;
+      i2 %= messages.length;
+    }, 2500);
+
+    return () => {
+      clearInterval(interval);
+    };
+  })
+
 </script>
 
 <!-- 1. Your first component -->
@@ -548,86 +677,241 @@
   </div>
 </div>
 
-<!-- 33.  -->
-<div id="tut33"></div>
+<!-- 33. The class attribute -->
+<div id="tut33">
+  <div class="container">
+    Flip the card
+    <!-- class="card {flipped ? 'flipped' : ''}" -->
+    <button
+      class={["card", { flipped }]}
+      onclick={() => flipped = !flipped}>
+      <div class="front">
+        <span class="symbol">♠</span>
+      </div>
+      <div class="back">
+        <span class="pattern"></span>
+      </div>
+    </button>
+  </div>
+</div>
 
-<!-- 34.  -->
-<div id="tut34"></div>
+<!-- 34. The style directive -->
+<div id="tut34">
+  <div class="container">
+    Flip the card
+    <!-- style="transform: {flipped2 ? 'rotateY(0)' : ''}; --bg-1: palegoldenrod; --bg-2: black; --bg-3: goldenrod;" -->
+    <button
+      class={["card", { flipped2 }]}
+      style:transform="{flipped2 ? 'rotateY(0)' : ''}"
+      style:--bg-1="palegoldenrod"
+      style:--bg-2="black"
+      style:--bg-3="goldenrod"
+      onclick={() => { flipped2 = !flipped2 }}>
+      <div class="front">
+        <span class="symbol">♠</span>
+      </div>
+      <div class="back">
+        <span class="pattern"></span>
+      </div>
+    </button>
+  </div>
+</div>
 
-<!-- 35.  -->
-<div id="tut35"></div>
+<!-- 35. Component styles -->
+<div id="tut35">
+  <div class="boxes">
+    <Box --color="red" />
+    <Box --color="green" />
+    <Box --color="blue" />
+  </div>
+</div>
 
-<!-- 36.  -->
-<div id="tut36"></div>
+<!-- 36. The use directive -->
+<p style="font-size: 3rem;">Press 'ctrl + d' to toggle 36. The use directive.</p>
+<div id="tut36" style="display: {showTut36 ? 'block' : 'none'}">
+  <div class="container">
+    <Canvas color={selected3} size={size} />
 
-<!-- 37.  -->
-<div id="tut37"></div>
+    {#if showMenu}
+    <div
+    role="presentation"
+    class="modal-background"
+    onclick={(event) => {
+      if (event.target === event.currentTarget) {
+        showMenu = false;
+      }
+    }}
+    onkeydown={(e) => {
+      if (e.key === "Escape") {
+        showMenu = false;
+      }
+    }}
+    >
+    <div class="menu" use:trapFocus>
+      <div class="colors">
+        {#each colors2 as color}
+        <button
+        class="color"
+        aria-label={color}
+        aria-current={selected3 === color}
+        style="--color: {color}"
+        onclick={() => {
+          selected3 = color;
+        }}
+        ></button>
+        {/each}
+      </div>
 
-<!-- 38.  -->
-<div id="tut38"></div>
+      <label>
+        small
+        <input type="range" bind:value={size} min="1" max="50" />
+        large
+      </label>
+    </div>
+    </div>
+    {/if}
 
-<!-- 39.  -->
-<div id="tut39"></div>
+    <div class="controls">
+      <button class="show-menu" onclick={() => (showMenu = !showMenu)}>
+        {showMenu ? "close" : "menu"}
+    </div>
+  </div>
+</div>
 
-<!-- .  -->
-<div id="tut"></div>
+<!-- 37. Adding parameters -->
+<div id="tut37">
+  <input bind:value={content} />
+  <button use:tooltip={() => ({content, placement: 'bottom',})}>
+    Hover me
+  </button>
+</div>
 
-<!-- .  -->
-<div id="tut"></div>
+<!-- 38. The transition directive -->
+<div id="tut38">
+  <label>
+    <input type="checkbox" bind:checked={visible} />
+    visible
+  </label>
 
-<!-- .  -->
-<div id="tut"></div>
+  {#if visible}
+	<p transition:fade>
+		Fades in and out
+	</p>
+{/if}
+</div>
 
-<!-- .  -->
-<div id="tut"></div>
+<!-- 39. Adding parameters -->
+<div id="tut39">
+  <label>
+    <input type="checkbox" bind:checked={visible2} />
+    visible
+  </label>
 
-<!-- .  -->
-<div id="tut"></div>
+  {#if visible2}
+	<p transition:fly={{ y: 200, duration: 2000 }}>
+		Flies in and out
+	</p>
+{/if}
+</div>
 
-<!-- .  -->
-<div id="tut"></div>
+<!-- 40. In and out -->
+<div id="tut40">
+  <label>
+    <input type="checkbox" bind:checked={visible3} />
+    visible
+  </label>
 
-<!-- .  -->
-<div id="tut"></div>
+  {#if visible3}
+	<p in:fly={{ y: 200, duration: 2000 }} out:fade>
+		Flies in, fades out
+	</p>
+{/if}
+</div>
 
-<!-- .  -->
-<div id="tut"></div>
+<!-- 41. Custom CSS transitions -->
+<div id="tut41">
+  <label>
+    <input type="checkbox" bind:checked={visible4} />
+    visible
+  </label>
+  
+  {#if visible4}
+    <div
+      class="centered"
+      in:spin={{ duration: 8000 }}
+      out:fade
+    >
+      <span>transitions!</span>
+    </div>
+  {/if}
+</div>
 
-<!-- .  -->
-<div id="tut"></div>
+<!-- 42. Custom JS transitions -->
+<div id="tut42">
+  <label>
+    <input type="checkbox" bind:checked={visible5} />
+    visible
+  </label>
 
-<!-- .  -->
-<div id="tut"></div>
+  {#if visible5}
+    <p transition:typewriter>
+      The quick brown fox jumps over the lazy dog.
+    </p>
+  {/if}
+</div>
 
-<!-- .  -->
-<div id="tut"></div>
+<!-- 43. Transition events -->
+<div id="tut43">
+  <p>status: {status}</p>
 
-<!-- .  -->
-<div id="tut"></div>
+  <label>
+    <input type="checkbox" bind:checked={visible6} />
+    visible
+  </label>
 
-<!-- .  -->
-<div id="tut"></div>
+  {#if visible6}
+  <p transition:fly={{ y: 200, duration: 2000 }}
+    onintrostart={() => status = 'intro started'}
+    onoutrostart={() => status = 'outro started'}
+    onintroend={() => status = 'intro ended'}
+    onoutroend={() => status = 'outro ended'}>
+    Flies in and out
+  </p>
+  {/if}
+</div>
 
-<!-- .  -->
-<div id="tut"></div>
+<!-- 44. Global transitions -->
+<div id="tut44">
+  <label>
+    <input type="checkbox" bind:checked={showItems} />
+    show list
+  </label>
 
-<!-- .  -->
-<div id="tut"></div>
+  <label>
+    <input type="range" bind:value={i} max="10" />
+  </label>
 
-<!-- .  -->
-<div id="tut"></div>
+  {#if showItems}
+      {#each items.slice(0, i) as item}
+        <div transition:slide|global>{item}</div>
+      {/each}
+  {/if}
+</div>
 
-<!-- .  -->
-<div id="tut"></div>
+<!-- 45. Key blocks -->
+<div id="tut45">
+  <h1>loading...</h1>
 
-<!-- .  -->
-<div id="tut"></div>
+  {#key i2}
+  <p in:typewriter2={{ speed: 10 }}>
+    {messages[i2] || ''}
+  </p>
+  {/key}
 
-<!-- .  -->
-<div id="tut"></div>
+  <div>&nbsp;</div>
 
-<!-- .  -->
-<div id="tut"></div>
+</div>
+
 
 <style type="text/css" media="screen">
   #tut3 p {
@@ -671,5 +955,287 @@
   #tut32 textarea {
     flex: 1;
     resize: none;
+  }
+
+  #tut33 .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    perspective: 100vh;
+  }
+
+  #tut33 .card {
+		position: relative;
+		aspect-ratio: 2.5 / 3.5;
+		font-size: min(1vh, 0.25rem);
+		height: 80em;
+		background: var(--bg-1);
+		border-radius: 2em;
+		transform: rotateY(180deg);
+		transition: transform 0.4s;
+		transform-style: preserve-3d;
+		padding: 0;
+		user-select: none;
+		cursor: pointer;
+	}
+
+	#tut33 .card.flipped {
+		transform: rotateY(0);
+	}
+
+	#tut33 .front, .back {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		backface-visibility: hidden;
+		border-radius: 2em;
+		border: 1px solid var(--fg-2);
+		box-sizing: border-box;
+		padding: 2em;
+	}
+
+	#tut33 .front {
+		background: url(./svelte-logo.svg) no-repeat 5em 5em, url(./svelte-logo.svg) no-repeat calc(100% - 5em) calc(100% - 5em);
+		background-size: 8em 8em, 8em 8em;
+	}
+
+	#tut33 .back {
+		transform: rotateY(180deg);
+	}
+
+	#tut33 .symbol {
+		font-size: 30em;
+		color: var(--fg-1);
+	}
+
+	#tut33 .pattern {
+		width: 100%;
+		height: 100%;
+		background-color: var(--bg-2);
+		/* pattern from https://projects.verou.me/css3patterns/#marrakesh */
+		background-image:
+		radial-gradient(var(--bg-3) 0.9em, transparent 1em),
+		repeating-radial-gradient(var(--bg-3) 0, var(--bg-3) 0.4em, transparent 0.5em, transparent 2em, var(--bg-3) 2.1em, var(--bg-3) 2.5em, transparent 2.6em, transparent 5em);
+		background-size: 3em 3em, 9em 9em;
+		background-position: 0 0;
+		border-radius: 1em;
+	}
+
+
+  #tut34 .container {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+		perspective: 100vh;
+	}
+
+	#tut34 .card {
+		position: relative;
+		aspect-ratio: 2.5 / 3.5;
+		font-size: min(1vh, 0.25rem);
+		height: 80em;
+		background: var(--bg-1);
+		border-radius: 2em;
+		transform: rotateY(180deg);
+		transition: transform 0.4s;
+		transform-style: preserve-3d;
+		padding: 0;
+		user-select: none;
+		cursor: pointer;
+	}
+
+	#tut34 .card.flipped {
+		transform: rotateY(0);
+	}
+
+	#tut34 .front, .back {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		backface-visibility: hidden;
+		border-radius: 2em;
+		border: 1px solid var(--fg-2);
+		box-sizing: border-box;
+		padding: 2em;
+	}
+
+	#tut34 .front {
+		background: url(./svelte-logo.svg) no-repeat 5em 5em, url(./svelte-logo.svg) no-repeat calc(100% - 5em) calc(100% - 5em);
+		background-size: 8em 8em, 8em 8em;
+	}
+
+	#tut34 .back {
+		transform: rotateY(180deg);
+	}
+
+	#tut34 .symbol {
+		font-size: 30em;
+		color: var(--fg-1);
+	}
+
+	#tut34 .pattern {
+		width: 100%;
+		height: 100%;
+		background-color: var(--bg-2);
+		/* pattern from https://projects.verou.me/css3patterns/#marrakesh */
+		background-image:
+		radial-gradient(var(--bg-3) 0.9em, transparent 1em),
+		repeating-radial-gradient(var(--bg-3) 0, var(--bg-3) 0.4em, transparent 0.5em, transparent 2em, var(--bg-3) 2.1em, var(--bg-3) 2.5em, transparent 2.6em, transparent 5em);
+		background-size: 3em 3em, 9em 9em;
+		background-position: 0 0;
+		border-radius: 1em;
+	}
+
+  /* #tut35 .boxes :global(.box:nth-child(1)) {
+    background-color: red;
+  }
+
+  #tut35 .boxes :global(.box:nth-child(2)) {
+    background-color: green;
+  }
+
+  #tut35 .boxes :global(.box:nth-child(3)) {
+    background-color: blue;
+  } */
+
+  #tut36 .container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+  }
+
+  #tut36 .controls {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 1em;
+  }
+
+  #tut36 .show-menu {
+    width: 5em;
+  }
+
+  #tut36 .modal-background {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(20px);
+  }
+
+  #tut36 .menu {
+    position: relative;
+    background: var(--bg-2);
+    width: calc(100% - 2rem);
+    max-width: 28em;
+    padding: 1em 1em 0.5em 1em;
+    border-radius: 1em;
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+  #tut36 .colors {
+		display: grid;
+		align-items: center;
+		grid-template-columns: repeat(9, 1fr);
+		grid-gap: 0.5em;
+	}
+
+	#tut36 .color {
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: var(--color, #fff);
+		transform: none;
+		filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2));
+		transition: all 0.1s;
+	}
+
+	#tut36 .color[aria-current="true"] {
+		transform: translate(1px, 1px);
+		filter: none;
+		box-shadow: inset 3px 3px 4px rgba(0,0,0,0.2);
+	}
+
+	#tut36 .menu label {
+		display: flex;
+		width: 100%;
+		margin: 1em 0 0 0;
+	}
+
+	#tut36 .menu input {
+		flex: 1;
+	}
+
+  /* tut37 */
+  :global {
+		[data-tippy-root] {
+			--bg: #666;
+			background-color: var(--bg);
+			color: white;
+			border-radius: 0.2rem;
+			padding: 0.2rem 0.6rem;
+			filter: drop-shadow(1px 1px 3px rgb(0 0 0 / 0.1));
+
+			* {
+				transition: none;
+			}
+		}
+
+		[data-tippy-root]::before {
+			--size: 0.4rem;
+			content: '';
+			position: absolute;
+			left: calc(50% - var(--size));
+			top: calc(-2 * var(--size) + 1px);
+			border: var(--size) solid transparent;
+			border-bottom-color: var(--bg);
+		}
+	}
+
+  #tut41 {
+    position: relative;
+    width: 100%;
+    height: 10rem;
+  }
+
+  #tut41 .centered {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	#tut41 span {
+		position: absolute;
+		transform: translate(-50%, -50%);
+		font-size: 4em;
+	}
+
+  #tut44 div {
+    padding: 0.5em 0;
+    border-top: 1px solid #eee;
   }
 </style>
