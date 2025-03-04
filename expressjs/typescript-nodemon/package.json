@@ -17,7 +17,7 @@
     "bcrypt": "^5.0.1",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^6.12.0",
+    "mongoose": "^6.13.8",
     "ulid": "^2.3.0"
   },
   "devDependencies": {
