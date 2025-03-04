@@ -1,0 +1,79 @@
+.App {
+  text-align: center;
+}
+
+.logo {
+  animation: logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.link {
+  color: #b318f0;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Portal */
+
+.app-container {
+  width: 200px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.dark .popup {
+  color: #333;
+}
+
+.popup {
+  position: relative;
+  z-index: 2;
+  background: #ddd;
+  padding: 1rem;
+  min-height: 200px;
+  min-width: 200px;
+}
+
+.popup::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #ddd transparent;
+}
+
+/* onMount */
+
+.photos {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 8px;
+}
+
+figure, img {
+  width: 100%;
+  margin: 0;
+}
