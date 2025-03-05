@@ -1,0 +1,6 @@
+# Reference link: [[https://orgmode.org/manual/Images.html][image]]
+
+#+CAPTION: This is the caption for the next figure link (or table)
+#+NAME:   fig:SED-HR4049
+[[./img/cat.png]]
+
