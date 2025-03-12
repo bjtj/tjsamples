@@ -4,6 +4,6 @@ build:
 	npm run build
 
 dev:
-	npm run dev
+	composer run dev
 
 .PHONY: all build dev
