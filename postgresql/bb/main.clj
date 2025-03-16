@@ -28,6 +28,10 @@ created TIMESTAMP)"])
       age 24]
   (pg/execute! db ["INSERT INTO employee (name, age, created) VALUES (?, ?, now())" name age]))
 
+(let [name "홍길동"
+      age 300]
+  (pg/execute! db ["INSERT INTO employee (name, age, created) VALUES (?, ?, now())" name age]))
+
 (let [employees (pg/execute! db ["SELECT * FROM employee"])]
   (doseq [employee employees]
     (prn :employee employee)))
