@@ -1,4 +1,4 @@
-CLJS = powershell clj -M -m cljs.main
+CLJS ?= cljs
 
 all: run
 
