@@ -1,97 +1,40 @@
-# clojure hello world
+# Clojure #
 
-<https://coderwall.com/p/yb1k-q/hello-world-in-clojure>
+<https://clojure.org/>
 
-e.g.)
+## Install Clojure ##
 
-```bash
-lein new hello-world
-cd hello-world
-```
+<https://clojure.org/guides/install_clojure>
 
-* add `main` function `src/hello_world/core.clj`
+### Windows Installer ###
 
-```clj
-(defn -main [& args]
-  (println "Hello, World!"))
-```
+Clojure Installer
 
-* edit `project.clj`
+<https://github.com/casselc/clj-msi>
 
-```clj
-:main hello-world.core
-```
+<https://github.com/casselc/clj-msi/releases>
 
-Run
 
-```bash
-lein run
-```
-
-## lein
+## Leiningen ##
 
 <https://leiningen.org/>
 
+### Install ###
 
-## lein-exec
+<https://leiningen.org/#install>
 
-<https://github.com/kumarshantanu/lein-exec>
+Leiningen wiki: Packaging
 
-```bash
-$ lein exec <.clj file>
-```
+<https://wiki.leiningen.org/Packaging>
 
-Lein 2
-
-* `~/.lein/profiles.clj`
-
-```clj
-{:user {:plugins [[lein-exec "0.3.7"]]}}
-```
-
-Lein 1.x
-
-```bash
-$ lein plugin install lein-exec "0.1"
-```
-
-
-# clj on Windows #
-
-<https://github.com/clojure/tools.deps.alpha/wiki/clj-on-Windows>
-
-```powershell
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://download.clojure.org/install/win-install-1.11.1.1165.ps1')
-```
-
-```cmd
-powershell -command clj 
-```
-
-```cmd
-powershell -command clj '-J"-Dfile.encoding=UTF-8"'
-```
-
-
-## Sample Makefile ##
-
-``` makefile
-CLJ ?= clj
-
-all: start
-
-start:
-	$(CLJ) -X:start
-
-run:
-	$(CLJ) -M:run-m
-
-test:
-	$(CLJ) -T:build test
-
-clean:
-	rm -rf target
-
-.PHONY: all start run test clean
-
-```
+- [Debian](https://packages.debian.org/stable/leiningen) (since Buster)
+- [Ubuntu 18.04](https://launchpad.net/ubuntu/+source/leiningen-clojure)
+- [asdf](https://codeberg.org/malice/asdf-lein.git)
+- [nix](https://github.com/NixOS/nixpkgs/blob/master/pkgs/development/tools/build-managers/leiningen/default.nix)
+- [Homebrew](https://github.com/Homebrew/homebrew-core/blob/master/Formula/leiningen.rb) (macOS, `brew install leiningen`)
+- [Archlinux](https://www.archlinux.org/packages/community/any/leiningen/)
+- [Chocolatey](http://chocolatey.org/packages/lein) (Windows, `choco install lein`)
+- [Scoop](https://scoop.sh/) (Windows, `scoop install leiningen`)
+- [FreeBSD Ports](http://www.freshports.org/devel/leiningen/)
+- [SDKMAN!](http://sdkman.io/)
+- [openSUSE](https://build.opensuse.org/package/show/devel:languages:clojure/leiningen)
