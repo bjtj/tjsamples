@@ -1,0 +1,18 @@
+{
+  "name": "acme-app",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+		"repl": "shadow-cljs clj-repl",
+    "watch:frontend": "shadow-cljs watch frontend",
+    "release:frontend": "shadow-cljs release frontend",
+    "watch:server": "shadow-cljs watch server",
+    "release:server": "shadow-cljs release server"
+  },
+  "devDependencies": {
+    "shadow-cljs": "2.28.22"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

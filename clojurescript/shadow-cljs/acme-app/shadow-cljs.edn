@@ -1,0 +1,21 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/dev"
+  "src/main"
+  "src/test"]
+
+ :dependencies
+ [[cider/cider-nrepl "0.52.1"]]
+
+ :dev-http {8080 "public"}
+ 
+ :builds
+ {:frontend
+  {:target :browser
+   :modules {:main {:init-fn acme.frontend.app/init}}}
+
+  :server
+  {:target :node-script
+   :output-to "target/server.js"
+   :main acme.server.main/main!
+   :devtools {:after-load acme.server.main/reload!}}}}
