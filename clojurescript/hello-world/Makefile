@@ -1,4 +1,6 @@
-CLJS ?= cljs
+CLJS ?= clj -M --main cljs.main
+
+NPM ?= npm
 
 all: run
 
@@ -14,4 +16,13 @@ serve:
 help:
 	$(CLJS) --help
 
-.PHONY: all build serve help
+prepare-bundle:
+	$(NPM) install source-map-support
+
+bundle-browser:
+	$(CLJS) --output-to main.js --compile hello-world.core
+
+bundle-node:
+	$(CLJS) --target node --output-to main.js --compile hello-world.core
+
+.PHONY: all build run serve help prepare-bundle bundle-browser bundle-node
