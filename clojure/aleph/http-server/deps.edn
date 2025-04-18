@@ -1,0 +1,2 @@
+{:paths ["src"]
+ :deps {aleph/aleph {:mvn/version "0.8.3"}}}
