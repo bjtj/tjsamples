@@ -1,0 +1,9 @@
+{
+	"scripts": {
+    "start": "fastify start server.js"
+  },
+  "dependencies": {
+    "fastify": "^5.4.0",
+    "fastify-cli": "^7.4.0"
+  }
+}
