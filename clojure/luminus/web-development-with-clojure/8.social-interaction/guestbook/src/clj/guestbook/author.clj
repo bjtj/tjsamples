@@ -11,4 +11,3 @@
   [login profile]
   (db/set-profile-for-user* {:login login
                              :profile profile}))
-
