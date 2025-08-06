@@ -21,9 +21,12 @@
 ;;; Auth backend for buddy
 (def auth-backend
   (jws-backend {:secret secret
-                :options {:alg :hs256}}))
+                :options {:alg :hs256}
+                ;; https://github.com/funcool/buddy-auth/issues/84#issuecomment-959934206
+                ;; > you can switch to `"Bearer"` instead of the default `"Token"`
+                :token-name "Bearer"}))
 
-(defn wrap-auth
+(defn wrap-authn
   "middleware to require authentication"
   [handler]
   (wrap-authentication handler auth-backend))
@@ -33,19 +36,33 @@
   [handler]
   (wrap-authorization handler auth-backend))
 
+(defn wrap-verify-auth
+  [handler]
+  (fn [req]
+    (if (authenticated? req) ; identity check
+      (handler req)
+      (-> {:error "unauthorized"}
+          (res/response)
+          (res/status 401)))))
+
 (def app
   (ring/ring-handler
    (ring/router
-    [["/" {:get (fn [_] (-> (str "<div><a href=\"login\">login</a></div>"
-                                 "<div>"
-                                 "  <input name=\"token\" placeholder=\"token...\" />"
-                                 "  <button onclick=\"fetch('/private', {method: 'get', headers: {'Authorization': `Token ${document.querySelector('[name=token]').value}`}}).then(resp => resp.text()).then(text => document.querySelector('#result').innerText = text)\">private api</button></div>"
-                                 "<div id=\"result\"></div>")
-                            (res/response)
-                            (res/content-type "text/html")))}]
-     ["/public" {:get (fn [_] (-> "Public route"
-                                  (res/response)
-                                  (res/content-type "text/html")))}]
+    [["/"
+      {:get (fn [_]
+              (-> (str "<div><a href=\"login\">login</a></div>"
+                       "<div>"
+                       "  <input name=\"token\" placeholder=\"token...\" />"
+                       ;; fetch with header "Authorization: Bearer <token>"
+                       "  <button onclick=\"fetch('/private', {method: 'get', headers: {'Authorization': `Bearer ${document.querySelector('[name=token]').value}`}}).then(resp => resp.text()).then(text => document.querySelector('#result').innerText = text)\">private api</button></div>"
+                       "<div id=\"result\"></div>")
+                  (res/response)
+                  (res/content-type "text/html")))}]
+     ["/public"
+      {:get (fn [_]
+              (-> "Public route"
+                  (res/response)
+                  (res/content-type "text/html")))}]
      ["/login"
       {:get (fn [_]
               (-> (str "<div><a href=\"/\">home</a></div>"
@@ -63,16 +80,11 @@
                      (res/response)
                      (res/content-type "application/json"))))}]
      ["/private"
-      {:get {:middleware [[wrap-auth] [wrap-authz]]
+      {:get {:middleware [wrap-authn wrap-authz wrap-verify-auth]
              :handler (fn [{:keys [identity] :as req}]
-                        ;; check header --> Authorization: Token <token>
-                        (if (authenticated? req)
-                          (-> (pr-str :authorized :identity identity)
-                              (res/response)
-                              (res/content-type "text/plain"))
-                          (-> (pr-str :unauthorized)
-                              (res/response)
-                              (res/status 401))))}}]])
+                        (-> (pr-str :AUTHORIZED! :identity identity)
+                            (res/response)
+                            (res/content-type "text/plain")))}}]])
    (ring/create-default-handler)
    {:middleware [parameters-middleware]}))
 
@@ -110,4 +122,4 @@
 
 (defn -main
   [& args]
-  (jetty/run-jetty #'app {:port 3000 :join? true}))
+  (jetty/run-jetty #'app {:port 5000 :join? true}))
