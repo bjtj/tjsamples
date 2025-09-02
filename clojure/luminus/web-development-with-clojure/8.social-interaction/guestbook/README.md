@@ -2,7 +2,13 @@
 
 ## How to start ##
 
-### PostgreSQL ###
+### config ###
+
+copy `dev-config.edn.sample` to `dev-config.edn`
+
+### Database ###
+
+#### Postgresql ####
 
 Create user and database.
 
