@@ -1,0 +1,12 @@
+{:source-paths ["src"]
+
+ :dependencies
+ []
+
+ :builds {:app
+          {:target :node-script
+           :output-to "dist/app.js"
+           :main expressjs.server.core/-main
+           :dev {:output-to "build/app.js"
+                 :closure-defines {expressjs.server.config/env "dev"}}
+           :release {:closure-defines {expressjs.server.config/env "release"}}}}}
