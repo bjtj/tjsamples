@@ -118,9 +118,7 @@
   [{:start (fn [_] (println "Entering Profile Page"))
     :stop (fn [_] (println "Leaving Profile Page"))}])
 
-(defn display-name
-  ""
-  []
+(defn display-name []
   (r/with-let [k :display-name
                value (rf/subscribe [:profile/field k ""])]
     [:div.field
@@ -135,9 +133,7 @@
        {:disabled (not @(rf/subscribe [:profile/field-changed? k]))
         :on-click #(rf/dispatch [:profile/save-change k nil])} "Reset"]]]))
 
-(defn bio
-  ""
-  []
+(defn bio []
   (r/with-let [k :bio
                value (rf/subscribe [:profile/field k ""])]
     [:div.field
@@ -151,9 +147,7 @@
       {:disabled (not @(rf/subscribe [:profile/field-changed? k]))
        :on-click #(rf/dispatch [:profile/save-change k nil])} "Reset"]]))
 
-(defn avatar
-  ""
-  []
+(defn avatar []
   (r/with-let [k :avatar
                url (rf/subscribe [:profile/field k ""])]
     [:<>
@@ -171,9 +165,7 @@
         :on-click #(rf/dispatch [:profile/save-media k nil])}
        "Reset Avatar"]]]))
 
-(defn banner
-  ""
-  []
+(defn banner []
   (r/with-let [k :banner
                url (rf/subscribe [:profile/field k ""])]
     [:<>
@@ -191,9 +183,7 @@
         :on-click #(rf/dispatch [:profile/save-media k nil])}
        "Reset Banner"]]]))
 
-(defn change-password
-  ""
-  []
+(defn change-password []
   (let [fields (r/atom {})
         errors (r/atom {})
         success (r/atom {})]
@@ -266,9 +256,7 @@
               (change-password!))}
            "Change Password"]]]))))
 
-(defn delete-account
-  ""
-  [username]
+(defn delete-account [username]
   (r/with-let [fields (r/atom {})
                login (r/cursor fields [:login])
                password (r/cursor fields [:password])
@@ -341,17 +329,13 @@
                                                "Unknown Error Occured."})))}))))}
         "Delete Account"]]]]))
 
-(defn account-settings
-  ""
-  []
+(defn account-settings []
   [:<>
    [:h2 "Account Settings"]
    [change-password]
    [delete-account (:login @(rf/subscribe [:auth/user]))]])
 
-(defn profile
-  ""
-  [_]
+(defn profile [_]
   (if-let [{:keys [login created_at profile]} @(rf/subscribe [:auth/user])]
     [:div.content
      [:h1 "My Account"

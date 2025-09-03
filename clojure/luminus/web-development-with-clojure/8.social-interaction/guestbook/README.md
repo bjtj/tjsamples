@@ -1,8 +1,12 @@
-# Guestbook #
+# Guestbook (Luminus)
 
-## How to start ##
+## config
 
-### PostgreSQL ###
+copy `dev-config.edn.sample` to `dev-config.edn`
+
+## Database
+
+### Postgresql
 
 Create user and database.
 
@@ -13,23 +17,37 @@ CREATE USER guestbook WITH PASSWORD 'password';
 CREATE DATABASE guestbook WITH OWNER guestbook;
 ```
 
-### Migrate ###
+### Migrate
 
 ``` shell
-lein run migrate
+$ lein run migrate
 ```
 
-### Shadow Cljs ###
+## Shadow Cljs
 
 ``` shell
-npm install
-npx shadow-cljs watch app
+$ npm install
 ```
 
-### Start Server ###
+``` shell
+$ npx shadow-cljs compile app
+```
 
 ``` shell
-lein run
+$ npx shadow-cljs watch app
+```
+
+## Start Server
+
+``` shell
+$ lein run
+```
+
+Or,
+
+``` clojure
+;; repl
+user> (start)
 ```
 
 Open the browser.
@@ -37,3 +55,18 @@ Open the browser.
 <http://localhost:3000/>
 
 <http://localhost:3000/api/swagger-ui/>
+
+## Stop Server
+
+`Ctrl + c`
+
+Or,
+
+``` clojure
+;; repl
+user> (stop)
+```
+
+## CIDER
+
+`C-c C-x j j`

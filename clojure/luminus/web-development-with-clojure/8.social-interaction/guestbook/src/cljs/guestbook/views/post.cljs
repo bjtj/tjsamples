@@ -7,9 +7,7 @@
    [guestbook.messages :as msg]
    [guestbook.websockets :as ws]))
 
-(defn clear-post-keys
-  ""
-  [db]
+(defn clear-post-keys [db]
   (dissoc db ::error ::post))
 
 ;; Post
@@ -178,11 +176,11 @@
    (if (= post-id root_id)
      (let [parent-id (:id (second messages)) ]
        (if (= parent-id post-id)
-           (update-in db [::post :reply_count] inc)
-           (update db ::posts
-                   #(if (contains? % parent-id)
-                      (update-in % [parent-id :reply_count] inc)
-                      %))))
+         (update-in db [::post :reply_count] inc)
+         (update db ::posts
+                 #(if (contains? % parent-id)
+                    (update-in % [parent-id :reply_count] inc)
+                    %))))
      db)))
 
 ;; parents
@@ -194,9 +192,7 @@
                :success-path [:parents]
                :success-event [::add-parents post-id]}}))
 
-(defn add-post-to-db
-  ""
-  [db {:keys [id parent] :as post}]
+(defn add-post-to-db [db {:keys [id parent] :as post}]
   (-> db
       (assoc-in [::posts id] post)
       (update-in [::replies parent]
@@ -215,8 +211,8 @@
  ::set-scroll-to
  (fn [db [_ id]]
    (if (nil? id)
-       (dissoc db ::scroll-to-post)
-       (assoc db ::scroll-to-post id))))
+     (dissoc db ::scroll-to-post)
+     (assoc db ::scroll-to-post id))))
 
 (rf/reg-sub
  ::scroll?
@@ -225,9 +221,7 @@
 
 ;; -----------------------------------------
 
-(defn loading-bar
-  ""
-  []
+(defn loading-bar []
   [:progress.progress.is-dark {:max 100} "30%"])
 
 (def post-controllers
@@ -250,9 +244,7 @@
             (rf/dispatch [::set-scroll-to nil]))
     }])
 
-(defn reply
-  ""
-  [post-id]
+(defn reply [post-id]
   (r/create-class
    {:component-did-mount
     (fn [this]
@@ -268,9 +260,7 @@
        @(rf/subscribe [::reply post-id])
        {:include-link? false}])}))
 
-(defn expand-control
-  ""
-  [post-id]
+(defn expand-control [post-id]
   (let [expanded? @(rf/subscribe [::post-expanded? post-id])
         reply-count @(rf/subscribe [::reply-count post-id])
         replies-to-load @(rf/subscribe [::replies-to-load post-id])
@@ -281,11 +271,11 @@
      [:p.control>button.button
       {:on-click (fn []
                    (if expanded?
-                       (rf/dispatch [::collapse-post post-id])
-                       (do
-                         (when-not loaded?
-                           (rf/dispatch [::fetch-replies post-id]))
-                         (rf/dispatch [::expand-post post-id]))))
+                     (rf/dispatch [::collapse-post post-id])
+                     (do
+                       (when-not loaded?
+                         (rf/dispatch [::fetch-replies post-id]))
+                       (rf/dispatch [::expand-post post-id]))))
        :disabled (= status :loading)}
       (str (if expanded? "-" "+"))]
      (when expanded?
@@ -296,9 +286,7 @@
           ""
           (str "Load " replies-to-load " New Replies"))])]))
 
-(defn reply-tree
-  ""
-  [post-id]
+(defn reply-tree [post-id]
   (when @(rf/subscribe [::has-replies? post-id])
     (let [status @(rf/subscribe [::replies-status post-id]) ]
       [:<>
@@ -322,10 +310,8 @@
           [:h3 "Error"]
           [:pre (with-out-str (pprint status))]])])))
 
-(defn post
-  ""
-  [{:keys [name author message timestamp avatar id]
-    :as post-content}]
+(defn post [{:keys [name author message timestamp avatar id]
+             :as post-content}]
   [:div.content
    [:button.button.is-info.is-outlined.is-fullwidth
     {:on-click #(.back js/window.history)}
@@ -336,9 +322,7 @@
    [msg/message post-content {:include-link? false}]
    [reply-tree id]])
 
-(defn post-page
-  ""
-  [_]
+(defn post-page [_]
   (let [post-content @(rf/subscribe [::post])
         {status :status
          {:keys [message]} :response

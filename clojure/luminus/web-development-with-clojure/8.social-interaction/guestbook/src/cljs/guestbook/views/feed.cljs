@@ -8,9 +8,7 @@
     :start (fn [_]
              (rf/dispatch [:messages/load-feed]))}])
 
-(defn feed
-  ""
-  [_]
+(defn feed [_]
   (let [messages (rf/subscribe [:messages/list]) ]
     (fn [{{{:keys [post]} :query} :parameters}]
       [:div.content

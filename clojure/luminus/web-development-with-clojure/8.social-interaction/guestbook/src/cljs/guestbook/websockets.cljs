@@ -11,9 +11,7 @@
           {:type :auto
            :wrap-recv-evs? false}))
 
-(defn send!
-  ""
-  [& args]
+(defn send! [& args]
   (if-let [send-fn (:send-fn @socket)]
     (apply send-fn args)
     (throw (ex-info "Couldn't send message, channel isn't open!"
@@ -23,9 +21,9 @@
  :ws/send!
  (fn [{:keys [message timeout callback-event]
        :or {timeout 30000}}]
-      (if callback-event
-        (send! message timeout #(rf/dispatch (conj callback-event %)))
-        (send! message))))
+   (if callback-event
+     (send! message timeout #(rf/dispatch (conj callback-event %)))
+     (send! message))))
 
 (defmulti handle-message
   (fn [{:keys [id]} _]
@@ -72,9 +70,7 @@
 ;; ------------------------
 ;; Router
 
-(defn receive-message!
-  ""
-  [{:keys [id event] :as ws-message}]
+(defn receive-message! [{:keys [id event] :as ws-message}]
   (do
     (.log js/console "EventReceived: " (pr-str event))
     (handle-message ws-message event)))

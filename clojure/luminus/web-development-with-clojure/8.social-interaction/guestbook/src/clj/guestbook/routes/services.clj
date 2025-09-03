@@ -21,8 +21,7 @@
    [guestbook.db.core :as db]
    [guestbook.media :as media]
    [clojure.spec.alpha :as s]
-   [clojure.string :as string]
-   ))
+   [clojure.string :as string]))
 
 (defn service-routes
   "Service Routes"
@@ -170,9 +169,10 @@
           :handler
           (fn [{{{:keys [boosts]
                   :or {boosts true}} :query} :parameters}]
-            (response/ok (if boosts
-                             (msg/timeline)
-                             (msg/message-list))))}}]
+            (let [result (if boosts
+                           (msg/timeline)
+                           (msg/message-list))]
+              (response/ok result)))}}]
     ["/by/:author"
      {:get
       {:parameters {:path {:author string?}}

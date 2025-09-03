@@ -49,9 +49,7 @@
     :stop (fn [_]
             (rf/dispatch [::set-author nil]))}])
 
-(defn banner-component
-  ""
-  [url]
+(defn banner-component [url]
   [:figure.image {:style {:width "100%"
                           :height "10vw"
                           :overflow "hidden"
@@ -59,9 +57,7 @@
                           :margin-right 0}}
    [:img {:src url}]])
 
-(defn title
-  ""
-  []
+(defn title []
   (if @(rf/subscribe [::is-current-author?])
     [:div.level
      [:h2.level-left "My Author Page"]
@@ -70,9 +66,7 @@
     (let [{:keys [display-name login]} @(rf/subscribe [::author])]
       [:h2 display-name " <@" login ">'s Page"])))
 
-(defn author
-  ""
-  [_]
+(defn author [_]
   (let [messages (rf/subscribe [:messages/list])
         author (rf/subscribe [::author])]
     (fn [{{{:keys [user]} :path

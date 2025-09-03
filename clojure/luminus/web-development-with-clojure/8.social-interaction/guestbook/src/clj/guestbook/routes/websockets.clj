@@ -112,4 +112,3 @@
                  middleware/wrap-formats]
     :get (:ajax-get-or-ws-handshake-fn socket)
     :post (:ajax-post-fn socket)}])
-

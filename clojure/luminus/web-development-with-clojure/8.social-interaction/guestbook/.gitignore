@@ -20,3 +20,5 @@ profiles.clj
 
 **/.clj-kondo/.cache
 /.lsp/.cache
+
+*.db

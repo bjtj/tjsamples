@@ -59,5 +59,3 @@
   "Create a new up and down migration file with a generated timestamp and `name`."
   [name]
   (migrations/create name (select-keys env [:database-url])))
-
-
