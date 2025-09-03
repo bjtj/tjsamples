@@ -11,9 +11,7 @@
 
 ;; All code is copied in from guestbook.core
 
-(defn add-message?
-  ""
-  [filter-map msg]
+(defn add-message? [filter-map msg]
   (every?
    (fn [[k matcher]]
      (let [v (get msg k)]
@@ -99,9 +97,9 @@
 (rf/reg-event-db
  :messages/set
  (fn-traced [db [_ messages]]
-   (-> db
-       (assoc :messages/loading? false
-              :messages/list messages))))
+            (-> db
+                (assoc :messages/loading? false
+                       :messages/list messages))))
 
 (rf/reg-sub
  :messages/list
@@ -110,9 +108,9 @@
     (reduce
      (fn [{:keys [ids list] :as acc} {:keys [id] :as msg}]
        (if (contains? ids id)
-           acc
-           {:list (conj list msg)
-            :ids (conj ids id)}))
+         acc
+         {:list (conj list msg)
+          :ids (conj ids id)}))
      {:list []
       :ids #{}}
      (:messages/list db [])))))
@@ -135,13 +133,13 @@
  :form/set-field
  [(rf/path :form/fields)]
  (fn-traced [fields [_ id value]]
-   (assoc fields id value)))
+            (assoc fields id value)))
 
 (rf/reg-event-db
  :form/clear-fields
  [(rf/path :form/fields)]
  (fn-traced [_ _]
-   {}))
+            {}))
 
 (rf/reg-sub
  :form/fields
@@ -158,7 +156,7 @@
  :form/set-server-errors
  [(rf/path :form/server-errors)]
  (fn-traced [_ [_ errors]]
-   errors))
+            errors))
 
 (rf/reg-sub
  :form/server-errors
@@ -302,17 +300,17 @@
   [{:keys [id is_boost timestamp posted_at poster poster_avatar source source_avatar] :as m}]
   (let [posted_at (or posted_at timestamp)]
     [:<> (when is_boost
-          [:div.columns.is-vcentered.is-1.mb-0
-           [:div.column.is-narrow.pb-0
-            [image (or poster_avatar "/img/avatar-default.png") 24 24]]
-           [:div.column.is-narrow.pb-0
-            [:a {:href (str "/user/" poster "?post=" id)} poster]]
-           [:div.column.is-narrow.pb-0 "♻"]
-           [:div.column.is-narrow.pb-0
-            [image (or source_avatar "/img/avatar-default.png") 24 24]]
-           [:div.column.pb-0
+           [:div.columns.is-vcentered.is-1.mb-0
             [:div.column.is-narrow.pb-0
-             [:a {:href (str "/user/" source "?post=" id)} source]]]])
+             [image (or poster_avatar "/img/avatar-default.png") 24 24]]
+            [:div.column.is-narrow.pb-0
+             [:a {:href (str "/user/" poster "?post=" id)} poster]]
+            [:div.column.is-narrow.pb-0 "♻"]
+            [:div.column.is-narrow.pb-0
+             [image (or source_avatar "/img/avatar-default.png") 24 24]]
+            [:div.column.pb-0
+             [:div.column.is-narrow.pb-0
+              [:a {:href (str "/user/" source "?post=" id)} source]]]])
      [:div.mb-4>time
       (if posted_at
         (.toLocaleString posted_at)
@@ -330,9 +328,8 @@
         (rtfe/replace-state name path (assoc query :post id)))
       (rtfe/push-state :guestbook.routes.app/post {:post root_id}
                        (when (not= root_id id)
-                           {:reply id})))}
-   [:span.material-icons
-    {:style {:font-size "inherit"}}
+                         {:reply id})))}
+   [:span.material-icons.is-size-6
     "open_in_new"]])
 
 (defn boost-button
@@ -342,7 +339,7 @@
    {:on-click
     #(rf/dispatch [:message/boost! m])
     :disabled (nil? @(rf/subscribe [:auth/user]))}
-   "♻"
+   [:span.is-size-6 "♻"]
    [:span.ml-1 boosts]])
 
 (declare reply-modal)
@@ -364,13 +361,11 @@
                  (rf/dispatch [:app/show-modal
                                [:reply-modal (:id m)]]))
      :disabled (not= @(rf/subscribe [:auth/user-state]) :authenticated)}
-    [:span.material-icons
-     {:style {:font-size "inherit"}}
+    [:span.material-icons.is-size-6
      "chat"]
     [:span.ml-1 reply_count]]])
 
 (defn message
-  ""
   ([m] [message m {}])
   ([{:keys [id timestamp message name author
             avatar boosts is_boost reply_count]
@@ -394,9 +389,7 @@
          [boost-button m]
          [reply-button m]]])]]))
 
-(defn message-preview
-  ""
-  [m]
+(defn message-preview [m]
   (r/with-let [expanded (r/atom false)]
     [:<>
      [:button.button.is-secondary.is-fullwidth
@@ -412,9 +405,7 @@
          [message m
           {:include-link? false}]]])]))
 
-(defn message-form-preview
-  ""
-  [parent]
+(defn message-form-preview [parent]
   (let [{:keys [login profile]} @(rf/subscribe [:auth/user])
         display-name (:display-name profile login)
         msg {:message @(rf/subscribe [:form/field :message])
@@ -427,17 +418,13 @@
      (assoc msg :messages
             (cons msg (:messages parent)))]))
 
-(defn errors-component
-  ""
-  [id & [message]]
+(defn errors-component [id & [message]]
   (when-let [error @(rf/subscribe [:form/error id])]
     [:div.notification.is-danger (if message
                                    message
                                    (string/join error))]))
 
-(defn message-form-content
-  ""
-  []
+(defn message-form-content []
   (let [{:keys [login profile]} @(rf/subscribe [:auth/user])
         display-name (:display-name profile login)]
     [:<>
@@ -452,17 +439,15 @@
         #(rf/dispatch [:message/save-media %])
         "Insert an Image"]]]
      [:div.field
-       [:label.label {:for :message} "Message"]
-       [errors-component :message]
-       [textarea-input
-        {:attrs {:name :message}
-         :save-timeout 1000
-         :value (rf/subscribe [:form/field :message])
-         :on-save #(rf/dispatch [:form/set-field :message %])}]]]))
+      [:label.label {:for :message} "Message"]
+      [errors-component :message]
+      [textarea-input
+       {:attrs {:name :message}
+        :save-timeout 1000
+        :value (rf/subscribe [:form/field :message])
+        :on-save #(rf/dispatch [:form/set-field :message %])}]]]))
 
-(defn reply-modal
-  ""
-  [parent]
+(defn reply-modal [parent]
   [modals/modal-card
    {:on-close #(rf/dispatch [:form/clear])
     :id [:reply-modal (:id parent)]}
@@ -480,9 +465,7 @@
                               @(rf/subscribe [:message/media])])
      :value (str "Reply to " (:author parent))}]])
 
-(defn msg-li
-  ""
-  [m message-id]
+(defn msg-li [m message-id]
   (r/create-class
    {:component-did-mount
     (fn [this]
@@ -494,7 +477,6 @@
        [message m]])}))
 
 (defn message-list
-  ""
   ([messages]
    [message-list messages nil])
   ([messages message-id]
@@ -503,9 +485,7 @@
       ^{:key (:timestamp m)}
       [msg-li m message-id])]))
 
-(defn message-form
-  ""
-  []
+(defn message-form []
   [:div.card
    [:div.card-header>p.card-header-title
     "Post Something!"]
@@ -522,14 +502,9 @@
                                @(rf/subscribe [:message/media])])
       :value "comment"}]]])
 
-(defn message-list-placeholder
-  ""
-  []
+(defn message-list-placeholder []
   [:ul.messages
    [:li
     [:p "Loading Messages..."]
     [:div {:style {:width "10em"}}
      [:progress.progress.is-dark {:max 100} "30%"]]]])
-
-
-

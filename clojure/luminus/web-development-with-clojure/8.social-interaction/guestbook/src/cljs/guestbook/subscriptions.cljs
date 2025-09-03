@@ -40,9 +40,7 @@
  (fn [db _]
    (::loading? db)))
 
-(defn subscribe-button
-  ""
-  [subs-type sub]
+(defn subscribe-button [subs-type sub]
   (let [subscribed? @(rf/subscribe [:subscription/subscribed? subs-type sub])
         loading? @(rf/subscribe [:subscription/loading?])]
     (case @(rf/subscribe [:auth/user-state])
@@ -53,8 +51,8 @@
                     [:subscription/set subs-type sub (not subscribed?)])
         :disabled loading?}
        (if subscribed?
-           "Unfollow "
-           "Follow ")
+         "Unfollow "
+         "Follow ")
        (str
         (case subs-type
           :follows "@"

@@ -19,7 +19,8 @@
                  [metosin/reitit "0.5.10"]
                  [metosin/ring-http-response "0.9.1"]
                  [mount "0.1.16"]
-                 [nrepl "0.8.3"]
+                 [nrepl "1.4.0"]
+                 [cider/cider-nrepl "0.57.0"]
                  [org.clojure/clojure "1.11.1"]
                  [org.clojure/tools.cli "1.0.194"]
                  [org.clojure/tools.logging "1.1.0"]
@@ -50,17 +51,8 @@
   :target-path "target/%s/"
   :main ^:skip-aot guestbook.core
 
-  :plugins [[lein-cljsbuild "1.1.8"]] 
-  :cljsbuild
-  {:builds
-   {:app {:source-paths ["src/cljs" "src/cljc"]
-          :compiler {:output-to "target/cljsbuild/public/js/app.js"
-                     :output-dir "target/cljsbuild/public/js/out"
-                     :main "guestbook.core"
-                     :asset-path "/js/out"
-                     :optimizations :none
-                     :source-map true
-                     :pretty-print true}}}}
+  :plugins [] 
+  
   :clean-targets
   ^{:protect false}
   [:target-path

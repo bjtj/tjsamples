@@ -9,8 +9,7 @@
     [guestbook.config :refer [env]]
     [ring-ttl-session.core :refer [ttl-memory-store]]
     [ring.middleware.defaults :refer [site-defaults wrap-defaults]]
-    [guestbook.session :as session])
-  )
+    [guestbook.session :as session]))
 
 
 (defn wrap-internal-error [handler]

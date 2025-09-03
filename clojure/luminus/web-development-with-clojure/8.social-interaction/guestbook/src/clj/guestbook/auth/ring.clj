@@ -4,7 +4,6 @@
             [reitit.ring :as ring]))
 
 (defn authorized?
-  ""
   [roles req]
   (if (seq roles)
     (->> req
@@ -18,14 +17,12 @@
       false)))
 
 (defn get-roles-from-match
-  ""
   [req]
   (-> req
       (ring/get-match)
       (get-in [:data ::auth/roles] #{})))
 
 (defn wrap-authorized
-  ""
   [handler unauthorized-handler]
   (fn [req]
     (if (authorized? (get-roles-from-match req) req)

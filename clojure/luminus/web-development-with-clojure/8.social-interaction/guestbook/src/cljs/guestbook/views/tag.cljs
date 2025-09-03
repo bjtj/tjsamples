@@ -8,9 +8,7 @@
     :start (fn [{{:keys [tag]} :path}]
              (rf/dispatch [:messages/load-by-tag tag]))}])
 
-(defn tag
-  ""
-  [_]
+(defn tag [_]
   (let [messages (rf/subscribe [:messages/list])]
     (fn [{{{:keys [tag]} :path
            {:keys [post]} :query} :parameters}]

@@ -7,9 +7,7 @@
   [{:start (fn [_]
              (rf/dispatch [:messages/load]))}])
 
-(defn home
-  ""
-  [{{{post :post} :query} :parameters}]
+(defn home [{{{post :post} :query} :parameters}]
   (let [messages (rf/subscribe [:messages/list])]
     (fn []
       [:div.content>div.columns.is-centered>div.column.is-two-thirds
@@ -33,4 +31,3 @@
            [:div.buttons.is-pulled-right
             [auth/login-button]
             [auth/register-button]]])]])))
-

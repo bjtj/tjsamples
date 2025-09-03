@@ -17,7 +17,6 @@
             [guestbook.ajax :as ajax]
             [mount.core :as mount]))
 
-
 (rf/reg-event-fx
  :app/initialize
  (fn-traced [_ _]
@@ -39,9 +38,7 @@
  (fn [db]
    (:router/current-route db)))
 
-(defn init-routes!
-  ""
-  []
+(defn init-routes! []
   (rtfe/start!
    router
    (fn [new-match]
@@ -55,9 +52,7 @@
          (rf/dispatch [:router/navigated new-match-with-controllers]))))
    {:use-fragment false}))
 
-(defn navbar
-  ""
-  []
+(defn navbar []
   (let [burger-active (r/atom false)]
     (fn []
       [:nav.navbar.is-info
@@ -104,36 +99,26 @@
                [auth/login-button]
                [auth/register-button]])]]]]]])))
 
-(defn page
-  ""
-  [{{:keys [view name]} :data
-    path :path
-    :as match}]
+(defn page [{{:keys [view name]} :data path :path :as match}]
   [:section.section>div.container
    (if view
      [view match]
      [:div "No view specified for route: " name " (" path ")"])])
 
-(defn app
-  ""
-  []
+(defn app []
   (let [current-route @(rf/subscribe [:router/current-route])]
     [:div.app
      [navbar]
      [page current-route]]))
 
-(defn ^:dev/after-load mount-components
-  ""
-  []
+(defn ^:dev/after-load mount-components []
   (rf/clear-subscription-cache!)
   (.log js/console "Mounting Components...")
   (init-routes!)
   (dom/render [#'app] (.getElementById js/document "content"))
   (.log js/console "Components Mounted!"))
 
-(defn init!
-  ""
-  []
+(defn init! []
   (.log js/console "Initializing App...")
   (mount/start)
   (rf/dispatch-sync [:app/initialize])
