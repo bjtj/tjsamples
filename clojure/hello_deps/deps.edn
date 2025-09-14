@@ -1,0 +1,6 @@
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}}
+ :aliases
+ {:run-m {:main-opts ["-m" "hello.core"]}
+  :run-x {:exec-fn hello.core/hello
+          :exec-args {:name "Bob"}}}}
