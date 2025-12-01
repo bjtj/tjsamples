@@ -6,7 +6,7 @@
 		"server": "node dist/app.js"
 	},
 	"dependencies": {
-		"express": "^5.1.0",
+		"express": "^5.2.0",
 		"shadow-cljs": "^3.1.7"
 	}
 }
