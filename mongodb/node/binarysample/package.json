@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
-    "express": "^4.19.2",
+    "express": "^4.22.1",
     "mongodb": "^4.17.0",
     "multer": "^2.0.1",
     "nodemon": "^2.0.20"
