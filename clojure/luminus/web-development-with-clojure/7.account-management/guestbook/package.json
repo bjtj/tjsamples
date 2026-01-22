@@ -1,6 +1,6 @@
 {
     "devDependencies": {
-        "shadow-cljs": "^2.11.14"
+        "shadow-cljs": "^3.3.4"
     },
     "dependencies": {
         "highlight.js": "11.0.1",
