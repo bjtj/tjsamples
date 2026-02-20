@@ -1,7 +1,9 @@
 {:source-paths ["src"]
 
  :dependencies
- []
+ [[cider/cider-nrepl "0.58.0"]]
+
+ :nrepl {:middleware [cider.nrepl/cider-middleware]}
 
  :builds {:app
           {:target :node-script
