@@ -54,12 +54,10 @@ target=\"_blank\">
   (into [escape-html linkify-tags linkify-mentions] transformer-vector))
 
 (defn parse-message
-  ""
   [message]
   (md->html message :replacement-transformers transformers))
 
 (defn md
-  ""
   ([content]
    [md :p {} content])
   ([tag content]
@@ -70,11 +68,9 @@ target=\"_blank\">
                    {:__html (parse-message content)})
             (update :class (fnil conj []) "markdown"))]))
 
-(defn text-input
-  ""
-  [{val :value
-    attrs :attrs
-    :keys [on-save]}]
+(defn text-input [{val :value
+                   attrs :attrs
+                   :keys [on-save]}]
   (let [draft (r/atom nil)
         value (r/track #(or @draft @val ""))]
     (fn []
@@ -88,12 +84,7 @@ target=\"_blank\">
                :on-change #(reset! draft (.. % -target -value))
                :value @value})])))
 
-(defn textarea-input
-  ""
-  [{val :value
-    attrs :attrs
-    ms :save-timeout
-    :keys [on-save]}]
+(defn textarea-input [{val :value attrs :attrs ms :save-timeout :keys [on-save]}]
   (let [draft (r/atom nil)
         value (r/track #(or @draft @val ""))
         save-on-change (if ms
@@ -112,9 +103,7 @@ target=\"_blank\">
                               (save-on-change v)))
                :value @value})])))
 
-(defn image
-  ""
-  [url width height]
+(defn image [url width height]
   [:div {:style {:width width
                  :height height
                  :display :flex
@@ -125,9 +114,7 @@ target=\"_blank\">
    [:img {:src url :style {:max-width width
                            :max-height height}}]])
 
-(defn image-uploader
-  ""
-  [save-fn label-text]
+(defn image-uploader [save-fn label-text]
   [:div.file>label.file-label
    [:input.file-input {:type :file
                        :on-change (fn [e]

@@ -15,9 +15,7 @@
           {:user-id-fn (fn [ring-req]
                          (get-in ring-req [:params :client-id]))}))
 
-(defn send!
-  ""
-  [uid message]
+(defn send! [uid message]
   (println "Sending message: " message)
   ((:send-fn socket) uid message))
 
@@ -74,9 +72,7 @@
         {:success true}))))
 
 
-(defn receive-message!
-  ""
-  [{:keys [id ?reply-fn ring-req] :as message}]
+(defn receive-message! [{:keys [id ?reply-fn ring-req] :as message}]
   (case id
     :chsk/bad-package (log/debug "Bad Package:\n" message)
     :chsk/bad-event (log/debug "Bad Event: \n" message)
@@ -104,9 +100,7 @@
   :stop (when-let [stop-fn channel-router]
           (stop-fn)))
 
-(defn websocket-routes
-  ""
-  []
+(defn websocket-routes []
   ["/ws"
    {:middleware [middleware/wrap-csrf
                  middleware/wrap-formats]

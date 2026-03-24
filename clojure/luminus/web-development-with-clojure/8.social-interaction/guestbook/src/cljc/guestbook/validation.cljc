@@ -8,7 +8,5 @@
     {:message "message must contain at least 10 characters"
      :validate (fn [msg] (>= (count msg) 10))}]])
 
-(defn validate-message
-  ""
-  [params]
+(defn validate-message [params]
   (first (st/validate params message-schema)))

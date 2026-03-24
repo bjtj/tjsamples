@@ -9,9 +9,7 @@
    java.awt.geom.AffineTransform
    javax.imageio.ImageIO))
 
-(defn insert-image-returning-name
-  ""
-  [{:keys [tempfile filename]}
+(defn insert-image-returning-name [{:keys [tempfile filename]}
    {:keys [width height
            max-width max-height
            owner]}]

@@ -3,9 +3,7 @@
             [next.jdbc :as jdbc]
             [guestbook.db.core :as db]))
 
-(defn identity->roles
-  ""
-  [identity]
+(defn identity->roles [identity]
   (cond-> #{:any}
     (some? identity) (conj :authenticated)))
 
@@ -25,9 +23,7 @@
    :media/get #{:any}
    :media/upload #{:authenticated}})
 
-(defn create-user!
-  ""
-  [login password]
+(defn create-user! [login password]
   (jdbc/with-transaction [t-conn db/*db*]
     (if-not (empty? (db/get-user-for-auth* t-conn {:login login}))
       (throw (ex-info "User already exists!"
@@ -37,9 +33,7 @@
                         {:login login
                          :password (hashers/derive password)}))))
 
-(defn change-password!
-  ""
-  [login old-password new-password]
+(defn change-password! [login old-password new-password]
   (jdbc/with-transaction [t-conn db/*db*]
     (let [{hashed :password} (db/get-user-for-auth* t-conn {:login login})]
       (if (hashers/check old-password hashed)
@@ -51,16 +45,12 @@
                         {:guestbook/error-id ::authentication-failure
                          :error "Passwords do not match!"}))))))
 
-(defn authenticate-user
-  ""
-  [login password]
+(defn authenticate-user [login password]
   (let [{hashed :password :as user} (db/get-user-for-auth* {:login login})]
     (when (hashers/check password hashed)
         (dissoc user :password))))
 
-(defn delete-account!
-  ""
-  [login password]
+(defn delete-account! [login password]
   (jdbc/with-transaction [t-conn db/*db*]
     (let [{hashed :password} (db/get-user-for-auth* t-conn {:login login})]
       (if (hashers/check password hashed)

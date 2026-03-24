@@ -46,14 +46,22 @@
  (fn [db _]
    (dissoc db :auth/user)))
 
+(rf/reg-event-db
+ :auth/show-modal
+ (fn [db _]
+   (assoc db :session/show-modal? true)))
+
+(rf/reg-event-db
+ :auth/hide-modal
+ (fn [db _]
+   (assoc db :session/show-modal? false)))
+
 (rf/reg-sub
  :auth/user
  (fn [db _]
    (:auth/user db)))
 
-(defn login-button
-  ""
-  []
+(defn login-button []
   (r/with-let
     [fields (r/atom {})
      error (r/atom nil)
@@ -105,9 +113,7 @@
                      (string/blank? (:password @fields)))}
       "Log In"]]))
 
-(defn logout-button
-  ""
-  []
+(defn logout-button []
   [:button.button
    {:on-click #(POST "/api/logout"
                      {:handler (fn [_]
@@ -116,14 +122,12 @@
 
 
 (defn nameplate
-  ""
   [{:keys [login]}]
   [:a.button.is-primary
    {:href (rtfe/href :guestbook.routes.app/profile)}
    login])
 
 (defn register-button
-  ""
   []
   (r/with-let
     [fields (r/atom {})

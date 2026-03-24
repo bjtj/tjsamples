@@ -2,7 +2,6 @@
   (:require [reagent.core :as r]
             [reagent.dom :as dom]
             [re-frame.core :as rf]
-            [ajax.core :refer [GET POST]]
             [clojure.string :as string]
             [guestbook.validation :refer [validate-message]]
             [reitit.coercion.spec :as reitit-spec]
@@ -11,10 +10,7 @@
             [reitit.frontend.controllers :as rtfc]
             [day8.re-frame.tracing :refer-macros [fn-traced]]
             [guestbook.routes.app :refer [app-routes]]
-            [guestbook.websockets :as ws]
             [guestbook.auth :as auth]
-            [guestbook.messages :as messages]
-            [guestbook.ajax :as ajax]
             [mount.core :as mount]))
 
 (rf/reg-event-fx
@@ -45,10 +41,10 @@
      (when new-match
        (let [{controllers :controllers}
              @(rf/subscribe [:router/current-route])
+             
              new-match-with-controllers
              (assoc new-match
-                    :controllers
-                    (rtfc/apply-controllers controllers new-match))]
+                    :controllers (rtfc/apply-controllers controllers new-match))]
          (rf/dispatch [:router/navigated new-match-with-controllers]))))
    {:use-fragment false}))
 

@@ -19,24 +19,18 @@
 
 (conman/bind-connection *db* "sql/queries.sql")
 
-(defn sql-timestamp->inst
-  ""
-  [t]
+(defn sql-timestamp->inst [t]
   (-> t
       (.toLocalDateTime)
       (.atZone (java.time.ZoneId/systemDefault))
       (java-date)))
 
-(defn read-pg-object
-  ""
-  [^PGobject obj]
+(defn read-pg-object [^PGobject obj]
   (cond-> (.getValue obj)
     (#{"json" "jsonb"} (.getType obj))    
     (json/read-value (json/object-mapper {:encode-key-fn true, :decode-key-fn true}))))
 
-(defn write-pg-object
-  ""
-  [v]
+(defn write-pg-object [v]
   (doto (PGobject.)
     (.setType "jsonb")
     (.setValue (json/write-value-as-string v))))

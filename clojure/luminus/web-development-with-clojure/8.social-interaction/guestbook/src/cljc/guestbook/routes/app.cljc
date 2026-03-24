@@ -11,16 +11,12 @@
               [spec-tools.data-spec :as ds]])))
 
 #?(:clj
-   (defn home-page
-     ""
-     [request]
+   (defn home-page [request]
      (layout/render
       request
       "home.html")))
 
-(defn app-routes
-  ""
-  []
+(defn app-routes []
   [""
    #?(:clj {:middleware [middleware/wrap-csrf]
             :get home-page})

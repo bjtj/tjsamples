@@ -240,6 +240,7 @@
 (rf/reg-event-db
  :message/clear-media
  (fn [db _]
+   (js/console.log "clear-media")
    (dissoc db :message/media :message/urls)))
 
 (rf/reg-sub
@@ -259,7 +260,7 @@
                                    %))))
 
 (defn reload-messages-button
-  "Reload Messge Button"
+  "Reload Message Button"
   []
   (let [loading? (rf/subscribe [:messages/loading?])]
     [:button.button.is-info.is-fullwidth
@@ -443,7 +444,7 @@
       [errors-component :message]
       [textarea-input
        {:attrs {:name :message}
-        :save-timeout 1000
+        :save-timeout 300
         :value (rf/subscribe [:form/field :message])
         :on-save #(rf/dispatch [:form/set-field :message %])}]]]))
 

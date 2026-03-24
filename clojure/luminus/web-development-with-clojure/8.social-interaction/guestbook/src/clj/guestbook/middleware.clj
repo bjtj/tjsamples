@@ -40,9 +40,7 @@
       ((if (:websocket? request) handler wrapped) request))))
 
 
-(defn wrap-base
-  ""
-  [handler]
+(defn wrap-base [handler]
   (-> ((:middleware defaults) handler)
       (wrap-defaults
        (-> site-defaults
